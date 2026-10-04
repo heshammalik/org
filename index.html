@@ -50,7 +50,7 @@
             text-decoration: underline;
         }
         main {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 60px 20px;
         }
@@ -70,6 +70,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
+            margin-bottom: 60px;
         }
         .pillar-card {
             background-color: var(--surface-color);
@@ -96,6 +97,43 @@
             padding-top: 15px;
             line-height: 1.8;
         }
+        /* Detailed Ledger Styling for Words Portal */
+        .ledger-container {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+        }
+        .ledger-container h3 {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-top: 0;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .ledger-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .ledger-category h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+        .ledger-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -115,14 +153,15 @@
     </header>
 
     <main>
+        <!-- The Four Pillars Overview -->
         <section>
             <h2>The Four Pillars</h2>
             <div class="pillars-grid">
                 <div class="pillar-card">
                     <h3>Words</h3>
-                    <p>A global participatory text and archive project capturing human sentiment across international borders and institutions.</p>
+                    <p>A global participatory text and archive project capturing human sentiment, linguistic DNA, and philosophical thought across international borders.</p>
                     <div class="collaborator-list">
-                        <strong>Key Participants:</strong> 74+ global cultural and institutional contributors who donated words to the ongoing archive.
+                        <strong>Scope:</strong> Hundreds of contributors spanning Ivy League universities, global museums, indigenous councils, and sovereign institutions.
                     </div>
                 </div>
                 <div class="pillar-card">
@@ -142,6 +181,58 @@
                 <div class="pillar-card">
                     <h3>روح‌نواز (Rooh-Nawaz)</h3>
                     <p>An exploration of resonance, heritage, and the intangible spirit translated into monumental visual execution.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Words Ledger Section -->
+        <section>
+            <h2>Archive Ledger &bull; Words Contributors</h2>
+            <div class="ledger-container">
+                <h3>Participating Institutional & Cultural DNA</h3>
+                <div class="ledger-grid">
+                    <div class="ledger-category">
+                        <h4>Harvard University Network</h4>
+                        <ul>
+                            &bull; Office of the President Emeritus<br>
+                            &bull; Deans of Harvard College & GSD<br>
+                            &bull; Law, Divinity, & Public Health Schools<br>
+                            &bull; Faculty of Arts & Sciences / East Asian Languages<br>
+                            &bull; Weatherhead Center & Malcolm Wiener Center<br>
+                            &bull; Harvard Forest & Children's Hospital
+                        </ul>
+                    </div>
+                    <div class="ledger-category">
+                        <h4>Global Universities</h4>
+                        <ul>
+                            &bull; Oxford & Cambridge (UK)<br>
+                            &bull; Stanford, MIT, Princeton, Yale, Columbia, Chicago<br>
+                            &bull; Sorbonne University (France)<br>
+                            &bull; University of Melbourne & Sydney (Australia)<br>
+                            &bull; Charles University & Masaryk University (CZ)<br>
+                            &bull; University of Tokyo, Toronto, Vienna, & Beyond
+                        </ul>
+                    </div>
+                    <div class="ledger-category">
+                        <h4>Museums & Galleries</h4>
+                        <ul>
+                            &bull; TATE London & National Galleries Scotland<br>
+                            &bull; National Gallery of Canada<br>
+                            &bull; Ludwig Museum (Hungary) & Slovak National Gallery<br>
+                            &bull; Academy of Fine Arts Vienna & Stuttgart<br>
+                            &bull; Regional and Municipal Museums across Europe
+                        </ul>
+                    </div>
+                    <div class="ledger-category">
+                        <h4>Global NGOs & Sovereignties</h4>
+                        <ul>
+                            &bull; Greenpeace International & Jane Goodall Institute<br>
+                            &bull; Svalbard Global Seed Vault (Norway)<br>
+                            &bull; Equal Justice Initiative (Bryan Stevenson)<br>
+                            &bull; Greenland National Museum & Avannaata Government<br>
+                            &bull; Palestinian Cultural & Freedom Theatre Initiatives
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
