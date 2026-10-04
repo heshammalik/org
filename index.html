@@ -17,7 +17,6 @@
             --border-hover: rgba(212, 175, 55, 0.35);
         }
 
-        /* Gallery Mode (Ultra-Minimalist Toggle State) */
         body.gallery-mode {
             --canvas-bg: #000000;
             --surface-glass: rgba(5, 5, 5, 0.9);
@@ -27,7 +26,6 @@
         body.gallery-mode header { opacity: 0.3; transition: opacity 0.5s ease; }
         body.gallery-mode header:hover { opacity: 1; }
 
-        /* Custom Minimalist Coordinate Cursor */
         .custom-cursor {
             pointer-events: none;
             position: fixed;
@@ -47,9 +45,7 @@
             a, button, input, textarea, .pillar-card, .trajectory-card, .control-btn, .filter-btn, .exhibit-card, .quote-card { cursor: none; }
         }
         
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--canvas-bg);
@@ -65,7 +61,6 @@
             transition: background-color 0.6s ease;
         }
 
-        /* Floating Control Panel (Audio Removed) */
         .controls-group {
             position: fixed;
             top: 30px;
@@ -92,7 +87,6 @@
             box-shadow: 0 0 20px var(--accent-gold-glow);
         }
 
-        /* Live Word Marquee Ticker */
         .word-ticker {
             background: var(--surface-solid);
             border-bottom: 1px solid var(--border-subtle);
@@ -168,9 +162,7 @@
             padding: 100px 20px;
         }
 
-        section {
-            margin-bottom: 140px;
-        }
+        section { margin-bottom: 140px; }
 
         h2 {
             font-size: 0.85rem;
@@ -218,9 +210,7 @@
             box-shadow: 0 30px 60px var(--accent-gold-glow);
         }
 
-        .pillar-card:hover::before {
-            opacity: 1;
-        }
+        .pillar-card:hover::before { opacity: 1; }
 
         .pillar-card h3 {
             font-size: 1rem;
@@ -249,7 +239,6 @@
             opacity: 0.85;
         }
 
-        /* Detailed Portal Feature Section */
         .feature-container {
             background-color: var(--surface-solid);
             border: 1px solid var(--border-subtle);
@@ -258,9 +247,7 @@
             transition: border-color 0.4s ease;
         }
 
-        .feature-container:hover {
-            border-color: rgba(212, 175, 55, 0.2);
-        }
+        .feature-container:hover { border-color: rgba(212, 175, 55, 0.2); }
 
         .feature-container h3 {
             font-size: 1.15rem;
@@ -323,14 +310,13 @@
             line-height: 1.8;
         }
 
-        /* Critical Discourse Quotation Stream */
-        .discourse-container {
+        .discourse-container, .gallery-section-container, .ledger-container, .guestbook-container {
             background-color: var(--surface-solid);
             border: 1px solid var(--border-subtle);
             padding: 70px 60px;
         }
 
-        .discourse-container h3 {
+        .discourse-container h3, .gallery-section-container h3, .ledger-container h3, .guestbook-container h3 {
             font-size: 1rem;
             font-weight: 300;
             letter-spacing: 0.25em;
@@ -341,13 +327,13 @@
             margin-bottom: 40px;
         }
 
-        .quote-grid {
+        .quote-grid, .exhibit-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
-        .quote-card {
+        .quote-card, .exhibit-card {
             background: var(--surface-glass);
             border: 1px solid var(--border-subtle);
             padding: 40px;
@@ -358,7 +344,7 @@
             justify-content: space-between;
         }
 
-        .quote-card:hover {
+        .quote-card:hover, .exhibit-card:hover {
             border-color: var(--border-hover);
             transform: translateY(-4px);
             box-shadow: 0 20px 40px var(--accent-gold-glow);
@@ -372,54 +358,7 @@
             margin: 0 0 25px 0;
         }
 
-        .quote-author {
-            font-size: 0.7rem;
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            border-top: 1px solid var(--border-subtle);
-            padding-top: 15px;
-        }
-
-        /* Curated Exhibition Visual Gallery */
-        .gallery-section-container {
-            background-color: var(--surface-solid);
-            border: 1px solid var(--border-subtle);
-            padding: 70px 60px;
-        }
-
-        .gallery-section-container h3 {
-            font-size: 1rem;
-            font-weight: 300;
-            letter-spacing: 0.25em;
-            margin-top: 0;
-            color: #ffffff;
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-        }
-
-        .exhibit-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .exhibit-card {
-            background: var(--surface-glass);
-            border: 1px solid var(--border-subtle);
-            padding: 35px;
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .exhibit-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px var(--accent-gold-glow);
-        }
-
-        .exhibit-location {
+        .quote-author, .exhibit-location {
             font-size: 0.7rem;
             color: var(--accent-gold);
             text-transform: uppercase;
@@ -462,25 +401,6 @@
             color: #030303;
         }
 
-        /* Cinematic Ledger Styling with Interactive Filters */
-        .ledger-container {
-            background-color: var(--surface-solid);
-            border: 1px solid var(--border-subtle);
-            padding: 70px 60px;
-            position: relative;
-        }
-
-        .ledger-container h3 {
-            font-size: 1rem;
-            font-weight: 300;
-            letter-spacing: 0.25em;
-            margin-top: 0;
-            color: #ffffff;
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-        }
-
         .filter-controls {
             display: flex;
             justify-content: center;
@@ -512,13 +432,7 @@
             gap: 40px;
         }
 
-        .ledger-category {
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-
-        .ledger-category.hidden {
-            display: none;
-        }
+        .ledger-category.hidden { display: none; }
 
         .ledger-category h4 {
             font-size: 0.75rem;
@@ -540,25 +454,6 @@
             line-height: 2.3;
         }
 
-        /* Interactive Visitor Guestbook Section */
-        .guestbook-container {
-            background-color: var(--surface-solid);
-            border: 1px solid var(--border-subtle);
-            padding: 70px 60px;
-            position: relative;
-        }
-
-        .guestbook-container h3 {
-            font-size: 1rem;
-            font-weight: 300;
-            letter-spacing: 0.25em;
-            margin-top: 0;
-            color: #ffffff;
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-        }
-
         .guestbook-form {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -566,9 +461,7 @@
             margin-bottom: 40px;
         }
 
-        .form-group.full {
-            grid-column: span 2;
-        }
+        .form-group.full { grid-column: span 2; }
 
         .form-input, .form-textarea {
             width: 100%;
@@ -583,15 +476,8 @@
             transition: border-color 0.3s;
         }
 
-        .form-input:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
+        .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--accent-gold); }
+        .form-textarea { resize: vertical; min-height: 100px; }
 
         .submit-btn {
             background: var(--surface-glass);
@@ -629,9 +515,7 @@
             transition: border-color 0.3s;
         }
 
-        .guest-card:hover {
-            border-color: var(--border-hover);
-        }
+        .guest-card:hover { border-color: var(--border-hover); }
 
         .guest-author {
             font-size: 0.75rem;
@@ -649,22 +533,24 @@
             line-height: 1.8;
         }
 
-        /* Lightbox Modal */
+        /* IMMERSIVE CINEMATIC LIGHTBOX PORTAL */
         .lightbox-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(20px);
+            background: rgba(2, 2, 2, 0.96);
+            backdrop-filter: blur(25px);
             z-index: 2000;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.5s ease;
+            padding: 40px;
+            box-sizing: border-box;
         }
 
         .lightbox-modal.active {
@@ -673,13 +559,83 @@
         }
 
         .lightbox-content {
-            max-width: 750px;
-            width: 90%;
+            max-width: 1000px;
+            width: 100%;
+            max-height: 90vh;
             background: var(--surface-solid);
             border: 1px solid var(--border-hover);
-            padding: 60px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
             position: relative;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.9);
+            overflow: hidden;
+        }
+
+        .lightbox-visual-frame {
+            background: #000;
+            position: relative;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-right: 1px solid var(--border-subtle);
+        }
+
+        /* Abstract Procedural Gallery Artwork Placeholder / Visual Representation */
+        .lightbox-artwork-canvas {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: radial-gradient(circle at 50% 50%, #1a1610 0%, #050505 80%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .lightbox-artwork-canvas::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transform: rotate(45deg);
+            box-shadow: inset 0 0 50px rgba(212, 175, 55, 0.05);
+        }
+
+        .lightbox-artwork-inner {
+            text-align: center;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .lightbox-artwork-inner span {
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        .lightbox-artwork-inner h4 {
+            font-size: 0.9rem;
+            color: #fff;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .lightbox-info-pane {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+            max-height: 90vh;
         }
 
         .lightbox-close {
@@ -689,30 +645,38 @@
             background: transparent;
             border: none;
             color: var(--text-secondary);
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
             letter-spacing: 0.2em;
             transition: color 0.3s;
+            z-index: 10;
         }
 
-        .lightbox-close:hover {
-            color: var(--accent-gold);
-        }
+        .lightbox-close:hover { color: var(--accent-gold); }
 
         .lightbox-title {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--accent-gold);
             text-transform: uppercase;
             letter-spacing: 0.3em;
             margin-top: 0;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .lightbox-body {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-primary);
             line-height: 2;
-            margin: 0;
+            margin: 0 0 30px 0;
+        }
+
+        .lightbox-meta-tag {
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 20px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
         }
 
         footer {
@@ -734,13 +698,14 @@
             display: inline-block;
         }
 
-        footer a:hover {
-            border-bottom-color: var(--accent-gold);
-        }
+        footer a:hover { border-bottom-color: var(--accent-gold); }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .lightbox-content { grid-template-columns: 1fr; max-height: 95vh; }
+            .lightbox-visual-frame { min-height: 250px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
+            .lightbox-info-pane { padding: 35px 25px; }
             h1 { font-size: 2.2rem; }
-            .ledger-container, .feature-container, .lightbox-content, .guestbook-container, .gallery-section-container, .discourse-container { padding: 40px 25px; }
+            .ledger-container, .feature-container, .guestbook-container, .gallery-section-container, .discourse-container { padding: 40px 25px; }
             .guestbook-form { grid-template-columns: 1fr; }
             .form-group.full, .submit-btn { grid-column: span 1; }
         }
@@ -748,15 +713,12 @@
 </head>
 <body>
 
-    <!-- Custom Coordinate Cursor -->
     <div class="custom-cursor" id="cursor"></div>
 
-    <!-- Floating Controls -->
     <div class="controls-group">
         <button class="control-btn" id="modeToggle">Dark Gallery</button>
     </div>
 
-    <!-- Live Word Marquee Ticker -->
     <div class="word-ticker">
         <div class="ticker-track">
             &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull; Mumbai &bull; Dubai &bull; Iran &bull; Athens &bull; US &bull; Canada &bull; Poland &bull; Belgium &bull; Prague &bull;
@@ -770,7 +732,6 @@
     </header>
 
     <main>
-        <!-- Transcontinental Migration Section with Distinct Phase Descriptions -->
         <section>
             <h2>Geographic Migration &bull; Three Decades Across Continents</h2>
             <div class="feature-container">
@@ -780,15 +741,15 @@
                 </div>
                 
                 <div class="trajectory-grid">
-                    <div class="trajectory-card" onclick="openLightbox('Phase I &bull; Foundations & Early Dialogues', 'Originating from the vibrant cultural pulse of Mumbai and expanding early cross-border dialogues through Dubai and Iran, establishing foundational artistic roots rooted in deep heritage and early explorations of identity.')">
+                    <div class="trajectory-card" onclick="openLightbox('Phase I &bull; Foundations & Early Dialogues', 'Originating from the vibrant cultural pulse of Mumbai and expanding early cross-border dialogues through Dubai and Iran, establishing foundational artistic roots rooted in deep heritage and early explorations of identity.', 'Foundational Period &bull; Mumbai, Dubai, Iran')">
                         <h4>Phase I &bull; Foundations & Early Dialogues</h4>
                         <p>Originating from the vibrant cultural pulse of Mumbai and expanding early cross-border dialogues through Dubai and Iran, establishing foundational artistic roots.</p>
                     </div>
-                    <div class="trajectory-card" onclick="openLightbox('Phase II &bull; Classical & Transatlantic Reach', 'Deepening the conceptual vocabulary within the historic resonance of Athens before bridging across the diverse landscapes of the United States and Canada, expanding cross-cultural and academic engagement.')">
+                    <div class="trajectory-card" onclick="openLightbox('Phase II &bull; Classical & Transatlantic Reach', 'Deepening the conceptual vocabulary within the historic resonance of Athens before bridging across the diverse landscapes of the United States and Canada, expanding cross-cultural and academic engagement.', 'Transatlantic Reach &bull; Athens, US, Canada')">
                         <h4>Phase II &bull; Classical & Transatlantic Reach</h4>
                         <p>Deepening the conceptual vocabulary within the historic resonance of Athens before bridging across the diverse landscapes of the United States and Canada.</p>
                     </div>
-                    <div class="trajectory-card" onclick="openLightbox('Phase III &bull; Sovereign European Institutions', 'The culminating contemporary stretch &mdash; transforming industrial materials and collective memory into permanent institutional and museum presentations across Poland, Belgium, and Prague.')">
+                    <div class="trajectory-card" onclick="openLightbox('Phase III &bull; Sovereign European Institutions', 'The culminating contemporary stretch &mdash; transforming industrial materials and collective memory into permanent institutional and museum presentations across Poland, Belgium, and Prague.', 'European Sovereign Archive &bull; Poland, Belgium, Prague')">
                         <h4>Phase III &bull; Sovereign European Institutions</h4>
                         <p>The culminating contemporary stretch—transforming industrial materials and collective memory into permanent institutional and museum presentations across Poland, Belgium, and Prague.</p>
                     </div>
@@ -796,32 +757,31 @@
             </div>
         </section>
 
-        <!-- The Four Pillars Overview -->
         <section>
             <h2>The Four Pillars</h2>
             <div class="pillars-grid">
-                <div class="pillar-card" onclick="openLightbox('Words Pillar', 'A global participatory text and archive project capturing human sentiment, linguistic DNA, and philosophical thought across international borders. Spanning hundreds of contributors across Ivy League universities, global museums, and sovereign institutions.')">
+                <div class="pillar-card" onclick="openLightbox('Words Pillar', 'A global participatory text and archive project capturing human sentiment, linguistic DNA, and philosophical thought across international borders. Spanning hundreds of contributors across Ivy League universities, global museums, and sovereign institutions.', 'Global Participatory Codex')">
                     <h3>Words</h3>
                     <p>A global participatory text and archive project capturing human sentiment, linguistic DNA, and philosophical thought across international borders.</p>
                     <div class="collaborator-list">
                         <strong>Scope:</strong> Hundreds of contributors spanning Ivy League universities, global museums, indigenous councils, and sovereign institutions.
                     </div>
                 </div>
-                <div class="pillar-card" onclick="openLightbox('Life of a Box Pillar', 'An immersive conceptual journey where international institutions preserve used industrial packaging transformed into monumental sculptures. Spanning global exhibition trajectories across Brussels, Poland, and premier European cultural centers.')">
+                <div class="pillar-card" onclick="openLightbox('Life of a Box Pillar', 'An immersive conceptual journey where international institutions preserve used industrial packaging transformed into monumental sculptures. Spanning global exhibition trajectories across Brussels, Poland, and premier European cultural centers.', 'Monumental Industrial Sculpture')">
                     <h3>Life of a Box</h3>
                     <p>An immersive conceptual journey where international institutions preserve used industrial packaging transformed into monumental sculptures.</p>
                     <div class="collaborator-list">
                         <strong>Status:</strong> Global exhibition trajectory spanning Brussels, Poland, and premier European institutions.
                     </div>
                 </div>
-                <div class="pillar-card" onclick="openLightbox('Voices of the Land Pillar', 'Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations in collaboration with the National Gallery of Canada, Burke Museum, Na\'kuset Native Women\'s Shelter, and global universities.')">
+                <div class="pillar-card" onclick="openLightbox('Voices of the Land Pillar', 'Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations in collaboration with the National Gallery of Canada, Burke Museum, Na\'kuset Native Women\'s Shelter, and global universities.', 'First Nations Heritage & Archive')">
                     <h3>Voices of the Land</h3>
                     <p>Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations.</p>
                     <div class="collaborator-list">
                         <strong>Partners:</strong> National Gallery of Canada, Burke Museum, Na'kuset Native Women's Shelter, and global universities.
                     </div>
                 </div>
-                <div class="pillar-card" onclick="openLightbox('Rooh-Nawaz Pillar', 'Deeply moving testimonies of human resilience in words and images, honoring the global Persian community through contributions from Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.')">
+                <div class="pillar-card" onclick="openLightbox('Rooh-Nawaz Pillar', 'Deeply moving testimonies of human resilience in words and images, honoring the global Persian community through contributions from Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.', 'Persian Cultural Heritage & Testimonies')">
                     <h3>روحنواز (Rooh-Nawaz)</h3>
                     <p>Deeply moving testimonies of human resilience in words and images, honoring the global Persian community.</p>
                     <div class="collaborator-list">
@@ -831,21 +791,20 @@
             </div>
         </section>
 
-        <!-- Critical Discourse Quotation Stream -->
         <section>
             <h2>Critical Discourse &bull; Expert Commentary</h2>
             <div class="discourse-container">
                 <h3>Independent Institutional & Media Perspectives</h3>
                 <div class="quote-grid">
-                    <div class="quote-card" onclick="openLightbox('Sustainability & Material Commentary', 'Examining the intersection of ecological responsibility and fine art, noting how industrial cardboard logistics are transformed into meaningful cultural artifacts.')">
+                    <div class="quote-card" onclick="openLightbox('Sustainability & Material Commentary', 'Examining the intersection of ecological responsibility and fine art, noting how industrial cardboard logistics are transformed into meaningful cultural artifacts.', 'Critical Review &bull; Sustainability & Ecology')">
                         <p class="quote-text">"A market externality that rings your bell &mdash; transforming industrial packaging into profound sculptural commentary on modern waste and resource stewardship."</p>
                         <span class="quote-author">Sustainability & Ecology Review</span>
                     </div>
-                    <div class="quote-card" onclick="openLightbox('European Cultural Policy Review', 'Reflecting on the exhibition trajectory across European capitals, reviewers highlight the installation as a vital bridge between ecological awareness and creative expression.')">
+                    <div class="quote-card" onclick="openLightbox('European Cultural Policy Review', 'Reflecting on the exhibition trajectory across European capitals, reviewers highlight the installation as a vital bridge between ecological awareness and creative expression.', 'Institutional Review &bull; Brussels')">
                         <p class="quote-text">"Empowering Europe's creative industries by bridging ecological awareness with monumental fine art preservation across sovereign borders."</p>
                         <span class="quote-author">European Cultural Review &bull; Brussels</span>
                     </div>
-                    <div class="quote-card" onclick="openLightbox('Curatorial Archive Note', 'Examining the deep collaborative network uniting academic rigor with raw ancestral wisdom and collective human memory.')">
+                    <div class="quote-card" onclick="openLightbox('Curatorial Archive Note', 'Examining the deep collaborative network uniting academic rigor with raw ancestral wisdom and collective human memory.', 'Curatorial Archive Board')">
                         <p class="quote-text">"A living monument to human consciousness and collective memory, uniting academic rigor with raw ancestral wisdom."</p>
                         <span class="quote-author">International Curatorial Board</span>
                     </div>
@@ -853,38 +812,36 @@
             </div>
         </section>
 
-        <!-- Curated Exhibition Visual Archive Section -->
         <section>
             <h2>Curated Archive &bull; Milestone Exhibitions</h2>
             <div class="gallery-section-container">
                 <h3>International Institutional Showcases</h3>
                 <div class="exhibit-grid">
-                    <div class="exhibit-card" onclick="openLightbox('Brussels &bull; Empowering Europe\'s Creative Industries', 'Presented in Brussels, Belgium, this installation positioned recycled industrial logistics as a cornerstone of environmental storytelling, uniting European cultural policy with monumental sculptural art.')">
+                    <div class="exhibit-card" onclick="openLightbox('Brussels &bull; Empowering Europe\'s Creative Industries', 'Presented in Brussels, Belgium, this installation positioned recycled industrial logistics as a cornerstone of environmental storytelling, uniting European cultural policy with monumental sculptural art.', 'Brussels Exhibition Showcase')">
                         <span class="exhibit-location">Brussels &bull; Belgium</span>
                         <h4>Empowering Europe's Creative Industries</h4>
                         <p>Installation positioning industrial boxes as core pillars of international environmental storytelling.</p>
-                        <button class="exhibit-link-btn">View Note</button>
+                        <button class="exhibit-link-btn">View Portal</button>
                     </div>
-                    <div class="exhibit-card" onclick="openLightbox('Museum of Papermaking &bull; Duszniki-Zdrój, Poland', 'An immersive exploration of material heritage held within historic Polish paper mills, transforming discarded packaging into high-concept artistic sculpture.')">
+                    <div class="exhibit-card" onclick="openLightbox('Museum of Papermaking &bull; Duszniki-Zdrój, Poland', 'An immersive exploration of material heritage held within historic Polish paper mills, transforming discarded packaging into high-concept artistic sculpture.', 'Museum of Papermaking &bull; Poland')">
                         <span class="exhibit-location">Duszniki-Zdrój &bull; Poland</span>
                         <h4>Museum of Papermaking</h4>
                         <p>Exploring the material heritage of packaging transformed into high-concept artistic sculpture.</p>
-                        <button class="exhibit-link-btn">View Note</button>
+                        <button class="exhibit-link-btn">View Portal</button>
                     </div>
-                    <div class="exhibit-card" onclick="openLightbox('Museum of West Bohemia &bull; Plzeň, Czech Republic', 'Exhibited within a historic church museum setting, bridging ecological recycling with spiritual renewal and human development.')">
+                    <div class="exhibit-card" onclick="openLightbox('Museum of West Bohemia &bull; Plzeň, Czech Republic', 'Exhibited within a historic church museum setting, bridging ecological recycling with spiritual renewal and human development.', 'Museum of West Bohemia &bull; Czech Republic')">
                         <span class="exhibit-location">Plzeň &bull; Czech Republic</span>
                         <h4>Museum of West Bohemia</h4>
                         <p>Exhibited within a historic church museum setting, bridging ecological recycling with spiritual history.</p>
-                        <button class="exhibit-link-btn">View Note</button>
+                        <button class="exhibit-link-btn">View Portal</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Life of a Box Chapter Feature -->
         <section>
             <h2>Spatial Chapter &bull; Life of a Box</h2>
-            <div class="feature-container" onclick="openLightbox('Life of a Box &bull; Curatorial Note', 'Utilizing recycled cardboard packaging sourced from global operations, Life of a Box explores the shifting value of materials across social and cultural contexts. Bridging ecological responsibility with fine art preservation across premier international museums.')">
+            <div class="feature-container" onclick="openLightbox('Life of a Box &bull; Curatorial Note', 'Utilizing recycled cardboard packaging sourced from global operations, Life of a Box explores the shifting value of materials across social and cultural contexts. Bridging ecological responsibility with fine art preservation across premier international museums.', 'Life of a Box &bull; Monumental Art Installation')">
                 <h3>The Transformation of Industrial Logistics into Monumental Art</h3>
                 <div class="feature-lead">
                     Utilizing recycled cardboard packaging sourced from global operations, <i>Life of a Box</i> explores the shifting value of materials across social and cultural contexts, bridging ecological responsibility with fine art preservation.
@@ -907,10 +864,9 @@
             </div>
         </section>
 
-        <!-- Voices of the Land Chapter Feature -->
         <section>
             <h2>Spatial Chapter &bull; Voices of the Land</h2>
-            <div class="feature-container" onclick="openLightbox('Voices of the Land &bull; Curatorial Note', 'The primary objective of the First Nations project is to honor and preserve an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge and language with the global community, approached with the utmost care, reverence, and cultural sensitivity.')">
+            <div class="feature-container" onclick="openLightbox('Voices of the Land &bull; Curatorial Note', 'The primary objective of the First Nations project is to honor and preserve an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge and language with the global community, approached with the utmost care, reverence, and cultural sensitivity.', 'Voices of the Land &bull; First Nations Archive')">
                 <h3>An Ancient Lineage of Wisdom Shared with Grace and Integrity</h3>
                 <div class="feature-lead">
                     The primary objective of the First Nations project is to honor and preserve an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge and language with the global community, approached with the utmost care, reverence, and cultural sensitivity.
@@ -937,10 +893,9 @@
             </div>
         </section>
 
-        <!-- Rooh-Nawaz Chapter Feature -->
         <section>
             <h2>Spatial Chapter &bull; روح‌نواز (Rooh-Nawaz)</h2>
-            <div class="feature-container" onclick="openLightbox('Rooh-Nawaz &bull; Curatorial Note', 'An ethnographic and visual art initiative honoring Persian cultural heritage and memory by collecting contributions from scholars, educators, and leaders around the world. Transforming complex human experiences and collective memory into a unified visual expression.')">
+            <div class="feature-container" onclick="openLightbox('Rooh-Nawaz &bull; Curatorial Note', 'An ethnographic and visual art initiative honoring Persian cultural heritage and memory by collecting contributions from scholars, educators, and leaders around the world. Transforming complex human experiences and collective memory into a unified visual expression.', 'Rooh-Nawaz &bull; Persian Cultural Heritage')">
                 <h3>Deeply Moving Testimonies of Human Resilience in Words and Images</h3>
                 <div class="feature-lead">
                     The project titled “روح‌نواز” serves as an artistic exploration of the global Persian community, delving into a diverse array of responses towards challenging life circumstances and experiences that are often deemed sensitive to discuss.
@@ -948,8 +903,6 @@
                 
                 <div class="feature-body">
                     An ethnographic and visual art initiative honoring Persian cultural heritage and memory by collecting contributions from scholars, educators, and leaders around the world. By pooling contributions donated from institutions as diverse as Harvard University, Yale University, University of Texas at Austin, Uppsala University Sweden, University of California, Nevada State University, Jordan Center for Persian Studies and Culture, The Courtauld Institute of Art – London, Göttingen University, Central Asia Initiative, MacMillan Center for International & Area Studies, and many others, a singular expression of shared heritage is crafted.
-                    <br><br>
-                    This initiative transforms disparate linguistic and cultural fragments into a unified visual narrative. It stands as a living archive for cultural preservation and a transformative force in the art world, presenting Persian heritage not as a distant relic, but as a living, vibrant composition born from the power of a single word, phrase, or memory.
                 </div>
 
                 <div class="trajectory-grid">
@@ -969,7 +922,6 @@
             </div>
         </section>
 
-        <!-- Detailed Words Ledger Section with Filtering -->
         <section>
             <h2>Archive Provenance &bull; Words Contributors</h2>
             <div class="ledger-container">
@@ -1030,7 +982,6 @@
             </div>
         </section>
 
-        <!-- Interactive Visitor Guestbook Section -->
         <section>
             <h2>Visitor Registry &bull; Inscribed Echoes</h2>
             <div class="guestbook-container">
@@ -1067,16 +1018,30 @@
         <a href="mailto:contact@heshammalik.org">contact@heshammalik.org</a>
     </footer>
 
-    <!-- Lightbox Modal -->
+    <!-- Immersive Cinematic Lightbox Portal -->
     <div class="lightbox-modal" id="lightboxModal">
         <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()">[CLOSE]</button>
-            <h3 class="lightbox-title" id="lightboxTitle">Curatorial Title</h3>
-            <p class="lightbox-body" id="lightboxBody">Curatorial description text goes here.</p>
+            <button class="lightbox-close" onclick="closeLightbox()">[CLOSE PORTAL]</button>
+            <div class="lightbox-visual-frame">
+                <div class="lightbox-artwork-canvas">
+                    <div class="lightbox-artwork-inner">
+                        <span id="lightboxCategory">Visual Archive &bull; Hesham Malik</span>
+                        <h4 id="lightboxArtTitle">Master Artwork / Installation</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="lightbox-info-pane">
+                <div>
+                    <h3 class="lightbox-title" id="lightboxTitle">Curatorial Title</h3>
+                    <p class="lightbox-body" id="lightboxBody">Curatorial description text goes here.</p>
+                </div>
+                <div class="lightbox-meta-tag" id="lightboxMeta">
+                    Archival Provenance &bull; Sovereign Collection
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Interactive Scripts -->
     <script>
         const cursor = document.getElementById('cursor');
         window.addEventListener('mousemove', (e) => {
@@ -1097,7 +1062,6 @@
             });
         });
 
-        // Dark Gallery Mode Toggle Script
         const modeToggle = document.getElementById('modeToggle');
         modeToggle.addEventListener('click', () => {
             document.body.classList.toggle('gallery-mode');
@@ -1108,7 +1072,6 @@
             }
         });
 
-        // Archive DNA Filtering Script
         const filterBtns = document.querySelectorAll('.filter-btn');
         const categories = document.querySelectorAll('.ledger-category');
 
@@ -1129,14 +1092,18 @@
             });
         });
 
-        // Lightbox Script
+        // Cinematic Lightbox Script with Visual Display
         const lightboxModal = document.getElementById('lightboxModal');
         const lightboxTitle = document.getElementById('lightboxTitle');
         const lightboxBody = document.getElementById('lightboxBody');
+        const lightboxArtTitle = document.getElementById('lightboxArtTitle');
+        const lightboxCategory = document.getElementById('lightboxCategory');
 
-        function openLightbox(title, text) {
+        function openLightbox(title, text, artSubtitle = 'Selected Monumental Work') {
             lightboxTitle.textContent = title;
             lightboxBody.textContent = text;
+            lightboxArtTitle.textContent = title.split('&bull;')[0].trim();
+            lightboxCategory.textContent = artSubtitle;
             lightboxModal.classList.add('active');
         }
 
@@ -1150,7 +1117,6 @@
             }
         });
 
-        // Guestbook Dynamic Form Handling
         const guestForm = document.getElementById('guestForm');
         const guestEntries = document.getElementById('guestEntries');
 
@@ -1171,7 +1137,7 @@
             guestForm.reset();
         });
 
-        function escapeHTML(str) {
+        function `escapeHTML`(str) {
             return str.replace(/[&<>'"]/g, 
                 tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
             );
