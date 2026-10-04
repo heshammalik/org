@@ -44,7 +44,7 @@
         @media (min-width: 1024px) {
             .custom-cursor { display: block; }
             body { cursor: none; }
-            a, button, .pillar-card, .trajectory-card, .mode-toggle { cursor: none; }
+            a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn { cursor: none; }
         }
         
         html {
@@ -76,7 +76,7 @@
             color: var(--accent-gold);
             padding: 10px 20px;
             font-size: 0.7rem;
-            letter-spacing: 0.25s;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
             z-index: 1000;
             transition: all 0.3s ease;
@@ -87,8 +87,33 @@
             box-shadow: 0 0 20px var(--accent-gold-glow);
         }
 
+        /* Live Word Marquee Ticker */
+        .word-ticker {
+            background: var(--surface-solid);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .ticker-track {
+            display: inline-block;
+            animation: marquee 35s linear infinite;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
         header {
-            padding: 160px 20px 80px;
+            padding: 140px 20px 80px;
             text-align: center;
             border-bottom: 1px solid var(--border-subtle);
             max-width: 900px;
@@ -319,7 +344,7 @@
             text-decoration: underline;
         }
 
-        /* Cinematic Ledger Styling (Words) */
+        /* Cinematic Ledger Styling with Interactive Filters */
         .ledger-container {
             background-color: var(--surface-solid);
             border: 1px solid var(--border-subtle);
@@ -335,13 +360,46 @@
             color: #ffffff;
             text-align: center;
             text-transform: uppercase;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
+        }
+
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--surface-glass);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 8px 18px;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            background: var(--surface-solid);
         }
 
         .ledger-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 40px;
+        }
+
+        .ledger-category {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .ledger-category.hidden {
+            display: none;
         }
 
         .ledger-category h4 {
@@ -387,6 +445,13 @@
 
     <!-- Floating Gallery Mode Toggle -->
     <button class="mode-toggle" id="modeToggle">Dark Gallery Mode</button>
+
+    <!-- Live Word Marquee Ticker -->
+    <div class="word-ticker">
+        <div class="ticker-track">
+            &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull;
+        </div>
+    </div>
 
     <header>
         <h1>Hesham Malik</h1>
@@ -523,13 +588,22 @@
             </div>
         </section>
 
-        <!-- Detailed Words Ledger Section -->
+        <!-- Detailed Words Ledger Section with Filtering -->
         <section>
             <h2>Archive Provenance &bull; Words Contributors</h2>
             <div class="ledger-container">
                 <h3>Participating Institutional & Cultural DNA</h3>
+                
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All Networks</button>
+                    <button class="filter-btn" data-filter="harvard">Harvard</button>
+                    <button class="filter-btn" data-filter="universities">Global Universities</button>
+                    <button class="filter-btn" data-filter="museums">Museums & Galleries</button>
+                    <button class="filter-btn" data-filter="sovereignties">NGOs & Sovereignties</button>
+                </div>
+
                 <div class="ledger-grid">
-                    <div class="ledger-category">
+                    <div class="ledger-category" data-category="harvard">
                         <h4>Harvard University Network</h4>
                         <ul>
                             &bull; Office of the President Emeritus<br>
@@ -540,7 +614,7 @@
                             &bull; Harvard Forest & Children's Hospital
                         </ul>
                     </div>
-                    <div class="ledger-category">
+                    <div class="ledger-category" data-category="universities">
                         <h4>Global Universities</h4>
                         <ul>
                             &bull; Oxford & Cambridge (UK)<br>
@@ -551,7 +625,7 @@
                             &bull; University of Tokyo, Toronto, Vienna, & Beyond
                         </ul>
                     </div>
-                    <div class="ledger-category">
+                    <div class="ledger-category" data-category="museums">
                         <h4>Museums & Galleries</h4>
                         <ul>
                             &bull; TATE London & National Galleries Scotland<br>
@@ -561,7 +635,7 @@
                             &bull; Regional and Municipal Museums across Europe
                         </ul>
                     </div>
-                    <div class="ledger-category">
+                    <div class="ledger-category" data-category="sovereignties">
                         <h4>Global NGOs & Sovereignties</h4>
                         <ul>
                             &bull; Greenpeace International & Jane Goodall Institute<br>
@@ -588,7 +662,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button, .pillar-card, .trajectory-card, .mode-toggle').forEach(item => {
+        document.querySelectorAll('a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn').forEach(item => {
             item.addEventListener('mouseenter', () => {
                 cursor.style.width = '48px';
                 cursor.style.height = '48px';
@@ -610,6 +684,27 @@
             } else {
                 modeToggle.textContent = 'Dark Gallery Mode';
             }
+        });
+
+        // Archive DNA Filtering Script
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const categories = document.querySelectorAll('.ledger-category');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+
+                categories.forEach(cat => {
+                    if (filter === 'all' || cat.getAttribute('data-category') === filter) {
+                        cat.classList.remove('hidden');
+                    } else {
+                        cat.classList.add('hidden');
+                    }
+                });
+            });
         });
     </script>
 </body>
