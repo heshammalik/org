@@ -6,141 +6,213 @@
     <title>Hesham Malik | Planetary Codex</title>
     <style>
         :root {
-            --bg-color: #080808;
-            --surface-color: #121212;
-            --text-primary: #f0f0f0;
-            --text-secondary: #999999;
-            --accent-color: #d4af37;
-            --border-color: #222222;
+            --canvas-bg: #050505;
+            --surface-glass: rgba(18, 18, 18, 0.7);
+            --surface-solid: #0d0d0d;
+            --text-primary: #ededed;
+            --text-secondary: #888888;
+            --accent-gold: #c5a059;
+            --accent-gold-glow: rgba(197, 160, 89, 0.15);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(197, 160, 89, 0.3);
         }
+        
         body {
-            background-color: var(--bg-color);
+            background-color: var(--canvas-bg);
             color: var(--text-primary);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            letter-spacing: 0.03em;
+            line-height: 1.7;
+            letter-spacing: 0.04em;
+            background-image: radial-gradient(circle at 50% 0%, #11100f 0%, var(--canvas-bg) 70%);
+            background-attachment: fixed;
         }
+
         header {
-            padding: 80px 20px 40px;
+            padding: 120px 20px 60px;
             text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 300;
-            letter-spacing: 0.15em;
-            margin: 0 0 10px 0;
-        }
-        .subtitle {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            margin-bottom: 20px;
-        }
-        .contact-link {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-        }
-        .contact-link:hover {
-            text-decoration: underline;
-        }
-        main {
-            max-width: 1000px;
+            border-bottom: 1px solid var(--border-subtle);
+            max-width: 800px;
             margin: 0 auto;
-            padding: 60px 20px;
         }
-        section {
-            margin-bottom: 80px;
-        }
-        h2 {
-            font-size: 1.1rem;
-            text-transform: uppercase;
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 200;
             letter-spacing: 0.2em;
-            color: var(--text-secondary);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+            margin: 0 0 15px 0;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
             margin-bottom: 30px;
         }
+
+        .contact-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-gold);
+            border-bottom-color: var(--accent-gold);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        section {
+            margin-bottom: 120px;
+        }
+
+        h2 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
         .pillars-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
         }
+
         .pillar-card {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 30px;
+            background-color: var(--surface-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-subtle);
+            padding: 40px 30px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            background-color: var(--surface-solid);
+            box-shadow: 0 20px 40px var(--accent-gold-glow);
+        }
+
+        .pillar-card:hover::before {
+            opacity: 1;
+        }
+
         .pillar-card h3 {
-            font-size: 1.2rem;
-            font-weight: 400;
+            font-size: 1.1rem;
+            font-weight: 300;
             margin-top: 0;
-            margin-bottom: 15px;
-            letter-spacing: 0.05em;
-            color: var(--text-primary);
+            margin-bottom: 20px;
+            letter-spacing: 0.15em;
+            color: #ffffff;
+            text-transform: uppercase;
         }
+
         .pillar-card p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin: 0 0 20px 0;
-        }
-        .collaborator-list {
-            font-size: 0.85rem;
-            color: var(--accent-color);
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
+            font-size: 0.9rem;
+            margin: 0 0 25px 0;
             line-height: 1.8;
         }
-        /* Detailed Ledger Styling for Words Portal */
+
+        .collaborator-list {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 20px;
+            letter-spacing: 0.05em;
+            line-height: 1.6;
+            opacity: 0.85;
+        }
+
+        /* Cinematic Ledger Styling */
         .ledger-container {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 40px;
+            background-color: var(--surface-solid);
+            border: 1px solid var(--border-subtle);
+            padding: 60px 50px;
+            position: relative;
         }
+
         .ledger-container h3 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 300;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.2em;
             margin-top: 0;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-            margin-bottom: 25px;
+            color: #ffffff;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 50px;
         }
+
         .ledger-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
         }
+
         .ledger-category h4 {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent-color);
-            margin-bottom: 10px;
+            letter-spacing: 0.25em;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
             margin-top: 0;
+            border-left: 2px solid var(--accent-gold);
+            padding-left: 10px;
         }
+
         .ledger-category ul {
             list-style: none;
             padding: 0;
             margin: 0;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            line-height: 1.8;
+            line-height: 2.2;
         }
+
         footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
             color: var(--text-secondary);
-            font-size: 0.8rem;
-            border-top: 1px solid var(--border-color);
-            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+            border-top: 1px solid var(--border-subtle);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .ledger-container { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -187,7 +259,7 @@
 
         <!-- Detailed Words Ledger Section -->
         <section>
-            <h2>Archive Ledger &bull; Words Contributors</h2>
+            <h2>Archive Provenance &bull; Words Contributors</h2>
             <div class="ledger-container">
                 <h3>Participating Institutional & Cultural DNA</h3>
                 <div class="ledger-grid">
