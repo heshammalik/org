@@ -17,6 +17,16 @@
             --border-hover: rgba(212, 175, 55, 0.35);
         }
 
+        /* Gallery Mode (Ultra-Minimalist Toggle State) */
+        body.gallery-mode {
+            --canvas-bg: #000000;
+            --surface-glass: rgba(5, 5, 5, 0.9);
+            --surface-solid: #030303;
+            --text-secondary: #666666;
+        }
+        body.gallery-mode header { opacity: 0.3; transition: opacity 0.5s ease; }
+        body.gallery-mode header:hover { opacity: 1; }
+
         /* Custom Minimalist Coordinate Cursor */
         .custom-cursor {
             pointer-events: none;
@@ -34,7 +44,7 @@
         @media (min-width: 1024px) {
             .custom-cursor { display: block; }
             body { cursor: none; }
-            a, button, .pillar-card, .trajectory-card { cursor: none; }
+            a, button, .pillar-card, .trajectory-card, .mode-toggle { cursor: none; }
         }
         
         html {
@@ -52,6 +62,29 @@
             background-image: radial-gradient(circle at 50% 0%, #0d0c0a 0%, var(--canvas-bg) 75%);
             background-attachment: fixed;
             overflow-x: hidden;
+            transition: background-color 0.6s ease;
+        }
+
+        /* Floating Mode Toggle */
+        .mode-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--surface-glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            color: var(--accent-gold);
+            padding: 10px 20px;
+            font-size: 0.7rem;
+            letter-spacing: 0.25s;
+            text-transform: uppercase;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .mode-toggle:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 20px var(--accent-gold-glow);
         }
 
         header {
@@ -352,6 +385,9 @@
     <!-- Custom Coordinate Cursor -->
     <div class="custom-cursor" id="cursor"></div>
 
+    <!-- Floating Gallery Mode Toggle -->
+    <button class="mode-toggle" id="modeToggle">Dark Gallery Mode</button>
+
     <header>
         <h1>Hesham Malik</h1>
         <div class="subtitle">Planetary Codex &bull; Independent Institutional Archive</div>
@@ -544,7 +580,7 @@
         &copy; 2026 Hesham Malik. All Rights Reserved. Independent Sovereign Archive.
     </footer>
 
-    <!-- Coordinate Cursor Motion Script -->
+    <!-- Interactive Scripts -->
     <script>
         const cursor = document.getElementById('cursor');
         window.addEventListener('mousemove', (e) => {
@@ -552,7 +588,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button, .pillar-card, .trajectory-card').forEach(item => {
+        document.querySelectorAll('a, button, .pillar-card, .trajectory-card, .mode-toggle').forEach(item => {
             item.addEventListener('mouseenter', () => {
                 cursor.style.width = '48px';
                 cursor.style.height = '48px';
@@ -563,6 +599,17 @@
                 cursor.style.height = '24px';
                 cursor.style.borderColor = 'rgba(212, 175, 55, 0.5)';
             });
+        });
+
+        // Dark Gallery Mode Toggle Script
+        const modeToggle = document.getElementById('modeToggle');
+        modeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('gallery-mode');
+            if (document.body.classList.contains('gallery-mode')) {
+                modeToggle.textContent = 'Standard Archive Mode';
+            } else {
+                modeToggle.textContent = 'Dark Gallery Mode';
+            }
         });
     </script>
 </body>
