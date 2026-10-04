@@ -1,350 +1,763 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hesham Malik — Visual Artist</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        artdark: '#0a0a0a',
-                        artgold: '#c5a059',
-                        artmuted: '#171717',
-                        artborder: '#262626'
-                    },
-                    fontFamily: {
-                        serif: ['Georgia', 'Cambria', 'serif'],
-                        sans: ['Inter', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Hesham Malik | Planetary Codex</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-        body { background-color: #0a0a0a; color: #e5e5e5; font-family: 'Inter', sans-serif; }
-        .font-serif { font-family: Georgia, Cambria, serif; }
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #f3e7c4 0%, #c5a059 50%, #9a7b3c 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        :root {
+            --canvas-bg: #030303;
+            --surface-glass: rgba(14, 14, 14, 0.75);
+            --surface-solid: #090909;
+            --text-primary: #f2f2f2;
+            --text-secondary: #888888;
+            --accent-gold: #d4af37;
+            --accent-gold-glow: rgba(212, 175, 55, 0.12);
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(212, 175, 55, 0.35);
         }
-        .painting-backdrop {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.12;
-            filter: contrast(120%) saturate(80%);
+
+        /* Gallery Mode (Ultra-Minimalist Toggle State) */
+        body.gallery-mode {
+            --canvas-bg: #000000;
+            --surface-glass: rgba(5, 5, 5, 0.9);
+            --surface-solid: #030303;
+            --text-secondary: #666666;
+        }
+        body.gallery-mode header { opacity: 0.3; transition: opacity 0.5s ease; }
+        body.gallery-mode header:hover { opacity: 1; }
+
+        /* Custom Minimalist Coordinate Cursor */
+        .custom-cursor {
             pointer-events: none;
-            transition: opacity 0.7s ease;
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, border-color 0.3s;
+            z-index: 9999;
+            display: none;
         }
-        .section-hover:hover .painting-backdrop {
-            opacity: 0.22;
+
+        @media (min-width: 1024px) {
+            .custom-cursor { display: block; }
+            body { cursor: none; }
+            a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn { cursor: none; }
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--canvas-bg);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+            background-image: radial-gradient(circle at 50% 0%, #0d0c0a 0%, var(--canvas-bg) 75%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+            transition: background-color 0.6s ease;
+        }
+
+        /* Floating Mode Toggle */
+        .mode-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--surface-glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            color: var(--accent-gold);
+            padding: 10px 20px;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .mode-toggle:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 20px var(--accent-gold-glow);
+        }
+
+        /* Live Word Marquee Ticker */
+        .word-ticker {
+            background: var(--surface-solid);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .ticker-track {
+            display: inline-block;
+            animation: marquee 35s linear infinite;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        header {
+            padding: 140px 20px 80px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-subtle);
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 1px;
+            background: var(--accent-gold);
+            opacity: 0.4;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 200;
+            letter-spacing: 0.25em;
+            margin: 0 0 15px 0;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            margin-bottom: 35px;
+        }
+
+        .contact-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            border-bottom: 1px solid transparent;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .contact-link:hover {
+            color: var(--accent-gold);
+            border-bottom-color: var(--accent-gold);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        section {
+            margin-bottom: 140px;
+        }
+
+        h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 20px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        /* Painting Frame Integration */
+        .artwork-showcase {
+            margin-bottom: 60px;
+            border: 1px solid var(--border-subtle);
+            background: var(--surface-solid);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s ease;
+        }
+        .artwork-showcase:hover {
+            border-color: var(--border-hover);
+        }
+        .artwork-showcase img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            display: block;
+            filter: contrast(110%) saturate(90%);
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .artwork-showcase:hover img {
+            transform: scale(1.02);
+        }
+        .artwork-caption {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .pillar-card {
+            background-color: var(--surface-glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-subtle);
+            padding: 45px 35px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-6px);
+            background-color: var(--surface-solid);
+            box-shadow: 0 30px 60px var(--accent-gold-glow);
+        }
+
+        .pillar-card:hover::before {
+            opacity: 1;
+        }
+
+        .pillar-card h3 {
+            font-size: 1rem;
+            font-weight: 300;
+            margin-top: 0;
+            margin-bottom: 20px;
+            letter-spacing: 0.2em;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .pillar-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin: 0 0 30px 0;
+            line-height: 1.9;
+        }
+
+        .collaborator-list {
+            font-size: 0.7rem;
+            color: var(--accent-gold);
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 20px;
+            letter-spacing: 0.1em;
+            line-height: 1.7;
+            opacity: 0.85;
+        }
+
+        /* Detailed Portal Feature Section */
+        .feature-container {
+            background-color: var(--surface-solid);
+            border: 1px solid var(--border-subtle);
+            padding: 70px 60px;
+            position: relative;
+            transition: border-color 0.4s ease;
+        }
+
+        .feature-container:hover {
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-container h3 {
+            font-size: 1.15rem;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            margin-top: 0;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .feature-lead {
+            color: var(--text-primary);
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 35px;
+            border-left: 2px solid var(--accent-gold);
+            padding-left: 25px;
+        }
+
+        .feature-body {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 2;
+            margin-bottom: 45px;
+        }
+
+        .trajectory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .trajectory-card {
+            background-color: var(--surface-glass);
+            border: 1px solid var(--border-subtle);
+            padding: 35px;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .trajectory-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+        }
+
+        .trajectory-card h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--accent-gold);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .trajectory-card p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        .external-ref {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .external-ref a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .external-ref a:hover {
+            opacity: 0.7;
+            text-decoration: underline;
+        }
+
+        /* Cinematic Ledger Styling with Interactive Filters */
+        .ledger-container {
+            background-color: var(--surface-solid);
+            border: 1px solid var(--border-subtle);
+            padding: 70px 60px;
+            position: relative;
+        }
+
+        .ledger-container h3 {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            margin-top: 0;
+            color: #ffffff;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--surface-glass);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 8px 18px;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            background: var(--surface-solid);
+        }
+
+        .ledger-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+
+        .ledger-category {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .ledger-category.hidden {
+            display: none;
+        }
+
+        .ledger-category h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+            margin-top: 0;
+            border-left: 2px solid var(--accent-gold);
+            padding-left: 12px;
+        }
+
+        .ledger-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            line-height: 2.3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            border-top: 1px solid var(--border-subtle);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .ledger-container, .feature-container { padding: 40px 25px; }
         }
     </style>
 </head>
-<body class="bg-artdark text-gray-200 antialiased selection:bg-artgold selection:text-black">
+<body>
 
-    <!-- NAVIGATION -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-artdark/90 backdrop-blur-md border-b border-artborder">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="font-serif text-xl tracking-widest text-white hover:text-artgold transition-colors">
-                HESHAM MALIK
-            </a>
-            <nav class="hidden md:flex space-x-8 text-sm tracking-widest uppercase font-medium text-gray-400">
-                <a href="#manifesto" class="hover:text-artgold transition-colors">Manifesto</a>
-                <a href="#projects" class="hover:text-artgold transition-colors">Global Projects</a>
-                <a href="#exhibitions" class="hover:text-artgold transition-colors">Exhibitions</a>
-                <a href="#archive" class="hover:text-artgold transition-colors">Institutions</a>
-                <a href="#contact" class="hover:text-artgold transition-colors">Contact</a>
-            </nav>
-            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
+    <!-- Custom Coordinate Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+
+    <!-- Floating Gallery Mode Toggle -->
+    <button class="mode-toggle" id="modeToggle">Dark Gallery Mode</button>
+
+    <!-- Live Word Marquee Ticker -->
+    <div class="word-ticker">
+        <div class="ticker-track">
+            &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull;
         </div>
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="hidden md:hidden bg-artdark border-b border-artborder px-6 py-6 space-y-4">
-            <a href="#manifesto" class="block text-sm uppercase tracking-widest text-gray-300 hover:text-artgold">Manifesto</a>
-            <a href="#projects" class="block text-sm uppercase tracking-widest text-gray-300 hover:text-artgold">Global Projects</a>
-            <a href="#exhibitions" class="block text-sm uppercase tracking-widest text-gray-300 hover:text-artgold">Exhibitions</a>
-            <a href="#archive" class="block text-sm uppercase tracking-widest text-gray-300 hover:text-artgold">Institutions</a>
-            <a href="#contact" class="block text-sm uppercase tracking-widest text-gray-300 hover:text-artgold">Contact</a>
-        </div>
+    </div>
+
+    <header>
+        <h1>Hesham Malik</h1>
+        <div class="subtitle">Planetary Codex &bull; Independent Institutional Archive</div>
+        <a href="mailto:contact@heshammalik.org" class="contact-link">contact@heshammalik.org</a>
     </header>
 
-    <!-- HERO SECTION WITH EMBEDDED ARTISTIC INTEGRATION -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden section-hover">
-        <div class="painting-backdrop" style="background-image: url('1_2.jpg');"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-artdark/60 via-artdark/80 to-artdark"></div>
-        <div class="relative max-w-5xl mx-auto px-6 text-center z-10 py-24">
-            <p class="text-xs md:text-sm tracking-[0.3em] uppercase text-artgold mb-6 font-semibold">Make Art Not War</p>
-            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white mb-8 leading-tight">
-                Universal Resonance <br/>in <span class="gold-gradient-text">Words & Color</span>
-            </h1>
-            <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-12">
-                Over three decades of visionary exploration, bridging ancestral heritage, human resilience, and global consciousness across more than a hundred solo exhibitions worldwide.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#projects" class="w-full sm:w-auto px-8 py-4 bg-artgold text-black font-semibold text-xs tracking-[0.2em] uppercase hover:bg-white transition-colors">
-                    Explore Projects
-                </a>
-                <a href="#manifesto" class="w-full sm:w-auto px-8 py-4 border border-artborder text-white font-semibold text-xs tracking-[0.2em] uppercase hover:border-artgold transition-colors">
-                    The Artist
-                </a>
-            </div>
+    <main>
+        <!-- Primary Featured Artwork -->
+        <div class="artwork-showcase">
+            <img src="1_2.jpg" alt="Hesham Malik Major Work">
+            <div class="artwork-caption">Plate I &bull; Universal Resonance in Color and Form</div>
         </div>
-    </section>
 
-    <!-- MANIFESTO / ARTIST STATEMENT -->
-    <section id="manifesto" class="py-32 bg-artmuted relative overflow-hidden section-hover border-t border-artborder">
-        <div class="painting-backdrop" style="background-image: url('7_2.JPG');"></div>
-        <div class="max-w-4xl mx-auto px-6 relative z-10">
-            <span class="text-xs uppercase tracking-[0.3em] text-artgold block mb-4">Philosophy</span>
-            <h2 class="font-serif text-3xl md:text-5xl text-white mb-12 leading-snug">
-                Letting art speak for itself through the raw chemistry of land, emotion, and memory.
-            </h2>
-            <div class="grid md:grid-cols-2 gap-12 text-gray-400 font-light leading-relaxed">
-                <p>
-                    Hesham Malik’s creations transcend conventional boundaries, treating physical material, gold leaf, and structural collage as vessels for deep human narratives. Whether descending into the raw earth of historical fortresses or collaborating with world institutions, the work refuses passive viewing, invoking the inner melodies of the soul.
-                </p>
-                <p>
-                    Recognized globally for defining modern contemporary movements, the practice bridges rigorous academic inquiry—spanning Parsons, MoMA, and the Council on Foreign Relations—with uncompromised artistic universalism.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ONGOING GLOBAL PROJECTS -->
-    <section id="projects" class="py-32 bg-artdark relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <span class="text-xs uppercase tracking-[0.3em] text-artgold block mb-4">Pivotal Initiatives</span>
-                <h2 class="font-serif text-4xl md:text-5xl text-white mb-6">Global Collaborative Projects</h2>
-                <p class="text-gray-400 font-light">Uniting institutions, leaders, and communities across continents through donated words, fragments, and shared memories.</p>
-            </div>
-
-            <div class="space-y-24">
-                <!-- Project 1: Life of a Box -->
-                <div class="grid lg:grid-cols-12 gap-12 items-center bg-artmuted/50 border border-artborder p-8 md:p-12 relative section-hover">
-                    <div class="painting-backdrop" style="background-image: url('4_2.jpg');"></div>
-                    <div class="lg:col-span-5 relative z-10">
-                        <span class="text-xs tracking-[0.2em] uppercase text-artgold block mb-2">Ongoing Masterwork</span>
-                        <h3 class="font-serif text-3xl text-white mb-6">Life of A Box</h3>
-                        <p class="text-gray-400 font-light leading-relaxed mb-6">
-                            Transforming ubiquitous industrial packaging symbols—such as Amazon carrier boxes—into profound cultural artifacts. Exhibited across major global spaces including Brussels Expo, the Museum of Paper in Poland, Albrecht Dürer's House, and international institutions worldwide.
-                        </p>
-                        <button onclick="openModal('box-modal')" class="text-xs tracking-[0.2em] uppercase text-artgold hover:text-white flex items-center gap-2 font-semibold">
-                            <span>View Participating Institutions</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </button>
+        <!-- The Four Pillars Overview -->
+        <section>
+            <h2>The Four Pillars</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <h3>Words</h3>
+                    <p>A global participatory text and archive project capturing human sentiment, linguistic DNA, and philosophical thought across international borders.</p>
+                    <div class="collaborator-list">
+                        <strong>Scope:</strong> Hundreds of contributors spanning Ivy League universities, global museums, indigenous councils, and sovereign institutions.
                     </div>
-                    <div class="lg:col-span-7 relative z-10 h-80 bg-cover bg-center border border-artborder" style="background-image: url('5_2.jpg');"></div>
                 </div>
+                <div class="pillar-card">
+                    <h3>Life of a Box</h3>
+                    <p>An immersive conceptual journey where international institutions preserve used industrial boxes transformed into monumental sculptures.</p>
+                    <div class="collaborator-list">
+                        <strong>Status:</strong> Global exhibition trajectory spanning Brussels, Poland, and premier European institutions.
+                    </div>
+                </div>
+                <div class="pillar-card">
+                    <h3>Voices of the Land</h3>
+                    <p>Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations.</p>
+                    <div class="collaborator-list">
+                        <strong>Partners:</strong> National Gallery of Canada, Burke Museum, Na'kuset Native Women's Shelter, and global universities.
+                    </div>
+                </div>
+                <div class="pillar-card">
+                    <h3>روح‌نواز (Rooh-Nawaz)</h3>
+                    <p>Deeply moving testimonies of human resilience in words and images, honoring the global Persian community.</p>
+                    <div class="collaborator-list">
+                        <strong>Contributors:</strong> Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <!-- Project 2: Voices of the Land -->
-                <div class="grid lg:grid-cols-12 gap-12 items-center bg-artmuted/50 border border-artborder p-8 md:p-12 relative section-hover">
-                    <div class="painting-backdrop" style="background-image: url('2_2.JPG');"></div>
-                    <div class="lg:col-span-7 relative z-10 h-80 bg-cover bg-center border border-artborder order-2 lg:order-1" style="background-image: url('3_2.jpg');"></div>
-                    <div class="lg:col-span-5 relative z-10 order-1 lg:order-2">
-                        <span class="text-xs tracking-[0.2em] uppercase text-artgold block mb-2">First Nations Heritage</span>
-                        <h3 class="font-serif text-3xl text-white mb-6">Voices of the Land</h3>
-                        <p class="text-gray-400 font-light leading-relaxed mb-6">
-                            Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations. Created with utmost cultural sensitivity in collaboration with Harvard University, National Gallery of Canada, University of Auckland, and international advocates.
-                        </p>
-                        <button onclick="openModal('voices-modal')" class="text-xs tracking-[0.2em] uppercase text-artgold hover:text-white flex items-center gap-2 font-semibold">
-                            <span>Read Project Statement</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </button>
+        <!-- Life of a Box Chapter Feature -->
+        <section>
+            <h2>Spatial Chapter &bull; Life of a Box</h2>
+            <div class="artwork-showcase">
+                <img src="4_2.jpg" alt="Life of a Box Installation">
+                <div class="artwork-caption">Plate II &bull; Life of a Box Monumental Interpretation</div>
+            </div>
+            <div class="feature-container">
+                <h3>The Transformation of Industrial Logistics into Monumental Art</h3>
+                <div class="feature-lead">
+                    Utilizing recycled cardboard boxes sourced from industrial operations across Germany, France, England, Norway, and the United States, <i>Life of a Box</i> explores the shifting value of materials across social and cultural contexts. Sponsored by the Ministry of the Environment, the project bridges ecological responsibility with fine art preservation.
+                </div>
+                
+                <div class="trajectory-grid">
+                    <div class="trajectory-card">
+                        <h4>Brussels Expo</h4>
+                        <p>Brussels, Belgium. Featured in "Empowering Europe's Creative Industries," positioning the installation as a core pillar of international environmental storytelling.</p>
+                    </div>
+                    <div class="trajectory-card">
+                        <h4>Museum of Papermaking</h4>
+                        <p>Duszniki-Zdrój, Poland. Exploring the material heritage of packaging transformed into high-concept artistic sculpture.</p>
+                    </div>
+                    <div class="trajectory-card">
+                        <h4>Museum of West Bohemia</h4>
+                        <p>Plzeň, Czech Republic. Exhibited within a historic church museum setting, bridging ecological recycling with spiritual and human development.</p>
                     </div>
                 </div>
 
-                <!-- Project 3: Rooh-Nawaz -->
-                <div class="grid lg:grid-cols-12 gap-12 items-center bg-artmuted/50 border border-artborder p-8 md:p-12 relative section-hover">
-                    <div class="painting-backdrop" style="background-image: url('10.JPG');"></div>
-                    <div class="lg:col-span-5 relative z-10">
-                        <span class="text-xs tracking-[0.2em] uppercase text-artgold block mb-2">Cultural Memory</span>
-                        <h3 class="font-serif text-3xl text-white mb-6">روح‌نواز (Rooh-Nawaz)</h3>
-                        <p class="text-gray-400 font-light leading-relaxed mb-6">
-                            Deeply moving testimonies of human resilience in words and images. An ethnographic and visual exploration honoring Persian cultural heritage by collecting contributions from global scholars, educators, and leaders at Harvard, Yale, The Courtauld, and beyond.
-                        </p>
-                        <button onclick="openModal('rooh-modal')" class="text-xs tracking-[0.2em] uppercase text-artgold hover:text-white flex items-center gap-2 font-semibold">
-                            <span>Explore Archive</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </button>
+                <div class="external-ref">
+                    <strong>Critical Discourse:</strong> Recognized and analyzed internationally, including recent commentary by global sustainability authority John Elkington: 
+                    <a href="https://johnelkington.substack.com/p/a-market-externality-that-rings-your" target="_blank">"A Market Externality That Rings Your..." (Substack)</a>.
+                </div>
+            </div>
+        </section>
+
+        <!-- Voices of the Land Chapter Feature -->
+        <section>
+            <h2>Spatial Chapter &bull; Voices of the Land</h2>
+            <div class="artwork-showcase">
+                <img src="2_2.JPG" alt="Voices of the Land Visual Representation">
+                <div class="artwork-caption">Plate III &bull; Voices of the Land Fragment and Lineage</div>
+            </div>
+            <div class="feature-container">
+                <h3>An Ancient Lineage of Wisdom Shared with Grace and Integrity</h3>
+                <div class="feature-lead">
+                    The primary objective of the First Nations project is to honor and preserve an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge and language with the global community, approached with the utmost care, reverence, and cultural sensitivity.
+                </div>
+                
+                <div class="feature-body">
+                    By bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations—collaborating with and drawing from institutions and advocates such as Harvard University, National Gallery of Canada, University of Wisconsin – Milwaukee USA, University of Auckland – New Zealand, University of Queensland Art Museum, Na’kuset – Native Women’s Shelter of Montreal, Burke Museum – Seattle, Endangered Languages Project, National University of Samoa, Swarthmore College US, Trent University, Arizona State University, University of Alberta – Canada, University of Manitoba, and many others—the artist creates a unique and classic bridge between timeless ancestral knowledge and the modern world.
+                </div>
+
+                <div class="trajectory-grid">
+                    <div class="trajectory-card">
+                        <h4>Museums & Cultural Archives</h4>
+                        <p>National Gallery of Canada, Burke Museum (Seattle), and regional cultural repositories preserving sacred heritage.</p>
                     </div>
-                    <div class="lg:col-span-7 relative z-10 h-80 bg-cover bg-center border border-artborder" style="background-image: url('8_2.jpg');"></div>
+                    <div class="trajectory-card">
+                        <h4>Community Guardians</h4>
+                        <p>Na’kuset – Native Women’s Shelter of Montreal, ensuring grounded community representation and integrity.</p>
+                    </div>
+                    <div class="trajectory-card">
+                        <h4>Global Research Network</h4>
+                        <p>Endangered Languages Project, Harvard, University of Auckland, University of Alberta, and international research universities.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SELECTED EXHIBITIONS & STATURE -->
-    <section id="exhibitions" class="py-32 bg-artmuted border-t border-artborder relative section-hover">
-        <div class="painting-backdrop" style="background-image: url('9_2.jpg');"></div>
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <span class="text-xs uppercase tracking-[0.3em] text-artgold block mb-4">Milestones</span>
-                <h2 class="font-serif text-4xl md:text-5xl text-white mb-6">Universal Exhibitions</h2>
-                <p class="text-gray-400 font-light">Presented across major cultural capitals, museums, and monumental historical sites without temporal bounds.</p>
+        <!-- Rooh-Nawaz Chapter Feature -->
+        <section>
+            <h2>Spatial Chapter &bull; روح‌نواز (Rooh-Nawaz)</h2>
+            <div class="artwork-showcase">
+                <img src="10.JPG" alt="Rooh-Nawaz Visual Composition">
+                <div class="artwork-caption">Plate IV &bull; روح‌نواز (Rooh-Nawaz) Cultural Memory</div>
             </div>
+            <div class="feature-container">
+                <h3>Deeply Moving Testimonies of Human Resilience in Words and Images</h3>
+                <div class="feature-lead">
+                    The project titled “روح‌نواز” serves as an artistic exploration of the global Persian community, delving into a diverse array of responses towards challenging life circumstances and experiences that are often deemed sensitive to discuss.
+                </div>
+                
+                <div class="feature-body">
+                    An ethnographic and visual art initiative honoring Persian cultural heritage and memory by collecting contributions from scholars, educators, and leaders around the world. By pooling contributions donated from institutions as diverse as Harvard University, Yale University, University of Texas at Austin, Uppsala University Sweden, University of California, Nevada State University, Jordan Center for Persian Studies and Culture, The Courtauld Institute of Art – London, Göttingen University, Central Asia Initiative, MacMillan Center for International & Area Studies, and many others, a singular expression of shared heritage is crafted.
+                    <br><br>
+                    This initiative transforms disparate linguistic and cultural fragments into a unified visual narrative. It stands as a living archive for cultural preservation and a transformative force in the art world, presenting Persian heritage not as a distant relic, but as a living, vibrant composition born from the power of a single word, phrase, or memory.
+                </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-artdark border border-artborder p-8">
-                    <span class="text-xs text-artgold uppercase tracking-widest block mb-3">Brussels, Belgium</span>
-                    <h4 class="font-serif text-xl text-white mb-3">Life of A Box</h4>
-                    <p class="text-sm text-gray-400 font-light leading-relaxed">Featured at Brussels Expo, uniting corporate infrastructure with delicate artistic commentary.</p>
-                </div>
-                <div class="bg-artdark border border-artborder p-8">
-                    <span class="text-xs text-artgold uppercase tracking-widest block mb-3">Poland</span>
-                    <h4 class="font-serif text-xl text-white mb-3">Museum of Paper</h4>
-                    <p class="text-sm text-gray-400 font-light leading-relaxed">Solo exhibition exploring the tactile memory of paper and industrial legacy.</p>
-                </div>
-                <div class="bg-artdark border border-artborder p-8">
-                    <span class="text-xs text-artgold uppercase tracking-widest block mb-3">California, US</span>
-                    <h4 class="font-serif text-xl text-white mb-3">Twain – Berkeley Commonplace</h4>
-                    <p class="text-sm text-gray-400 font-light leading-relaxed">Global literary-inspired dialogue bridging classic narrative and contemporary vision.</p>
-                </div>
-                <div class="bg-artdark border border-artborder p-8">
-                    <span class="text-xs text-artgold uppercase tracking-widest block mb-3">Kroměříž, Czech Republic</span>
-                    <h4 class="font-serif text-xl text-white mb-3">Uncertain Vibrations</h4>
-                    <p class="text-sm text-gray-400 font-light leading-relaxed">Hosted at the Kroměříž Museum, probing sensory frequencies and emotional states.</p>
-                </div>
-                <div class="bg-artdark border border-artborder p-8">
-                    <span class="text-xs text-artgold uppercase tracking-widest block mb-3">Dobrošov, Czech Republic</span>
-                    <h4 class="font-serif text-xl text-white mb-3">Make Art Not War – Fortress Dobrošov</h4>
-                    <p class="text-sm text-gray-400 font-light leading-relaxed">The only visual artist ever to display art pieces inside the historical underground fortress.</p>
-                </div>
-                <div class="bg-artdark border border-artborder p-8">
-                    <span class="text-xs text-artgold uppercase tracking-widest block mb-3">Global Venues</span>
-                    <h4 class="font-serif text-xl text-white mb-3">100+ Solo Exhibits</h4>
-                    <p class="text-sm text-gray-400 font-light leading-relaxed">Exhibiting across Toronto, Athens, London, Dubai, Prague, Brussels, Oulu, Goa, Poland, and the US.</p>
+                <div class="trajectory-grid">
+                    <div class="trajectory-card">
+                        <h4>Global Academic Institutes</h4>
+                        <p>Jordan Center for Persian Studies, MacMillan Center, Uppsala University, and Göttingen University.</p>
+                    </div>
+                    <div class="trajectory-card">
+                        <h4>Art & Research Centers</h4>
+                        <p>The Courtauld Institute of Art, Harvard, Yale, and international Persian cultural networks.</p>
+                    </div>
+                    <div class="trajectory-card">
+                        <h4>Living Archive</h4>
+                        <p>Transforming complex human experiences and collective memory into a unified, monumental visual expression.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- INSTITUTIONAL NETWORK -->
-    <section id="archive" class="py-32 bg-artdark border-t border-artborder">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-xs uppercase tracking-[0.3em] text-artgold block mb-4">Global Network</span>
-                <h2 class="font-serif text-4xl md:text-5xl text-white mb-6">Institutional Collaborations</h2>
-                <p class="text-gray-400 font-light">Word donations and scholarly contributions from world-renowned centers of excellence.</p>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="p-6 bg-artmuted/30 border border-artborder">
-                    <span class="font-serif text-lg text-white block mb-1">Harvard University</span>
-                    <span class="text-xs text-gray-500 uppercase tracking-widest">USA</span>
+        <!-- Detailed Words Ledger Section with Filtering -->
+        <section>
+            <h2>Archive Provenance &bull; Words Contributors</h2>
+            <div class="ledger-container">
+                <h3>Participating Institutional & Cultural DNA</h3>
+                
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All Networks</button>
+                    <button class="filter-btn" data-filter="harvard">Harvard</button>
+                    <button class="filter-btn" data-filter="universities">Global Universities</button>
+                    <button class="filter-btn" data-filter="museums">Museums & Galleries</button>
+                    <button class="filter-btn" data-filter="sovereignties">NGOs & Sovereignties</button>
                 </div>
-                <div class="p-6 bg-artmuted/30 border border-artborder">
-                    <span class="font-serif text-lg text-white block mb-1">University of Oxford</span>
-                    <span class="text-xs text-gray-500 uppercase tracking-widest">United Kingdom</span>
-                </div>
-                <div class="p-6 bg-artmuted/30 border border-artborder">
-                    <span class="font-serif text-lg text-white block mb-1">Stanford University</span>
-                    <span class="text-xs text-gray-500 uppercase tracking-widest">USA</span>
-                </div>
-                <div class="p-6 bg-artmuted/30 border border-artborder">
-                    <span class="font-serif text-lg text-white block mb-1">TATE London</span>
-                    <span class="text-xs text-gray-500 uppercase tracking-widest">United Kingdom</span>
-                </div>
-                <div class="p-6 bg-artmuted/30 border border-artborder">
-                    <span class="font-serif text-lg text-white block mb-1">National Gallery of Canada</span>
-                    <span class="text-xs text-gray-500 uppercase tracking-widest">Canada</span>
-                </div>
-                <div class="p-6 bg-artmuted/30 border border-artborder">
-                    <span class="font-serif text-lg text-white block mb-1">Sorbonne University</span>
-                    <span class="text-xs text-gray-500 uppercase tracking-widest">France</span>
-                </div>
-                <div class="p-6 bg-artmuted/30 border border-artborder">
-                    <span class="font-serif text-lg text-white block mb-1">Greenland National Museum</span>
-                    <span class="text-xs text-gray-500 uppercase tracking-widest">Greenland</span>
-                </div>
-                <div class="p-6 bg-artmuted/30 border border-artborder">
-                    <span class="font-serif text-lg text-white block mb-1">Hebrew University of Jerusalem</span>
-                    <span class="text-xs text-gray-500 uppercase tracking-widest">Israel</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- FOOTER / CONTACT -->
-    <footer id="contact" class="py-20 bg-artmuted border-t border-artborder text-center">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="font-serif text-3xl text-white mb-6">Hesham Malik Studio</h2>
-            <p class="text-gray-400 font-light mb-8">For curatorial inquiries, museum exhibitions, and institutional collaborations.</p>
-            <div class="flex justify-center space-x-6 text-sm uppercase tracking-widest text-artgold mb-12">
-                <a href="https://www.heshammalik.com" target="_blank" class="hover:text-white transition-colors">heshammalik.com</a>
-                <span>•</span>
-                <a href="https://www.heshammalik.eu" target="_blank" class="hover:text-white transition-colors">heshammalik.eu</a>
+                <div class="ledger-grid">
+                    <div class="ledger-category" data-category="harvard">
+                        <h4>Harvard University Network</h4>
+                        <ul>
+                            &bull; Office of the President Emeritus<br>
+                            &bull; Deans of Harvard College & GSD<br>
+                            &bull; Law, Divinity, & Public Health Schools<br>
+                            &bull; Faculty of Arts & Sciences / East Asian Languages<br>
+                            &bull; Weatherhead Center & Malcolm Wiener Center<br>
+                            &bull; Harvard Forest & Children's Hospital
+                        </ul>
+                    </div>
+                    <div class="ledger-category" data-category="universities">
+                        <h4>Global Universities</h4>
+                        <ul>
+                            &bull; Oxford & Cambridge (UK)<br>
+                            &bull; Stanford, MIT, Princeton, Yale, Columbia, Chicago<br>
+                            &bull; Sorbonne University (France)<br>
+                            &bull; University of Melbourne & Sydney (Australia)<br>
+                            &bull; Charles University & Masaryk University (CZ)<br>
+                            &bull; University of Tokyo, Toronto, Vienna, & Beyond
+                        </ul>
+                    </div>
+                    <div class="ledger-category" data-category="museums">
+                        <h4>Museums & Galleries</h4>
+                        <ul>
+                            &bull; TATE London & National Galleries Scotland<br>
+                            &bull; National Gallery of Canada<br>
+                            &bull; Ludwig Museum (Hungary) & Slovak National Gallery<br>
+                            &bull; Academy of Fine Arts Vienna & Stuttgart<br>
+                            &bull; Regional and Municipal Museums across Europe
+                        </ul>
+                    </div>
+                    <div class="ledger-category" data-category="sovereignties">
+                        <h4>Global NGOs & Sovereignties</h4>
+                        <ul>
+                            &bull; Greenpeace International & Jane Goodall Institute<br>
+                            &bull; Svalbard Global Seed Vault (Norway)<br>
+                            &bull; Equal Justice Initiative (Bryan Stevenson)<br>
+                            &bull; Greenland National Museum & Avannaata Government<br>
+                            &bull; Palestinian Cultural & Freedom Theatre Initiatives
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <p class="text-xs text-gray-600 tracking-wider">© Hesham Malik. All Rights Reserved. Make Art Not War.</p>
-        </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Hesham Malik. All Rights Reserved. Independent Sovereign Archive.
     </footer>
 
-    <!-- MODALS FOR PROJECT MANIFESTOS -->
-    <div id="box-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-6">
-        <div class="bg-artdark border border-artborder max-w-2xl w-full p-8 relative max-h-[80vh] overflow-y-auto">
-            <button onclick="closeModal('box-modal')" class="absolute top-6 right-6 text-gray-400 hover:text-white">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-            <h3 class="font-serif text-2xl text-white mb-4">Life of A Box — Institutional Partners</h3>
-            <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                A massive global undertaking featuring contributions and exhibitions across esteemed spaces including Gallery Carpe Diem (Goa), Amazon (London/Europe), Masaryk University, Jewish Museum (CZ), UNICEF, National Gallery (Prague), Waitangi Museum, Unesco Creative City Fabriano, Nuuk Art Museum (Greenland), Mohatta Palace (Pakistan), Albrecht Dürer's House (Nuremberg), Nobel Prize Museum, and Stockholm Resilience Centre.
-            </p>
-            <button onclick="closeModal('box-modal')" class="px-6 py-2 bg-artgold text-black text-xs font-semibold uppercase tracking-widest">Close</button>
-        </div>
-    </div>
-
-    <div id="voices-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-6">
-        <div class="bg-artdark border border-artborder max-w-2xl w-full p-8 relative max-h-[80vh] overflow-y-auto">
-            <button onclick="closeModal('voices-modal')" class="absolute top-6 right-6 text-gray-400 hover:text-white">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-            <h3 class="font-serif text-2xl text-white mb-4">Voices of the Land — Manifesto</h3>
-            <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations. Collaborating with institutions such as Harvard University, National Gallery of Canada, University of Wisconsin – Milwaukee, University of Auckland, Na’kuset – Native Women’s Shelter of Montreal, and the Endangered Languages Project to create a classic bridge between timeless ancestral knowledge and the modern world.
-            </p>
-            <button onclick="closeModal('voices-modal')" class="px-6 py-2 bg-artgold text-black text-xs font-semibold uppercase tracking-widest">Close</button>
-        </div>
-    </div>
-
-    <div id="rooh-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-6">
-        <div class="bg-artdark border border-artborder max-w-2xl w-full p-8 relative max-h-[80vh] overflow-y-auto">
-            <button onclick="closeModal('rooh-modal')" class="absolute top-6 right-6 text-gray-400 hover:text-white">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-            <h3 class="font-serif text-2xl text-white mb-4">روح‌نواز (Rooh-Nawaz) — Overview</h3>
-            <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                An ethnographic and visual art initiative honoring Persian cultural heritage and memory by collecting contributions from scholars, educators, and leaders around the world, pooling contributions from Harvard University, Yale University, University of Texas at Austin, Uppsala University, and The Courtauld Institute of Art.
-            </p>
-            <button onclick="closeModal('rooh-modal')" class="px-6 py-2 bg-artgold text-black text-xs font-semibold uppercase tracking-widest">Close</button>
-        </div>
-    </div>
-
-    <!-- SCRIPTS -->
+    <!-- Interactive Scripts -->
     <script>
-        lucide.createIcons();
-
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+        const cursor = document.getElementById('cursor');
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
         });
 
-        // Modal Functions
-        function openModal(id) {
-            document.getElementById(id).classList.remove('hidden');
-        }
-        function closeModal(id) {
-            document.getElementById(id).classList.add('hidden');
-        }
+        document.querySelectorAll('a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                cursor.style.width = '48px';
+                cursor.style.height = '48px';
+                cursor.style.borderColor = 'rgba(212, 175, 55, 0.8)';
+            });
+            item.addEventListener('mouseleave', () => {
+                cursor.style.width = '24px';
+                cursor.style.height = '24px';
+                cursor.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+            });
+        });
+
+        // Dark Gallery Mode Toggle Script
+        const modeToggle = document.getElementById('modeToggle');
+        modeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('gallery-mode');
+            if (document.body.classList.contains('gallery-mode')) {
+                modeToggle.textContent = 'Standard Archive Mode';
+            } else {
+                modeToggle.textContent = 'Dark Gallery Mode';
+            }
+        });
+
+        // Archive DNA Filtering Script
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const categories = document.querySelectorAll('.ledger-category');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+
+                categories.forEach(cat => {
+                    if (filter === 'all' || cat.getAttribute('data-category') === filter) {
+                        cat.classList.remove('hidden');
+                    } else {
+                        cat.classList.add('hidden');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
