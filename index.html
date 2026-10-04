@@ -155,7 +155,63 @@
             opacity: 0.85;
         }
 
-        /* Cinematic Ledger Styling */
+        /* Detailed Portal Feature Section (Life of a Box) */
+        .feature-container {
+            background-color: var(--surface-solid);
+            border: 1px solid var(--border-subtle);
+            padding: 60px 50px;
+            position: relative;
+        }
+
+        .feature-container h3 {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin-top: 0;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .feature-lead {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            border-left: 2px solid var(--accent-gold);
+            padding-left: 20px;
+        }
+
+        .trajectory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .trajectory-card {
+            background-color: var(--surface-glass);
+            border: 1px solid var(--border-subtle);
+            padding: 30px;
+        }
+
+        .trajectory-card h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-gold);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .trajectory-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* Cinematic Ledger Styling (Words) */
         .ledger-container {
             background-color: var(--surface-solid);
             border: 1px solid var(--border-subtle);
@@ -212,7 +268,7 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
-            .ledger-container { padding: 30px 20px; }
+            .ledger-container, .feature-container { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -221,7 +277,7 @@
     <header>
         <h1>Hesham Malik</h1>
         <div class="subtitle">Planetary Codex &bull; Independent Institutional Archive</div>
-        <a href="mailto:heshammalik@proton.me" class="contact-link">heshammalik@proton.me</a>
+        <a href="mailto:contact@heshammalik.org" class="contact-link">contact@heshammalik.org</a>
     </header>
 
     <main>
@@ -240,10 +296,7 @@
                     <h3>Life of a Box</h3>
                     <p>An immersive conceptual journey where institutional entities preserve a used box transformed into a monumental art sculpture.</p>
                     <div class="collaborator-list">
-                        <strong>Exhibition Trajectory:</strong><br>
-                        &bull; Museum of Papermaking (Duszniki-Zdrój)<br>
-                        &bull; Museum of West Bohemia<br>
-                        &bull; Charles University (Upcoming: Feb 2027)
+                        <strong>Status:</strong> Active International Exhibition Trajectory across premier European museums.
                     </div>
                 </div>
                 <div class="pillar-card">
@@ -253,6 +306,32 @@
                 <div class="pillar-card">
                     <h3>روح‌نواز (Rooh-Nawaz)</h3>
                     <p>An exploration of resonance, heritage, and the intangible spirit translated into monumental visual execution.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Life of a Box Chapter Feature -->
+        <section>
+            <h2>Spatial Chapter &bull; Life of a Box</h2>
+            <div class="feature-container">
+                <h3>The Transformation of Industrial Logistics into Monumental Art</h3>
+                <div class="feature-lead">
+                    Originating from routine industrial transit—including partnerships with Amazon UK logistics—<i>Life of a Box</i> takes discarded, utilitarian packaging and elevates it through meticulous layering into a monumental museum-grade sculpture. It challenges modern consumerism, sustainability, and institutional permanence.
+                </div>
+                
+                <div class="trajectory-grid">
+                    <div class="trajectory-card">
+                        <h4>Museum of Papermaking</h4>
+                        <p>Duszniki-Zdrój, Poland. Preserving the material history of paper and packaging transformed into high-concept artistic sculpture.</p>
+                    </div>
+                    <div class="trajectory-card">
+                        <h4>Museum of West Bohemia</h4>
+                        <p>Plzeň, Czech Republic. Permanent institutional positioning examining the intersection of industrial discard and fine art preservation.</p>
+                    </div>
+                    <div class="trajectory-card">
+                        <h4>Charles University</h4>
+                        <p>Prague, Czech Republic. Upcoming major institutional exhibition and academic dialogue scheduled for February 2027.</p>
+                    </div>
                 </div>
             </div>
         </section>
