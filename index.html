@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hesham Malik | Planetary Codex</title>
+    <title>Hesham Malik | Planetary Codex & Institutional Archive</title>
     <style>
         :root {
             --canvas-bg: #030303;
@@ -44,7 +44,7 @@
         @media (min-width: 1024px) {
             .custom-cursor { display: block; }
             body { cursor: none; }
-            a, button, input, textarea, .pillar-card, .trajectory-card, .control-btn, .filter-btn, .exhibit-card, .quote-card { cursor: none; }
+            a, button, input, textarea, .pillar-card, .trajectory-card, .control-btn, .filter-btn, .exhibit-card, .quote-card, .city-chip { cursor: none; }
         }
         
         html {
@@ -152,7 +152,14 @@
             color: var(--accent-gold);
             text-transform: uppercase;
             letter-spacing: 0.35em;
-            margin-bottom: 35px;
+            margin-bottom: 20px;
+        }
+
+        .meta-legacy {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.2em;
+            margin-bottom: 30px;
         }
 
         .contact-link {
@@ -254,6 +261,58 @@
             letter-spacing: 0.1em;
             line-height: 1.7;
             opacity: 0.85;
+        }
+
+        /* Global Institutional Footprint Section */
+        .footprint-container {
+            background-color: var(--surface-solid);
+            border: 1px solid var(--border-subtle);
+            padding: 70px 60px;
+        }
+
+        .footprint-container h3 {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            margin-top: 0;
+            color: #ffffff;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .footprint-lead {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+            line-height: 1.9;
+        }
+
+        .cities-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .city-chip {
+            background: var(--surface-glass);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .city-chip:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--accent-gold-glow);
         }
 
         /* Detailed Portal Feature Section */
@@ -753,7 +812,7 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
-            .ledger-container, .feature-container, .lightbox-content, .guestbook-container, .gallery-section-container, .discourse-container { padding: 40px 25px; }
+            .ledger-container, .feature-container, .lightbox-content, .guestbook-container, .gallery-section-container, .discourse-container, .footprint-container { padding: 40px 25px; }
             .guestbook-form { grid-template-columns: 1fr; }
             .form-group.full, .submit-btn { grid-column: span 1; }
         }
@@ -773,17 +832,39 @@
     <!-- Live Word Marquee Ticker -->
     <div class="word-ticker">
         <div class="ticker-track">
-            &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull;
+            &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull; Toronto &bull; Athens &bull; London &bull; Dubai &bull; Prague &bull; Brussels &bull; Oulu &bull; Goa &bull; Poland &bull; US &bull;
         </div>
     </div>
 
     <header>
         <h1>Hesham Malik</h1>
         <div class="subtitle">Planetary Codex &bull; Independent Institutional Archive</div>
+        <div class="meta-legacy">3+ Decades &bull; 100+ Solo Exhibitions Worldwide</div>
         <a href="mailto:contact@heshammalik.org" class="contact-link">contact@heshammalik.org</a>
     </header>
 
     <main>
+        <!-- Global Institutional Footprint -->
+        <section>
+            <h2>International Exhibition Footprint</h2>
+            <div class="footprint-container">
+                <h3>Three Decades of Global Solo Exhibitions</h3>
+                <p class="footprint-lead">Documenting over one hundred solo presentations across premier international cultural capitals, sovereign institutions, and global art centers.</p>
+                <div class="cities-grid">
+                    <div class="city-chip" onclick="openLightbox('Toronto Exhibition Footprint', 'Major solo exhibitions and institutional presentations across Toronto, engaging North American cultural communities and collectors.')">Toronto</div>
+                    <div class="city-chip" onclick="openLightbox('Athens Exhibition Footprint', 'Historical and contemporary institutional presentations bridging classical heritage with modern conceptualism in Athens, Greece.')">Athens</div>
+                    <div class="city-chip" onclick="openLightbox('London Exhibition Footprint', 'High-profile institutional showcases and curatorial presentations across London, UK.')">London</div>
+                    <div class="city-chip" onclick="openLightbox('Dubai Exhibition Footprint', 'Monumental art presentations and cultural dialogues hosted in Dubai, United Arab Emirates.')">Dubai</div>
+                    <div class="city-chip" onclick="openLightbox('Prague Exhibition Footprint', 'Exhibitions spanning historic galleries and sovereign museums across Prague, Czech Republic.')">Prague</div>
+                    <div class="city-chip" onclick="openLightbox('Brussels Exhibition Footprint', 'European policy-backed installations highlighting environmental sculpture and creative industries in Brussels, Belgium.')">Brussels</div>
+                    <div class="city-chip" onclick="openLightbox('Oulu Exhibition Footprint', 'Northern European institutional showcases exploring silence, land, and human resilience in Oulu, Finland.')">Oulu</div>
+                    <div class="city-chip" onclick="openLightbox('Goa Exhibition Footprint', 'Cultural exhibitions and collaborative artistic dialogues hosted in Goa, India.')">Goa</div>
+                    <div class="city-chip" onclick="openLightbox('Poland Exhibition Footprint', 'Immersive museum presentations including the Museum of Papermaking in Duszniki-Zdrój, Poland.')">Poland</div>
+                    <div class="city-chip" onclick="openLightbox('United States Exhibition Footprint', 'Institutional collaborations, university engagements, and solo presentations across multiple US cultural centers.')">United States</div>
+                </div>
+            </div>
+        </section>
+
         <!-- The Four Pillars Overview -->
         <section>
             <h2>The Four Pillars</h2>
@@ -810,7 +891,7 @@
                     </div>
                 </div>
                 <div class="pillar-card" onclick="openLightbox('Rooh-Nawaz Pillar', 'Deeply moving testimonies of human resilience in words and images, honoring the global Persian community through contributions from Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.')">
-                    <h3>روح‌‌نواز (Rooh-Nawaz)</h3>
+                    <h3>روح‌‌‌‌نواز (Rooh-Nawaz)</h3>
                     <p>Deeply moving testimonies of human resilience in words and images, honoring the global Persian community.</p>
                     <div class="collaborator-list">
                         <strong>Contributors:</strong> Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.
@@ -1076,7 +1157,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button, input, textarea, .pillar-card, .trajectory-card, .control-btn, .filter-btn, .feature-container, .exhibit-card, .quote-card').forEach(item => {
+        document.querySelectorAll('a, button, input, textarea, .pillar-card, .trajectory-card, .control-btn, .filter-btn, .feature-container, .exhibit-card, .quote-card, .city-chip').forEach(item => {
             item.addEventListener('mouseenter', () => {
                 cursor.style.width = '48px';
                 cursor.style.height = '48px';
