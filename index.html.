@@ -75,10 +75,6 @@
             background-color: var(--surface-color);
             border: 1px solid var(--border-color);
             padding: 30px;
-            transition: border-color 0.3s ease;
-        }
-        .pillar-card:hover {
-            border-color: var(--accent-color);
         }
         .pillar-card h3 {
             font-size: 1.2rem;
@@ -86,11 +82,19 @@
             margin-top: 0;
             margin-bottom: 15px;
             letter-spacing: 0.05em;
+            color: var(--text-primary);
         }
         .pillar-card p {
             color: var(--text-secondary);
             font-size: 0.95rem;
-            margin: 0;
+            margin: 0 0 20px 0;
+        }
+        .collaborator-list {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            line-height: 1.8;
         }
         .ecosystem-links {
             display: flex;
@@ -132,11 +136,20 @@
             <div class="pillars-grid">
                 <div class="pillar-card">
                     <h3>Words</h3>
-                    <p>A global participatory text and archive project spanning international borders, capturing human sentiment across cultures and institutions.</p>
+                    <p>A global participatory text and archive project capturing human sentiment across international borders and institutions.</p>
+                    <div class="collaborator-list">
+                        <strong>Key Participants:</strong> 74+ global cultural and institutional contributors who donated words to the ongoing archive.
+                    </div>
                 </div>
                 <div class="pillar-card">
                     <h3>Life of a Box</h3>
-                    <p>An immersive conceptual journey crossing municipal and international institutional spaces, exploring containment, narrative, and movement.</p>
+                    <p>An immersive conceptual journey where institutional entities preserve a used box transformed into a monumental art sculpture.</p>
+                    <div class="collaborator-list">
+                        <strong>Exhibition Trajectory:</strong><br>
+                        &bull; Museum of Papermaking (Duszniki-Zdrój)<br>
+                        &bull; Museum of West Bohemia<br>
+                        &bull; Charles University (Upcoming: Feb 2027)
+                    </div>
                 </div>
                 <div class="pillar-card">
                     <h3>Voices of the Land</h3>
