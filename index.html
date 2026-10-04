@@ -42,7 +42,7 @@
         @media (min-width: 1024px) {
             .custom-cursor { display: block; }
             body { cursor: none; }
-            a, button, input, textarea, .pillar-card, .trajectory-card, .control-btn, .filter-btn, .exhibit-card, .quote-card { cursor: none; }
+            a, button, input, textarea, .pillar-card, .trajectory-card, .control-btn, .filter-btn, .feature-container, .exhibit-card, .quote-card { cursor: none; }
         }
         
         html { scroll-behavior: smooth; }
@@ -175,70 +175,6 @@
             text-align: center;
         }
 
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 30px;
-        }
-
-        .pillar-card {
-            background-color: var(--surface-glass);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border-subtle);
-            padding: 45px 35px;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pillar-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .pillar-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-6px);
-            background-color: var(--surface-solid);
-            box-shadow: 0 30px 60px var(--accent-gold-glow);
-        }
-
-        .pillar-card:hover::before { opacity: 1; }
-
-        .pillar-card h3 {
-            font-size: 1rem;
-            font-weight: 300;
-            margin-top: 0;
-            margin-bottom: 20px;
-            letter-spacing: 0.2em;
-            color: #ffffff;
-            text-transform: uppercase;
-        }
-
-        .pillar-card p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin: 0 0 30px 0;
-            line-height: 1.9;
-        }
-
-        .collaborator-list {
-            font-size: 0.7rem;
-            color: var(--accent-gold);
-            border-top: 1px solid var(--border-subtle);
-            padding-top: 20px;
-            letter-spacing: 0.1em;
-            line-height: 1.7;
-            opacity: 0.85;
-        }
-
         .feature-container {
             background-color: var(--surface-solid);
             border: 1px solid var(--border-subtle);
@@ -270,9 +206,9 @@
 
         .feature-body {
             color: var(--text-secondary);
-            font-size: 0.85rem;
-            line-height: 2;
-            margin-bottom: 45px;
+            font-size: 0.88rem;
+            line-height: 1.9;
+            margin-bottom: 40px;
         }
 
         .trajectory-grid {
@@ -310,13 +246,13 @@
             line-height: 1.8;
         }
 
-        .discourse-container, .gallery-section-container, .ledger-container, .guestbook-container {
+        .ledger-container, .guestbook-container {
             background-color: var(--surface-solid);
             border: 1px solid var(--border-subtle);
             padding: 70px 60px;
         }
 
-        .discourse-container h3, .gallery-section-container h3, .ledger-container h3, .guestbook-container h3 {
+        .ledger-container h3, .guestbook-container h3 {
             font-size: 1rem;
             font-weight: 300;
             letter-spacing: 0.25em;
@@ -327,67 +263,18 @@
             margin-bottom: 40px;
         }
 
-        .quote-grid, .exhibit-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 50px;
         }
 
-        .quote-card, .exhibit-card {
+        .filter-btn {
             background: var(--surface-glass);
             border: 1px solid var(--border-subtle);
-            padding: 40px;
-            position: relative;
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .quote-card:hover, .exhibit-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px var(--accent-gold-glow);
-        }
-
-        .quote-text {
-            font-size: 0.88rem;
-            color: var(--text-primary);
-            font-style: italic;
-            line-height: 1.9;
-            margin: 0 0 25px 0;
-        }
-
-        .quote-author, .exhibit-location {
-            font-size: 0.7rem;
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .exhibit-card h4 {
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-
-        .exhibit-card p {
-            font-size: 0.8rem;
             color: var(--text-secondary);
-            margin: 0 0 25px 0;
-            line-height: 1.8;
-        }
-
-        .exhibit-link-btn {
-            background: transparent;
-            border: 1px solid var(--border-subtle);
-            color: var(--accent-gold);
             padding: 8px 16px;
             font-size: 0.65rem;
             letter-spacing: 0.2em;
@@ -395,54 +282,38 @@
             transition: all 0.3s;
         }
 
-        .exhibit-card:hover .exhibit-link-btn {
-            border-color: var(--accent-gold);
-            background: var(--accent-gold);
-            color: #030303;
-        }
-
-        .filter-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: var(--surface-glass);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-secondary);
-            padding: 8px 18px;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
         .filter-btn.active, .filter-btn:hover {
             border-color: var(--accent-gold);
             color: var(--accent-gold);
-            background: var(--surface-solid);
+            background: var(--accent-gold-glow);
         }
 
         .ledger-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
         }
 
-        .ledger-category.hidden { display: none; }
+        .ledger-category {
+            background: var(--surface-glass);
+            border: 1px solid var(--border-subtle);
+            padding: 35px;
+            transition: all 0.4s ease;
+        }
+
+        .ledger-category.hidden {
+            display: none;
+        }
 
         .ledger-category h4 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
+            font-size: 0.8rem;
             color: var(--accent-gold);
-            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
             margin-top: 0;
-            border-left: 2px solid var(--accent-gold);
-            padding-left: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 12px;
         }
 
         .ledger-category ul {
@@ -451,89 +322,115 @@
             margin: 0;
             font-size: 0.78rem;
             color: var(--text-secondary);
-            line-height: 2.3;
+            line-height: 2.2;
         }
 
         .guestbook-form {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
-        .form-group.full { grid-column: span 2; }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
 
         .form-input, .form-textarea {
-            width: 100%;
             background: var(--surface-glass);
             border: 1px solid var(--border-subtle);
             color: var(--text-primary);
-            padding: 14px 18px;
+            padding: 15px;
             font-size: 0.8rem;
-            font-family: inherit;
             letter-spacing: 0.05em;
-            box-sizing: border-box;
+            font-family: inherit;
             transition: border-color 0.3s;
         }
 
-        .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--accent-gold); }
-        .form-textarea { resize: vertical; min-height: 100px; }
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
 
         .submit-btn {
-            background: var(--surface-glass);
+            grid-column: span 2;
+            background: transparent;
             border: 1px solid var(--accent-gold);
             color: var(--accent-gold);
-            padding: 14px 30px;
+            padding: 15px;
             font-size: 0.75rem;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            grid-column: span 2;
-            justify-self: center;
+            transition: all 0.3s;
         }
 
         .submit-btn:hover {
             background: var(--accent-gold);
             color: #030303;
-            box-shadow: 0 0 25px var(--accent-gold-glow);
         }
 
         .guestbook-entries {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            margin-top: 40px;
-            border-top: 1px solid var(--border-subtle);
-            padding-top: 40px;
         }
 
         .guest-card {
             background: var(--surface-glass);
             border: 1px solid var(--border-subtle);
-            padding: 25px;
-            transition: border-color 0.3s;
+            padding: 30px;
         }
 
-        .guest-card:hover { border-color: var(--border-hover); }
-
         .guest-author {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--accent-gold);
-            letter-spacing: 0.2em;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            letter-spacing: 0.2em;
             display: block;
+            margin-bottom: 10px;
         }
 
         .guest-message {
-            font-size: 0.82rem;
+            font-size: 0.83rem;
             color: var(--text-secondary);
+            font-style: italic;
             margin: 0;
             line-height: 1.8;
         }
 
-        /* IMMERSIVE CINEMATIC LIGHTBOX PORTAL */
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            border-top: 1px solid var(--border-subtle);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            line-height: 2;
+        }
+
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        footer a:hover { border-bottom-color: var(--accent-gold); }
+
+        /* CINEMATIC LIGHTBOX MODAL */
         .lightbox-modal {
             position: fixed;
             top: 0;
@@ -559,83 +456,13 @@
         }
 
         .lightbox-content {
-            max-width: 1000px;
+            max-width: 900px;
             width: 100%;
-            max-height: 90vh;
             background: var(--surface-solid);
             border: 1px solid var(--border-hover);
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
+            padding: 60px;
             position: relative;
             box-shadow: 0 50px 100px rgba(0,0,0,0.9);
-            overflow: hidden;
-        }
-
-        .lightbox-visual-frame {
-            background: #000;
-            position: relative;
-            min-height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border-right: 1px solid var(--border-subtle);
-        }
-
-        /* Abstract Procedural Gallery Artwork Placeholder / Visual Representation */
-        .lightbox-artwork-canvas {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            background: radial-gradient(circle at 50% 50%, #1a1610 0%, #050505 80%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .lightbox-artwork-canvas::after {
-            content: '';
-            position: absolute;
-            width: 70%;
-            height: 70%;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            transform: rotate(45deg);
-            box-shadow: inset 0 0 50px rgba(212, 175, 55, 0.05);
-        }
-
-        .lightbox-artwork-inner {
-            text-align: center;
-            z-index: 2;
-            padding: 20px;
-        }
-
-        .lightbox-artwork-inner span {
-            font-size: 0.65rem;
-            letter-spacing: 0.3em;
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 8px;
-            opacity: 0.8;
-        }
-
-        .lightbox-artwork-inner h4 {
-            font-size: 0.9rem;
-            color: #fff;
-            font-weight: 300;
-            letter-spacing: 0.2em;
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .lightbox-info-pane {
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow-y: auto;
-            max-height: 90vh;
         }
 
         .lightbox-close {
@@ -645,69 +472,63 @@
             background: transparent;
             border: none;
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 0.75rem;
             cursor: pointer;
             letter-spacing: 0.2em;
             transition: color 0.3s;
-            z-index: 10;
         }
 
         .lightbox-close:hover { color: var(--accent-gold); }
 
+        .lightbox-visual-frame {
+            margin-bottom: 30px;
+            border: 1px solid var(--border-subtle);
+            background: #000;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .lightbox-artwork-inner span {
+            font-size: 0.65rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .lightbox-artwork-inner h4 {
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
         .lightbox-title {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--accent-gold);
             text-transform: uppercase;
             letter-spacing: 0.3em;
             margin-top: 0;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .lightbox-body {
-            font-size: 0.82rem;
+            font-size: 0.88rem;
             color: var(--text-primary);
             line-height: 2;
-            margin: 0 0 30px 0;
+            margin: 0 0 25px 0;
         }
 
         .lightbox-meta-tag {
-            font-size: 0.68rem;
+            font-size: 0.7rem;
             color: var(--text-secondary);
             border-top: 1px solid var(--border-subtle);
             padding-top: 20px;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-        }
-
-        footer {
-            text-align: center;
-            padding: 80px 20px;
-            color: var(--text-secondary);
-            font-size: 0.7rem;
-            border-top: 1px solid var(--border-subtle);
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-        }
-
-        footer a {
-            color: var(--accent-gold);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: all 0.3s;
-            margin-top: 15px;
-            display: inline-block;
-        }
-
-        footer a:hover { border-bottom-color: var(--accent-gold); }
-
-        @media (max-width: 900px) {
-            .lightbox-content { grid-template-columns: 1fr; max-height: 95vh; }
-            .lightbox-visual-frame { min-height: 250px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
-            .lightbox-info-pane { padding: 35px 25px; }
-            h1 { font-size: 2.2rem; }
-            .ledger-container, .feature-container, .guestbook-container, .gallery-section-container, .discourse-container { padding: 40px 25px; }
-            .guestbook-form { grid-template-columns: 1fr; }
-            .form-group.full, .submit-btn { grid-column: span 1; }
         }
     </style>
 </head>
@@ -733,130 +554,19 @@
 
     <main>
         <section>
-            <h2>Geographic Migration &bull; Three Decades Across Continents</h2>
-            <div class="feature-container">
-                <h3>An Organic Migration Across Civilizations and Cultures</h3>
-                <div class="feature-lead">
-                    An artistic journey is shaped by the places it inhabits. Over three decades, the work evolved organically across borders—moving from foundational beginnings to international capitals and European museum centers.
-                </div>
-                
-                <div class="trajectory-grid">
-                    <div class="trajectory-card" onclick="openLightbox('Phase I &bull; Foundations & Early Dialogues', 'Originating from the vibrant cultural pulse of Mumbai and expanding early cross-border dialogues through Dubai and Iran, establishing foundational artistic roots rooted in deep heritage and early explorations of identity.', 'Foundational Period &bull; Mumbai, Dubai, Iran')">
-                        <h4>Phase I &bull; Foundations & Early Dialogues</h4>
-                        <p>Originating from the vibrant cultural pulse of Mumbai and expanding early cross-border dialogues through Dubai and Iran, establishing foundational artistic roots.</p>
-                    </div>
-                    <div class="trajectory-card" onclick="openLightbox('Phase II &bull; Classical & Transatlantic Reach', 'Deepening the conceptual vocabulary within the historic resonance of Athens before bridging across the diverse landscapes of the United States and Canada, expanding cross-cultural and academic engagement.', 'Transatlantic Reach &bull; Athens, US, Canada')">
-                        <h4>Phase II &bull; Classical & Transatlantic Reach</h4>
-                        <p>Deepening the conceptual vocabulary within the historic resonance of Athens before bridging across the diverse landscapes of the United States and Canada.</p>
-                    </div>
-                    <div class="trajectory-card" onclick="openLightbox('Phase III &bull; Sovereign European Institutions', 'The culminating contemporary stretch &mdash; transforming industrial materials and collective memory into permanent institutional and museum presentations across Poland, Belgium, and Prague.', 'European Sovereign Archive &bull; Poland, Belgium, Prague')">
-                        <h4>Phase III &bull; Sovereign European Institutions</h4>
-                        <p>The culminating contemporary stretch—transforming industrial materials and collective memory into permanent institutional and museum presentations across Poland, Belgium, and Prague.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>The Four Pillars</h2>
-            <div class="pillars-grid">
-                <div class="pillar-card" onclick="openLightbox('Words Pillar', 'A global participatory text and archive project capturing human sentiment, linguistic DNA, and philosophical thought across international borders. Spanning hundreds of contributors across Ivy League universities, global museums, and sovereign institutions.', 'Global Participatory Codex')">
-                    <h3>Words</h3>
-                    <p>A global participatory text and archive project capturing human sentiment, linguistic DNA, and philosophical thought across international borders.</p>
-                    <div class="collaborator-list">
-                        <strong>Scope:</strong> Hundreds of contributors spanning Ivy League universities, global museums, indigenous councils, and sovereign institutions.
-                    </div>
-                </div>
-                <div class="pillar-card" onclick="openLightbox('Life of a Box Pillar', 'An immersive conceptual journey where international institutions preserve used industrial packaging transformed into monumental sculptures. Spanning global exhibition trajectories across Brussels, Poland, and premier European cultural centers.', 'Monumental Industrial Sculpture')">
-                    <h3>Life of a Box</h3>
-                    <p>An immersive conceptual journey where international institutions preserve used industrial packaging transformed into monumental sculptures.</p>
-                    <div class="collaborator-list">
-                        <strong>Status:</strong> Global exhibition trajectory spanning Brussels, Poland, and premier European institutions.
-                    </div>
-                </div>
-                <div class="pillar-card" onclick="openLightbox('Voices of the Land Pillar', 'Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations in collaboration with the National Gallery of Canada, Burke Museum, Na\'kuset Native Women\'s Shelter, and global universities.', 'First Nations Heritage & Archive')">
-                    <h3>Voices of the Land</h3>
-                    <p>Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations.</p>
-                    <div class="collaborator-list">
-                        <strong>Partners:</strong> National Gallery of Canada, Burke Museum, Na'kuset Native Women's Shelter, and global universities.
-                    </div>
-                </div>
-                <div class="pillar-card" onclick="openLightbox('Rooh-Nawaz Pillar', 'Deeply moving testimonies of human resilience in words and images, honoring the global Persian community through contributions from Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.', 'Persian Cultural Heritage & Testimonies')">
-                    <h3>روحنواز (Rooh-Nawaz)</h3>
-                    <p>Deeply moving testimonies of human resilience in words and images, honoring the global Persian community.</p>
-                    <div class="collaborator-list">
-                        <strong>Contributors:</strong> Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Critical Discourse &bull; Expert Commentary</h2>
-            <div class="discourse-container">
-                <h3>Independent Institutional & Media Perspectives</h3>
-                <div class="quote-grid">
-                    <div class="quote-card" onclick="openLightbox('Sustainability & Material Commentary', 'Examining the intersection of ecological responsibility and fine art, noting how industrial cardboard logistics are transformed into meaningful cultural artifacts.', 'Critical Review &bull; Sustainability & Ecology')">
-                        <p class="quote-text">"A market externality that rings your bell &mdash; transforming industrial packaging into profound sculptural commentary on modern waste and resource stewardship."</p>
-                        <span class="quote-author">Sustainability & Ecology Review</span>
-                    </div>
-                    <div class="quote-card" onclick="openLightbox('European Cultural Policy Review', 'Reflecting on the exhibition trajectory across European capitals, reviewers highlight the installation as a vital bridge between ecological awareness and creative expression.', 'Institutional Review &bull; Brussels')">
-                        <p class="quote-text">"Empowering Europe's creative industries by bridging ecological awareness with monumental fine art preservation across sovereign borders."</p>
-                        <span class="quote-author">European Cultural Review &bull; Brussels</span>
-                    </div>
-                    <div class="quote-card" onclick="openLightbox('Curatorial Archive Note', 'Examining the deep collaborative network uniting academic rigor with raw ancestral wisdom and collective human memory.', 'Curatorial Archive Board')">
-                        <p class="quote-text">"A living monument to human consciousness and collective memory, uniting academic rigor with raw ancestral wisdom."</p>
-                        <span class="quote-author">International Curatorial Board</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
             <h2>Curated Archive &bull; Milestone Exhibitions</h2>
-            <div class="gallery-section-container">
-                <h3>International Institutional Showcases</h3>
-                <div class="exhibit-grid">
-                    <div class="exhibit-card" onclick="openLightbox('Brussels &bull; Empowering Europe\'s Creative Industries', 'Presented in Brussels, Belgium, this installation positioned recycled industrial logistics as a cornerstone of environmental storytelling, uniting European cultural policy with monumental sculptural art.', 'Brussels Exhibition Showcase')">
-                        <span class="exhibit-location">Brussels &bull; Belgium</span>
-                        <h4>Empowering Europe's Creative Industries</h4>
-                        <p>Installation positioning industrial boxes as core pillars of international environmental storytelling.</p>
-                        <button class="exhibit-link-btn">View Portal</button>
-                    </div>
-                    <div class="exhibit-card" onclick="openLightbox('Museum of Papermaking &bull; Duszniki-Zdrój, Poland', 'An immersive exploration of material heritage held within historic Polish paper mills, transforming discarded packaging into high-concept artistic sculpture.', 'Museum of Papermaking &bull; Poland')">
-                        <span class="exhibit-location">Duszniki-Zdrój &bull; Poland</span>
-                        <h4>Museum of Papermaking</h4>
-                        <p>Exploring the material heritage of packaging transformed into high-concept artistic sculpture.</p>
-                        <button class="exhibit-link-btn">View Portal</button>
-                    </div>
-                    <div class="exhibit-card" onclick="openLightbox('Museum of West Bohemia &bull; Plzeň, Czech Republic', 'Exhibited within a historic church museum setting, bridging ecological recycling with spiritual renewal and human development.', 'Museum of West Bohemia &bull; Czech Republic')">
-                        <span class="exhibit-location">Plzeň &bull; Czech Republic</span>
-                        <h4>Museum of West Bohemia</h4>
-                        <p>Exhibited within a historic church museum setting, bridging ecological recycling with spiritual history.</p>
-                        <button class="exhibit-link-btn">View Portal</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Spatial Chapter &bull; Life of a Box</h2>
-            <div class="feature-container" onclick="openLightbox('Life of a Box &bull; Curatorial Note', 'Utilizing recycled cardboard packaging sourced from global operations, Life of a Box explores the shifting value of materials across social and cultural contexts. Bridging ecological responsibility with fine art preservation across premier international museums.', 'Life of a Box &bull; Monumental Art Installation')">
-                <h3>The Transformation of Industrial Logistics into Monumental Art</h3>
+            <div class="feature-container">
+                <h3>European Museum & Institutional Showcases</h3>
                 <div class="feature-lead">
-                    Utilizing recycled cardboard packaging sourced from global operations, <i>Life of a Box</i> explores the shifting value of materials across social and cultural contexts, bridging ecological responsibility with fine art preservation.
+                    Transforming industrial materials, raw packaging, and collective memory into permanent institutional and museum presentations across European capitals.
                 </div>
                 
                 <div class="trajectory-grid">
-                    <div class="trajectory-card">
-                        <h4>Brussels Expo</h4>
-                        <p>Brussels, Belgium. Featured in exhibitions positioning the installation as a core pillar of international environmental storytelling.</p>
-                    </div>
-                    <div class="trajectory-card">
+                    <div class="trajectory-card" onclick="openLightbox('Museum of Papermaking &bull; Duszniki-Zdrój, Poland', 'Duszniki-Zdrój, Poland. Exploring the material heritage of packaging transformed into high-concept artistic sculpture.', 'Museum of Papermaking &bull; Poland')">
                         <h4>Museum of Papermaking</h4>
                         <p>Duszniki-Zdrój, Poland. Exploring the material heritage of packaging transformed into high-concept artistic sculpture.</p>
                     </div>
-                    <div class="trajectory-card">
+                    <div class="trajectory-card" onclick="openLightbox('Museum of West Bohemia &bull; Plzeň, Czech Republic', 'Plzeň, Czech Republic. Exhibited within a historic church museum setting, bridging ecological recycling with spiritual and human development.', 'Museum of West Bohemia &bull; Czech Republic')">
                         <h4>Museum of West Bohemia</h4>
                         <p>Plzeň, Czech Republic. Exhibited within a historic church museum setting, bridging ecological recycling with spiritual and human development.</p>
                     </div>
@@ -1137,11 +847,11 @@
             guestForm.reset();
         });
 
-        function `escapeHTML`(str) {
+        function escapeHTML(str) {
             return str.replace(/[&<>'"]/g, 
                 tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
             );
         }
     </script>
 </body>
-</html>
+</html>                      
