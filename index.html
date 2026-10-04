@@ -7,8 +7,8 @@
     <style>
         :root {
             --canvas-bg: #030303;
-            --surface-glass: rgba(14, 14, 14, 0.75);
-            --surface-solid: #090909;
+            --surface-glass: rgba(14, 14, 14, 0.82);
+            --surface-solid: #080808;
             --text-primary: #f2f2f2;
             --text-secondary: #888888;
             --accent-gold: #d4af37;
@@ -17,11 +17,11 @@
             --border-hover: rgba(212, 175, 55, 0.35);
         }
 
-        /* Gallery Mode (Ultra-Minimalist Toggle State) */
+        /* Gallery Mode Toggle State */
         body.gallery-mode {
             --canvas-bg: #000000;
-            --surface-glass: rgba(5, 5, 5, 0.9);
-            --surface-solid: #030303;
+            --surface-glass: rgba(4, 4, 4, 0.92);
+            --surface-solid: #020202;
             --text-secondary: #666666;
         }
         body.gallery-mode header { opacity: 0.3; transition: opacity 0.5s ease; }
@@ -44,12 +44,10 @@
         @media (min-width: 1024px) {
             .custom-cursor { display: block; }
             body { cursor: none; }
-            a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn { cursor: none; }
+            a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn, .glimpse-trigger { cursor: none; }
         }
         
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--canvas-bg);
@@ -81,7 +79,6 @@
             z-index: 1000;
             transition: all 0.3s ease;
         }
-
         .mode-toggle:hover {
             border-color: var(--accent-gold);
             box-shadow: 0 0 20px var(--accent-gold-glow);
@@ -96,7 +93,6 @@
             white-space: nowrap;
             position: relative;
         }
-
         .ticker-track {
             display: inline-block;
             animation: marquee 35s linear infinite;
@@ -106,7 +102,6 @@
             text-transform: uppercase;
             opacity: 0.8;
         }
-
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -120,7 +115,6 @@
             margin: 0 auto;
             position: relative;
         }
-
         header::after {
             content: '';
             position: absolute;
@@ -141,7 +135,6 @@
             color: #ffffff;
             text-transform: uppercase;
         }
-
         .subtitle {
             font-size: 0.75rem;
             color: var(--accent-gold);
@@ -149,16 +142,14 @@
             letter-spacing: 0.35em;
             margin-bottom: 35px;
         }
-
         .contact-link {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.8rem;
             letter-spacing: 0.2em;
             border-bottom: 1px solid transparent;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s ease;
         }
-
         .contact-link:hover {
             color: var(--accent-gold);
             border-bottom-color: var(--accent-gold);
@@ -169,11 +160,9 @@
             margin: 0 auto;
             padding: 100px 20px;
         }
-
         section {
             margin-bottom: 140px;
         }
-
         h2 {
             font-size: 0.85rem;
             text-transform: uppercase;
@@ -185,46 +174,91 @@
             text-align: center;
         }
 
-        /* Painting Frame Integration */
-        .artwork-showcase {
-            margin-bottom: 60px;
-            border: 1px solid var(--border-subtle);
-            background: var(--surface-solid);
-            padding: 20px;
+        /* --- ATMOSPHERIC SHADOW & GLIMPSE INTEGRATION --- */
+        .ambient-section {
             position: relative;
+            padding: 70px 60px;
+            background-color: var(--surface-solid);
+            border: 1px solid var(--border-subtle);
             overflow: hidden;
             transition: border-color 0.4s ease;
         }
-        .artwork-showcase:hover {
+        .ambient-section:hover {
             border-color: var(--border-hover);
         }
-        .artwork-showcase img {
-            width: 100%;
-            height: auto;
-            max-height: 600px;
-            object-fit: cover;
-            display: block;
-            filter: contrast(110%) saturate(90%);
-            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
+        /* Low-opacity background shadow/glimpse watermark */
+        .ambient-bg-shadow {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.12;
+            mix-blend-mode: luminosity;
+            pointer-events: none;
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        .artwork-showcase:hover img {
-            transform: scale(1.02);
-        }
-        .artwork-caption {
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-top: 15px;
-            text-align: right;
+        .ambient-section:hover .ambient-bg-shadow {
+            opacity: 0.22;
+            transform: scale(1.03);
         }
 
+        .ambient-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        /* Interactive Glimpse Trigger Pill */
+        .glimpse-trigger-wrap {
+            margin-top: 30px;
+            display: inline-block;
+        }
+        .glimpse-btn {
+            background: var(--surface-glass);
+            border: 1px solid var(--border-subtle);
+            color: var(--accent-gold);
+            padding: 8px 18px;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .glimpse-btn:hover {
+            border-color: var(--accent-gold);
+            background: var(--surface-solid);
+            box-shadow: 0 0 15px var(--accent-gold-glow);
+        }
+
+        /* Hidden Glimpse Preview Drawer */
+        .glimpse-preview {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.4s ease;
+            opacity: 0;
+        }
+        .glimpse-preview.active {
+            max-height: 500px;
+            margin-top: 25px;
+            opacity: 1;
+        }
+        .glimpse-preview img {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            filter: contrast(105%) saturate(85%);
+            border: 1px solid var(--border-subtle);
+        }
+
+        /* Pillars Grid */
         .pillars-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 30px;
         }
-
         .pillar-card {
             background-color: var(--surface-glass);
             backdrop-filter: blur(16px);
@@ -234,7 +268,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .pillar-card::before {
             content: '';
             position: absolute;
@@ -246,18 +279,13 @@
             opacity: 0;
             transition: opacity 0.4s ease;
         }
-
         .pillar-card:hover {
             border-color: var(--border-hover);
             transform: translateY(-6px);
             background-color: var(--surface-solid);
             box-shadow: 0 30px 60px var(--accent-gold-glow);
         }
-
-        .pillar-card:hover::before {
-            opacity: 1;
-        }
-
+        .pillar-card:hover::before { opacity: 1; }
         .pillar-card h3 {
             font-size: 1rem;
             font-weight: 300;
@@ -267,14 +295,12 @@
             color: #ffffff;
             text-transform: uppercase;
         }
-
         .pillar-card p {
             color: var(--text-secondary);
             font-size: 0.85rem;
             margin: 0 0 30px 0;
             line-height: 1.9;
         }
-
         .collaborator-list {
             font-size: 0.7rem;
             color: var(--accent-gold);
@@ -285,64 +311,23 @@
             opacity: 0.85;
         }
 
-        /* Detailed Portal Feature Section */
-        .feature-container {
-            background-color: var(--surface-solid);
-            border: 1px solid var(--border-subtle);
-            padding: 70px 60px;
-            position: relative;
-            transition: border-color 0.4s ease;
-        }
-
-        .feature-container:hover {
-            border-color: rgba(212, 175, 55, 0.2);
-        }
-
-        .feature-container h3 {
-            font-size: 1.15rem;
-            font-weight: 300;
-            letter-spacing: 0.25em;
-            margin-top: 0;
-            color: #ffffff;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
-
-        .feature-lead {
-            color: var(--text-primary);
-            font-size: 1rem;
-            line-height: 1.9;
-            margin-bottom: 35px;
-            border-left: 2px solid var(--accent-gold);
-            padding-left: 25px;
-        }
-
-        .feature-body {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            line-height: 2;
-            margin-bottom: 45px;
-        }
-
+        /* Trajectory Grid & Features */
         .trajectory-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
-
         .trajectory-card {
             background-color: var(--surface-glass);
             border: 1px solid var(--border-subtle);
             padding: 35px;
             transition: transform 0.4s ease, border-color 0.4s ease;
         }
-
         .trajectory-card:hover {
             border-color: var(--border-hover);
             transform: translateY(-3px);
         }
-
         .trajectory-card h4 {
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -351,7 +336,6 @@
             margin-top: 0;
             margin-bottom: 15px;
         }
-
         .trajectory-card p {
             font-size: 0.8rem;
             color: var(--text-secondary);
@@ -360,32 +344,26 @@
         }
 
         .external-ref {
-            margin-top: 50px;
-            padding-top: 30px;
+            margin-top: 40px;
+            padding-top: 25px;
             border-top: 1px solid var(--border-subtle);
             font-size: 0.8rem;
             color: var(--text-secondary);
         }
-
         .external-ref a {
             color: var(--accent-gold);
             text-decoration: none;
             transition: opacity 0.3s ease;
         }
+        .external-ref a:hover { opacity: 0.7; text-decoration: underline; }
 
-        .external-ref a:hover {
-            opacity: 0.7;
-            text-decoration: underline;
-        }
-
-        /* Cinematic Ledger Styling with Interactive Filters */
+        /* Cinematic Ledger with Filters */
         .ledger-container {
             background-color: var(--surface-solid);
             border: 1px solid var(--border-subtle);
             padding: 70px 60px;
             position: relative;
         }
-
         .ledger-container h3 {
             font-size: 1rem;
             font-weight: 300;
@@ -396,7 +374,6 @@
             text-transform: uppercase;
             margin-bottom: 40px;
         }
-
         .filter-controls {
             display: flex;
             justify-content: center;
@@ -404,7 +381,6 @@
             margin-bottom: 50px;
             flex-wrap: wrap;
         }
-
         .filter-btn {
             background: var(--surface-glass);
             border: 1px solid var(--border-subtle);
@@ -415,27 +391,18 @@
             text-transform: uppercase;
             transition: all 0.3s ease;
         }
-
         .filter-btn.active, .filter-btn:hover {
             border-color: var(--accent-gold);
             color: var(--accent-gold);
             background: var(--surface-solid);
         }
-
         .ledger-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 40px;
         }
-
-        .ledger-category {
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-
-        .ledger-category.hidden {
-            display: none;
-        }
-
+        .ledger-category { transition: opacity 0.4s ease; }
+        .ledger-category.hidden { display: none; }
         .ledger-category h4 {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -446,7 +413,6 @@
             border-left: 2px solid var(--accent-gold);
             padding-left: 12px;
         }
-
         .ledger-category ul {
             list-style: none;
             padding: 0;
@@ -468,7 +434,8 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
-            .ledger-container, .feature-container { padding: 40px 25px; }
+            .ledger-container, .ambient-section { padding: 40px 25px; }
+            .ambient-bg-shadow { width: 100%; opacity: 0.08; }
         }
     </style>
 </head>
@@ -494,12 +461,6 @@
     </header>
 
     <main>
-        <!-- Primary Featured Artwork -->
-        <div class="artwork-showcase">
-            <img src="1_2.jpg" alt="Hesham Malik Major Work">
-            <div class="artwork-caption">Plate I &bull; Universal Resonance in Color and Form</div>
-        </div>
-
         <!-- The Four Pillars Overview -->
         <section>
             <h2>The Four Pillars</h2>
@@ -535,167 +496,191 @@
             </div>
         </section>
 
-        <!-- Life of a Box Chapter Feature -->
+        <!-- Ambient Chapter 1: Life of a Box (Background Shadow: painting 4_2.jpg, Glimpse: painting 3_2.jpg) -->
         <section>
-            <h2>Spatial Chapter &bull; Life of a Box</h2>
-            <div class="artwork-showcase">
-                <img src="4_2.jpg" alt="Life of a Box Installation">
-                <div class="artwork-caption">Plate II &bull; Life of a Box Monumental Interpretation</div>
-            </div>
-            <div class="feature-container">
-                <h3>The Transformation of Industrial Logistics into Monumental Art</h3>
-                <div class="feature-lead">
-                    Utilizing recycled cardboard boxes sourced from industrial operations across Germany, France, England, Norway, and the United States, <i>Life of a Box</i> explores the shifting value of materials across social and cultural contexts. Sponsored by the Ministry of the Environment, the project bridges ecological responsibility with fine art preservation.
-                </div>
-                
-                <div class="trajectory-grid">
-                    <div class="trajectory-card">
-                        <h4>Brussels Expo</h4>
-                        <p>Brussels, Belgium. Featured in "Empowering Europe's Creative Industries," positioning the installation as a core pillar of international environmental storytelling.</p>
+            <div class="ambient-section">
+                <div class="ambient-bg-shadow" style="background-image: url('4_2.jpg');"></div>
+                <div class="ambient-content">
+                    <h2>Spatial Chapter &bull; Life of a Box</h2>
+                    <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">The Transformation of Industrial Logistics</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 25px;">
+                        Utilizing recycled cardboard boxes sourced from industrial operations across Germany, France, England, Norway, and the United States, <i>Life of a Box</i> explores the shifting value of materials across social and cultural contexts. Sponsored by the Ministry of Environment, bridging ecological responsibility with fine art.
+                    </p>
+                    
+                    <div class="glimpse-trigger-wrap">
+                        <button class="glimpse-btn" onclick="toggleGlimpse('glimpse-box')">Reveal Visual Glimpse</button>
                     </div>
-                    <div class="trajectory-card">
-                        <h4>Museum of Papermaking</h4>
-                        <p>Duszniki-Zdrój, Poland. Exploring the material heritage of packaging transformed into high-concept artistic sculpture.</p>
-                    </div>
-                    <div class="trajectory-card">
-                        <h4>Museum of West Bohemia</h4>
-                        <p>Plzeň, Czech Republic. Exhibited within a historic church museum setting, bridging ecological recycling with spiritual and human development.</p>
-                    </div>
-                </div>
 
-                <div class="external-ref">
-                    <strong>Critical Discourse:</strong> Recognized and analyzed internationally, including recent commentary by global sustainability authority John Elkington: 
-                    <a href="https://johnelkington.substack.com/p/a-market-externality-that-rings-your" target="_blank">"A Market Externality That Rings Your..." (Substack)</a>.
+                    <div id="glimpse-box" class="glimpse-preview">
+                        <img src="3_2.jpg" alt="Life of a Box Glimpse">
+                    </div>
+                </div>
+            </div>
+
+            <div class="trajectory-grid" style="margin-top: 30px;">
+                <div class="trajectory-card">
+                    <h4>Brussels Expo</h4>
+                    <p>Brussels, Belgium. Featured in "Empowering Europe's Creative Industries," positioning installation as core environmental storytelling.</p>
+                </div>
+                <div class="trajectory-card">
+                    <h4>Museum of Papermaking</h4>
+                    <p>Duszniki-Zdrój, Poland. Exploring the material heritage of packaging transformed into high-concept artistic sculpture.</p>
+                </div>
+                <div class="trajectory-card">
+                    <h4>Museum of West Bohemia</h4>
+                    <p>Plzeň, Czech Republic. Exhibited within historic museum setting, bridging ecological recycling with human development.</p>
+                </div>
+            </div>
+
+            <div class="external-ref">
+                <strong>Critical Discourse:</strong> Recognized and analyzed internationally, including commentary by global sustainability authority John Elkington: 
+                <a href="https://johnelkington.substack.com/p/a-market-externality-that-rings-your" target="_blank">"A Market Externality That Rings Your..." (Substack)</a>.
+            </div>
+        </section>
+
+        <!-- Ambient Chapter 2: Voices of the Land (Background Shadow: painting 2_2.JPG, Glimpse: painting 7_2.JPG & 8_2.jpg) -->
+        <section>
+            <div class="ambient-section">
+                <div class="ambient-bg-shadow" style="background-image: url('2_2.JPG');"></div>
+                <div class="ambient-content">
+                    <h2>Spatial Chapter &bull; Voices of the Land</h2>
+                    <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">An Ancient Lineage of Wisdom</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 25px;">
+                        Honoring and preserving an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge and language with the global community, approached with utmost care, reverence, and cultural sensitivity.
+                    </p>
+                    
+                    <div class="glimpse-trigger-wrap">
+                        <button class="glimpse-btn" onclick="toggleGlimpse('glimpse-land')">Reveal Visual Glimpse</button>
+                    </div>
+
+                    <div id="glimpse-land" class="glimpse-preview">
+                        <img src="7_2.JPG" alt="Voices of the Land Glimpse">
+                    </div>
+                </div>
+            </div>
+
+            <div class="trajectory-grid" style="margin-top: 30px;">
+                <div class="trajectory-card">
+                    <h4>Museums & Archives</h4>
+                    <p>National Gallery of Canada, Burke Museum (Seattle), and regional cultural repositories preserving sacred heritage.</p>
+                </div>
+                <div class="trajectory-card">
+                    <h4>Community Guardians</h4>
+                    <p>Na’kuset – Native Women’s Shelter of Montreal, ensuring grounded community representation and integrity.</p>
+                </div>
+                <div class="trajectory-card">
+                    <h4>Global Research</h4>
+                    <p>Endangered Languages Project, Harvard, University of Auckland, and international research universities.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Voices of the Land Chapter Feature -->
+        <!-- Ambient Chapter 3: Rooh-Nawaz (Background Shadow: painting 10_2.JPG, Glimpse: painting 1_2.jpg & 9_2.jpg) -->
         <section>
-            <h2>Spatial Chapter &bull; Voices of the Land</h2>
-            <div class="artwork-showcase">
-                <img src="2_2.JPG" alt="Voices of the Land Visual Representation">
-                <div class="artwork-caption">Plate III &bull; Voices of the Land Fragment and Lineage</div>
-            </div>
-            <div class="feature-container">
-                <h3>An Ancient Lineage of Wisdom Shared with Grace and Integrity</h3>
-                <div class="feature-lead">
-                    The primary objective of the First Nations project is to honor and preserve an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge and language with the global community, approached with the utmost care, reverence, and cultural sensitivity.
-                </div>
-                
-                <div class="feature-body">
-                    By bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations—collaborating with and drawing from institutions and advocates such as Harvard University, National Gallery of Canada, University of Wisconsin – Milwaukee USA, University of Auckland – New Zealand, University of Queensland Art Museum, Na’kuset – Native Women’s Shelter of Montreal, Burke Museum – Seattle, Endangered Languages Project, National University of Samoa, Swarthmore College US, Trent University, Arizona State University, University of Alberta – Canada, University of Manitoba, and many others—the artist creates a unique and classic bridge between timeless ancestral knowledge and the modern world.
-                </div>
+            <div class="ambient-section">
+                <div class="ambient-bg-shadow" style="background-image: url('10_2.JPG');"></div>
+                <div class="ambient-content">
+                    <h2>Spatial Chapter &bull; روح‌نواز (Rooh-Nawaz)</h2>
+                    <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">Testimonies of Human Resilience</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 25px;">
+                        An artistic exploration of the global Persian community, delving into a diverse array of responses towards challenging life circumstances and experiences that are often deemed sensitive to discuss.
+                    </p>
+                    
+                    <div class="glimpse-trigger-wrap">
+                        <button class="glimpse-btn" onclick="toggleGlimpse('glimpse-rooh')">Reveal Visual Glimpse</button>
+                    </div>
 
-                <div class="trajectory-grid">
-                    <div class="trajectory-card">
-                        <h4>Museums & Cultural Archives</h4>
-                        <p>National Gallery of Canada, Burke Museum (Seattle), and regional cultural repositories preserving sacred heritage.</p>
+                    <div id="glimpse-rooh" class="glimpse-preview">
+                        <img src="1_2.jpg" alt="Rooh-Nawaz Glimpse">
                     </div>
-                    <div class="trajectory-card">
-                        <h4>Community Guardians</h4>
-                        <p>Na’kuset – Native Women’s Shelter of Montreal, ensuring grounded community representation and integrity.</p>
-                    </div>
-                    <div class="trajectory-card">
-                        <h4>Global Research Network</h4>
-                        <p>Endangered Languages Project, Harvard, University of Auckland, University of Alberta, and international research universities.</p>
-                    </div>
+                </div>
+            </div>
+
+            <div class="trajectory-grid" style="margin-top: 30px;">
+                <div class="trajectory-card">
+                    <h4>Academic Institutes</h4>
+                    <p>Jordan Center for Persian Studies, MacMillan Center, Uppsala University, and Göttingen University.</p>
+                </div>
+                <div class="trajectory-card">
+                    <h4>Art & Research</h4>
+                    <p>The Courtauld Institute of Art, Harvard, Yale, and international Persian cultural networks.</p>
+                </div>
+                <div class="trajectory-card">
+                    <h4>Living Archive</h4>
+                    <p>Transforming complex human experiences and collective memory into a unified, monumental visual expression.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Rooh-Nawaz Chapter Feature -->
-        <section>
-            <h2>Spatial Chapter &bull; روح‌نواز (Rooh-Nawaz)</h2>
-            <div class="artwork-showcase">
-                <img src="10.JPG" alt="Rooh-Nawaz Visual Composition">
-                <div class="artwork-caption">Plate IV &bull; روح‌نواز (Rooh-Nawaz) Cultural Memory</div>
-            </div>
-            <div class="feature-container">
-                <h3>Deeply Moving Testimonies of Human Resilience in Words and Images</h3>
-                <div class="feature-lead">
-                    The project titled “روح‌نواز” serves as an artistic exploration of the global Persian community, delving into a diverse array of responses towards challenging life circumstances and experiences that are often deemed sensitive to discuss.
-                </div>
-                
-                <div class="feature-body">
-                    An ethnographic and visual art initiative honoring Persian cultural heritage and memory by collecting contributions from scholars, educators, and leaders around the world. By pooling contributions donated from institutions as diverse as Harvard University, Yale University, University of Texas at Austin, Uppsala University Sweden, University of California, Nevada State University, Jordan Center for Persian Studies and Culture, The Courtauld Institute of Art – London, Göttingen University, Central Asia Initiative, MacMillan Center for International & Area Studies, and many others, a singular expression of shared heritage is crafted.
-                    <br><br>
-                    This initiative transforms disparate linguistic and cultural fragments into a unified visual narrative. It stands as a living archive for cultural preservation and a transformative force in the art world, presenting Persian heritage not as a distant relic, but as a living, vibrant composition born from the power of a single word, phrase, or memory.
-                </div>
-
-                <div class="trajectory-grid">
-                    <div class="trajectory-card">
-                        <h4>Global Academic Institutes</h4>
-                        <p>Jordan Center for Persian Studies, MacMillan Center, Uppsala University, and Göttingen University.</p>
-                    </div>
-                    <div class="trajectory-card">
-                        <h4>Art & Research Centers</h4>
-                        <p>The Courtauld Institute of Art, Harvard, Yale, and international Persian cultural networks.</p>
-                    </div>
-                    <div class="trajectory-card">
-                        <h4>Living Archive</h4>
-                        <p>Transforming complex human experiences and collective memory into a unified, monumental visual expression.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Detailed Words Ledger Section with Filtering -->
+        <!-- Additional subtle atmospheric glimpses utilizing remaining paintings (5_2, 6_2, 9_2) -->
         <section>
             <h2>Archive Provenance &bull; Words Contributors</h2>
-            <div class="ledger-container">
-                <h3>Participating Institutional & Cultural DNA</h3>
-                
-                <div class="filter-controls">
-                    <button class="filter-btn active" data-filter="all">All Networks</button>
-                    <button class="filter-btn" data-filter="harvard">Harvard</button>
-                    <button class="filter-btn" data-filter="universities">Global Universities</button>
-                    <button class="filter-btn" data-filter="museums">Museums & Galleries</button>
-                    <button class="filter-btn" data-filter="sovereignties">NGOs & Sovereignties</button>
-                </div>
+            <div class="ledger-container" style="position: relative; overflow: hidden;">
+                <!-- Atmospheric background watermark shadow using painting 5_2.jpg -->
+                <div class="ambient-bg-shadow" style="background-image: url('5_2.jpg'); width: 30%;"></div>
 
-                <div class="ledger-grid">
-                    <div class="ledger-category" data-category="harvard">
-                        <h4>Harvard University Network</h4>
-                        <ul>
-                            &bull; Office of the President Emeritus<br>
-                            &bull; Deans of Harvard College & GSD<br>
-                            &bull; Law, Divinity, & Public Health Schools<br>
-                            &bull; Faculty of Arts & Sciences / East Asian Languages<br>
-                            &bull; Weatherhead Center & Malcolm Wiener Center<br>
-                            &bull; Harvard Forest & Children's Hospital
-                        </ul>
+                <div style="position: relative; z-index: 2;">
+                    <h3>Participating Institutional & Cultural DNA</h3>
+                    
+                    <div class="filter-controls">
+                        <button class="filter-btn active" data-filter="all">All Networks</button>
+                        <button class="filter-btn" data-filter="harvard">Harvard</button>
+                        <button class="filter-btn" data-filter="universities">Global Universities</button>
+                        <button class="filter-btn" data-filter="museums">Museums & Galleries</button>
+                        <button class="filter-btn" data-filter="sovereignties">NGOs & Sovereignties</button>
                     </div>
-                    <div class="ledger-category" data-category="universities">
-                        <h4>Global Universities</h4>
-                        <ul>
-                            &bull; Oxford & Cambridge (UK)<br>
-                            &bull; Stanford, MIT, Princeton, Yale, Columbia, Chicago<br>
-                            &bull; Sorbonne University (France)<br>
-                            &bull; University of Melbourne & Sydney (Australia)<br>
-                            &bull; Charles University & Masaryk University (CZ)<br>
-                            &bull; University of Tokyo, Toronto, Vienna, & Beyond
-                        </ul>
+
+                    <div class="ledger-grid">
+                        <div class="ledger-category" data-category="harvard">
+                            <h4>Harvard University Network</h4>
+                            <ul>
+                                &bull; Office of the President Emeritus<br>
+                                &bull; Deans of Harvard College & GSD<br>
+                                &bull; Law, Divinity, & Public Health Schools<br>
+                                &bull; Faculty of Arts & Sciences / East Asian Languages<br>
+                                &bull; Weatherhead Center & Malcolm Wiener Center<br>
+                                &bull; Harvard Forest & Children's Hospital
+                            </ul>
+                        </div>
+                        <div class="ledger-category" data-category="universities">
+                            <h4>Global Universities</h4>
+                            <ul>
+                                &bull; Oxford & Cambridge (UK)<br>
+                                &bull; Stanford, MIT, Princeton, Yale, Columbia, Chicago<br>
+                                &bull; Sorbonne University (France)<br>
+                                &bull; University of Melbourne & Sydney (Australia)<br>
+                                &bull; Charles University & Masaryk University (CZ)<br>
+                                &bull; University of Tokyo, Toronto, Vienna, & Beyond
+                            </ul>
+                        </div>
+                        <div class="ledger-category" data-category="museums">
+                            <h4>Museums & Galleries</h4>
+                            <ul>
+                                &bull; TATE London & National Galleries Scotland<br>
+                                &bull; National Gallery of Canada<br>
+                                &bull; Ludwig Museum (Hungary) & Slovak National Gallery<br>
+                                &bull; Academy of Fine Arts Vienna & Stuttgart<br>
+                                &bull; Regional and Municipal Museums across Europe
+                            </ul>
+                        </div>
+                        <div class="ledger-category" data-category="sovereignties">
+                            <h4>Global NGOs & Sovereignties</h4>
+                            <ul>
+                                &bull; Greenpeace International & Jane Goodall Institute<br>
+                                &bull; Svalbard Global Seed Vault (Norway)<br>
+                                &bull; Equal Justice Initiative (Bryan Stevenson)<br>
+                                &bull; Greenland National Museum & Avannaata Government<br>
+                                &bull; Palestinian Cultural & Freedom Theatre Initiatives
+                            </ul>
+                        </div>
                     </div>
-                    <div class="ledger-category" data-category="museums">
-                        <h4>Museums & Galleries</h4>
-                        <ul>
-                            &bull; TATE London & National Galleries Scotland<br>
-                            &bull; National Gallery of Canada<br>
-                            &bull; Ludwig Museum (Hungary) & Slovak National Gallery<br>
-                            &bull; Academy of Fine Arts Vienna & Stuttgart<br>
-                            &bull; Regional and Municipal Museums across Europe
-                        </ul>
+
+                    <!-- Glimpse button for extra hidden art integration -->
+                    <div style="text-align: center; margin-top: 40px;">
+                        <button class="glimpse-btn" onclick="toggleGlimpse('glimpse-archive')">Reveal Archive Glimpse (Plate VI)</button>
                     </div>
-                    <div class="ledger-category" data-category="sovereignties">
-                        <h4>Global NGOs & Sovereignties</h4>
-                        <ul>
-                            &bull; Greenpeace International & Jane Goodall Institute<br>
-                            &bull; Svalbard Global Seed Vault (Norway)<br>
-                            &bull; Equal Justice Initiative (Bryan Stevenson)<br>
-                            &bull; Greenland National Museum & Avannaata Government<br>
-                            &bull; Palestinian Cultural & Freedom Theatre Initiatives
-                        </ul>
+                    <div id="glimpse-archive" class="glimpse-preview" style="max-width: 600px; margin: 0 auto;">
+                        <img src="6_2.jpg" alt="Archive Glimpse">
                     </div>
                 </div>
             </div>
@@ -714,7 +699,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn').forEach(item => {
+        document.querySelectorAll('a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn, .glimpse-btn').forEach(item => {
             item.addEventListener('mouseenter', () => {
                 cursor.style.width = '48px';
                 cursor.style.height = '48px';
@@ -737,6 +722,12 @@
                 modeToggle.textContent = 'Dark Gallery Mode';
             }
         });
+
+        // Glimpse Reveal Drawer Toggle Function
+        function toggleGlimpse(id) {
+            const preview = document.getElementById(id);
+            preview.classList.toggle('active');
+        }
 
         // Archive DNA Filtering Script
         const filterBtns = document.querySelectorAll('.filter-btn');
