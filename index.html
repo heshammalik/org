@@ -323,25 +323,6 @@
             line-height: 1.8;
         }
 
-        .external-ref {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-subtle);
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .external-ref a {
-            color: var(--accent-gold);
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .external-ref a:hover {
-            opacity: 0.7;
-            text-decoration: underline;
-        }
-
         /* Critical Discourse Quotation Stream */
         .discourse-container {
             background-color: var(--surface-solid);
@@ -770,7 +751,7 @@
     <!-- Custom Coordinate Cursor -->
     <div class="custom-cursor" id="cursor"></div>
 
-    <!-- Floating Controls (Audio Button Removed entirely) -->
+    <!-- Floating Controls -->
     <div class="controls-group">
         <button class="control-btn" id="modeToggle">Dark Gallery</button>
     </div>
@@ -792,22 +773,22 @@
         <!-- Transcontinental Migration Section with Distinct Phase Descriptions -->
         <section>
             <h2>Geographic Migration &bull; Three Decades Across Continents</h2>
-            <div class="feature-container" onclick="openLightbox('Transcontinental Migration', 'An organic artistic migration spanning over three decades—beginning in Mumbai, expanding through Dubai and Iran, moving into the classical heritage of Athens, bridging across the United States and Canada, and culminating in the historic museum and institutional centers of Poland, Belgium, and Prague.')">
+            <div class="feature-container">
                 <h3>An Organic Migration Across Civilizations and Cultures</h3>
                 <div class="feature-lead">
                     An artistic journey is shaped by the places it inhabits. Over three decades, the work evolved organically across borders—moving from foundational beginnings to international capitals and European museum centers.
                 </div>
                 
                 <div class="trajectory-grid">
-                    <div class="trajectory-card">
+                    <div class="trajectory-card" onclick="openLightbox('Phase I &bull; Foundations & Early Dialogues', 'Originating from the vibrant cultural pulse of Mumbai and expanding early cross-border dialogues through Dubai and Iran, establishing foundational artistic roots rooted in deep heritage and early explorations of identity.')">
                         <h4>Phase I &bull; Foundations & Early Dialogues</h4>
                         <p>Originating from the vibrant cultural pulse of Mumbai and expanding early cross-border dialogues through Dubai and Iran, establishing foundational artistic roots.</p>
                     </div>
-                    <div class="trajectory-card">
+                    <div class="trajectory-card" onclick="openLightbox('Phase II &bull; Classical & Transatlantic Reach', 'Deepening the conceptual vocabulary within the historic resonance of Athens before bridging across the diverse landscapes of the United States and Canada, expanding cross-cultural and academic engagement.')">
                         <h4>Phase II &bull; Classical & Transatlantic Reach</h4>
                         <p>Deepening the conceptual vocabulary within the historic resonance of Athens before bridging across the diverse landscapes of the United States and Canada.</p>
                     </div>
-                    <div class="trajectory-card">
+                    <div class="trajectory-card" onclick="openLightbox('Phase III &bull; Sovereign European Institutions', 'The culminating contemporary stretch &mdash; transforming industrial materials and collective memory into permanent institutional and museum presentations across Poland, Belgium, and Prague.')">
                         <h4>Phase III &bull; Sovereign European Institutions</h4>
                         <p>The culminating contemporary stretch—transforming industrial materials and collective memory into permanent institutional and museum presentations across Poland, Belgium, and Prague.</p>
                     </div>
