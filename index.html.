@@ -3,66 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hesham Malik</title>
+    <title>Hesham Malik | Planetary Codex</title>
     <style>
+        :root {
+            --bg-color: #080808;
+            --surface-color: #121212;
+            --text-primary: #f0f0f0;
+            --text-secondary: #999999;
+            --accent-color: #d4af37;
+            --border-color: #222222;
+        }
         body {
-            background-color: #0b0b0b;
-            color: #e0e0e0;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            justify-content: center;
-            align-items: center;
-            letter-spacing: 0.05em;
+            line-height: 1.6;
+            letter-spacing: 0.03em;
         }
-        .container {
-            max-width: 600px;
-            padding: 40px;
+        header {
+            padding: 80px 20px 40px;
             text-align: center;
+            border-bottom: 1px solid var(--border-color);
         }
         h1 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 300;
-            margin-bottom: 10px;
             letter-spacing: 0.15em;
-            color: #ffffff;
+            margin: 0 0 10px 0;
         }
         .subtitle {
             font-size: 0.85rem;
-            color: #888888;
+            color: var(--text-secondary);
             text-transform: uppercase;
-            margin-bottom: 40px;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.25em;
+            margin-bottom: 20px;
         }
-        .pillars {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            font-size: 0.95rem;
-        }
-        .pillar-item {
-            color: #b0b0b0;
+        .contact-link {
+            color: var(--accent-color);
             text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        section {
+            margin-bottom: 80px;
+        }
+        h2 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .pillar-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            transition: border-color 0.3s ease;
+        }
+        .pillar-card:hover {
+            border-color: var(--accent-color);
+        }
+        .pillar-card h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 15px;
+            letter-spacing: 0.05em;
+        }
+        .pillar-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        .ecosystem-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        .ecosystem-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.1em;
             transition: color 0.3s ease;
         }
-        .pillar-item:hover {
-            color: #ffffff;
+        .ecosystem-links a:hover {
+            color: var(--text-primary);
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border-color);
+            letter-spacing: 0.1em;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <header>
         <h1>Hesham Malik</h1>
-        <div class="subtitle">Planetary Codex</div>
-        <div class="pillars">
-            <div class="pillar-item">Words</div>
-            <div class="pillar-item">Life of a Box</div>
-            <div class="pillar-item">Voices of the Land</div>
-            <div class="pillar-item">روح‌نواز (Rooh-Nawaz)</div>
-        </div>
-    </div>
+        <div class="subtitle">Planetary Codex &bull; Independent Institutional Archive</div>
+        <a href="mailto:heshammalik@proton.me" class="contact-link">heshammalik@proton.me</a>
+    </header>
+
+    <main>
+        <section>
+            <h2>The Four Pillars</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <h3>Words</h3>
+                    <p>A global participatory text and archive project spanning international borders, capturing human sentiment across cultures and institutions.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Life of a Box</h3>
+                    <p>An immersive conceptual journey crossing municipal and international institutional spaces, exploring containment, narrative, and movement.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Voices of the Land</h3>
+                    <p>An ecological and cultural dialogue connecting indigenous heritage preservation with contemporary spatial art.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>روح‌نواز (Rooh-Nawaz)</h3>
+                    <p>An exploration of resonance, heritage, and the intangible spirit translated into monumental visual execution.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Ecosystem Nodes</h2>
+            <div class="ecosystem-links">
+                <a href="https://tmoci.org" target="_blank">TMOCI.ORG</a>
+                <a href="https://indexanomalies.org" target="_blank">INDEXANOMALIES.ORG</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Hesham Malik. All Rights Reserved. Independent Sovereign Archive.
+    </footer>
+
 </body>
 </html>
