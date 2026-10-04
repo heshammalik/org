@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesham Malik</title>
+    <style>
+        body {
+            background-color: #0b0b0b;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            letter-spacing: 0.05em;
+        }
+        .container {
+            max-width: 600px;
+            padding: 40px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: 0.15em;
+            color: #ffffff;
+        }
+        .subtitle {
+            font-size: 0.85rem;
+            color: #888888;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            letter-spacing: 0.2em;
+        }
+        .pillars {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-size: 0.95rem;
+        }
+        .pillar-item {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .pillar-item:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hesham Malik</h1>
+        <div class="subtitle">Planetary Codex</div>
+        <div class="pillars">
+            <div class="pillar-item">Words</div>
+            <div class="pillar-item">Life of a Box</div>
+            <div class="pillar-item">Voices of the Land</div>
+            <div class="pillar-item">روح‌نواز (Rooh-Nawaz)</div>
+        </div>
+    </div>
+</body>
+</html>
