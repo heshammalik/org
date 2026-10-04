@@ -44,7 +44,7 @@
         @media (min-width: 1024px) {
             .custom-cursor { display: block; }
             body { cursor: none; }
-            a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn, .glimpse-trigger { cursor: none; }
+            a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn, .glimpse-btn { cursor: none; }
         }
         
         html { scroll-behavior: smooth; }
@@ -187,7 +187,7 @@
             border-color: var(--border-hover);
         }
 
-        /* Low-opacity background shadow/glimpse watermark */
+        /* Low-opacity background shadow watermark */
         .ambient-bg-shadow {
             position: absolute;
             top: 0;
@@ -233,21 +233,20 @@
             box-shadow: 0 0 15px var(--accent-gold-glow);
         }
 
-        /* Hidden Glimpse Preview Drawer */
+        /* Working Glimpse Preview Drawer */
         .glimpse-preview {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.4s ease;
+            display: none;
+            margin-top: 25px;
             opacity: 0;
+            transition: opacity 0.5s ease;
         }
         .glimpse-preview.active {
-            max-height: 500px;
-            margin-top: 25px;
+            display: block;
             opacity: 1;
         }
         .glimpse-preview img {
             width: 100%;
-            max-height: 380px;
+            max-height: 420px;
             object-fit: cover;
             filter: contrast(105%) saturate(85%);
             border: 1px solid var(--border-subtle);
@@ -496,7 +495,7 @@
             </div>
         </section>
 
-        <!-- Ambient Chapter 1: Life of a Box (Background Shadow: painting 4_2.jpg, Glimpse: painting 3_2.jpg) -->
+        <!-- Ambient Chapter 1: Life of a Box -->
         <section>
             <div class="ambient-section">
                 <div class="ambient-bg-shadow" style="background-image: url('4_2.jpg');"></div>
@@ -508,7 +507,7 @@
                     </p>
                     
                     <div class="glimpse-trigger-wrap">
-                        <button class="glimpse-btn" onclick="toggleGlimpse('glimpse-box')">Reveal Visual Glimpse</button>
+                        <button class="glimpse-btn" type="button" onclick="toggleGlimpse('glimpse-box', this)">Reveal Visual Glimpse</button>
                     </div>
 
                     <div id="glimpse-box" class="glimpse-preview">
@@ -538,7 +537,7 @@
             </div>
         </section>
 
-        <!-- Ambient Chapter 2: Voices of the Land (Background Shadow: painting 2_2.JPG, Glimpse: painting 7_2.JPG & 8_2.jpg) -->
+        <!-- Ambient Chapter 2: Voices of the Land -->
         <section>
             <div class="ambient-section">
                 <div class="ambient-bg-shadow" style="background-image: url('2_2.JPG');"></div>
@@ -550,7 +549,7 @@
                     </p>
                     
                     <div class="glimpse-trigger-wrap">
-                        <button class="glimpse-btn" onclick="toggleGlimpse('glimpse-land')">Reveal Visual Glimpse</button>
+                        <button class="glimpse-btn" type="button" onclick="toggleGlimpse('glimpse-land', this)">Reveal Visual Glimpse</button>
                     </div>
 
                     <div id="glimpse-land" class="glimpse-preview">
@@ -575,7 +574,7 @@
             </div>
         </section>
 
-        <!-- Ambient Chapter 3: Rooh-Nawaz (Background Shadow: painting 10_2.JPG, Glimpse: painting 1_2.jpg & 9_2.jpg) -->
+        <!-- Ambient Chapter 3: Rooh-Nawaz -->
         <section>
             <div class="ambient-section">
                 <div class="ambient-bg-shadow" style="background-image: url('10_2.JPG');"></div>
@@ -587,7 +586,7 @@
                     </p>
                     
                     <div class="glimpse-trigger-wrap">
-                        <button class="glimpse-btn" onclick="toggleGlimpse('glimpse-rooh')">Reveal Visual Glimpse</button>
+                        <button class="glimpse-btn" type="button" onclick="toggleGlimpse('glimpse-rooh', this)">Reveal Visual Glimpse</button>
                     </div>
 
                     <div id="glimpse-rooh" class="glimpse-preview">
@@ -612,11 +611,10 @@
             </div>
         </section>
 
-        <!-- Additional subtle atmospheric glimpses utilizing remaining paintings (5_2, 6_2, 9_2) -->
+        <!-- Archive Ledger Section with Additional Glimpse -->
         <section>
             <h2>Archive Provenance &bull; Words Contributors</h2>
             <div class="ledger-container" style="position: relative; overflow: hidden;">
-                <!-- Atmospheric background watermark shadow using painting 5_2.jpg -->
                 <div class="ambient-bg-shadow" style="background-image: url('5_2.jpg'); width: 30%;"></div>
 
                 <div style="position: relative; z-index: 2;">
@@ -675,9 +673,8 @@
                         </div>
                     </div>
 
-                    <!-- Glimpse button for extra hidden art integration -->
                     <div style="text-align: center; margin-top: 40px;">
-                        <button class="glimpse-btn" onclick="toggleGlimpse('glimpse-archive')">Reveal Archive Glimpse (Plate VI)</button>
+                        <button class="glimpse-btn" type="button" onclick="toggleGlimpse('glimpse-archive', this)">Reveal Archive Glimpse (Plate VI)</button>
                     </div>
                     <div id="glimpse-archive" class="glimpse-preview" style="max-width: 600px; margin: 0 auto;">
                         <img src="6_2.jpg" alt="Archive Glimpse">
@@ -723,10 +720,16 @@
             }
         });
 
-        // Glimpse Reveal Drawer Toggle Function
-        function toggleGlimpse(id) {
+        // Working Glimpse Reveal Toggle Function
+        function toggleGlimpse(id, btn) {
             const preview = document.getElementById(id);
-            preview.classList.toggle('active');
+            if (preview.classList.contains('active')) {
+                preview.classList.remove('active');
+                btn.textContent = 'Reveal Visual Glimpse';
+            } else {
+                preview.classList.add('active');
+                btn.textContent = 'Hide Visual Glimpse';
+            }
         }
 
         // Archive DNA Filtering Script
