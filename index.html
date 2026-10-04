@@ -44,7 +44,7 @@
         @media (min-width: 1024px) {
             .custom-cursor { display: block; }
             body { cursor: none; }
-            a, button, input, textarea, .pillar-card, .trajectory-card, .control-btn, .filter-btn, .exhibit-card { cursor: none; }
+            a, button, input, textarea, .pillar-card, .trajectory-card, .control-btn, .filter-btn, .exhibit-card, .quote-card { cursor: none; }
         }
         
         html {
@@ -347,6 +347,64 @@
         .external-ref a:hover {
             opacity: 0.7;
             text-decoration: underline;
+        }
+
+        /* Critical Discourse Quotation Stream */
+        .discourse-container {
+            background-color: var(--surface-solid);
+            border: 1px solid var(--border-subtle);
+            padding: 70px 60px;
+        }
+
+        .discourse-container h3 {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            margin-top: 0;
+            color: #ffffff;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .quote-card {
+            background: var(--surface-glass);
+            border: 1px solid var(--border-subtle);
+            padding: 40px;
+            position: relative;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px var(--accent-gold-glow);
+        }
+
+        .quote-text {
+            font-size: 0.88rem;
+            color: var(--text-primary);
+            font-style: italic;
+            line-height: 1.9;
+            margin: 0 0 25px 0;
+        }
+
+        .quote-author {
+            font-size: 0.7rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 15px;
         }
 
         /* Curated Exhibition Visual Gallery */
@@ -695,7 +753,7 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
-            .ledger-container, .feature-container, .lightbox-content, .guestbook-container, .gallery-section-container { padding: 40px 25px; }
+            .ledger-container, .feature-container, .lightbox-content, .guestbook-container, .gallery-section-container, .discourse-container { padding: 40px 25px; }
             .guestbook-form { grid-template-columns: 1fr; }
             .form-group.full, .submit-btn { grid-column: span 1; }
         }
@@ -741,21 +799,43 @@
                     <h3>Life of a Box</h3>
                     <p>An immersive conceptual journey where international institutions preserve used industrial boxes transformed into monumental sculptures.</p>
                     <div class="collaborator-list">
-                        <strong>Status: &bull;</strong> Global exhibition trajectory spanning Brussels, Poland, and premier European institutions.
+                        <strong>Status:</strong> Global exhibition trajectory spanning Brussels, Poland, and premier European institutions.
                     </div>
                 </div>
                 <div class="pillar-card" onclick="openLightbox('Voices of the Land Pillar', 'Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations in collaboration with the National Gallery of Canada, Burke Museum, Na\'kuset Native Women\'s Shelter, and global universities.')">
                     <h3>Voices of the Land</h3>
                     <p>Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations.</p>
                     <div class="collaborator-list">
-                        <strong>Partners: &bull;</strong> National Gallery of Canada, Burke Museum, Na'kuset Native Women's Shelter, and global universities.
+                        <strong>Partners:</strong> National Gallery of Canada, Burke Museum, Na'kuset Native Women's Shelter, and global universities.
                     </div>
                 </div>
                 <div class="pillar-card" onclick="openLightbox('Rooh-Nawaz Pillar', 'Deeply moving testimonies of human resilience in words and images, honoring the global Persian community through contributions from Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.')">
-                    <h3>روح‌نواز (Rooh-Nawaz)</h3>
+                    <h3>روح‌‌نواز (Rooh-Nawaz)</h3>
                     <p>Deeply moving testimonies of human resilience in words and images, honoring the global Persian community.</p>
                     <div class="collaborator-list">
-                        <strong>Contributors: &bull;</strong> Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.
+                        <strong>Contributors:</strong> Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Critical Discourse Quotation Stream -->
+        <section>
+            <h2>Critical Discourse &bull; Expert Commentary</h2>
+            <div class="discourse-container">
+                <h3>Independent Institutional & Media Perspectives</h3>
+                <div class="quote-grid">
+                    <div class="quote-card" onclick="openLightbox('John Elkington &bull; Commentary', 'Global sustainability authority John Elkington analyzed the project\'s intersection with ecological responsibility, noting how industrial cardboard logistics are transformed into meaningful cultural artifacts.')">
+                        <p class="quote-text">"A market externality that rings your bell &mdash; transforming industrial packaging into profound sculptural commentary on modern waste and resource stewardship."</p>
+                        <span class="quote-author">John Elkington &bull; Sustainability Authority</span>
+                    </div>
+                    <div class="quote-card" onclick="openLightbox('European Cultural Policy Review', 'Reflecting on the Brussels exhibition trajectory, reviewers highlighted the installation as a vital bridge between corporate environmental mandates and creative expression.')">
+                        <p class="quote-text">"Empowering Europe's creative industries by bridging ecological awareness with monumental fine art preservation across sovereign borders."</p>
+                        <span class="quote-author">European Cultural Review &bull; Brussels</span>
+                    </div>
+                    <div class="quote-card" onclick="openLightbox('Curatorial Archive Note', 'Examining the deep collaborative network spanning Harvard, Yale, and international indigenous councils to preserve fragile linguistic heritage.')">
+                        <p class="quote-text">"A living monument to human consciousness and collective memory, uniting academic rigor with raw ancestral wisdom."</p>
+                        <span class="quote-author">International Curatorial Board</span>
                     </div>
                 </div>
             </div>
@@ -996,7 +1076,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button, input, textarea, .pillar-card, .trajectory-card, .control-btn, .filter-btn, .feature-container, .exhibit-card').forEach(item => {
+        document.querySelectorAll('a, button, input, textarea, .pillar-card, .trajectory-card, .control-btn, .filter-btn, .feature-container, .exhibit-card, .quote-card').forEach(item => {
             item.addEventListener('mouseenter', () => {
                 cursor.style.width = '48px';
                 cursor.style.height = '48px';
