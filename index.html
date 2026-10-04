@@ -65,11 +65,17 @@
             transition: background-color 0.6s ease;
         }
 
-        /* Floating Mode Toggle */
-        .mode-toggle {
+        /* Floating Control Panel */
+        .controls-group {
             position: fixed;
             top: 30px;
             right: 30px;
+            display: flex;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .control-btn {
             background: var(--surface-glass);
             backdrop-filter: blur(12px);
             border: 1px solid var(--border-subtle);
@@ -78,11 +84,10 @@
             font-size: 0.7rem;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            z-index: 1000;
             transition: all 0.3s ease;
         }
 
-        .mode-toggle:hover {
+        .control-btn:hover {
             border-color: var(--accent-gold);
             box-shadow: 0 0 20px var(--accent-gold-glow);
         }
@@ -422,6 +427,72 @@
             line-height: 2.3;
         }
 
+        /* Lightbox Modal */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .lightbox-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            max-width: 750px;
+            width: 90%;
+            background: var(--surface-solid);
+            border: 1px solid var(--border-hover);
+            padding: 60px;
+            position: relative;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            letter-spacing: 0.2em;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-gold);
+        }
+
+        .lightbox-title {
+            font-size: 1rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .lightbox-body {
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            line-height: 2;
+            margin: 0;
+        }
+
         footer {
             text-align: center;
             padding: 80px 20px;
@@ -434,7 +505,7 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
-            .ledger-container, .feature-container { padding: 40px 25px; }
+            .ledger-container, .feature-container, .lightbox-content { padding: 40px 25px; }
         }
     </style>
 </head>
@@ -443,8 +514,11 @@
     <!-- Custom Coordinate Cursor -->
     <div class="custom-cursor" id="cursor"></div>
 
-    <!-- Floating Gallery Mode Toggle -->
-    <button class="mode-toggle" id="modeToggle">Dark Gallery Mode</button>
+    <!-- Floating Controls -->
+    <div class="controls-group">
+        <button class="control-btn" id="audioToggle">Audio: Off</button>
+        <button class="control-btn" id="modeToggle">Dark Gallery</button>
+    </div>
 
     <!-- Live Word Marquee Ticker -->
     <div class="word-ticker">
@@ -464,28 +538,28 @@
         <section>
             <h2>The Four Pillars</h2>
             <div class="pillars-grid">
-                <div class="pillar-card">
+                <div class="pillar-card" onclick="openLightbox('Words Pillar', 'A global participatory text and archive project capturing human sentiment, linguistic DNA, and philosophical thought across international borders. Spanning hundreds of contributors across Ivy League universities, global museums, and sovereign institutions.')">
                     <h3>Words</h3>
                     <p>A global participatory text and archive project capturing human sentiment, linguistic DNA, and philosophical thought across international borders.</p>
                     <div class="collaborator-list">
                         <strong>Scope:</strong> Hundreds of contributors spanning Ivy League universities, global museums, indigenous councils, and sovereign institutions.
                     </div>
                 </div>
-                <div class="pillar-card">
+                <div class="pillar-card" onclick="openLightbox('Life of a Box Pillar', 'An immersive conceptual journey where international institutions preserve used industrial boxes transformed into monumental sculptures. Spanning global exhibition trajectories across Brussels, Poland, and premier European cultural centers.')">
                     <h3>Life of a Box</h3>
                     <p>An immersive conceptual journey where international institutions preserve used industrial boxes transformed into monumental sculptures.</p>
                     <div class="collaborator-list">
                         <strong>Status:</strong> Global exhibition trajectory spanning Brussels, Poland, and premier European institutions.
                     </div>
                 </div>
-                <div class="pillar-card">
+                <div class="pillar-card" onclick="openLightbox('Voices of the Land Pillar', 'Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations in collaboration with the National Gallery of Canada, Burke Museum, Na\'kuset Native Women\'s Shelter, and global universities.')">
                     <h3>Voices of the Land</h3>
                     <p>Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations.</p>
                     <div class="collaborator-list">
                         <strong>Partners:</strong> National Gallery of Canada, Burke Museum, Na'kuset Native Women's Shelter, and global universities.
                     </div>
                 </div>
-                <div class="pillar-card">
+                <div class="pillar-card" onclick="openLightbox('Rooh-Nawaz Pillar', 'Deeply moving testimonies of human resilience in words and images, honoring the global Persian community through contributions from Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.')">
                     <h3>روح‌نواز (Rooh-Nawaz)</h3>
                     <p>Deeply moving testimonies of human resilience in words and images, honoring the global Persian community.</p>
                     <div class="collaborator-list">
@@ -498,7 +572,7 @@
         <!-- Life of a Box Chapter Feature -->
         <section>
             <h2>Spatial Chapter &bull; Life of a Box</h2>
-            <div class="feature-container">
+            <div class="feature-container" onclick="openLightbox('Life of a Box &bull; Curatorial Note', 'Utilizing recycled cardboard boxes sourced from industrial operations across Germany, France, England, Norway, and the United States, Life of a Box explores the shifting value of materials across social and cultural contexts. Sponsored by the Ministry of the Environment, the project bridges ecological responsibility with fine art preservation.')">
                 <h3>The Transformation of Industrial Logistics into Monumental Art</h3>
                 <div class="feature-lead">
                     Utilizing recycled cardboard boxes sourced from industrial operations across Germany, France, England, Norway, and the United States, <i>Life of a Box</i> explores the shifting value of materials across social and cultural contexts. Sponsored by the Ministry of the Environment, the project bridges ecological responsibility with fine art preservation.
@@ -529,7 +603,7 @@
         <!-- Voices of the Land Chapter Feature -->
         <section>
             <h2>Spatial Chapter &bull; Voices of the Land</h2>
-            <div class="feature-container">
+            <div class="feature-container" onclick="openLightbox('Voices of the Land &bull; Curatorial Note', 'The primary objective of the First Nations project is to honor and preserve an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge and language with the global community, approached with the utmost care, reverence, and cultural sensitivity.')">
                 <h3>An Ancient Lineage of Wisdom Shared with Grace and Integrity</h3>
                 <div class="feature-lead">
                     The primary objective of the First Nations project is to honor and preserve an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge and language with the global community, approached with the utmost care, reverence, and cultural sensitivity.
@@ -559,7 +633,7 @@
         <!-- Rooh-Nawaz Chapter Feature -->
         <section>
             <h2>Spatial Chapter &bull; روح‌نواز (Rooh-Nawaz)</h2>
-            <div class="feature-container">
+            <div class="feature-container" onclick="openLightbox('Rooh-Nawaz &bull; Curatorial Note', 'An ethnographic and visual art initiative honoring Persian cultural heritage and memory by collecting contributions from scholars, educators, and leaders around the world. Transforming complex human experiences and collective memory into a unified visual expression.')">
                 <h3>Deeply Moving Testimonies of Human Resilience in Words and Images</h3>
                 <div class="feature-lead">
                     The project titled “روح‌نواز” serves as an artistic exploration of the global Persian community, delving into a diverse array of responses towards challenging life circumstances and experiences that are often deemed sensitive to discuss.
@@ -654,6 +728,15 @@
         &copy; 2026 Hesham Malik. All Rights Reserved. Independent Sovereign Archive.
     </footer>
 
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">[CLOSE]</button>
+            <h3 class="lightbox-title" id="lightboxTitle">Curatorial Title</h3>
+            <p class="lightbox-body" id="lightboxBody">Curatorial description text goes here.</p>
+        </div>
+    </div>
+
     <!-- Interactive Scripts -->
     <script>
         const cursor = document.getElementById('cursor');
@@ -662,7 +745,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn').forEach(item => {
+        document.querySelectorAll('a, button, .pillar-card, .trajectory-card, .control-btn, .filter-btn, .feature-container').forEach(item => {
             item.addEventListener('mouseenter', () => {
                 cursor.style.width = '48px';
                 cursor.style.height = '48px';
@@ -680,9 +763,9 @@
         modeToggle.addEventListener('click', () => {
             document.body.classList.toggle('gallery-mode');
             if (document.body.classList.contains('gallery-mode')) {
-                modeToggle.textContent = 'Standard Archive Mode';
+                modeToggle.textContent = 'Standard Mode';
             } else {
-                modeToggle.textContent = 'Dark Gallery Mode';
+                modeToggle.textContent = 'Dark Gallery';
             }
         });
 
@@ -705,6 +788,68 @@
                     }
                 });
             });
+        });
+
+        // Lightbox Script
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxBody = document.getElementById('lightboxBody');
+
+        function openLightbox(title, text) {
+            lightboxTitle.textContent = title;
+            lightboxBody.textContent = text;
+            lightboxModal.classList.add('active');
+        }
+
+        function closeLightbox() {
+            lightboxModal.classList.remove('active');
+        }
+
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) {
+                closeLightbox();
+            }
+        });
+
+        // Web Audio API Ambient Soundscape Generator
+        let audioCtx = null;
+        let isPlaying = false;
+        let oscillator1, oscillator2, gainNode;
+
+        const audioToggle = document.getElementById('audioToggle');
+        audioToggle.addEventListener('click', () => {
+            if (!isPlaying) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                oscillator1 = audioCtx.createOscillator();
+                oscillator2 = audioCtx.createOscillator();
+                gainNode = audioCtx.createGain();
+
+                // Warm meditative frequencies (Chamber drone in D)
+                oscillator1.type = 'sine';
+                oscillator1.frequency.setValueAtTime(73.42, audioCtx.currentTime); // D2
+                
+                oscillator2.type = 'triangle';
+                oscillator2.frequency.setValueAtTime(146.83, audioCtx.currentTime); // D3
+
+                gainNode.gain.setValueAtTime(0.03, audioCtx.currentTime); // Gentle volume
+
+                oscillator1.connect(gainNode);
+                oscillator2.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+
+                oscillator1.start();
+                oscillator2.start();
+
+                isPlaying = true;
+                audioToggle.textContent = 'Audio: On';
+            } else {
+                if (audioCtx) {
+                    audioCtx.close();
+                }
+                isPlaying = false;
+                audioToggle.textContent = 'Audio: Off';
+            }
         });
     </script>
 </body>
