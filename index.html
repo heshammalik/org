@@ -17,15 +17,6 @@
             --border-hover: rgba(212, 175, 55, 0.35);
         }
 
-        body.gallery-mode {
-            --canvas-bg: #000000;
-            --surface-glass: rgba(4, 4, 4, 0.92);
-            --surface-solid: #020202;
-            --text-secondary: #666666;
-        }
-        body.gallery-mode header { opacity: 0.3; transition: opacity 0.5s ease; }
-        body.gallery-mode header:hover { opacity: 1; }
-
         .custom-cursor {
             pointer-events: none;
             position: fixed;
@@ -42,7 +33,7 @@
         @media (min-width: 1024px) {
             .custom-cursor { display: block; }
             body { cursor: none; }
-            a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn, .glimpse-btn { cursor: none; }
+            a, button, .pillar-card, .trajectory-card, .filter-btn { cursor: none; }
         }
         
         html { scroll-behavior: smooth; }
@@ -58,27 +49,6 @@
             background-image: radial-gradient(circle at 50% 0%, #0d0c0a 0%, var(--canvas-bg) 75%);
             background-attachment: fixed;
             overflow-x: hidden;
-            transition: background-color 0.6s ease;
-        }
-
-        .mode-toggle {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: var(--surface-glass);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-subtle);
-            color: var(--accent-gold);
-            padding: 10px 20px;
-            font-size: 0.7rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        .mode-toggle:hover {
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 20px var(--accent-gold-glow);
         }
 
         .word-ticker {
@@ -136,7 +106,7 @@
             color: var(--accent-gold);
             text-transform: uppercase;
             letter-spacing: 0.35em;
-            margin-bottom: 35px;
+            margin-bottom: 0;
         }
         .contact-link {
             color: var(--text-secondary);
@@ -204,44 +174,6 @@
             position: relative;
             z-index: 2;
             max-width: 700px;
-        }
-
-        .glimpse-trigger-wrap {
-            margin-top: 30px;
-            display: inline-block;
-        }
-        .glimpse-btn {
-            background: var(--surface-glass);
-            border: 1px solid var(--border-subtle);
-            color: var(--accent-gold);
-            padding: 8px 18px;
-            font-size: 0.65rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-        .glimpse-btn:hover {
-            border-color: var(--accent-gold);
-            background: var(--surface-solid);
-            box-shadow: 0 0 15px var(--accent-gold-glow);
-        }
-
-        .glimpse-preview {
-            display: none;
-            margin-top: 25px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .glimpse-preview.active {
-            display: block;
-            opacity: 1;
-        }
-        .glimpse-preview img {
-            width: 100%;
-            max-height: 420px;
-            object-fit: cover;
-            filter: contrast(105%) saturate(85%);
-            border: 1px solid var(--border-subtle);
         }
 
         .pillars-grid {
@@ -430,7 +362,6 @@
 <body>
 
     <div class="custom-cursor" id="cursor"></div>
-    <button class="mode-toggle" id="modeToggle">Dark Gallery Mode</button>
 
     <div class="word-ticker">
         <div class="ticker-track">
@@ -441,7 +372,6 @@
     <header>
         <h1>Hesham Malik</h1>
         <div class="subtitle">Planetary Codex &bull; Independent Institutional Archive</div>
-        <a href="mailto:contact@heshammalik.org" class="contact-link">contact@heshammalik.org</a>
     </header>
 
     <main>
@@ -486,17 +416,9 @@
                 <div class="ambient-content">
                     <h2>Spatial Chapter &bull; Life of a Box</h2>
                     <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">The Transformation of Industrial Logistics</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 25px;">
+                    <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
                         Utilizing recycled cardboard boxes sourced from industrial operations across Germany, France, England, Norway, and the United States, <i>Life of a Box</i> explores the shifting value of materials across social and cultural contexts. Sponsored by the Ministry of Environment, bridging ecological responsibility with fine art.
                     </p>
-                    
-                    <div class="glimpse-trigger-wrap">
-                        <button class="glimpse-btn" type="button" onclick="toggleGlimpse('glimpse-box', this)">Reveal Visual Glimpse</button>
-                    </div>
-
-                    <div id="glimpse-box" class="glimpse-preview">
-                        <img src="3.jpg" alt="Life of a Box Glimpse">
-                    </div>
                 </div>
             </div>
 
@@ -528,17 +450,9 @@
                 <div class="ambient-content">
                     <h2>Spatial Chapter &bull; Voices of the Land</h2>
                     <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">An Ancient Lineage of Wisdom</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 25px;">
+                    <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
                         Honoring and preserving an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge and language with the global community, approached with utmost care, reverence, and cultural sensitivity.
                     </p>
-                    
-                    <div class="glimpse-trigger-wrap">
-                        <button class="glimpse-btn" type="button" onclick="toggleGlimpse('glimpse-land', this)">Reveal Visual Glimpse</button>
-                    </div>
-
-                    <div id="glimpse-land" class="glimpse-preview">
-                        <img src="7.JPG" alt="Voices of the Land Glimpse">
-                    </div>
                 </div>
             </div>
 
@@ -565,17 +479,9 @@
                 <div class="ambient-content">
                     <h2>Spatial Chapter &bull; روح‌نواز (Rooh-Nawaz)</h2>
                     <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">Testimonies of Human Resilience</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 25px;">
+                    <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
                         An artistic exploration of the global Persian community, delving into a diverse array of responses towards challenging life circumstances and experiences that are often deemed sensitive to discuss.
                     </p>
-                    
-                    <div class="glimpse-trigger-wrap">
-                        <button class="glimpse-btn" type="button" onclick="toggleGlimpse('glimpse-rooh', this)">Reveal Visual Glimpse</button>
-                    </div>
-
-                    <div id="glimpse-rooh" class="glimpse-preview">
-                        <img src="1.jpg" alt="Rooh-Nawaz Glimpse">
-                    </div>
                 </div>
             </div>
 
@@ -655,19 +561,15 @@
                             </ul>
                         </div>
                     </div>
-
-                    <div style="text-align: center; margin-top: 40px;">
-                        <button class="glimpse-btn" type="button" onclick="toggleGlimpse('glimpse-archive', this)">Reveal Archive Glimpse (Plate VI)</button>
-                    </div>
-                    <div id="glimpse-archive" class="glimpse-preview" style="max-width: 600px; margin: 0 auto;">
-                        <img src="6.jpg" alt="Archive Glimpse">
-                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
+        <div style="margin-bottom: 20px;">
+            <a href="mailto:contact@heshammalik.org" class="contact-link">contact@heshammalik.org</a>
+        </div>
         &copy; 2026 Hesham Malik. All Rights Reserved. Independent Sovereign Archive.
     </footer>
 
@@ -678,7 +580,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button, .pillar-card, .trajectory-card, .mode-toggle, .filter-btn, .glimpse-btn').forEach(item => {
+        document.querySelectorAll('a, button, .pillar-card, .trajectory-card, .filter-btn').forEach(item => {
             item.addEventListener('mouseenter', () => {
                 cursor.style.width = '48px';
                 cursor.style.height = '48px';
@@ -690,27 +592,6 @@
                 cursor.style.borderColor = 'rgba(212, 175, 55, 0.5)';
             });
         });
-
-        const modeToggle = document.getElementById('modeToggle');
-        modeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('gallery-mode');
-            if (document.body.classList.contains('gallery-mode')) {
-                modeToggle.textContent = 'Standard Archive Mode';
-            } else {
-                modeToggle.textContent = 'Dark Gallery Mode';
-            }
-        });
-
-        function toggleGlimpse(id, btn) {
-            const preview = document.getElementById(id);
-            if (preview.classList.contains('active')) {
-                preview.classList.remove('active');
-                btn.textContent = 'Reveal Visual Glimpse';
-            } else {
-                preview.classList.add('active');
-                btn.textContent = 'Hide Visual Glimpse';
-            }
-        }
 
         const filterBtns = document.querySelectorAll('.filter-btn');
         const categories = document.querySelectorAll('.ledger-category');
