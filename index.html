@@ -140,42 +140,6 @@
             text-align: center;
         }
 
-        .ambient-section {
-            position: relative;
-            padding: 70px 60px;
-            background-color: var(--surface-solid);
-            border: 1px solid var(--border-subtle);
-            overflow: hidden;
-            transition: border-color 0.4s ease;
-        }
-        .ambient-section:hover {
-            border-color: var(--border-hover);
-        }
-
-        .ambient-bg-shadow {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 45%;
-            height: 100%;
-            background-size: cover;
-            background-position: top center;
-            opacity: 0.15;
-            mix-blend-mode: luminosity;
-            pointer-events: none;
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .ambient-section:hover .ambient-bg-shadow {
-            opacity: 0.25;
-            transform: scale(1.03);
-        }
-
-        .ambient-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-        }
-
         /* Pillars Interactive Grid */
         .pillars-grid {
             display: grid;
@@ -247,6 +211,42 @@
             opacity: 0.85;
         }
 
+        .ambient-section {
+            position: relative;
+            padding: 70px 60px;
+            background-color: var(--surface-solid);
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+            transition: border-color 0.4s ease;
+        }
+        .ambient-section:hover {
+            border-color: var(--border-hover);
+        }
+
+        .ambient-bg-shadow {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45%;
+            height: 100%;
+            background-size: cover;
+            background-position: top center;
+            opacity: 0.15;
+            mix-blend-mode: luminosity;
+            pointer-events: none;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .ambient-section:hover .ambient-bg-shadow {
+            opacity: 0.25;
+            transform: scale(1.03);
+        }
+
+        .ambient-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
         .trajectory-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -291,6 +291,23 @@
             transition: opacity 0.3s ease;
         }
         .external-ref a:hover { opacity: 0.7; text-decoration: underline; }
+
+        /* Institutional Roster Display */
+        .roster-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        .roster-pill {
+            background: var(--surface-glass);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-size: 0.72rem;
+            padding: 6px 14px;
+            letter-spacing: 0.1em;
+            border-radius: 2px;
+        }
 
         /* Bibliography Section Styles */
         .biblio-grid {
@@ -358,7 +375,7 @@
             background: var(--surface-solid);
         }
 
-        /* Abstract & Pillar Detail Modals */
+        /* Dynamic Overlay Drawer */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -382,7 +399,7 @@
         .modal-box {
             background: var(--surface-solid);
             border: 1px solid var(--border-hover);
-            max-width: 720px;
+            max-width: 760px;
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
@@ -524,7 +541,7 @@
                     <h3>Words</h3>
                     <p>A global participatory text and archive project capturing human sentiment, linguistic DNA, and philosophical thought across international borders.</p>
                     <div class="collaborator-list">
-                        <strong>Scope:</strong> Hundreds of contributors spanning Ivy League universities, global museums, indigenous councils, and sovereign institutions.
+                        <strong>Scope:</strong> Thousands of words donated so far, spanning Ivy League universities, global museums, indigenous councils, and sovereign institutions.
                     </div>
                 </div>
 
@@ -534,7 +551,7 @@
                     <h3>Life of a Box</h3>
                     <p>A global sustainability initiative transforming discarded industrial logistics into monumental ecological sculptures, bridging recycling with fine art.</p>
                     <div class="collaborator-list">
-                        <strong>Status:</strong> Global exhibition trajectory supported by Ministry of Environment, Amazon EU, and European Museums.
+                        <strong>Participating Bodies:</strong> Nobel Prize Museum, Natural History Museum Zurich, National Museum of Denmark, Stockholm Resilience Centre, UNICEF &amp; Red Cross.
                     </div>
                 </div>
 
@@ -544,7 +561,7 @@
                     <h3>Voices of the Land</h3>
                     <p>Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations of indigenous guardians.</p>
                     <div class="collaborator-list">
-                        <strong>Partners:</strong> National Gallery of Canada, Burke Museum, Na'kuset Native Women's Shelter, and global universities.
+                        <strong>Linguistic DNA:</strong> Ojibwemowin (*jiikendaagozi*), Cree (*sâkihitowin*), Sugpiaq (*Arinartuq*), Gaeilge Irish (*sceitimíní*).
                     </div>
                 </div>
 
@@ -554,7 +571,7 @@
                     <h3>روح‌نواز (Rooh-Nawaz)</h3>
                     <p>Deeply moving testimonies of human resilience in words and images, honoring the global Persian community and collective historical memory.</p>
                     <div class="collaborator-list">
-                        <strong>Contributors:</strong> Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.
+                        <strong>Scholarly Contributors:</strong> Harvard, Columbia, Yale, Uppsala, Georg-August-Universität Göttingen, Courtauld Institute.
                     </div>
                 </div>
 
@@ -569,8 +586,24 @@
                     <h2>Spatial Chapter &bull; Life of a Box</h2>
                     <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">The Beauty of Sustainability &amp; Global Recycling</h3>
                     <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
-                        Utilizing recycled cardboard boxes sourced from industrial supply chains across Germany, France, England, Norway, and the United States, <i>Life of a Box</i> is a flagship <b>global sustainability project</b>. Sponsored by environmental ministries and documented across European media, it bridges ecological responsibility with monumental contemporary sculpture—proving that everyday discarded material carries profound artistic and cultural value.
+                        Utilizing recycled cardboard boxes sourced from industrial supply chains across Germany, France, England, Norway, and the United States, <i>Life of a Box</i> is a flagship <b>global sustainability initiative</b>. Supported by environmental ministries and analyzed across major European media, it bridges ecological responsibility with monumental contemporary sculpture—proving that everyday discarded material holds profound cultural and aesthetic longevity.
                     </p>
+
+                    <div style="margin-top: 30px; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold);">
+                        Key Institutional &amp; Cultural Partners:
+                    </div>
+                    <div class="roster-pills">
+                        <span class="roster-pill">Nobel Prize Museum</span>
+                        <span class="roster-pill">National Museum of Denmark</span>
+                        <span class="roster-pill">Natural History Museum Zurich</span>
+                        <span class="roster-pill">Cotroceni National Museum</span>
+                        <span class="roster-pill">Stockholm Resilience Centre</span>
+                        <span class="roster-pill">UNICEF</span>
+                        <span class="roster-pill">Red Cross</span>
+                        <span class="roster-pill">German National Library</span>
+                        <span class="roster-pill">Amazon UK</span>
+                        <span class="roster-pill">Museum of Anthropology Canada</span>
+                    </div>
                 </div>
             </div>
 
@@ -594,7 +627,7 @@
                 <ul style="list-style: none; padding: 0; margin: 15px 0 0 0; line-height: 2;">
                     <li>&bull; <a href="https://www.aboutamazon.eu/amazon-boxes-are-a-work-of-art" target="_blank">Amazon EU Feature: "Amazon boxes are a work of art"</a></li>
                     <li>&bull; <a href="https://www.mlp.cz/cz/novinky/life-box-globalni-poselstvi-v-recyklovane-pouzite-krabici" target="_blank">Municipal Library of Prague: "Global Message in a Recycled Box"</a></li>
-                    <li>&bull; <a href="https://www.iumeni.cz/clanky-recenze/udalosti/2024-krasa-udrzitelnosti-a-udrzitelnost-krasy-v-umeni-malik-a-jeho-projekt-life-of-a-box-meni-svou-kreativitou-pohled-na-recyklaci/?srsltid=AU7gw4WBlieZYl3v5WJMapgfR8TVUac27LMe9R8u6gj-N1ciWm1WgOPf" target="_blank">iUMĚNÍ Analysis: "The Beauty of Sustainability and the Sustainability of Beauty"</a></li>
+                    <li>&bull; <a href="https://www.iumeni.cz/clanky-recenze/udalosti/2024-krasa-udrzitelnosti-a-udrzitelnost-krasy-v-umeni-malik-a-jeho-projekt-life-of-a-box-meni-svou-kreativitou-pohled-na-recyklaci/" target="_blank">iUMĚNÍ Analysis: "The Beauty of Sustainability and the Sustainability of Beauty"</a></li>
                     <li>&bull; <a href="https://johnelkington.substack.com/p/a-market-externality-that-rings-your" target="_blank">John Elkington Monograph: "A Market Externality That Rings Your Bell"</a></li>
                 </ul>
             </div>
@@ -606,25 +639,25 @@
                 <div class="ambient-bg-shadow" style="background-image: url('2.JPG');"></div>
                 <div class="ambient-content">
                     <h2>Spatial Chapter &bull; Voices of the Land</h2>
-                    <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">An Ancient Lineage of Wisdom</h3>
+                    <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">An Ancient Lineage of Living Wisdom</h3>
                     <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
-                        Honoring and preserving an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge and language with the global community, approached with utmost care, reverence, and cultural sensitivity.
+                        Honoring and preserving an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge and language with the global community. From Cree concepts of <i>sâkihitowin</i> (love as the bedrock of collective wellness) to Sugpiaq expressions of <i>Arinartuq</i> ("that which is within deserves respect"), the archive documents how language functions as living environmental philosophy.
                     </p>
                 </div>
             </div>
 
             <div class="trajectory-grid" style="margin-top: 30px;">
                 <div class="trajectory-card">
-                    <h4>Museums & Archives</h4>
-                    <p>National Gallery of Canada, Burke Museum (Seattle), and regional cultural repositories preserving sacred heritage.</p>
+                    <h4>Museums &amp; Archives</h4>
+                    <p>National Gallery of Canada, Burke Museum (Seattle), Nuuk Art Museum (Greenland), and regional cultural repositories.</p>
                 </div>
                 <div class="trajectory-card">
                     <h4>Community Guardians</h4>
-                    <p>Na’kuset – Native Women’s Shelter of Montreal, ensuring grounded community representation and integrity.</p>
+                    <p>Na’kuset – Native Women’s Shelter of Montreal, ensuring grounded community representation and structural integrity.</p>
                 </div>
                 <div class="trajectory-card">
                     <h4>Global Research</h4>
-                    <p>Endangered Languages Project, Harvard, University of Auckland, and international research universities.</p>
+                    <p>Endangered Languages Project, Harvard University, University of Alberta, University of Auckland, and international research faculties.</p>
                 </div>
             </div>
         </section>
@@ -637,7 +670,7 @@
                     <h2>Spatial Chapter &bull; روح‌‌نواز (Rooh-Nawaz)</h2>
                     <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">Testimonies of Human Resilience</h3>
                     <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
-                        An artistic exploration of the global Persian community, delving into a diverse array of responses towards challenging life circumstances and experiences that are often deemed sensitive to discuss.
+                        An artistic exploration of the global Persian community, delving into a diverse array of responses towards challenging life circumstances. Anchored in concepts like <i>bi-gharāri</i> (the active rejection of intellectual stagnation) and <i>Adab</i> (ethical conduct and reverence), Rooh-Nawaz transforms personal memory and exile into monumental visual expressions.
                     </p>
                 </div>
             </div>
@@ -645,15 +678,15 @@
             <div class="trajectory-grid" style="margin-top: 30px;">
                 <div class="trajectory-card">
                     <h4>Academic Institutes</h4>
-                    <p>Jordan Center for Persian Studies, MacMillan Center, Uppsala University, and Göttingen University.</p>
+                    <p>Jordan Center for Persian Studies, Columbia University (MESAAS), Uppsala University, and Georg-August-Universität Göttingen.</p>
                 </div>
                 <div class="trajectory-card">
-                    <h4>Art & Research</h4>
-                    <p>The Courtauld Institute of Art, Harvard, Yale, and international Persian cultural networks.</p>
+                    <h4>Art &amp; Research</h4>
+                    <p>The Courtauld Institute of Art, Harvard University, Yale, and international Persian cultural networks.</p>
                 </div>
                 <div class="trajectory-card">
                     <h4>Living Archive</h4>
-                    <p>Transforming complex human experiences and collective memory into a unified, monumental visual expression.</p>
+                    <p>Transforming complex human experiences, literary philosophy, and collective memory into a unified visual monument.</p>
                 </div>
             </div>
         </section>
@@ -676,23 +709,23 @@
 
                 <div class="biblio-card">
                     <div>
+                        <div class="biblio-code">Scholarly Monograph</div>
+                        <div class="biblio-title">Zabur-e Haqiqat (Psalms of Truth): A Visceral Recognition</div>
+                        <div class="biblio-meta">Prof. Dr. Philip G. Kreyenbroek &bull; Georg-August-Universität Göttingen</div>
+                    </div>
+                    <div class="biblio-actions">
+                        <button class="biblio-btn" onclick="openAbstract('KREY-2025', 'Zabur-e Haqiqat: A Visceral Recognition', 'Analyzing Hesham Malik\'s Rooh-Nawaz archive through the lens of Iranian Studies. Professor Kreyenbroek highlights the visceral shock of recognition within the visual compositions, contributing the term Zabur-e Haqiqat (Psalms of Truth) to describe the archive\'s alignment with Iranian spiritual and philosophical history.')">Read Analysis</button>
+                    </div>
+                </div>
+
+                <div class="biblio-card">
+                    <div>
                         <div class="biblio-code">Sustainability Monograph</div>
                         <div class="biblio-title">A Market Externality That Rings Your Bell</div>
                         <div class="biblio-meta">John Elkington &bull; Volans / Substack</div>
                     </div>
                     <div class="biblio-actions">
                         <a href="https://johnelkington.substack.com/p/a-market-externality-that-rings-your" target="_blank" class="biblio-btn" style="text-decoration: none; text-align: center;">External Monograph</a>
-                    </div>
-                </div>
-
-                <div class="biblio-card">
-                    <div>
-                        <div class="biblio-code">Institutional Review</div>
-                        <div class="biblio-title">Krása Udržitelnosti a Udržitelnost Krásy v Umění</div>
-                        <div class="biblio-meta">iUMĚNÍ Critical Review &bull; 2024</div>
-                    </div>
-                    <div class="biblio-actions">
-                        <a href="https://www.iumeni.cz/clanky-recenze/udalosti/2024-krasa-udrzitelnosti-a-udrzitelnost-krasy-v-umeni-malik-a-jeho-projekt-life-of-a-box-meni-svou-kreativitou-pohled-na-recyklaci/" target="_blank" class="biblio-btn" style="text-decoration: none; text-align: center;">Read Analysis</a>
                     </div>
                 </div>
 
@@ -718,40 +751,41 @@
                         <div class="ledger-category" data-category="universities">
                             <h4>Global Universities &amp; Research</h4>
                             <ul>
-                                &bull; Harvard University Network (Office of the President Emeritus, Faculty of Arts &amp; Sciences, Weatherhead Center)<br>
+                                &bull; Harvard University Network (Office of President Emeritus, Weatherhead Center)<br>
                                 &bull; Oxford &amp; Cambridge (UK)<br>
-                                &bull; Stanford, MIT, Princeton, Yale, Columbia, Chicago<br>
+                                &bull; Stanford, MIT, Princeton, Yale, Columbia (MESAAS), Chicago<br>
                                 &bull; Sorbonne University (France)<br>
+                                &bull; Georg-August-Universität Göttingen (Germany)<br>
+                                &bull; University of Alberta &amp; Toronto Metropolitan University<br>
                                 &bull; Hebrew University of Jerusalem (Israel)<br>
                                 &bull; University of Melbourne &amp; Sydney (Australia)<br>
-                                &bull; Charles University &amp; Masaryk University (CZ)<br>
-                                &bull; University of Tokyo, Toronto, Vienna, &amp; Beyond
+                                &bull; Charles University &amp; Masaryk University (CZ)
                             </ul>
                         </div>
                         <div class="ledger-category" data-category="museums">
                             <h4>Museums &amp; Galleries</h4>
                             <ul>
+                                &bull; Nobel Prize Museum (Sweden)<br>
+                                &bull; Natural History Museum Zurich &amp; Museum of Basel<br>
+                                &bull; National Museum of Denmark &amp; National Museum of Ireland<br>
+                                &bull; National Museum of History of Ukraine &amp; Cotroceni Museum<br>
                                 &bull; TATE London &amp; National Galleries Scotland<br>
-                                &bull; National Gallery of Canada<br>
-                                &bull; Ludwig Museum (Hungary) &amp; Slovak National Gallery<br>
-                                &bull; Greenland National Museum &amp; Archives<br>
-                                &bull; Jewish Museum Frankfurt &amp; Skirball Cultural Center<br>
-                                &bull; Academy of Fine Arts Vienna &amp; Stuttgart<br>
-                                &bull; Vilnius Academy of Arts &amp; National Museum of Lithuania<br>
-                                &bull; Regional and Municipal Museums across Europe
+                                &bull; National Gallery of Canada &amp; Burke Museum (Seattle)<br>
+                                &bull; Nuuk Art Museum (Greenland) &amp; Paper Museum Fabriano (UNESCO)<br>
+                                &bull; Musée des Augustins (France) &amp; Museum Brugge
                             </ul>
                         </div>
                         <div class="ledger-category" data-category="sovereignties">
                             <h4>Global NGOs &amp; Sovereignties</h4>
                             <ul>
-                                &bull; Greenpeace International &amp; Jane Goodall Institute<br>
+                                &bull; UNICEF &amp; Red Cross International<br>
                                 &bull; Svalbard Global Seed Vault (Norway)<br>
+                                &bull; Stockholm Resilience Centre &amp; FEE Copenhagen<br>
+                                &bull; Greenpeace International &amp; Jane Goodall Institute<br>
                                 &bull; Equal Justice Initiative (Bryan Stevenson)<br>
-                                &bull; Avannaata Government &amp; Greenlandic Red Cross<br>
-                                &bull; Palestinian Cultural &amp; Freedom Theatre Initiatives<br>
                                 &bull; Na'kuset Native Women’s Shelter of Montreal<br>
-                                &bull; Index on Censorship &amp; Conciliation Resources<br>
-                                &bull; Global Human Rights &amp; Community Coalitions
+                                &bull; German National Library &amp; New York Public Library<br>
+                                &bull; Avannaata Government &amp; Greenlandic Red Cross
                             </ul>
                         </div>
                     </div>
@@ -822,7 +856,7 @@
             });
         });
 
-        // Dynamic Modal Mechanics
+        // Dynamic Modal Mechanics with Deep Roster Data
         const modal = document.getElementById('infoModal');
         const modalCode = document.getElementById('modalCode');
         const modalTitle = document.getElementById('modalTitle');
@@ -832,22 +866,22 @@
             words: {
                 code: "PILLAR I &bull; GLOBAL ARCHIVE",
                 title: "Words Project",
-                body: "Global Project Words gathers single, spontaneous word contributions from world leaders, scientists, environmentalists, and cultural figures across global networks of governance, science, and heritage. These donated words serve as raw linguistic energy, translated into large-scale abstract canvases that map the dialogue between contemporary global crisis and material endurance."
+                body: "Global Project Words has gathered thousands of single, spontaneous word contributions from world leaders, scientists, environmentalists, and cultural figures across global networks of governance, science, and heritage. These donated words serve as raw linguistic energy, translated into large-scale abstract canvases that map the dialogue between contemporary global crisis and material endurance."
             },
             box: {
                 code: "PILLAR II &bull; GLOBAL SUSTAINABILITY INITIATIVE",
                 title: "Life of a Box",
-                body: "A monumental sustainability endeavor that turns used industrial cardboard packaging into structural high-art sculptures. Supported by environmental ministries and featured across major European institutions (Brussels Expo, Papermaking Museum Poland, West Bohemia Museum), Life of a Box challenges market externalities by proving that industrial waste holds profound cultural and aesthetic longevity."
+                body: "A monumental sustainability endeavor that turns used industrial cardboard packaging into structural high-art sculptures. Supported by environmental ministries and participating institutions worldwide—including the Nobel Prize Museum, National Museum of Denmark, Natural History Museum Zurich, Stockholm Resilience Centre, UNICEF, Red Cross, and Amazon UK—Life of a Box challenges market externalities by proving that industrial waste holds profound cultural and aesthetic longevity."
             },
             voices: {
                 code: "PILLAR III &bull; SACRED INDIGENOUS KNOWLEDGE",
                 title: "Voices of the Land",
-                body: "A reverent collaboration with indigenous communities, guardians, and global heritage institutions (National Gallery of Canada, Burke Museum, Na'kuset Shelter). The initiative preserves oral traditions, indigenous languages, and ancestral wisdom through fine art visual monuments."
+                body: "A reverent collaboration with indigenous communities, guardians, and global heritage institutions (National Gallery of Canada, Burke Museum, Nuuk Art Museum, Na'kuset Shelter). The archive preserves concepts such as Ojibwemowin 'jiikendaagozi' (expressing joy), Cree 'sâkihitowin' (love as foundational wellness), and Sugpiaq 'Arinartuq' (inner respect), elevating living indigenous languages into permanent visual monuments."
             },
             rooh: {
                 code: "PILLAR IV &bull; HUMAN RESILIENCE",
                 title: "روح‌نواز (Rooh-Nawaz)",
-                body: "An extensive visual testimonial honoring the global Persian community. Developed with leading international scholars (Harvard, Yale, Uppsala, Courtauld Institute), Rooh-Nawaz translates complex personal histories, displacement, and human resilience into unified, monumental visual canvases."
+                body: "An extensive visual testimonial honoring the global Persian community. Developed in dialogue with leading scholars from Harvard, Columbia, Yale, Uppsala, and Göttingen, Rooh-Nawaz explores central concepts like 'Adab' (ethical reverence), 'Bi-gharāri' (the refusal to remain spiritually or intellectually stagnant), and 'Zabur-e Haqiqat' (Psalms of Truth), translating displacement and resilience into unified visual monuments."
             }
         };
 
