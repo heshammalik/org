@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hesham Malik | Planetary Codex</title>
+    <title>Hesham Malik | Planetary Codex &amp; Sovereign Archive</title>
     <style>
         :root {
             --canvas-bg: #030303;
@@ -279,20 +279,6 @@
             line-height: 1.8;
         }
 
-        .external-ref {
-            margin-top: 40px;
-            padding-top: 25px;
-            border-top: 1px solid var(--border-subtle);
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-        .external-ref a {
-            color: var(--accent-gold);
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-        .external-ref a:hover { opacity: 0.7; text-decoration: underline; }
-
         .roster-pills {
             display: flex;
             flex-wrap: wrap;
@@ -317,13 +303,13 @@
             transform: translateY(-2px);
         }
 
-        /* Exhibition Timeline Styling */
-        .timeline-box {
+        /* Provenance Register Styling */
+        .provenance-box {
             background-color: var(--surface-solid);
             border: 1px solid var(--border-subtle);
             padding: 60px;
         }
-        .timeline-year {
+        .provenance-header {
             font-size: 0.8rem;
             color: var(--accent-gold);
             letter-spacing: 0.3em;
@@ -332,7 +318,7 @@
             border-bottom: 1px solid var(--border-subtle);
             padding-bottom: 10px;
         }
-        .timeline-list {
+        .provenance-list {
             list-style: none;
             padding: 0;
             margin: 0 0 40px 0;
@@ -340,7 +326,23 @@
             color: var(--text-secondary);
             line-height: 2.2;
         }
-        .timeline-list strong { color: var(--text-primary); }
+        .provenance-list strong { color: var(--text-primary); }
+
+        .press-links {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+            font-size: 0.82rem;
+            line-height: 2.2;
+        }
+        .press-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .press-links a:hover {
+            color: var(--accent-gold);
+        }
 
         .biblio-grid {
             display: grid;
@@ -543,7 +545,7 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
-            .ledger-container, .ambient-section, .modal-box, .timeline-box { padding: 40px 25px; }
+            .ledger-container, .ambient-section, .modal-box, .provenance-box { padding: 40px 25px; }
             .ambient-bg-shadow { width: 100%; opacity: 0.08; }
             .biblio-grid { grid-template-columns: 1fr; }
         }
@@ -565,11 +567,11 @@
     </header>
 
     <main>
+        <!-- Four Core Pillars Section -->
         <section>
             <h2>The Four Pillars</h2>
             <div class="pillars-grid">
                 
-                <!-- Pillar 1 -->
                 <div class="pillar-card" onclick="openPillar('words')">
                     <span class="click-hint">&bull; Explore Archive</span>
                     <h3>Words</h3>
@@ -579,7 +581,6 @@
                     </div>
                 </div>
 
-                <!-- Pillar 2 -->
                 <div class="pillar-card" onclick="openPillar('box')">
                     <span class="click-hint">&bull; Explore Initiative</span>
                     <h3>Life of a Box</h3>
@@ -589,7 +590,6 @@
                     </div>
                 </div>
 
-                <!-- Pillar 3 -->
                 <div class="pillar-card" onclick="openPillar('voices')">
                     <span class="click-hint">&bull; Explore Lineage</span>
                     <h3>Voices of the Land</h3>
@@ -599,7 +599,6 @@
                     </div>
                 </div>
 
-                <!-- Pillar 4 -->
                 <div class="pillar-card" onclick="openPillar('rooh')">
                     <span class="click-hint">&bull; Explore Testimonies</span>
                     <h3>روح‌نواز (Rooh-Nawaz)</h3>
@@ -612,7 +611,7 @@
             </div>
         </section>
 
-        <!-- Spatial Chapter 1 -->
+        <!-- Spatial Chapter 1: Life of a Box -->
         <section>
             <div class="ambient-section">
                 <div class="ambient-bg-shadow" style="background-image: url('4.jpg');"></div>
@@ -641,7 +640,6 @@
                 </div>
             </div>
 
-            <!-- Interactive 30-Year Career Trajectory Grid -->
             <div class="trajectory-grid" style="margin-top: 30px;">
                 <div class="trajectory-card" onclick="openTrajectory('retrospectives')">
                     <span class="click-hint">&bull; Read Monograph</span>
@@ -659,20 +657,9 @@
                     <p>A comprehensive history of critical essays, exhibition monographs, and scholarly reviews analyzing the evolution of Hesham Malik’s oeuvre.</p>
                 </div>
             </div>
-
-            <div class="external-ref">
-                <strong>Critical Discourse &amp; Institutional Press:</strong>
-                <ul style="list-style: none; padding: 0; margin: 15px 0 0 0; line-height: 2;">
-                    <li>&bull; <a href="https://johnelkington.substack.com/p/a-market-externality-that-rings-your" target="_blank">John Elkington Monograph: "A Market Externality That Rings Your Bell"</a></li>
-                    <li>&bull; <a href="https://www.aboutamazon.eu/amazon-boxes-are-a-work-of-art" target="_blank">Amazon EU Feature: "Amazon boxes are a work of art"</a></li>
-                    <li>&bull; <a href="https://muzeumpapiernictwa.pl/wp-content/uploads/2025/07/Life-of-a-box_katalog-wystawy_pdf_min.pdf" target="_blank">Museum of Papermaking Exhibition Monograph &amp; Institutional Catalog (PDF)</a></li>
-                    <li>&bull; <a href="https://www.elmira.edu/news/2024/08/09/elmira-college-professor-leads-global-mark-twain-inspired-art-gallery" target="_blank">Elmira College &amp; Center for Mark Twain Studies: "Global Mark Twain-Inspired Art Gallery"</a></li>
-                    <li>&bull; <a href="https://gulfnews.com/entertainment/arts-culture/hesham-malik-captures-essence-of-african-culture-1.1445019" target="_blank">Gulf News Coverage: "Hesham Malik Captures Essence of African Culture"</a></li>
-                </ul>
-            </div>
         </section>
 
-        <!-- Spatial Chapter 2 -->
+        <!-- Spatial Chapter 2: Voices of the Land -->
         <section>
             <div class="ambient-section">
                 <div class="ambient-bg-shadow" style="background-image: url('2.JPG');"></div>
@@ -716,7 +703,7 @@
             </div>
         </section>
 
-        <!-- Spatial Chapter 3 -->
+        <!-- Spatial Chapter 3: Rooh-Nawaz -->
         <section>
             <div class="ambient-section">
                 <div class="ambient-bg-shadow" style="background-image: url('10.JPG');"></div>
@@ -760,47 +747,30 @@
             </div>
         </section>
 
-        <!-- Selected Curatorial Chronology -->
+        <!-- Institutional Holdings & Provenance Register -->
         <section>
-            <h2>Selected Institutional Chronology</h2>
-            <div class="timeline-box">
+            <h2>Institutional Holdings &amp; Provenance Register</h2>
+            <div class="provenance-box">
                 
-                <div class="timeline-year">2027 &bull; Upcoming Exhibitions</div>
-                <ul class="timeline-list">
-                    <li>&bull; <strong>Life of a Box:</strong> Charles University, Prague, Czech Republic</li>
-                    <li>&bull; <strong>Zehut 'זהות':</strong> Jewish Museum, Central Europe</li>
-                    <li>&bull; <strong>Mother Mary:</strong> Sázava Monastery, Czech Republic</li>
-                    <li>&bull; <strong>Untitled Retrospective:</strong> Louny Regional Museum, Czech Republic</li>
+                <div class="provenance-header">National &amp; State Museum Repositories</div>
+                <ul class="provenance-list">
+                    <li>&bull; <strong>Museum of Paper (Muzeum Papiernictwa):</strong> Permanent Monographic Installation, Poland</li>
+                    <li>&bull; <strong>National Museum of History of Ukraine:</strong> Permanent Sovereign Archive Holdings</li>
+                    <li>&bull; <strong>Museum of Karlovy Vary &amp; Regional Museum Plzeň:</strong> Institutional Holdings</li>
+                    <li>&bull; <strong>Museum Jindřichův Hradec &amp; Diocese of Pilsen:</strong> Ecclesiastical &amp; Historical Commissions</li>
                 </ul>
 
-                <div class="timeline-year">2026 &bull; Solo Retrospectives &amp; Interventions</div>
-                <ul class="timeline-list">
-                    <li>&bull; <strong>Life of a Box:</strong> Brussels Expo &amp; Amazon UK Flagship Installation</li>
-                    <li>&bull; <strong>Unknown:</strong> Gallery MABD, Oulu, Finland</li>
-                    <li>&bull; <strong>Silent Encounters:</strong> Museum Jindřichův Hradec</li>
-                    <li>&bull; <strong>Angels &amp; Demons:</strong> Museum of Ecclesiastical Art, Diocese of Pilsen</li>
-                    <li>&bull; <strong>Iridescent:</strong> Museum of Mariánská Týnice</li>
-                    <li>&bull; <strong>Life of a Box:</strong> Prague City Library</li>
+                <div class="provenance-header">Monumental Public &amp; Corporate Interventions</div>
+                <ul class="provenance-list">
+                    <li>&bull; <strong>Amazon EU Flagship Installation:</strong> Industrial Material Sustainability Project</li>
+                    <li>&bull; <strong>Brussels Expo Architectural Installation:</strong> European Ecological Sculpture Commission</li>
+                    <li>&bull; <strong>Charles University &amp; Seneca College Toronto:</strong> Higher Education Spatial Installations</li>
                 </ul>
 
-                <div class="timeline-year">2024 &ndash; 2025 &bull; Global Museum Monographs</div>
-                <ul class="timeline-list">
-                    <li>&bull; <strong>Life of a Box:</strong> Museum of Paper (Muzeum Papiernictwa), Poland</li>
-                    <li>&bull; <strong>Portraits of Life:</strong> Regional Museum Kladruby</li>
-                    <li>&bull; <strong>River to Eternity:</strong> Museum of North Plzeň</li>
-                    <li>&bull; <strong>18:</strong> Jerusalem Synagogue, Prague</li>
-                    <li>&bull; <strong>Kemet:</strong> Museum of Karlovy Vary</li>
-                    <li>&bull; <strong>Twain:</strong> Berkeley Commonplace, California, USA</li>
-                    <li>&bull; <strong>Hidden Secrets:</strong> Regional Museum Most</li>
-                </ul>
-
-                <div class="timeline-year">2022 &ndash; 2023 &bull; Institutional Retrospectives</div>
-                <ul class="timeline-list">
-                    <li>&bull; <strong>I AM:</strong> Seneca College, Toronto, Canada</li>
-                    <li>&bull; <strong>Gesture:</strong> Charles University, Prague</li>
-                    <li>&bull; <strong>Make Art Not War:</strong> Dobrošov Fortress &amp; Museum of Náchodsko</li>
-                    <li>&bull; <strong>Liberation:</strong> Regional Museum Brandýs n. Labem</li>
-                    <li>&bull; <strong>Uncertain Vibrations:</strong> Kroměříž Museum</li>
+                <div class="provenance-header">Academic &amp; Research Collaborations</div>
+                <ul class="provenance-list">
+                    <li>&bull; <strong>Center for Mark Twain Studies (Elmira College):</strong> Global Literary Gallery Initiative</li>
+                    <li>&bull; <strong>Jordan Center for Persian Studies &amp; Göttingen University:</strong> Linguistic Archive Analysis</li>
                 </ul>
 
             </div>
@@ -847,6 +817,21 @@
             </div>
         </section>
 
+        <!-- Global Institutional Verification & Press -->
+        <section>
+            <h2>Global Institutional Verification &amp; Monographic Press</h2>
+            <div class="provenance-box">
+                <ul class="press-links">
+                    <li>&bull; <a href="https://johnelkington.substack.com/p/a-market-externality-that-rings-your" target="_blank">John Elkington Monograph: "A Market Externality That Rings Your Bell"</a></li>
+                    <li>&bull; <a href="https://www.aboutamazon.eu/amazon-boxes-are-a-work-of-art" target="_blank">Amazon EU Feature: "Amazon boxes are a work of art"</a></li>
+                    <li>&bull; <a href="https://muzeumpapiernictwa.pl/wp-content/uploads/2025/07/Life-of-a-box_katalog-wystawy_pdf_min.pdf" target="_blank">Museum of Papermaking Exhibition Monograph &amp; Institutional Catalog (PDF)</a></li>
+                    <li>&bull; <a href="https://www.elmira.edu/news/2024/08/09/elmira-college-professor-leads-global-mark-twain-inspired-art-gallery" target="_blank">Elmira College &amp; Center for Mark Twain Studies: "Global Mark Twain-Inspired Art Gallery"</a></li>
+                    <li>&bull; <a href="https://gulfnews.com/entertainment/arts-culture/hesham-malik-captures-essence-of-african-culture-1.1445019" target="_blank">Gulf News Coverage: "Hesham Malik Captures Essence of African Culture"</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Words Contributors Provenance -->
         <section>
             <h2>Archive Provenance &bull; Words Contributors</h2>
             <div class="ledger-container" style="position: relative; overflow: hidden;">
