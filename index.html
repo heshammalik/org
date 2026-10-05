@@ -625,17 +625,20 @@
                         Participating Donating Archives &amp; Institutional Contributors (Click to Read Statement):
                     </div>
                     <div class="roster-pills">
-                        <span class="roster-pill" onclick="openInstitution('nobel')">Nobel Prize Museum</span>
-                        <span class="roster-pill" onclick="openInstitution('denmark')">National Museum of Denmark</span>
-                        <span class="roster-pill" onclick="openInstitution('zurich')">Natural History Museum Zurich</span>
-                        <span class="roster-pill" onclick="openInstitution('cotroceni')">Cotroceni National Museum</span>
-                        <span class="roster-pill" onclick="openInstitution('stockholm')">Stockholm Resilience Centre</span>
                         <span class="roster-pill" onclick="openInstitution('unicef')">UNICEF</span>
-                        <span class="roster-pill" onclick="openInstitution('redcross')">Red Cross</span>
+                        <span class="roster-pill" onclick="openInstitution('gatech')">Georgia Tech</span>
+                        <span class="roster-pill" onclick="openInstitution('redcross')">Czech Red Cross</span>
+                        <span class="roster-pill" onclick="openInstitution('nobel')">Nobel Prize Museum</span>
+                        <span class="roster-pill" onclick="openInstitution('nypld')">New York Public Library</span>
+                        <span class="roster-pill" onclick="openInstitution('denmark')">National Museum of Denmark</span>
+                        <span class="roster-pill" onclick="openInstitution('basel')">Museum of Basel</span>
+                        <span class="roster-pill" onclick="openInstitution('ukraine')">National Museum of History of Ukraine</span>
+                        <span class="roster-pill" onclick="openInstitution('cotroceni')">Cotroceni National Museum</span>
+                        <span class="roster-pill" onclick="openInstitution('toulouse')">des Musées et Monuments Toulouse</span>
                         <span class="roster-pill" onclick="openInstitution('germanlib')">German National Library</span>
                         <span class="roster-pill" onclick="openInstitution('amazon')">Amazon UK</span>
-                        <span class="roster-pill" onclick="openInstitution('genius')">GENIUS Olympiad</span>
-                        <span class="roster-pill" onclick="openInstitution('canada')">Museum of Anthropology Canada</span>
+                        <span class="roster-pill" onclick="openInstitution('moa')">Museum of Anthropology (UBC)</span>
+                        <span class="roster-pill" onclick="openInstitution('duszniki')">Museum of Papermaking</span>
                     </div>
                 </div>
             </div>
@@ -1033,60 +1036,75 @@
         };
 
         const institutionData = {
+            unicef: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "UNICEF",
+                body: "\"Global consumption and production trends deplete valuable natural resources and create toxic waste. Children are the least responsible for environmental degradation, yet they’ll bear the greatest burden of its impact. Decades of evidence shows that widespread behaviour change, such as recycling and using less plastic, often begins with children. That’s why UNICEF engages young people to promote responsible, climate-friendly consumption behaviours and to set an example for their communities.\""
+            },
+            gatech: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "Georgia Institute of Technology (Georgia Tech, USA)",
+                body: "\"We support any effort to keep our planet healthy and habitable to all people. Sustainability is very important in such efforts for Earth and its inhabitants. Because of this, we are proud to participate in the Life of a box initiative.\""
+            },
+            redcross: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "Czech Red Cross (Director Mgr. Eva Bernatová)",
+                body: "\"The Czech Red Cross is guided by the fundamental principles of the Red Cross and Red Crescent Movement, which are humanity, impartiality, independence, neutrality, unity, universality and voluntary service. We strive to focus on helping those who need help the most. The emphasis on sustainable behavior is essential for our organization. We were honored to contribute to Hesham’s sustainability initiative, Life of a box.\""
+            },
             nobel: {
                 code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
                 title: "Nobel Prize Museum (Sweden)",
-                body: "\"In contributing discarded structural packaging from our archives to Life of a Box, we affirm that human discovery, intellectual breakthrough, and ecological stewardship share a common imperative: transforming raw, everyday materials into lasting monuments of human responsibility.\""
+                body: "\"The Nobel Prize Museum believes that the future is still open and ours to shape through critical thinking, creativity and persistence. The purpose of our climate and environmental efforts is to limit our negative impact in order to contribute to a lasting and sustainable development in our societies.\""
+            },
+            nypld: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "The New York Public Library (USA)",
+                body: "\"The New York Public Library opened its Battery Park City branch, an environmentally friendly library that provides a wide range of services for the community. The library was constructed with a focus on environmental sustainability and is the first GREEN Library in Manhattan.\""
             },
             denmark: {
                 code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
                 title: "National Museum of Denmark",
-                body: "\"Preserving cultural heritage requires rethinking material consumption. By transforming used industrial paper packaging into monumental art, Life of a Box illustrates how environmental sustainability is deeply intertwined with cultural longevity.\""
+                body: "\"At the National Museum of Denmark, green sustainability is intricately connected to social sustainability, which encompasses diversity, inclusivity, and justice. Consequently, the museum’s green strategy is closely aligned with its overarching strategy, characterized by an open, inclusive, and engaging approach to experiencing art. They have contributed the aforementioned used box in support of the global sustainability initiative 'Life of a Box'.\""
             },
-            zurich: {
+            basel: {
                 code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
-                title: "Natural History Museum Zurich",
-                body: "\"Our participation highlights the vital connection between natural resource conservation and artistic expression, demonstrating that recycled industrial cardboard can serve as an inspiring testament to environmental responsibility.\""
+                title: "Museum of Basel (Switzerland)",
+                body: "\"Sustainability is central to the values of the Museum of Basel, with sustainable principles integrated into its operations, educational programs, and artistic endeavors. The commitment to sustainability is deeply embedded in the Museum’s strategy, and the Sustainability team plays a pivotal role by initiating and coordinating various projects, such as 'Life of a Box'.\""
+            },
+            ukraine: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "National Museum of the History of Ukraine",
+                body: "\"The National museum of the history of Ukraine’s initiative aims at safeguarding and conserving cultural heritage are essential for ensuring the enduring sustainability of Ukraine’s cultural identity and its capacity to transmit its history to future generations. We believe the strength of sustainable development within society is intrinsically linked to the safeguarding of cultural beliefs, traditions, and heritage.\""
             },
             cotroceni: {
                 code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
                 title: "Cotroceni National Museum (Romania)",
-                body: "\"Artistic recycling offers a profound platform for civic and ecological dialogue. Through Life of a Box, industrial waste is elevated into a cultural symbol of sustainable development and historical continuity.\""
+                body: "\"We at Cotroceni National Museum believe that sustainability is the key to a stable future. By minimizing paper/plastic waste and carbon emissions, utilizing fewer resources, and decreasing our environmental footprint, we strive to meet our objectives for a sustainable future. We Support various sustainability initiatives like Hesham’s 'Life of a Box' which is essential for preserving our planet for future generations.\""
             },
-            stockholm: {
+            toulouse: {
                 code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
-                title: "Stockholm Resilience Centre",
-                body: "\"Planetary resilience requires bold shifts in perspective. Hesham Malik's transformation of commercial waste stream packaging provides a visual manifestation of circular economic thinking and ecological stewardship.\""
-            },
-            unicef: {
-                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
-                title: "UNICEF",
-                body: "\"Supporting sustainable creative initiatives reminds us that safeguarding the planet's future resources is fundamental to securing a viable, healthy world for future generations.\""
-            },
-            redcross: {
-                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
-                title: "International Red Cross",
-                body: "\"Humanitarian resilience and environmental protection are inseparable. Participating in Life of a Box reinforces our commitment to sustainable practices and global solidarity.\""
+                title: "des Musées et Monuments, Toulouse (France)",
+                body: "\"At des Musées et Monuments in Toulouse, we endeavor to regard sustainability not only as an institutional responsibility but also as a personal commitment. The state in which we pass our planet to future generations is one of the most urgent challenges of our era. We aim for enduring and sustainable solutions that protect the environment and preserve resources. As a result, the 'Life of a Box' initiative, which integrates the idea of sustainability with art, struck a chord with us, and we are delighted to be involved in it.\""
             },
             germanlib: {
                 code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
-                title: "German National Library",
-                body: "\"As guardians of written heritage, contributing paper-based packaging materials to this global sculpture initiative honors the historical relationship between paper, human communication, and environmental preservation.\""
+                title: "German National Library (Frankfurt, Germany)",
+                body: "\"We believe it is our social responsibility to protect our planet and safeguard its future. Our Earth has limited resources. Sustainable thinking and action and an environmentally conscious lifestyle can help us use them more mindfully.\""
             },
             amazon: {
                 code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
-                title: "Amazon UK",
-                body: "\"By re-imagining corrugated shipping boxes as high-art sculptures, Life of a Box inspires global conversations around packaging design, circular material reuse, and environmental innovation.\""
+                title: "Amazon (United Kingdom)",
+                body: "\"These unique artworks by Hesham Malik were created on Amazon delivery packaging. They include a cardboard box, a paper bag and a Philips egg cooker which was shipped directly to Hesham without any added delivery packaging at all – only a shipping label was applied to the manufacturer’s original box. Every day, Amazon ships millions of orders around the globe, working hard to make sure products reach customers safely and with the least amount of packaging necessary. More than 50% of European shipments now come in reduced, recyclable delivery packaging, such as a paper bag or cardboard envelope or – in the case of 1 billion shipments since 2019 – with no added packaging at all. This approach has helped Amazon avoid 4.2 million metric tons of packaging materials since 2015.\""
             },
-            genius: {
+            moa: {
                 code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
-                title: "GENIUS Olympiad (SUNY Oswego, USA)",
-                body: "\"We are proud to be part of artist Hesham Malik's global sustainability project, 'Life of a Box'. The piece representing GENIUS Olympiad is currently on display at the Museum of Ecclesiastical Art of the Diocese of Plzen, alongside contributions from internationally recognized museums, universities, libraries, and organizations, including the Nobel Prize Museum, The New York Public Library, UNICEF, and many others. At GENIUS Olympiad, we believe sustainability is not a constraint but an opportunity to rethink how we live, create, and shape our shared future.\""
+                title: "Museum of Anthropology (MOA) at UBC (Canada)",
+                body: "\"The Museum of Anthropology (MOA) at the University of British Columbia is located on the traditional, ancestral and unceded territory of the xwməθkwəýəm (Musqueam) people. We are grateful to live and work on this land and we strive to adhere to our hosts’ standards to steward the earth for present and future generations. For many years, MOA has practiced reusing and repurposing materials for use in exhibitions, storage and loans. MOA is happy to contribute to the 'Life of a Box' sustainability initiative, demonstrating our values to reduce our environmental footprint by repurposing valuable materials and resources.\""
             },
-            canada: {
+            duszniki: {
                 code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
-                title: "Museum of Anthropology Canada",
-                body: "\"Reflecting on material lifecycles and environmental reverence, this collaboration bridges modern industrial waste streams with ancient traditions of resource respect and artistic integrity.\""
+                title: "Museum of Papermaking in Duszniki-Zdrój (Poland)",
+                body: "\"At the Museum of Papermaking in Duszniki-Zdrój, we believe that cultural heritage and environmental responsibility can go hand in hand. By minimizing waste, reducing resource consumption, and promoting sustainable technologies, we aim to lower our environmental footprint. One of our innovative initiatives is the production of elephant paper, made from 50% recycled paper and 50% elephant dung – a symbol of ecological thinking and creative recycling. We support sustainability efforts that combine tradition with a modern sense of responsibility for the future of our planet.\""
             },
             ngc: {
                 code: "PARTICIPATING ARCHIVE &bull; VOICES OF THE LAND",
