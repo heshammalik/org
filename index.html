@@ -26,7 +26,7 @@
             border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: width 0.3s, height 0.3s, border-color 0.3s;
-            z-index: 10001; /* Ensured cursor sits above modal overlays */
+            z-index: 10001;
             display: none;
         }
 
@@ -140,7 +140,6 @@
             text-align: center;
         }
 
-        /* Pillars Interactive Grid */
         .pillars-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -199,7 +198,7 @@
             opacity: 0.7;
             transition: opacity 0.3s ease;
         }
-        .pillar-card:hover .click-hint { opacity: 1; }
+        .pillar-card:hover .click-hint, .trajectory-card:hover .click-hint { opacity: 1; }
         
         .collaborator-list {
             font-size: 0.7rem;
@@ -258,10 +257,12 @@
             border: 1px solid var(--border-subtle);
             padding: 35px;
             transition: transform 0.4s ease, border-color 0.4s ease;
+            user-select: none;
         }
         .trajectory-card:hover {
             border-color: var(--border-hover);
             transform: translateY(-3px);
+            background-color: var(--surface-solid);
         }
         .trajectory-card h4 {
             font-size: 0.8rem;
@@ -292,7 +293,6 @@
         }
         .external-ref a:hover { opacity: 0.7; text-decoration: underline; }
 
-        /* Institutional Roster Display (Interactive Pills) */
         .roster-pills {
             display: flex;
             flex-wrap: wrap;
@@ -317,7 +317,31 @@
             transform: translateY(-2px);
         }
 
-        /* Bibliography Section Styles */
+        /* Exhibition Timeline Styling */
+        .timeline-box {
+            background-color: var(--surface-solid);
+            border: 1px solid var(--border-subtle);
+            padding: 60px;
+        }
+        .timeline-year {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 10px;
+        }
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px 0;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 2.2;
+        }
+        .timeline-list strong { color: var(--text-primary); }
+
         .biblio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -383,7 +407,6 @@
             background: var(--surface-solid);
         }
 
-        /* Dynamic Overlay Drawer */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -520,7 +543,7 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
-            .ledger-container, .ambient-section, .modal-box { padding: 40px 25px; }
+            .ledger-container, .ambient-section, .modal-box, .timeline-box { padding: 40px 25px; }
             .ambient-bg-shadow { width: 100%; opacity: 0.08; }
             .biblio-grid { grid-template-columns: 1fr; }
         }
@@ -618,17 +641,20 @@
                 </div>
             </div>
 
-            <!-- 30-Year Career Pillars Replacing Venue Boxes -->
+            <!-- Interactive 30-Year Career Trajectory Grid -->
             <div class="trajectory-grid" style="margin-top: 30px;">
-                <div class="trajectory-card">
+                <div class="trajectory-card" onclick="openTrajectory('retrospectives')">
+                    <span class="click-hint">&bull; Read Monograph</span>
                     <h4>100+ Global Solo Retrospectives</h4>
                     <p>Three decades of documented solo exhibitions across major international capitals—including Toronto, London, Athens, Prague, Brussels, Dubai, Oulu, Goa, and Poland.</p>
                 </div>
-                <div class="trajectory-card">
+                <div class="trajectory-card" onclick="openTrajectory('collections')">
+                    <span class="click-hint">&bull; Read Monograph</span>
                     <h4>Institutional &amp; Sovereign Collections</h4>
                     <p>Monumental works and archives held in permanent museum collections, state foundations, and prominent private collections worldwide.</p>
                 </div>
-                <div class="trajectory-card">
+                <div class="trajectory-card" onclick="openTrajectory('literature')">
+                    <span class="click-hint">&bull; Read Monograph</span>
                     <h4>3 Decades of Monographic Literature</h4>
                     <p>A comprehensive history of critical essays, exhibition monographs, and scholarly reviews analyzing the evolution of Hesham Malik’s oeuvre.</p>
                 </div>
@@ -701,6 +727,52 @@
                     <h4>Living Archive</h4>
                     <p>Transforming complex human experiences, literary philosophy, and collective memory into a unified visual monument.</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- Selected Curatorial Chronology -->
+        <section>
+            <h2>Selected Institutional Chronology</h2>
+            <div class="timeline-box">
+                
+                <div class="timeline-year">2027 &bull; Upcoming Exhibitions</div>
+                <ul class="timeline-list">
+                    <li>&bull; <strong>Life of a Box:</strong> Charles University, Prague, Czech Republic</li>
+                    <li>&bull; <strong>Zehut 'זהות':</strong> Jewish Museum, Central Europe</li>
+                    <li>&bull; <strong>Mother Mary:</strong> Sázava Monastery, Czech Republic</li>
+                    <li>&bull; <strong>Untitled Retrospective:</strong> Louny Regional Museum, Czech Republic</li>
+                </ul>
+
+                <div class="timeline-year">2026 &bull; Solo Retrospectives &amp; Interventions</div>
+                <ul class="timeline-list">
+                    <li>&bull; <strong>Life of a Box:</strong> Brussels Expo &amp; Amazon UK Flagship Installation</li>
+                    <li>&bull; <strong>Unknown:</strong> Gallery MABD, Oulu, Finland</li>
+                    <li>&bull; <strong>Silent Encounters:</strong> Museum Jindřichův Hradec</li>
+                    <li>&bull; <strong>Angels &amp; Demons:</strong> Museum of Ecclesiastical Art, Diocese of Pilsen</li>
+                    <li>&bull; <strong>Iridescent:</strong> Museum of Mariánská Týnice</li>
+                    <li>&bull; <strong>Life of a Box:</strong> Prague City Library</li>
+                </ul>
+
+                <div class="timeline-year">2024 &ndash; 2025 &bull; Global Museum Monographs</div>
+                <ul class="timeline-list">
+                    <li>&bull; <strong>Life of a Box:</strong> Museum of Paper (Muzeum Papiernictwa), Poland</li>
+                    <li>&bull; <strong>Portraits of Life:</strong> Regional Museum Kladruby</li>
+                    <li>&bull; <strong>River to Eternity:</strong> Museum of North Plzeň</li>
+                    <li>&bull; <strong>18:</strong> Jerusalem Synagogue, Prague</li>
+                    <li>&bull; <strong>Kemet:</strong> Museum of Karlovy Vary</li>
+                    <li>&bull; <strong>Twain:</strong> Berkeley Commonplace, California, USA</li>
+                    <li>&bull; <strong>Hidden Secrets:</strong> Regional Museum Most</li>
+                </ul>
+
+                <div class="timeline-year">2022 &ndash; 2023 &bull; Institutional Retrospectives</div>
+                <ul class="timeline-list">
+                    <li>&bull; <strong>I AM:</strong> Seneca College, Toronto, Canada</li>
+                    <li>&bull; <strong>Gesture:</strong> Charles University, Prague</li>
+                    <li>&bull; <strong>Make Art Not War:</strong> Dobrošov Fortress &amp; Museum of Náchodsko</li>
+                    <li>&bull; <strong>Liberation:</strong> Regional Museum Brandýs n. Labem</li>
+                    <li>&bull; <strong>Uncertain Vibrations:</strong> Kroměříž Museum</li>
+                </ul>
+
             </div>
         </section>
 
@@ -869,7 +941,7 @@
             });
         });
 
-        // Dynamic Modal Mechanics with Institutional Statements & Pillar Data
+        // Dynamic Modal Mechanics with Institutional Statements, Pillar, & Trajectory Data
         const modal = document.getElementById('infoModal');
         const modalCode = document.getElementById('modalCode');
         const modalTitle = document.getElementById('modalTitle');
@@ -895,6 +967,24 @@
                 code: "PILLAR IV &bull; HUMAN RESILIENCE",
                 title: "روح‌نواز (Rooh-Nawaz)",
                 body: "An extensive visual testimonial honoring the global Persian community. Developed in dialogue with leading scholars from Harvard, Columbia, Yale, Uppsala, and Göttingen, Rooh-Nawaz explores central concepts like 'Adab' (ethical reverence), 'Bi-gharāri' (the refusal to remain spiritually or intellectually stagnant), and 'Zabur-e Haqiqat' (Psalms of Truth), translating displacement and resilience into unified visual monuments."
+            }
+        };
+
+        const trajectoryData = {
+            retrospectives: {
+                code: "CAREER MONOGRAPH &bull; THREE DECADES",
+                title: "100+ Global Solo Retrospectives",
+                body: "Over three decades, Hesham Malik’s solo exhibition trajectory has spanned premier cultural capitals across North America, Europe, the Middle East, and Asia—including Toronto, London, Athens, Prague, Brussels, Dubai, Goa, Oulu, and Poland. Rather than operating within regional gallery circuits, each retrospective is conceived as a sovereign spatial intervention. Drawing from rigorous academic specializations in Modern/Contemporary Art & Design (The Museum of Modern Art) and Global Affairs (Council on Foreign Relations), these monumental solo exhibitions transcend geographical borders to engage international audiences in global philosophical dialogue."
+            },
+            collections: {
+                code: "PROVENANCE REGISTER &bull; GLOBAL ARCHIVES",
+                title: "Institutional & Sovereign Collections",
+                body: "Hesham Malik’s oeuvre is anchored in sovereign, state, and private collections internationally. Bridging fine art with material science and systemic innovation—supported by specialized research in Healthier Materials & Sustainable Building (Parsons School of Design) and Business Innovation & Digital Disruption (Parsons)—his monumental canvases and structural installations are preserved outside speculative commercial market mechanics. Placement across national museums, diplomatic foundations, and global research institutions secures an autonomous, permanent legacy across global cultural networks."
+            },
+            literature: {
+                code: "CRITICAL DISCOURSE &bull; HISTORICAL ARCHIVE",
+                title: "3 Decades of Monographic Literature",
+                body: "A comprehensive 30-year archive of curatorial essays, theoretical monographs, and scholarly reviews documents the evolution of Malik’s conceptual praxis. Informed by advanced pedagogy and creative systems—including specializations in Creativity & AI (Parsons School of Design) and Teaching with Art (MoMA)—the artist’s work is continuously analyzed by international art historians, curators, and institutional research collectives. This body of critical literature establishes a permanent record of intent, mapping the intersection of visual neuro-aesthetics, linguistic preservation, and global socio-environmental dynamics."
             }
         };
 
@@ -953,6 +1043,16 @@
 
         function openPillar(key) {
             const data = pillarData[key];
+            if (data) {
+                modalCode.innerHTML = data.code;
+                modalTitle.innerText = data.title;
+                modalBody.innerText = data.body;
+                modal.classList.add('active');
+            }
+        }
+
+        function openTrajectory(key) {
+            const data = trajectoryData[key];
             if (data) {
                 modalCode.innerHTML = data.code;
                 modalTitle.innerText = data.title;
