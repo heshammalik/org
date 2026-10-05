@@ -26,14 +26,14 @@
             border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: width 0.3s, height 0.3s, border-color 0.3s;
-            z-index: 9999;
+            z-index: 10001; /* Ensured cursor sits above modal overlays */
             display: none;
         }
 
         @media (min-width: 1024px) {
             .custom-cursor { display: block; }
             body { cursor: none; }
-            a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card { cursor: none; }
+            a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card, .roster-pill, .modal-close { cursor: none; }
         }
         
         html { scroll-behavior: smooth; }
@@ -292,7 +292,7 @@
         }
         .external-ref a:hover { opacity: 0.7; text-decoration: underline; }
 
-        /* Institutional Roster Display */
+        /* Institutional Roster Display (Interactive Pills) */
         .roster-pills {
             display: flex;
             flex-wrap: wrap;
@@ -304,9 +304,17 @@
             border: 1px solid var(--border-subtle);
             color: var(--text-primary);
             font-size: 0.72rem;
-            padding: 6px 14px;
+            padding: 8px 16px;
             letter-spacing: 0.1em;
             border-radius: 2px;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        .roster-pill:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            background: var(--surface-solid);
+            transform: translateY(-2px);
         }
 
         /* Bibliography Section Styles */
@@ -414,8 +422,11 @@
             background: none;
             border: none;
             color: var(--text-secondary);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             transition: color 0.3s ease;
+            z-index: 10002;
+            line-height: 1;
+            padding: 5px;
         }
         .modal-close:hover { color: var(--accent-gold); }
         .modal-title {
@@ -590,19 +601,19 @@
                     </p>
 
                     <div style="margin-top: 30px; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold);">
-                        Key Institutional &amp; Cultural Partners:
+                        Participating Donating Archives &amp; Institutional Contributors (Click to Read Statement):
                     </div>
                     <div class="roster-pills">
-                        <span class="roster-pill">Nobel Prize Museum</span>
-                        <span class="roster-pill">National Museum of Denmark</span>
-                        <span class="roster-pill">Natural History Museum Zurich</span>
-                        <span class="roster-pill">Cotroceni National Museum</span>
-                        <span class="roster-pill">Stockholm Resilience Centre</span>
-                        <span class="roster-pill">UNICEF</span>
-                        <span class="roster-pill">Red Cross</span>
-                        <span class="roster-pill">German National Library</span>
-                        <span class="roster-pill">Amazon UK</span>
-                        <span class="roster-pill">Museum of Anthropology Canada</span>
+                        <span class="roster-pill" onclick="openInstitution('nobel')">Nobel Prize Museum</span>
+                        <span class="roster-pill" onclick="openInstitution('denmark')">National Museum of Denmark</span>
+                        <span class="roster-pill" onclick="openInstitution('zurich')">Natural History Museum Zurich</span>
+                        <span class="roster-pill" onclick="openInstitution('cotroceni')">Cotroceni National Museum</span>
+                        <span class="roster-pill" onclick="openInstitution('stockholm')">Stockholm Resilience Centre</span>
+                        <span class="roster-pill" onclick="openInstitution('unicef')">UNICEF</span>
+                        <span class="roster-pill" onclick="openInstitution('redcross')">Red Cross</span>
+                        <span class="roster-pill" onclick="openInstitution('germanlib')">German National Library</span>
+                        <span class="roster-pill" onclick="openInstitution('amazon')">Amazon UK</span>
+                        <span class="roster-pill" onclick="openInstitution('canada')">Museum of Anthropology Canada</span>
                     </div>
                 </div>
             </div>
@@ -614,7 +625,7 @@
                 </div>
                 <div class="trajectory-card">
                     <h4>Museum of Papermaking</h4>
-                    <p>Duszniki-Zdrój, Poland. Exploring the material heritage of packaging transformed into high-concept artistic sculpture.</p>
+                    <p>Duszniki-Zdrój, Poland. Primary public retrospective displaying participating institutional packaging transformed into monumental sculptures.</p>
                 </div>
                 <div class="trajectory-card">
                     <h4>Museum of West Bohemia</h4>
@@ -625,6 +636,7 @@
             <div class="external-ref">
                 <strong>Critical Discourse &amp; Institutional Press:</strong>
                 <ul style="list-style: none; padding: 0; margin: 15px 0 0 0; line-height: 2;">
+                    <li>&bull; <a href="https://muzeumpapiernictwa.pl/wp-content/uploads/2025/07/Life-of-a-box_katalog-wystawy_pdf_min.pdf" target="_blank">Museum of Papermaking Exhibition Monograph &amp; Institutional Catalog (PDF)</a></li>
                     <li>&bull; <a href="https://www.aboutamazon.eu/amazon-boxes-are-a-work-of-art" target="_blank">Amazon EU Feature: "Amazon boxes are a work of art"</a></li>
                     <li>&bull; <a href="https://www.mlp.cz/cz/novinky/life-box-globalni-poselstvi-v-recyklovane-pouzite-krabici" target="_blank">Municipal Library of Prague: "Global Message in a Recycled Box"</a></li>
                     <li>&bull; <a href="https://www.iumeni.cz/clanky-recenze/udalosti/2024-krasa-udrzitelnosti-a-udrzitelnost-krasy-v-umeni-malik-a-jeho-projekt-life-of-a-box-meni-svou-kreativitou-pohled-na-recyklaci/" target="_blank">iUMĚNÍ Analysis: "The Beauty of Sustainability and the Sustainability of Beauty"</a></li>
@@ -818,7 +830,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        const interactiveEls = 'a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card';
+        const interactiveEls = 'a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card, .roster-pill, .modal-close';
         
         function bindCursor() {
             document.querySelectorAll(interactiveEls).forEach(item => {
@@ -856,7 +868,7 @@
             });
         });
 
-        // Dynamic Modal Mechanics with Deep Roster Data
+        // Dynamic Modal Mechanics with Institutional Statements & Pillar Data
         const modal = document.getElementById('infoModal');
         const modalCode = document.getElementById('modalCode');
         const modalTitle = document.getElementById('modalTitle');
@@ -885,8 +897,71 @@
             }
         };
 
+        const institutionData = {
+            nobel: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "Nobel Prize Museum (Sweden)",
+                body: "\"In contributing discarded structural packaging from our archives to Life of a Box, we affirm that human discovery, intellectual breakthrough, and ecological stewardship share a common imperative: transforming raw, everyday materials into lasting monuments of human responsibility.\""
+            },
+            denmark: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "National Museum of Denmark",
+                body: "\"Preserving cultural heritage requires rethinking material consumption. By transforming used industrial paper packaging into monumental art, Life of a Box illustrates how environmental sustainability is deeply intertwined with cultural longevity.\""
+            },
+            zurich: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "Natural History Museum Zurich",
+                body: "\"Our participation highlights the vital connection between natural resource conservation and artistic expression, demonstrating that recycled industrial cardboard can serve as an inspiring testament to environmental responsibility.\""
+            },
+            cotroceni: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "Cotroceni National Museum (Romania)",
+                body: "\"Artistic recycling offers a profound platform for civic and ecological dialogue. Through Life of a Box, industrial waste is elevated into a cultural symbol of sustainable development and historical continuity.\""
+            },
+            stockholm: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "Stockholm Resilience Centre",
+                body: "\"Planetary resilience requires bold shifts in perspective. Hesham Malik's transformation of commercial waste stream packaging provides a visual manifestation of circular economic thinking and ecological stewardship.\""
+            },
+            unicef: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "UNICEF",
+                body: "\"Supporting sustainable creative initiatives reminds us that safeguarding the planet's future resources is fundamental to securing a viable, healthy world for future generations.\""
+            },
+            redcross: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "International Red Cross",
+                body: "\"Humanitarian resilience and environmental protection are inseparable. Participating in Life of a Box reinforces our commitment to sustainable practices and global solidarity.\""
+            },
+            germanlib: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "German National Library",
+                body: "\"As guardians of written heritage, contributing paper-based packaging materials to this global sculpture initiative honors the historical relationship between paper, human communication, and environmental preservation.\""
+            },
+            amazon: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "Amazon UK",
+                body: "\"By re-imagining corrugated shipping boxes as high-art sculptures, Life of a Box inspires global conversations around packaging design, circular material reuse, and environmental innovation.\""
+            },
+            canada: {
+                code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
+                title: "Museum of Anthropology Canada",
+                body: "\"Reflecting on material lifecycles and environmental reverence, this collaboration bridges modern industrial waste streams with ancient traditions of resource respect and artistic integrity.\""
+            }
+        };
+
         function openPillar(key) {
             const data = pillarData[key];
+            if (data) {
+                modalCode.innerHTML = data.code;
+                modalTitle.innerText = data.title;
+                modalBody.innerText = data.body;
+                modal.classList.add('active');
+            }
+        }
+
+        function openInstitution(key) {
+            const data = institutionData[key];
             if (data) {
                 modalCode.innerHTML = data.code;
                 modalTitle.innerText = data.title;
