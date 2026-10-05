@@ -198,7 +198,7 @@
             opacity: 0.7;
             transition: opacity 0.3s ease;
         }
-        .pillar-card:hover .click-hint, .trajectory-card:hover .click-hint, .biblio-card:hover .click-hint { opacity: 1; }
+        .pillar-card:hover .click-hint, .trajectory-card:hover .click-hint { opacity: 1; }
         
         .collaborator-list {
             font-size: 0.7rem;
@@ -357,7 +357,6 @@
             flex-direction: column;
             justify-content: space-between;
             transition: all 0.4s ease;
-            user-select: none;
         }
         .biblio-card:hover {
             border-color: var(--border-hover);
@@ -721,234 +720,51 @@
             </div>
         </section>
 
-        <!-- Spatial Chapter 3: Rooh-Nawaz (Sovereign Museum-Grade Redesign) -->
+        <!-- Spatial Chapter 3: Rooh-Nawaz (Restored Structural Flow) -->
         <section>
             <div class="ambient-section">
                 <div class="ambient-bg-shadow" style="background-image: url('10.JPG');"></div>
                 <div class="ambient-content">
                     <h2>Spatial Chapter &bull; روح‌نواز (Rooh-Nawaz)</h2>
-                    <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">
-                        Testimonies of Human Resilience &bull; Archival Register
-                    </h3>
+                    <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">Testimonies of Human Resilience</h3>
                     <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
-                        An artistic exploration of the global Persian diaspora, delving into a diverse array of philosophical responses to displacement, longing, and memory. Anchored in concepts like <i>bi-gharāri</i> (the active rejection of intellectual stagnation) and <i>Adab</i> (ethical reverence), Rooh-Nawaz transforms academic dialogue into monumental visual heritage.
+                        An artistic exploration of the global Persian community, delving into a diverse array of responses towards challenging life circumstances. Anchored in concepts like <i>bi-gharāri</i> (the active rejection of intellectual stagnation) and <i>Adab</i> (ethical conduct and reverence), Rooh-Nawaz transforms personal memory and exile into monumental visual expressions.
                     </p>
+
+                    <div style="margin-top: 30px; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold);">
+                        Academic Faculties &amp; Scholarly Collaborators (Click to Read Donated Statement):
+                    </div>
+                    <div class="roster-pills">
+                        <span class="roster-pill" onclick="openInstitution('harouni')">Dr. Houman Harouni (Harvard)</span>
+                        <span class="roster-pill" onclick="openInstitution('kia')">Dr. Mana Kia (Columbia)</span>
+                        <span class="roster-pill" onclick="openInstitution('babaie')">Prof. Sussan Babaie (Courtauld)</span>
+                        <span class="roster-pill" onclick="openInstitution('daryaee')">Dr. Touraj Daryaee (UC Irvine)</span>
+                        <span class="roster-pill" onclick="openInstitution('grigor')">Dr. Talinn Grigor (UC Davis)</span>
+                        <span class="roster-pill" onclick="openInstitution('berberian')">Dr. Houri Berberian (UC Irvine)</span>
+                        <span class="roster-pill" onclick="openInstitution('hodgkin')">Dr. Samuel Hodgkin (Yale)</span>
+                        <span class="roster-pill" onclick="openInstitution('pazargadi')">Dr. Leila Pazargadi (Nevada State)</span>
+                        <span class="roster-pill" onclick="openInstitution('kian')">Dr. Soheila Kian (UC Irvine)</span>
+                        <span class="roster-pill" onclick="openInstitution('siamdoust')">Dr. Nahid Siamdoust (UT Austin)</span>
+                        <span class="roster-pill" onclick="openInstitution('tabarraee')">Dr. Babak Tabarraee (UT Austin)</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Sovereign Scholar Gallery Grid -->
-            <div style="margin-top: 50px;">
-                <div style="font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 25px; text-align: center;">
-                    &bull; Donated Words &amp; Scholarly Contributions &bull;
-                </div>
-
-                <div class="biblio-grid">
-
-                    <!-- Card 1: Dr. Houman Harouni -->
-                    <div class="biblio-card" onclick="openInstitution('harouni')">
-                        <div>
-                            <div class="biblio-code">HARVARD UNIVERSITY &bull; EDUCATION</div>
-                            <div class="biblio-title" style="font-size: 1.1rem; color: var(--accent-gold); font-family: 'Times New Roman', serif; font-style: italic;">
-                                "بی‌قراری — Bi-gharāri"
-                            </div>
-                            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 300; margin: 10px 0;">
-                                Dr. Houman Harouni
-                            </div>
-                            <div class="biblio-meta" style="margin-bottom: 15px; border-bottom: none; padding-bottom: 0;">
-                                Lecturer in Education &bull; Harvard Graduate School of Education
-                            </div>
-                        </div>
-                        <div class="click-hint">&bull; Read Full Monographic Text &rarr;</div>
-                    </div>
-
-                    <!-- Card 2: Dr. Mana Kia -->
-                    <div class="biblio-card" onclick="openInstitution('kia')">
-                        <div>
-                            <div class="biblio-code">COLUMBIA UNIVERSITY &bull; MESAAS</div>
-                            <div class="biblio-title" style="font-size: 1.1rem; color: var(--accent-gold); font-family: 'Times New Roman', serif; font-style: italic;">
-                                "ادب — Adab"
-                            </div>
-                            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 300; margin: 10px 0;">
-                                Dr. Mana Kia
-                            </div>
-                            <div class="biblio-meta" style="margin-bottom: 15px; border-bottom: none; padding-bottom: 0;">
-                                Associate Professor &bull; Dept. of Middle Eastern, South Asian &amp; African Studies
-                            </div>
-                        </div>
-                        <div class="click-hint">&bull; Read Full Monographic Text &rarr;</div>
-                    </div>
-
-                    <!-- Card 3: Prof. Sussan Babaie -->
-                    <div class="biblio-card" onclick="openInstitution('babaie')">
-                        <div>
-                            <div class="biblio-code">THE COURTAULD INSTITUTE OF ART</div>
-                            <div class="biblio-title" style="font-size: 1.1rem; color: var(--accent-gold); font-family: 'Times New Roman', serif; font-style: italic;">
-                                "Oneness"
-                            </div>
-                            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 300; margin: 10px 0;">
-                                Prof. Sussan Babaie
-                            </div>
-                            <div class="biblio-meta" style="margin-bottom: 15px; border-bottom: none; padding-bottom: 0;">
-                                Professor of Arts of Iran &amp; Islam &bull; University of London
-                            </div>
-                        </div>
-                        <div class="click-hint">&bull; Read Full Monographic Text &rarr;</div>
-                    </div>
-
-                    <!-- Card 4: Dr. Touraj Daryaee -->
-                    <div class="biblio-card" onclick="openInstitution('daryaee')">
-                        <div>
-                            <div class="biblio-code">JORDAN CENTER FOR PERSIAN STUDIES</div>
-                            <div class="biblio-title" style="font-size: 1.1rem; color: var(--accent-gold); font-family: 'Times New Roman', serif; font-style: italic;">
-                                "Courage"
-                            </div>
-                            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 300; margin: 10px 0;">
-                                Dr. Touraj Daryaee
-                            </div>
-                            <div class="biblio-meta" style="margin-bottom: 15px; border-bottom: none; padding-bottom: 0;">
-                                Maseeh Chair in Persian Studies &amp; Director &bull; UC Irvine
-                            </div>
-                        </div>
-                        <div class="click-hint">&bull; Read Full Monographic Text &rarr;</div>
-                    </div>
-
-                    <!-- Card 5: Dr. Talinn Grigor -->
-                    <div class="biblio-card" onclick="openInstitution('grigor')">
-                        <div>
-                            <div class="biblio-code">UNIVERSITY OF CALIFORNIA, DAVIS</div>
-                            <div class="biblio-title" style="font-size: 1.1rem; color: var(--accent-gold); font-family: 'Times New Roman', serif; font-style: italic;">
-                                "Ջան / جان / Jān"
-                            </div>
-                            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 300; margin: 10px 0;">
-                                Dr. Talinn Grigor
-                            </div>
-                            <div class="biblio-meta" style="margin-bottom: 15px; border-bottom: none; padding-bottom: 0;">
-                                Professor of Art &amp; Architectural History &bull; Editor, Enc. Iranica
-                            </div>
-                        </div>
-                        <div class="click-hint">&bull; Read Full Monographic Text &rarr;</div>
-                    </div>
-
-                    <!-- Card 6: Dr. Houri Berberian -->
-                    <div class="biblio-card" onclick="openInstitution('berberian')">
-                        <div>
-                            <div class="biblio-code">CENTER FOR ARMENIAN STUDIES</div>
-                            <div class="biblio-title" style="font-size: 1.1rem; color: var(--accent-gold); font-family: 'Times New Roman', serif; font-style: italic;">
-                                "پیوند / ارمنی — Peyvand"
-                            </div>
-                            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 300; margin: 10px 0;">
-                                Dr. Houri Berberian
-                            </div>
-                            <div class="biblio-meta" style="margin-bottom: 15px; border-bottom: none; padding-bottom: 0;">
-                                Chancellor's Professor of History &amp; Meghrouni Chair &bull; UCI
-                            </div>
-                        </div>
-                        <div class="click-hint">&bull; Read Full Monographic Text &rarr;</div>
-                    </div>
-
-                    <!-- Card 7: Dr. Samuel Hodgkin -->
-                    <div class="biblio-card" onclick="openInstitution('hodgkin')">
-                        <div>
-                            <div class="biblio-code">YALE UNIVERSITY &bull; COMPARATIVE LITERATURE</div>
-                            <div class="biblio-title" style="font-size: 1.0rem; color: var(--accent-gold); font-family: 'Times New Roman', serif; font-style: italic;">
-                                "همان پلنگ به دریایم..."
-                            </div>
-                            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 300; margin: 10px 0;">
-                                Dr. Samuel Hodgkin
-                            </div>
-                            <div class="biblio-meta" style="margin-bottom: 15px; border-bottom: none; padding-bottom: 0;">
-                                Associate Professor of Comparative Literature &bull; Yale University
-                            </div>
-                        </div>
-                        <div class="click-hint">&bull; Read Full Monographic Text &rarr;</div>
-                    </div>
-
-                    <!-- Card 8: Dr. Leila Pazargadi -->
-                    <div class="biblio-card" onclick="openInstitution('pazargadi')">
-                        <div>
-                            <div class="biblio-code">NEVADA STATE UNIVERSITY</div>
-                            <div class="biblio-title" style="font-size: 1.1rem; color: var(--accent-gold); font-family: 'Times New Roman', serif; font-style: italic;">
-                                "Rahi — راهی"
-                            </div>
-                            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 300; margin: 10px 0;">
-                                Dr. Leila Pazargadi
-                            </div>
-                            <div class="biblio-meta" style="margin-bottom: 15px; border-bottom: none; padding-bottom: 0;">
-                                Professor of English &bull; Nevada State University
-                            </div>
-                        </div>
-                        <div class="click-hint">&bull; Read Full Monographic Text &rarr;</div>
-                    </div>
-
-                    <!-- Card 9: Dr. Soheila Kian -->
-                    <div class="biblio-card" onclick="openInstitution('kian')">
-                        <div>
-                            <div class="biblio-code">UCI SCHOOL OF HUMANITIES</div>
-                            <div class="biblio-title" style="font-size: 1.0rem; color: var(--accent-gold); font-family: 'Times New Roman', serif; font-style: italic;">
-                                "در دیارهایی ورای ایرانِ زیبای من..."
-                            </div>
-                            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 300; margin: 10px 0;">
-                                Dr. Soheila Kian
-                            </div>
-                            <div class="biblio-meta" style="margin-bottom: 15px; border-bottom: none; padding-bottom: 0;">
-                                Lecturer in Persian &amp; French Languages &bull; UC Irvine
-                            </div>
-                        </div>
-                        <div class="click-hint">&bull; Read Full Monographic Text &rarr;</div>
-                    </div>
-
-                    <!-- Card 10: Dr. Nahid Siamdoust -->
-                    <div class="biblio-card" onclick="openInstitution('siamdoust')">
-                        <div>
-                            <div class="biblio-code">UNIVERSITY OF TEXAS AT AUSTIN</div>
-                            <div class="biblio-title" style="font-size: 1.1rem; color: var(--accent-gold); font-family: 'Times New Roman', serif; font-style: italic;">
-                                "Sekanjebin — سکنجبین"
-                            </div>
-                            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 300; margin: 10px 0;">
-                                Dr. Nahid Siamdoust
-                            </div>
-                            <div class="biblio-meta" style="margin-bottom: 15px; border-bottom: none; padding-bottom: 0;">
-                                Assistant Professor of Media &amp; Middle Eastern Studies &bull; UT Austin
-                            </div>
-                        </div>
-                        <div class="click-hint">&bull; Read Full Monographic Text &rarr;</div>
-                    </div>
-
-                    <!-- Card 11: Dr. Babak Tabarraee -->
-                    <div class="biblio-card" onclick="openInstitution('tabarraee')">
-                        <div>
-                            <div class="biblio-code">UT AUSTIN &bull; PERSIAN PROGRAM</div>
-                            <div class="biblio-title" style="font-size: 1.0rem; color: var(--accent-gold); font-family: 'Times New Roman', serif; font-style: italic;">
-                                "همه‌چیز تمام می‌شود / تو تمام نمی‌شوی"
-                            </div>
-                            <div style="font-size: 0.85rem; color: #ffffff; font-weight: 300; margin: 10px 0;">
-                                Dr. Babak Tabarraee
-                            </div>
-                            <div class="biblio-meta" style="margin-bottom: 15px; border-bottom: none; padding-bottom: 0;">
-                                Coordinator of the Persian Program &bull; University of Texas at Austin
-                            </div>
-                        </div>
-                        <div class="click-hint">&bull; Read Full Monographic Text &rarr;</div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="trajectory-grid" style="margin-top: 50px;">
+            <div class="trajectory-grid" style="margin-top: 30px;">
                 <div class="trajectory-card" onclick="openTrajectory('rooh_academic')">
                     <span class="click-hint">&bull; Read Monograph</span>
-                    <h4>Academic Faculties</h4>
-                    <p>Rigorous scholarly engagements analyzing exile, memory, and Persian literary history alongside Columbia, Harvard, and Göttingen.</p>
+                    <h4>I. Academic Faculties &amp; Humanities</h4>
+                    <p>Rigorous scholarly engagements analyzing exile, memory, and Persian literary history alongside faculties from Columbia, Harvard, Yale, and Göttingen.</p>
                 </div>
                 <div class="trajectory-card" onclick="openTrajectory('rooh_art')">
                     <span class="click-hint">&bull; Read Monograph</span>
-                    <h4>Art &amp; Neuro-Aesthetics</h4>
-                    <p>Critical research with The Courtauld Institute examining the visceral impact of abstract visual monuments on emotional memory.</p>
+                    <h4>II. Art &amp; Neuro-Aesthetics</h4>
+                    <p>Critical research with The Courtauld Institute examining the visceral impact of abstract visual monuments on emotional memory and diaspora experience.</p>
                 </div>
                 <div class="trajectory-card" onclick="openTrajectory('rooh_archive')">
                     <span class="click-hint">&bull; Read Monograph</span>
-                    <h4>Living Monumental Archive</h4>
-                    <p>Translating ancient concepts of <i>Adab</i> and <i>Zabur-e Haqiqat</i> into monumental public canvases celebrating human resilience.</p>
+                    <h4>III. Living Monumental Archive</h4>
+                    <p>Translating ancient concepts of <i>Adab</i> and <i>Zabur-e Haqiqat</i> into monumental public canvases celebrating human resilience and spiritual persistence.</p>
                 </div>
             </div>
         </section>
@@ -1224,17 +1040,17 @@
                 body: "Archiving environmental stewardship philosophy across international indigenous territories. Incorporating Dalabon Junggayi ('traditional custodian' via Prof. Claire Smith), Cherokee Ama ('water' via Dr. Jeff Corntassel), and Anishinaabemowin Mashkiki ('strength of the Earth' via Prof. Melissa K. Nelson)."
             },
             rooh_academic: {
-                code: "ROOH-NAWAZ &bull; SCHOLARLY COLLABORATION",
+                code: "ROOH-NAWAZ &bull; CURATORIAL METHODOLOGY I",
                 title: "Academic Faculties & Humanities",
-                body: "Academic discourse developed in dialogue with scholars from Harvard, Columbia, and Göttingen, bridging historical Persian literary traditions with modern fine art."
+                body: "Academic discourse developed in dialogue with scholars from Harvard, Columbia, Yale, UT Austin, and Göttingen, bridging historical Persian literary traditions and diaspora experience with modern fine art."
             },
             rooh_art: {
-                code: "ROOH-NAWAZ &bull; CRITICAL RESEARCH",
+                code: "ROOH-NAWAZ &bull; CURATORIAL METHODOLOGY II",
                 title: "The Courtauld Institute & Neuro-Aesthetics",
-                body: "Investigating how abstract monumental art translates collective memory, trauma, and resilience into visceral aesthetic recognition."
+                body: "Investigating how abstract monumental art translates collective memory, trauma, and resilience into visceral aesthetic recognition and shared human dignity."
             },
             rooh_archive: {
-                code: "ROOH-NAWAZ &bull; SOVEREIGN MONUMENT",
+                code: "ROOH-NAWAZ &bull; CURATORIAL METHODOLOGY III",
                 title: "Living Archive of Persian Culture",
                 body: "Creating permanent visual monuments that honor exile, spiritual seeking ('Bi-gharāri'), and the timeless dignity ('Adab') of the global Persian community."
             }
@@ -1381,7 +1197,7 @@
             grigor: {
                 code: "DONATED WORD ARCHIVE &bull; ROOH-NAWAZ",
                 title: "Dr. Talinn Grigor &bull; Professor of Art & Architectural History",
-                body: "\"My word is Ջան / جان / jān.\n\nI chose this intentionally, even though it's not an art/architectural term; it's a socio-culturally and linguistically shared word between the Persian-speaking and Armenian-speaking worlds, with an untranslatable meaning in Western societies. People use it daily, carrying existential and epistemic implications in shared cultures.\"\n\n— Contributed to the Rooh-Nawaz archive. (Affiliation: UC Davis, referenced for biographical identification purposes)."
+                body: "\"My word is Ջان / جان / jān.\n\nI chose this intentionally, even though it's not an art/architectural term; it's a socio-culturally and linguistically shared word between the Persian-speaking and Armenian-speaking worlds, with an untranslatable meaning in Western societies. People use it daily, carrying existential and epistemic implications in shared cultures.\"\n\n— Contributed to the Rooh-Nawaz archive. (Affiliation: UC Davis, referenced for biographical identification purposes)."
             },
             daryaee: {
                 code: "DONATED WORD ARCHIVE &bull; ROOH-NAWAZ",
