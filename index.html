@@ -33,7 +33,7 @@
         @media (min-width: 1024px) {
             .custom-cursor { display: block; }
             body { cursor: none; }
-            a, button, .pillar-card, .trajectory-card, .filter-btn { cursor: none; }
+            a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card { cursor: none; }
         }
         
         html { scroll-behavior: smooth; }
@@ -278,6 +278,129 @@
         }
         .external-ref a:hover { opacity: 0.7; text-decoration: underline; }
 
+        /* Bibliography Section Styles */
+        .biblio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .biblio-card {
+            background-color: var(--surface-glass);
+            border: 1px solid var(--border-subtle);
+            padding: 35px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.4s ease;
+        }
+        .biblio-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            background-color: var(--surface-solid);
+            box-shadow: 0 20px 40px var(--accent-gold-glow);
+        }
+        .biblio-code {
+            font-size: 0.7rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .biblio-title {
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-weight: 300;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            letter-spacing: 0.05em;
+        }
+        .biblio-meta {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            letter-spacing: 0.1em;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 15px;
+        }
+        .biblio-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .biblio-btn {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            transition: all 0.3s ease;
+        }
+        .biblio-btn:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            background: var(--surface-solid);
+        }
+
+        /* Abstract Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 3, 3, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-box {
+            background: var(--surface-solid);
+            border: 1px solid var(--border-hover);
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 50px;
+            position: relative;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        .modal-close:hover { color: var(--accent-gold); }
+        .modal-title {
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: 0.1em;
+        }
+        .modal-body {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-top: 25px;
+        }
+
         .ledger-container {
             background-color: var(--surface-solid);
             border: 1px solid var(--border-subtle);
@@ -354,8 +477,9 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
-            .ledger-container, .ambient-section { padding: 40px 25px; }
+            .ledger-container, .ambient-section, .modal-box { padding: 40px 25px; }
             .ambient-bg-shadow { width: 100%; opacity: 0.08; }
+            .biblio-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -501,59 +625,122 @@
             </div>
         </section>
 
+        <!-- Critical Discourse & Bibliography Section -->
+        <section>
+            <h2>Critical Discourse &amp; Institutional Bibliography</h2>
+            <div class="biblio-grid">
+                
+                <div class="biblio-card">
+                    <div>
+                        <div class="biblio-code">INQ-2026-06 &bull; Curatorial Inquiry</div>
+                        <div class="biblio-title">The Architecture of Crisis: Mapping Global Energy Through Linguistic Archives</div>
+                        <div class="biblio-meta">TMOCI Archive &amp; Research Collective &bull; June 2026</div>
+                    </div>
+                    <div class="biblio-actions">
+                        <button class="biblio-btn" onclick="openAbstract('INQ-2026-06', 'The Architecture of Crisis: Mapping Global Energy Through Linguistic Archives', 'In an era defined by rapid geopolitical shifts, institutional fragmentation, and digital saturation, how do intellectual architects articulate the underlying frequency of our times? This inquiry analyzes Global Project Words as a data-visualization and neuro-aesthetic initiative, positioning Hesham Malik\'s large-scale abstract canvases within the conceptual lineage of On Kawara and structural spatial mechanics.')">Read Abstract</button>
+                    </div>
+                </div>
+
+                <div class="biblio-card">
+                    <div>
+                        <div class="biblio-code">INQ-2025-12 &bull; Curatorial Inquiry</div>
+                        <div class="biblio-title">Geography without Borders: The Mechanics of Transnational Exchange</div>
+                        <div class="biblio-meta">TMOCI Archive &amp; Research Collective &bull; December 2025</div>
+                    </div>
+                    <div class="biblio-actions">
+                        <button class="biblio-btn" onclick="openAbstract('INQ-2025-12', 'Geography without Borders: The Mechanics of Transnational Exchange', 'Geopolitical boundaries in contemporary culture are rarely defined by physical borders; they are dictated by distribution systems. This text explores decentralized curatorial praxis, drawing parallels between historic postal networks like Fluxus, Alighiero Boetti\'s Maps, and contemporary open-access digital repositories.')">Read Abstract</button>
+                    </div>
+                </div>
+
+                <div class="biblio-card">
+                    <div>
+                        <div class="biblio-code">INQ-2024-08 &bull; Institutional Analysis</div>
+                        <div class="biblio-title">The Institutional Ledger and the Architecture of Preservation</div>
+                        <div class="biblio-meta">TMOCI Archive &amp; Research Collective &bull; August 2024</div>
+                    </div>
+                    <div class="biblio-actions">
+                        <button class="biblio-btn" onclick="openAbstract('INQ-2024-08', 'The Institutional Ledger and the Architecture of Preservation', 'The structural failure of modern archiving lies in mistaking the accumulation of material goods for the progression of critical thought. Citing Sol LeWitt and On Kawara, this research proposes shifting validation away from commercial gallery market mechanics toward transparent, open-access conceptual ledgers.')">Read Abstract</button>
+                    </div>
+                </div>
+
+                <div class="biblio-card">
+                    <div>
+                        <div class="biblio-code">INQ-2023-04 &bull; Spatial Theory</div>
+                        <div class="biblio-title">On the Epistemology of the Unseen</div>
+                        <div class="biblio-meta">TMOCI Archive &amp; Research Collective &bull; April 2023</div>
+                    </div>
+                    <div class="biblio-actions">
+                        <button class="biblio-btn" onclick="openAbstract('INQ-2023-04', 'On the Epistemology of the Unseen', 'A critical re-examination of the white cube gallery model. Examining Gordon Matta-Clark\'s architectural cuts and Marcel Duchamp\'s linguistic destabilization, the paper outlines how non-commercial platforms preserve spatial philosophy and complex installations beyond speculative commercial markets.')">Read Abstract</button>
+                    </div>
+                </div>
+
+                <div class="biblio-card">
+                    <div>
+                        <div class="biblio-code">Critical Commentary</div>
+                        <div class="biblio-title">A Market Externality That Rings Your Bell</div>
+                        <div class="biblio-meta">John Elkington &bull; Volans / Substack</div>
+                    </div>
+                    <div class="biblio-actions">
+                        <a href="https://johnelkington.substack.com/p/a-market-externality-that-rings-your" target="_blank" class="biblio-btn" style="text-decoration: none; text-align: center;">External Monograph</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <section>
             <h2>Archive Provenance &bull; Words Contributors</h2>
             <div class="ledger-container" style="position: relative; overflow: hidden;">
                 <div class="ambient-bg-shadow" style="background-image: url('3.jpg'); width: 30%; background-position: top center;"></div>
 
                 <div style="position: relative; z-index: 2;">
-                    <h3>Participating Institutional & Cultural DNA</h3>
+                    <h3>Participating Institutional &amp; Cultural DNA</h3>
                     
                     <div class="filter-controls">
                         <button class="filter-btn active" data-filter="all">All Networks</button>
                         <button class="filter-btn" data-filter="universities">Global Universities</button>
-                        <button class="filter-btn" data-filter="museums">Museums & Galleries</button>
-                        <button class="filter-btn" data-filter="sovereignties">NGOs & Sovereignties</button>
+                        <button class="filter-btn" data-filter="museums">Museums &amp; Galleries</button>
+                        <button class="filter-btn" data-filter="sovereignties">NGOs &amp; Sovereignties</button>
                     </div>
 
                     <div class="ledger-grid">
                         <div class="ledger-category" data-category="universities">
-                            <h4>Global Universities & Research</h4>
+                            <h4>Global Universities &amp; Research</h4>
                             <ul>
-                                &bull; Harvard University Network (Office of the President Emeritus, Faculty of Arts & Sciences, Weatherhead Center)<br>
-                                &bull; Oxford & Cambridge (UK)<br>
+                                &bull; Harvard University Network (Office of the President Emeritus, Faculty of Arts &amp; Sciences, Weatherhead Center)<br>
+                                &bull; Oxford &amp; Cambridge (UK)<br>
                                 &bull; Stanford, MIT, Princeton, Yale, Columbia, Chicago<br>
                                 &bull; Sorbonne University (France)<br>
                                 &bull; Hebrew University of Jerusalem (Israel)<br>
-                                &bull; University of Melbourne & Sydney (Australia)<br>
-                                &bull; Charles University & Masaryk University (CZ)<br>
-                                &bull; University of Tokyo, Toronto, Vienna, & Beyond
+                                &bull; University of Melbourne &amp; Sydney (Australia)<br>
+                                &bull; Charles University &amp; Masaryk University (CZ)<br>
+                                &bull; University of Tokyo, Toronto, Vienna, &amp; Beyond
                             </ul>
                         </div>
                         <div class="ledger-category" data-category="museums">
-                            <h4>Museums & Galleries</h4>
+                            <h4>Museums &amp; Galleries</h4>
                             <ul>
-                                &bull; TATE London & National Galleries Scotland<br>
+                                &bull; TATE London &amp; National Galleries Scotland<br>
                                 &bull; National Gallery of Canada<br>
-                                &bull; Ludwig Museum (Hungary) & Slovak National Gallery<br>
-                                &bull; Greenland National Museum & Archives<br>
-                                &bull; Jewish Museum Frankfurt & Skirball Cultural Center<br>
-                                &bull; Academy of Fine Arts Vienna & Stuttgart<br>
-                                &bull; Vilnius Academy of Arts & National Museum of Lithuania<br>
+                                &bull; Ludwig Museum (Hungary) &amp; Slovak National Gallery<br>
+                                &bull; Greenland National Museum &amp; Archives<br>
+                                &bull; Jewish Museum Frankfurt &amp; Skirball Cultural Center<br>
+                                &bull; Academy of Fine Arts Vienna &amp; Stuttgart<br>
+                                &bull; Vilnius Academy of Arts &amp; National Museum of Lithuania<br>
                                 &bull; Regional and Municipal Museums across Europe
                             </ul>
                         </div>
                         <div class="ledger-category" data-category="sovereignties">
-                            <h4>Global NGOs & Sovereignties</h4>
+                            <h4>Global NGOs &amp; Sovereignties</h4>
                             <ul>
-                                &bull; Greenpeace International & Jane Goodall Institute<br>
+                                &bull; Greenpeace International &amp; Jane Goodall Institute<br>
                                 &bull; Svalbard Global Seed Vault (Norway)<br>
                                 &bull; Equal Justice Initiative (Bryan Stevenson)<br>
-                                &bull; Avannaata Government & Greenlandic Red Cross<br>
-                                &bull; Palestinian Cultural & Freedom Theatre Initiatives<br>
+                                &bull; Avannaata Government &amp; Greenlandic Red Cross<br>
+                                &bull; Palestinian Cultural &amp; Freedom Theatre Initiatives<br>
                                 &bull; Na'kuset Native Women’s Shelter of Montreal<br>
-                                &bull; Index on Censorship & Conciliation Resources<br>
-                                &bull; Global Human Rights & Community Coalitions
+                                &bull; Index on Censorship &amp; Conciliation Resources<br>
+                                &bull; Global Human Rights &amp; Community Coalitions
                             </ul>
                         </div>
                     </div>
@@ -561,6 +748,16 @@
             </div>
         </section>
     </main>
+
+    <!-- Abstract Modal UI -->
+    <div class="modal-overlay" id="abstractModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeAbstract()">&times;</button>
+            <div class="biblio-code" id="modalCode">INQ-2026-06</div>
+            <div class="modal-title" id="modalTitle">Title</div>
+            <div class="modal-body" id="modalBody">Abstract content...</div>
+        </div>
+    </div>
 
     <footer>
         <div style="margin-bottom: 20px;">
@@ -576,18 +773,23 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button, .pillar-card, .trajectory-card, .filter-btn').forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                cursor.style.width = '48px';
-                cursor.style.height = '48px';
-                cursor.style.borderColor = 'rgba(212, 175, 55, 0.8)';
+        const interactiveEls = 'a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card';
+        
+        function bindCursor() {
+            document.querySelectorAll(interactiveEls).forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    cursor.style.width = '48px';
+                    cursor.style.height = '48px';
+                    cursor.style.borderColor = 'rgba(212, 175, 55, 0.8)';
+                });
+                item.addEventListener('mouseleave', () => {
+                    cursor.style.width = '24px';
+                    cursor.style.height = '24px';
+                    cursor.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                });
             });
-            item.addEventListener('mouseleave', () => {
-                cursor.style.width = '24px';
-                cursor.style.height = '24px';
-                cursor.style.borderColor = 'rgba(212, 175, 55, 0.5)';
-            });
-        });
+        }
+        bindCursor();
 
         const filterBtns = document.querySelectorAll('.filter-btn');
         const categories = document.querySelectorAll('.ledger-category');
@@ -607,6 +809,27 @@
                     }
                 });
             });
+        });
+
+        // Abstract Modal Mechanics
+        const modal = document.getElementById('abstractModal');
+        const modalCode = document.getElementById('modalCode');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+
+        function openAbstract(code, title, text) {
+            modalCode.innerText = code;
+            modalTitle.innerText = title;
+            modalBody.innerText = text;
+            modal.classList.add('active');
+        }
+
+        function closeAbstract() {
+            modal.classList.remove('active');
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeAbstract();
         });
     </script>
 </body>
