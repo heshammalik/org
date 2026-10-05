@@ -682,21 +682,36 @@
                     <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
                         Honoring and preserving an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge and language with the global community. From Cree concepts of <i>sâkihitowin</i> (love as the bedrock of collective wellness) to Sugpiaq expressions of <i>Arinartuq</i> ("that which is within deserves respect"), the archive documents how language functions as living environmental philosophy.
                     </p>
+
+                    <div style="margin-top: 30px; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold);">
+                        Institutional Repositories &amp; Community Guardians (Click to Read Statement):
+                    </div>
+                    <div class="roster-pills">
+                        <span class="roster-pill" onclick="openInstitution('ngc')">National Gallery of Canada</span>
+                        <span class="roster-pill" onclick="openInstitution('burke')">Burke Museum Seattle</span>
+                        <span class="roster-pill" onclick="openInstitution('nuuk')">Nuuk Art Museum Greenland</span>
+                        <span class="roster-pill" onclick="openInstitution('nakuset')">Na’kuset Native Women’s Shelter</span>
+                        <span class="roster-pill" onclick="openInstitution('elp')">Endangered Languages Project</span>
+                        <span class="roster-pill" onclick="openInstitution('auckland')">University of Auckland</span>
+                    </div>
                 </div>
             </div>
 
             <div class="trajectory-grid" style="margin-top: 30px;">
-                <div class="trajectory-card">
+                <div class="trajectory-card" onclick="openTrajectory('voices_museums')">
+                    <span class="click-hint">&bull; Read Monograph</span>
                     <h4>Museums &amp; Archives</h4>
-                    <p>National Gallery of Canada, Burke Museum (Seattle), Nuuk Art Museum (Greenland), and regional cultural repositories.</p>
+                    <p>Preserving sacred oral lineages alongside permanent state archives at the National Gallery of Canada, Burke Museum, and regional repositories.</p>
                 </div>
-                <div class="trajectory-card">
+                <div class="trajectory-card" onclick="openTrajectory('voices_guardians')">
+                    <span class="click-hint">&bull; Read Monograph</span>
                     <h4>Community Guardians</h4>
-                    <p>Na’kuset – Native Women’s Shelter of Montreal, ensuring grounded community representation and structural integrity.</p>
+                    <p>Grounded collaboration with frontline shelters and indigenous councils, ensuring authentic, community-first representation.</p>
                 </div>
-                <div class="trajectory-card">
-                    <h4>Global Research</h4>
-                    <p>Endangered Languages Project, Harvard University, University of Alberta, University of Auckland, and international research faculties.</p>
+                <div class="trajectory-card" onclick="openTrajectory('voices_research')">
+                    <span class="click-hint">&bull; Read Monograph</span>
+                    <h4>Global Research Networks</h4>
+                    <p>Linguistic preservation initiatives connecting Harvard University, University of Alberta, and international research faculties.</p>
                 </div>
             </div>
         </section>
@@ -711,21 +726,36 @@
                     <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
                         An artistic exploration of the global Persian community, delving into a diverse array of responses towards challenging life circumstances. Anchored in concepts like <i>bi-gharāri</i> (the active rejection of intellectual stagnation) and <i>Adab</i> (ethical conduct and reverence), Rooh-Nawaz transforms personal memory and exile into monumental visual expressions.
                     </p>
+
+                    <div style="margin-top: 30px; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold);">
+                        Academic Institutes &amp; Scholarly Collaborators (Click to Read Statement):
+                    </div>
+                    <div class="roster-pills">
+                        <span class="roster-pill" onclick="openInstitution('harvard')">Harvard University</span>
+                        <span class="roster-pill" onclick="openInstitution('columbia')">Columbia University (MESAAS)</span>
+                        <span class="roster-pill" onclick="openInstitution('courtauld')">The Courtauld Institute</span>
+                        <span class="roster-pill" onclick="openInstitution('gottingen')">Georg-August-Universität Göttingen</span>
+                        <span class="roster-pill" onclick="openInstitution('uppsala')">Uppsala University</span>
+                        <span class="roster-pill" onclick="openInstitution('jordan')">Jordan Center for Persian Studies</span>
+                    </div>
                 </div>
             </div>
 
             <div class="trajectory-grid" style="margin-top: 30px;">
-                <div class="trajectory-card">
-                    <h4>Academic Institutes</h4>
-                    <p>Jordan Center for Persian Studies, Columbia University (MESAAS), Uppsala University, and Georg-August-Universität Göttingen.</p>
+                <div class="trajectory-card" onclick="openTrajectory('rooh_academic')">
+                    <span class="click-hint">&bull; Read Monograph</span>
+                    <h4>Academic Faculties</h4>
+                    <p>Rigorous scholarly engagements analyzing exile, memory, and Persian literary history alongside Columbia, Harvard, and Göttingen.</p>
                 </div>
-                <div class="trajectory-card">
-                    <h4>Art &amp; Research</h4>
-                    <p>The Courtauld Institute of Art, Harvard University, Yale, and international Persian cultural networks.</p>
+                <div class="trajectory-card" onclick="openTrajectory('rooh_art')">
+                    <span class="click-hint">&bull; Read Monograph</span>
+                    <h4>Art &amp; Neuro-Aesthetics</h4>
+                    <p>Critical research with The Courtauld Institute examining the visceral impact of abstract visual monuments on emotional memory.</p>
                 </div>
-                <div class="trajectory-card">
-                    <h4>Living Archive</h4>
-                    <p>Transforming complex human experiences, literary philosophy, and collective memory into a unified visual monument.</p>
+                <div class="trajectory-card" onclick="openTrajectory('rooh_archive')">
+                    <span class="click-hint">&bull; Read Monograph</span>
+                    <h4>Living Monumental Archive</h4>
+                    <p>Translating ancient concepts of <i>Adab</i> and <i>Zabur-e Haqiqat</i> into monumental public canvases celebrating human resilience.</p>
                 </div>
             </div>
         </section>
@@ -941,7 +971,6 @@
             });
         });
 
-        // Dynamic Modal Mechanics with Institutional Statements, Pillar, & Trajectory Data
         const modal = document.getElementById('infoModal');
         const modalCode = document.getElementById('modalCode');
         const modalTitle = document.getElementById('modalTitle');
@@ -974,17 +1003,47 @@
             retrospectives: {
                 code: "CAREER MONOGRAPH &bull; THREE DECADES",
                 title: "100+ Global Solo Retrospectives",
-                body: "Over three decades, Hesham Malik’s solo exhibition trajectory has spanned premier cultural capitals across North America, Europe, the Middle East, and Asia—including Toronto, London, Athens, Prague, Brussels, Dubai, Goa, Oulu, and Poland. Rather than operating within regional gallery circuits, each retrospective is conceived as a sovereign spatial intervention. Drawing from rigorous academic specializations in Modern/Contemporary Art & Design (The Museum of Modern Art) and Global Affairs (Council on Foreign Relations), these monumental solo exhibitions transcend geographical borders to engage international audiences in global philosophical dialogue."
+                body: "Over three decades, Hesham Malik’s solo exhibition trajectory has spanned premier cultural capitals across North America, Europe, the Middle East, and Asia—including Toronto, London, Athens, Prague, Brussels, Dubai, Goa, Oulu, and Poland. Rather than operating within regional gallery circuits, each retrospective is conceived as a sovereign spatial intervention."
             },
             collections: {
                 code: "PROVENANCE REGISTER &bull; GLOBAL ARCHIVES",
                 title: "Institutional & Sovereign Collections",
-                body: "Hesham Malik’s oeuvre is anchored in sovereign, state, and private collections internationally. Bridging fine art with material science and systemic innovation—supported by specialized research in Healthier Materials & Sustainable Building (Parsons School of Design) and Business Innovation & Digital Disruption (Parsons)—his monumental canvases and structural installations are preserved outside speculative commercial market mechanics. Placement across national museums, diplomatic foundations, and global research institutions secures an autonomous, permanent legacy across global cultural networks."
+                body: "Hesham Malik’s oeuvre is anchored in sovereign, state, and private collections internationally. Bridging fine art with material science and systemic innovation, his monumental canvases and structural installations are preserved outside speculative commercial market mechanics."
             },
             literature: {
                 code: "CRITICAL DISCOURSE &bull; HISTORICAL ARCHIVE",
                 title: "3 Decades of Monographic Literature",
-                body: "A comprehensive 30-year archive of curatorial essays, theoretical monographs, and scholarly reviews documents the evolution of Malik’s conceptual praxis. Informed by advanced pedagogy and creative systems—including specializations in Creativity & AI (Parsons School of Design) and Teaching with Art (MoMA)—the artist’s work is continuously analyzed by international art historians, curators, and institutional research collectives. This body of critical literature establishes a permanent record of intent, mapping the intersection of visual neuro-aesthetics, linguistic preservation, and global socio-environmental dynamics."
+                body: "A comprehensive 30-year archive of curatorial essays, theoretical monographs, and scholarly reviews documents the evolution of Malik’s conceptual praxis."
+            },
+            voices_museums: {
+                code: "VOICES OF THE LAND &bull; ARCHIVAL HERITAGE",
+                title: "Museums & Archives Collaboration",
+                body: "Collaborating with premier national archives, including the National Gallery of Canada and the Burke Museum, to ensure indigenous oral histories and linguistic heritage are preserved as sovereign cultural philosophy."
+            },
+            voices_guardians: {
+                code: "VOICES OF THE LAND &bull; COMMUNITY RESPECT",
+                title: "Grounded Community Representation",
+                body: "Working directly with local guardians, such as Na’kuset and the Native Women’s Shelter of Montreal, anchoring the visual archive in true community sovereignty and direct lived experience."
+            },
+            voices_research: {
+                code: "VOICES OF THE LAND &bull; GLOBAL LINGUISTICS",
+                title: "Global Research & Endangered Languages",
+                body: "Engaging global research institutions to document endangered languages—preserving words of joy, resilience, and land custodianship in permanent fine art installations."
+            },
+            rooh_academic: {
+                code: "ROOH-NAWAZ &bull; SCHOLARLY COLLABORATION",
+                title: "Academic Faculties & Humanities",
+                body: "Academic discourse developed in dialogue with scholars from Harvard, Columbia, and Göttingen, bridging historical Persian literary traditions with modern fine art."
+            },
+            rooh_art: {
+                code: "ROOH-NAWAZ &bull; CRITICAL RESEARCH",
+                title: "The Courtauld Institute & Neuro-Aesthetics",
+                body: "Investigating how abstract monumental art translates collective memory, trauma, and resilience into visceral aesthetic recognition."
+            },
+            rooh_archive: {
+                code: "ROOH-NAWAZ &bull; SOVEREIGN MONUMENT",
+                title: "Living Archive of Persian Culture",
+                body: "Creating permanent visual monuments that honor exile, spiritual seeking ('Bi-gharāri'), and the timeless dignity ('Adab') of the global Persian community."
             }
         };
 
@@ -1038,6 +1097,66 @@
                 code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
                 title: "Museum of Anthropology Canada",
                 body: "\"Reflecting on material lifecycles and environmental reverence, this collaboration bridges modern industrial waste streams with ancient traditions of resource respect and artistic integrity.\""
+            },
+            ngc: {
+                code: "PARTICIPATING ARCHIVE &bull; VOICES OF THE LAND",
+                title: "National Gallery of Canada",
+                body: "\"Engaging with living indigenous linguistic traditions through monumental contemporary fine art reinforces our shared commitment to cultural preservation and sovereign artistic dialogue.\""
+            },
+            burke: {
+                code: "PARTICIPATING ARCHIVE &bull; VOICES OF THE LAND",
+                title: "Burke Museum (Seattle)",
+                body: "\"Preserving oral histories and language roots in visual monuments bridges ancient indigenous custodianship with international contemporary discourse.\""
+            },
+            nuuk: {
+                code: "PARTICIPATING ARCHIVE &bull; VOICES OF THE LAND",
+                title: "Nuuk Art Museum (Greenland)",
+                body: "\"Arctic heritage and living language preservation form a critical pillar of sovereign northern identity. Voices of the Land amplifies these enduring frequencies.\""
+            },
+            nakuset: {
+                code: "COMMUNITY GUARDIAN &bull; VOICES OF THE LAND",
+                title: "Na’kuset Native Women’s Shelter of Montreal",
+                body: "\"True indigenous representation requires grounded, respectful partnership. This collaboration centers community resilience and sovereign identity at every level.\""
+            },
+            elp: {
+                code: "RESEARCH NETWORK &bull; VOICES OF THE LAND",
+                title: "Endangered Languages Project",
+                body: "\"Transforming endangered words into permanent visual monuments ensures that ancient linguistic wisdom remains vibrant and accessible to future generations.\""
+            },
+            auckland: {
+                code: "ACADEMIC PARTNER &bull; VOICES OF THE LAND",
+                title: "University of Auckland",
+                body: "\"Analyzing linguistic preservation through modern abstract art highlights how indigenous philosophy continues to shape global environmental thought.\""
+            },
+            harvard: {
+                code: "SCHOLARLY NETWORK &bull; ROOH-NAWAZ",
+                title: "Harvard University",
+                body: "\"Scholarly dialogue surrounding Rooh-Nawaz engages deep humanistic themes of displacement, resilience, and literary history across the Persian diaspora.\""
+            },
+            columbia: {
+                code: "SCHOLARLY NETWORK &bull; ROOH-NAWAZ",
+                title: "Columbia University (MESAAS)",
+                body: "\"Examining cultural memory and historical resilience, this project translates complex Middle Eastern literary philosophy into universal visual form.\""
+            },
+            courtauld: {
+                code: "RESEARCH INSTITUTE &bull; ROOH-NAWAZ",
+                title: "The Courtauld Institute of Art",
+                body: "\"Analyzing the neuro-aesthetics of abstract memory monuments demonstrates how fine art translates historical trauma into profound human dignity.\""
+            },
+            gottingen: {
+                code: "ACADEMIC FACULTY &bull; ROOH-NAWAZ",
+                title: "Georg-August-Universität Göttingen",
+                body: "\"Prof. Dr. Philip G. Kreyenbroek’s analysis introduces Zabur-e Haqiqat (Psalms of Truth) to describe the archive’s alignment with spiritual and philosophical history.\""
+            },
+            uppsala: {
+                code: "SCHOLARLY NETWORK &bull; ROOH-NAWAZ",
+                title: "Uppsala University",
+                body: "\"Contributing to critical research on exile, identity, and resilience within the global Persian community.\""
+            },
+            jordan: {
+                code: "RESEARCH CENTER &bull; ROOH-NAWAZ",
+                title: "Jordan Center for Persian Studies",
+                body: "\"Supporting global artistic initiatives that honor Persian heritage, poetry, and enduring cultural philosophy.\""
             }
         };
 
