@@ -176,6 +176,7 @@
             max-width: 700px;
         }
 
+        /* Pillars Interactive Grid */
         .pillars-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -189,6 +190,7 @@
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
+            user-select: none;
         }
         .pillar-card::before {
             content: '';
@@ -220,9 +222,21 @@
         .pillar-card p {
             color: var(--text-secondary);
             font-size: 0.85rem;
-            margin: 0 0 30px 0;
+            margin: 0 0 25px 0;
             line-height: 1.9;
         }
+        .click-hint {
+            font-size: 0.65rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        .pillar-card:hover .click-hint { opacity: 1; }
+        
         .collaborator-list {
             font-size: 0.7rem;
             color: var(--accent-gold);
@@ -281,7 +295,7 @@
         /* Bibliography Section Styles */
         .biblio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
         .biblio-card {
@@ -344,7 +358,7 @@
             background: var(--surface-solid);
         }
 
-        /* Abstract Modal */
+        /* Abstract & Pillar Detail Modals */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -352,7 +366,7 @@
             width: 100%;
             height: 100%;
             background: rgba(3, 3, 3, 0.92);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             z-index: 10000;
             display: flex;
             align-items: center;
@@ -368,13 +382,13 @@
         .modal-box {
             background: var(--surface-solid);
             border: 1px solid var(--border-hover);
-            max-width: 700px;
+            max-width: 720px;
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
             padding: 50px;
             position: relative;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.85);
         }
         .modal-close {
             position: absolute;
@@ -388,14 +402,15 @@
         }
         .modal-close:hover { color: var(--accent-gold); }
         .modal-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #ffffff;
             font-weight: 300;
             margin-bottom: 10px;
             letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
         .modal-body {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-secondary);
             line-height: 1.9;
             margin-top: 25px;
@@ -489,7 +504,7 @@
 
     <div class="word-ticker">
         <div class="ticker-track">
-            &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull;
+            &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Sustainability &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Sustainability &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull;
         </div>
     </div>
 
@@ -502,34 +517,47 @@
         <section>
             <h2>The Four Pillars</h2>
             <div class="pillars-grid">
-                <div class="pillar-card">
+                
+                <!-- Pillar 1 -->
+                <div class="pillar-card" onclick="openPillar('words')">
+                    <span class="click-hint">&bull; Explore Archive</span>
                     <h3>Words</h3>
                     <p>A global participatory text and archive project capturing human sentiment, linguistic DNA, and philosophical thought across international borders.</p>
                     <div class="collaborator-list">
                         <strong>Scope:</strong> Hundreds of contributors spanning Ivy League universities, global museums, indigenous councils, and sovereign institutions.
                     </div>
                 </div>
-                <div class="pillar-card">
+
+                <!-- Pillar 2 -->
+                <div class="pillar-card" onclick="openPillar('box')">
+                    <span class="click-hint">&bull; Explore Initiative</span>
                     <h3>Life of a Box</h3>
-                    <p>An immersive conceptual journey where international institutions preserve used industrial boxes transformed into monumental sculptures.</p>
+                    <p>A global sustainability initiative transforming discarded industrial logistics into monumental ecological sculptures, bridging recycling with fine art.</p>
                     <div class="collaborator-list">
-                        <strong>Status:</strong> Global exhibition trajectory spanning Brussels, Poland, and premier European institutions.
+                        <strong>Status:</strong> Global exhibition trajectory supported by Ministry of Environment, Amazon EU, and European Museums.
                     </div>
                 </div>
-                <div class="pillar-card">
+
+                <!-- Pillar 3 -->
+                <div class="pillar-card" onclick="openPillar('voices')">
+                    <span class="click-hint">&bull; Explore Lineage</span>
                     <h3>Voices of the Land</h3>
-                    <p>Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations.</p>
+                    <p>Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations of indigenous guardians.</p>
                     <div class="collaborator-list">
                         <strong>Partners:</strong> National Gallery of Canada, Burke Museum, Na'kuset Native Women's Shelter, and global universities.
                     </div>
                 </div>
-                <div class="pillar-card">
+
+                <!-- Pillar 4 -->
+                <div class="pillar-card" onclick="openPillar('rooh')">
+                    <span class="click-hint">&bull; Explore Testimonies</span>
                     <h3>روح‌نواز (Rooh-Nawaz)</h3>
-                    <p>Deeply moving testimonies of human resilience in words and images, honoring the global Persian community.</p>
+                    <p>Deeply moving testimonies of human resilience in words and images, honoring the global Persian community and collective historical memory.</p>
                     <div class="collaborator-list">
                         <strong>Contributors:</strong> Harvard, Yale, Uppsala, Courtauld Institute, Jordan Center for Persian Studies, and international scholars.
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -539,9 +567,9 @@
                 <div class="ambient-bg-shadow" style="background-image: url('4.jpg');"></div>
                 <div class="ambient-content">
                     <h2>Spatial Chapter &bull; Life of a Box</h2>
-                    <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">The Transformation of Industrial Logistics</h3>
+                    <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">The Beauty of Sustainability &amp; Global Recycling</h3>
                     <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
-                        Utilizing recycled cardboard boxes sourced from industrial operations across Germany, France, England, Norway, and the United States, <i>Life of a Box</i> explores the shifting value of materials across social and cultural contexts. Sponsored by the Ministry of Environment, bridging ecological responsibility with fine art.
+                        Utilizing recycled cardboard boxes sourced from industrial supply chains across Germany, France, England, Norway, and the United States, <i>Life of a Box</i> is a flagship <b>global sustainability project</b>. Sponsored by environmental ministries and documented across European media, it bridges ecological responsibility with monumental contemporary sculpture—proving that everyday discarded material carries profound artistic and cultural value.
                     </p>
                 </div>
             </div>
@@ -562,8 +590,13 @@
             </div>
 
             <div class="external-ref">
-                <strong>Critical Discourse:</strong> Recognized and analyzed internationally, including commentary by global sustainability authority John Elkington: 
-                <a href="https://johnelkington.substack.com/p/a-market-externality-that-rings-your" target="_blank">"A Market Externality That Rings Your..." (Substack)</a>.
+                <strong>Critical Discourse &amp; Institutional Press:</strong>
+                <ul style="list-style: none; padding: 0; margin: 15px 0 0 0; line-height: 2;">
+                    <li>&bull; <a href="https://www.aboutamazon.eu/amazon-boxes-are-a-work-of-art" target="_blank">Amazon EU Feature: "Amazon boxes are a work of art"</a></li>
+                    <li>&bull; <a href="https://www.mlp.cz/cz/novinky/life-box-globalni-poselstvi-v-recyklovane-pouzite-krabici" target="_blank">Municipal Library of Prague: "Global Message in a Recycled Box"</a></li>
+                    <li>&bull; <a href="https://www.iumeni.cz/clanky-recenze/udalosti/2024-krasa-udrzitelnosti-a-udrzitelnost-krasy-v-umeni-malik-a-jeho-projekt-life-of-a-box-meni-svou-kreativitou-pohled-na-recyklaci/?srsltid=AU7gw4WBlieZYl3v5WJMapgfR8TVUac27LMe9R8u6gj-N1ciWm1WgOPf" target="_blank">iUMĚNÍ Analysis: "The Beauty of Sustainability and the Sustainability of Beauty"</a></li>
+                    <li>&bull; <a href="https://johnelkington.substack.com/p/a-market-externality-that-rings-your" target="_blank">John Elkington Monograph: "A Market Externality That Rings Your Bell"</a></li>
+                </ul>
             </div>
         </section>
 
@@ -643,45 +676,23 @@
 
                 <div class="biblio-card">
                     <div>
-                        <div class="biblio-code">INQ-2025-12 &bull; Curatorial Inquiry</div>
-                        <div class="biblio-title">Geography without Borders: The Mechanics of Transnational Exchange</div>
-                        <div class="biblio-meta">TMOCI Archive &amp; Research Collective &bull; December 2025</div>
-                    </div>
-                    <div class="biblio-actions">
-                        <button class="biblio-btn" onclick="openAbstract('INQ-2025-12', 'Geography without Borders: The Mechanics of Transnational Exchange', 'Geopolitical boundaries in contemporary culture are rarely defined by physical borders; they are dictated by distribution systems. This text explores decentralized curatorial praxis, drawing parallels between historic postal networks like Fluxus, Alighiero Boetti\'s Maps, and contemporary open-access digital repositories.')">Read Abstract</button>
-                    </div>
-                </div>
-
-                <div class="biblio-card">
-                    <div>
-                        <div class="biblio-code">INQ-2024-08 &bull; Institutional Analysis</div>
-                        <div class="biblio-title">The Institutional Ledger and the Architecture of Preservation</div>
-                        <div class="biblio-meta">TMOCI Archive &amp; Research Collective &bull; August 2024</div>
-                    </div>
-                    <div class="biblio-actions">
-                        <button class="biblio-btn" onclick="openAbstract('INQ-2024-08', 'The Institutional Ledger and the Architecture of Preservation', 'The structural failure of modern archiving lies in mistaking the accumulation of material goods for the progression of critical thought. Citing Sol LeWitt and On Kawara, this research proposes shifting validation away from commercial gallery market mechanics toward transparent, open-access conceptual ledgers.')">Read Abstract</button>
-                    </div>
-                </div>
-
-                <div class="biblio-card">
-                    <div>
-                        <div class="biblio-code">INQ-2023-04 &bull; Spatial Theory</div>
-                        <div class="biblio-title">On the Epistemology of the Unseen</div>
-                        <div class="biblio-meta">TMOCI Archive &amp; Research Collective &bull; April 2023</div>
-                    </div>
-                    <div class="biblio-actions">
-                        <button class="biblio-btn" onclick="openAbstract('INQ-2023-04', 'On the Epistemology of the Unseen', 'A critical re-examination of the white cube gallery model. Examining Gordon Matta-Clark\'s architectural cuts and Marcel Duchamp\'s linguistic destabilization, the paper outlines how non-commercial platforms preserve spatial philosophy and complex installations beyond speculative commercial markets.')">Read Abstract</button>
-                    </div>
-                </div>
-
-                <div class="biblio-card">
-                    <div>
-                        <div class="biblio-code">Critical Commentary</div>
+                        <div class="biblio-code">Sustainability Monograph</div>
                         <div class="biblio-title">A Market Externality That Rings Your Bell</div>
                         <div class="biblio-meta">John Elkington &bull; Volans / Substack</div>
                     </div>
                     <div class="biblio-actions">
                         <a href="https://johnelkington.substack.com/p/a-market-externality-that-rings-your" target="_blank" class="biblio-btn" style="text-decoration: none; text-align: center;">External Monograph</a>
+                    </div>
+                </div>
+
+                <div class="biblio-card">
+                    <div>
+                        <div class="biblio-code">Institutional Review</div>
+                        <div class="biblio-title">Krása Udržitelnosti a Udržitelnost Krásy v Umění</div>
+                        <div class="biblio-meta">iUMĚNÍ Critical Review &bull; 2024</div>
+                    </div>
+                    <div class="biblio-actions">
+                        <a href="https://www.iumeni.cz/clanky-recenze/udalosti/2024-krasa-udrzitelnosti-a-udrzitelnost-krasy-v-umeni-malik-a-jeho-projekt-life-of-a-box-meni-svou-kreativitou-pohled-na-recyklaci/" target="_blank" class="biblio-btn" style="text-decoration: none; text-align: center;">Read Analysis</a>
                     </div>
                 </div>
 
@@ -749,13 +760,13 @@
         </section>
     </main>
 
-    <!-- Abstract Modal UI -->
-    <div class="modal-overlay" id="abstractModal">
+    <!-- Dynamic Modal System -->
+    <div class="modal-overlay" id="infoModal">
         <div class="modal-box">
-            <button class="modal-close" onclick="closeAbstract()">&times;</button>
-            <div class="biblio-code" id="modalCode">INQ-2026-06</div>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="biblio-code" id="modalCode">PILLAR DIRECTIVE</div>
             <div class="modal-title" id="modalTitle">Title</div>
-            <div class="modal-body" id="modalBody">Abstract content...</div>
+            <div class="modal-body" id="modalBody">Content...</div>
         </div>
     </div>
 
@@ -811,11 +822,44 @@
             });
         });
 
-        // Abstract Modal Mechanics
-        const modal = document.getElementById('abstractModal');
+        // Dynamic Modal Mechanics
+        const modal = document.getElementById('infoModal');
         const modalCode = document.getElementById('modalCode');
         const modalTitle = document.getElementById('modalTitle');
         const modalBody = document.getElementById('modalBody');
+
+        const pillarData = {
+            words: {
+                code: "PILLAR I &bull; GLOBAL ARCHIVE",
+                title: "Words Project",
+                body: "Global Project Words gathers single, spontaneous word contributions from world leaders, scientists, environmentalists, and cultural figures across global networks of governance, science, and heritage. These donated words serve as raw linguistic energy, translated into large-scale abstract canvases that map the dialogue between contemporary global crisis and material endurance."
+            },
+            box: {
+                code: "PILLAR II &bull; GLOBAL SUSTAINABILITY INITIATIVE",
+                title: "Life of a Box",
+                body: "A monumental sustainability endeavor that turns used industrial cardboard packaging into structural high-art sculptures. Supported by environmental ministries and featured across major European institutions (Brussels Expo, Papermaking Museum Poland, West Bohemia Museum), Life of a Box challenges market externalities by proving that industrial waste holds profound cultural and aesthetic longevity."
+            },
+            voices: {
+                code: "PILLAR III &bull; SACRED INDIGENOUS KNOWLEDGE",
+                title: "Voices of the Land",
+                body: "A reverent collaboration with indigenous communities, guardians, and global heritage institutions (National Gallery of Canada, Burke Museum, Na'kuset Shelter). The initiative preserves oral traditions, indigenous languages, and ancestral wisdom through fine art visual monuments."
+            },
+            rooh: {
+                code: "PILLAR IV &bull; HUMAN RESILIENCE",
+                title: "روح‌نواز (Rooh-Nawaz)",
+                body: "An extensive visual testimonial honoring the global Persian community. Developed with leading international scholars (Harvard, Yale, Uppsala, Courtauld Institute), Rooh-Nawaz translates complex personal histories, displacement, and human resilience into unified, monumental visual canvases."
+            }
+        };
+
+        function openPillar(key) {
+            const data = pillarData[key];
+            if (data) {
+                modalCode.innerHTML = data.code;
+                modalTitle.innerText = data.title;
+                modalBody.innerText = data.body;
+                modal.classList.add('active');
+            }
+        }
 
         function openAbstract(code, title, text) {
             modalCode.innerText = code;
@@ -824,12 +868,12 @@
             modal.classList.add('active');
         }
 
-        function closeAbstract() {
+        function closeModal() {
             modal.classList.remove('active');
         }
 
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeAbstract();
+            if (e.target === modal) closeModal();
         });
     </script>
 </body>
