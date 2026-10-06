@@ -57,7 +57,7 @@
         @media (pointer: fine) {
             .custom-cursor { display: block; }
             body { cursor: none; }
-            a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card, .roster-pill, .modal-close, .gallery-card, .nav-link { cursor: none; }
+            a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card, .roster-pill, .gallery-card, .nav-link { cursor: none; }
         }
 
         /* Minimalist Institutional Navigation Bar */
@@ -160,7 +160,7 @@
             font-style: italic;
             color: var(--text-secondary);
             max-width: 750px;
-            margin: 0 auto 30px;
+            margin: 0 auto;
             line-height: 1.6;
             font-weight: 300;
         }
@@ -381,7 +381,7 @@
             margin: 0;
         }
 
-        /* Lightbox Viewer */
+        /* Lightbox Viewer (Cursor Fixed) */
         .lightbox-overlay {
             position: fixed;
             top: 0;
@@ -390,7 +390,7 @@
             height: 100%;
             background: rgba(3, 3, 3, 0.95);
             backdrop-filter: blur(20px);
-            z-index: 10005;
+            z-index: 20000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -400,6 +400,7 @@
             transition: opacity 0.4s ease;
             padding: 40px;
             box-sizing: border-box;
+            cursor: auto !important;
         }
 
         .lightbox-overlay.active {
@@ -412,6 +413,7 @@
             max-height: 75vh;
             border: 1px solid var(--border-hover);
             box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+            cursor: auto !important;
         }
 
         .lightbox-image-container img {
@@ -419,12 +421,14 @@
             max-height: 75vh;
             display: block;
             object-fit: contain;
+            cursor: auto !important;
         }
 
         .lightbox-details {
             margin-top: 25px;
             text-align: center;
             max-width: 700px;
+            cursor: auto !important;
         }
 
         .lightbox-tag {
@@ -621,7 +625,7 @@
             background: var(--surface-solid);
         }
 
-        /* Modals */
+        /* Modals (Cursor Fixed) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -637,6 +641,7 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.4s ease;
+            cursor: auto !important;
         }
 
         .modal-overlay.active {
@@ -654,6 +659,7 @@
             padding: 50px;
             position: relative;
             box-shadow: 0 40px 80px rgba(0,0,0,0.9);
+            cursor: auto !important;
         }
 
         .modal-close {
@@ -663,10 +669,12 @@
             background: none;
             border: none;
             color: var(--text-secondary);
-            font-size: 1.8rem;
+            font-size: 2rem;
             transition: color 0.3s ease;
-            z-index: 10002;
-            padding: 5px;
+            z-index: 20005;
+            padding: 10px;
+            cursor: pointer !important;
+            line-height: 1;
         }
 
         .modal-close:hover { color: var(--accent-gold); }
@@ -686,79 +694,6 @@
             color: var(--text-secondary);
             line-height: 1.9;
             margin-top: 20px;
-        }
-
-        /* Filter Controls */
-        .ledger-container {
-            background-color: var(--surface-solid);
-            border: 1px solid var(--border-subtle);
-            padding: 60px 50px;
-            position: relative;
-        }
-
-        .ledger-container h3 {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            font-weight: 300;
-            letter-spacing: 0.15em;
-            margin-top: 0;
-            color: #ffffff;
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 35px;
-        }
-
-        .filter-controls {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 45px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: var(--surface-glass);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-secondary);
-            padding: 8px 18px;
-            font-size: 0.68rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
-            background: var(--surface-solid);
-        }
-
-        .ledger-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
-        }
-
-        .ledger-category.hidden { display: none; }
-
-        .ledger-category h4 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            color: var(--accent-gold);
-            margin-bottom: 20px;
-            margin-top: 0;
-            border-left: 2px solid var(--accent-gold);
-            padding-left: 12px;
-        }
-
-        .ledger-category ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-            line-height: 2.3;
         }
 
         footer {
@@ -788,7 +723,7 @@
             .nav-links { display: none; }
             h1 { font-size: 2.6rem; }
             .hero-statement { font-size: 1.1rem; }
-            .ledger-container, .ambient-section, .modal-box, .provenance-box { padding: 35px 20px; }
+            .ambient-section, .modal-box, .provenance-box { padding: 35px 20px; }
             .ambient-bg-shadow { width: 100%; opacity: 0.08; }
             .biblio-grid { grid-template-columns: 1fr; }
             .spatial-gallery-grid { grid-template-columns: 1fr; }
@@ -823,9 +758,6 @@
         <div class="subtitle">Three Decades of Sovereign Art &bull; Global Institutional Archives &bull; Planetary Initiatives</div>
         <div class="hero-statement">
             "Art is not an isolated artifact; it is an active archive of human consciousness, ecological resilience, and ancestral memory."
-        </div>
-        <div>
-            <a href="mailto:contact@heshammalik.org" class="contact-link">contact@heshammalik.org</a>
         </div>
     </header>
 
@@ -893,46 +825,46 @@
                         Key Participating Networks &amp; Academic Institutions (Click to Read Scope):
                     </div>
                     <div class="roster-pills">
-                        <span class="roster-pill" onclick="openPillar('words')">Harvard University Network</span>
-                        <span class="roster-pill" onclick="openPillar('words')">Oxford &amp; Cambridge</span>
-                        <span class="roster-pill" onclick="openPillar('words')">Sorbonne University</span>
-                        <span class="roster-pill" onclick="openPillar('words')">Nobel Prize Museum</span>
-                        <span class="roster-pill" onclick="openPillar('words')">Svalbard Global Seed Vault</span>
-                        <span class="roster-pill" onclick="openPillar('words')">Jane Goodall Institute</span>
-                        <span class="roster-pill" onclick="openPillar('words')">TATE London</span>
-                        <span class="roster-pill" onclick="openPillar('words')">National Gallery of Canada</span>
-                        <span class="roster-pill" onclick="openPillar('words')">Charles University</span>
+                        <span class="roster-pill" onclick="openInstitution('harvard')">Harvard University Network</span>
+                        <span class="roster-pill" onclick="openInstitution('oxbridge')">Oxford &amp; Cambridge</span>
+                        <span class="roster-pill" onclick="openInstitution('sorbonne')">Sorbonne University</span>
+                        <span class="roster-pill" onclick="openInstitution('art4hr')">Art for Human Rights</span>
+                        <span class="roster-pill" onclick="openInstitution('svalbard')">Svalbard Global Seed Vault</span>
+                        <span class="roster-pill" onclick="openInstitution('goodall')">The Jane Goodall Institute</span>
+                        <span class="roster-pill" onclick="openInstitution('tate')">TATE London</span>
+                        <span class="roster-pill" onclick="openInstitution('iaml')">International Arts + Mind Lab</span>
+                        <span class="roster-pill" onclick="openInstitution('ludwig')">Ludwig Museum Budapest</span>
                     </div>
                 </div>
 
                 <div class="spatial-gallery-grid">
-                    <div class="gallery-card" onclick="openImageLightbox('3.jpg', 'GLOBAL ARCHIVE &bull; MONUMENTAL CANVAS', 'Global Project Words canvas view mapping donated linguistic energy into abstract form.')">
+                    <div class="gallery-card" onclick="openImageLightbox('words-spatial-1.jpg', 'EXHIBITION OPENING &bull; SPATIAL CONTEXT', 'The artist delivering the curatorial address at the exhibition opening, establishing spatial scale and public engagement.')">
                         <div class="gallery-image-wrapper">
-                            <img src="3.jpg" alt="Global Project Words Monumental Canvas">
+                            <img src="words-spatial-1.jpg" alt="The artist speaking at exhibition opening">
                         </div>
                         <div class="gallery-caption">
-                            <span class="gallery-tag">&bull; Monumental Canvas</span>
-                            <h4 class="gallery-title">Linguistic Codex</h4>
+                            <span class="gallery-tag">&bull; Vernissage Address</span>
+                            <h4 class="gallery-title">Curatorial Opening</h4>
                         </div>
                     </div>
 
-                    <div class="gallery-card" onclick="openImageLightbox('words-texture-1.jpg', 'MATERIAL DETAIL &bull; TEXT ARCHIVE', 'Macro detail of pigment layer, calligraphy, and structural text integration.')">
+                    <div class="gallery-card" onclick="openImageLightbox('words-texture-1.jpg', 'FEATURED MASTERWORK &bull; BRUSSELS EXPO', 'Featuring the donated concept \'Equanimity\' (Gelassenheit in German), contributed by the Artas Foundation (Swiss Foundation for Art in Regions of Conflict). Presented at Brussels Expo: Empowering Europe’s Creative Industries.')">
                         <div class="gallery-image-wrapper">
-                            <img src="words-texture-1.jpg" alt="Words Material Detail">
+                            <img src="words-texture-1.jpg" alt="Equanimity Gelassenheit painting at Brussels Expo">
                         </div>
                         <div class="gallery-caption">
-                            <span class="gallery-tag">&bull; Material Detail</span>
-                            <h4 class="gallery-title">Text Density &amp; Layering</h4>
+                            <span class="gallery-tag">&bull; Featured Masterwork</span>
+                            <h4 class="gallery-title">Equanimity / Gelassenheit</h4>
                         </div>
                     </div>
 
-                    <div class="gallery-card" onclick="openImageLightbox('words-archive-1.jpg', 'STUDIO ARCHIVE &bull; DONATION LEDGER', 'Original studio archive logging word contributions from global institutions.')">
+                    <div class="gallery-card" onclick="openImageLightbox('words-archive-1.jpg', 'STATE GALLERY EXHIBITION &bull; CZECH REPUBLIC', 'Installation view from the exhibition \'Reminiscence\' at the City Gallery of Region Vysoké Mýto, documenting multi-layered linguistic textures.')">
                         <div class="gallery-image-wrapper">
-                            <img src="words-archive-1.jpg" alt="Words Studio Archive Ledger">
+                            <img src="words-archive-1.jpg" alt="City Gallery High Myto Exhibition Reminiscence">
                         </div>
                         <div class="gallery-caption">
-                            <span class="gallery-tag">&bull; Studio Record</span>
-                            <h4 class="gallery-title">Donation Ledger Archive</h4>
+                            <span class="gallery-tag">&bull; Regional Gallery</span>
+                            <h4 class="gallery-title">City Gallery High Mýto</h4>
                         </div>
                     </div>
                 </div>
@@ -1281,67 +1213,6 @@
                 </ul>
             </div>
         </section>
-
-        <!-- Words Contributors Provenance -->
-        <section>
-            <h2>Archive Provenance &bull; Words Contributors</h2>
-            <div class="ledger-container">
-                <div class="ambient-bg-shadow" style="background-image: url('3.jpg'); width: 30%;"></div>
-
-                <div style="position: relative; z-index: 2;">
-                    <h3>Participating Institutional &amp; Cultural DNA</h3>
-                    
-                    <div class="filter-controls">
-                        <button class="filter-btn active" data-filter="all">All Networks</button>
-                        <button class="filter-btn" data-filter="universities">Global Universities</button>
-                        <button class="filter-btn" data-filter="museums">Museums &amp; Galleries</button>
-                        <button class="filter-btn" data-filter="sovereignties">NGOs &amp; Sovereignties</button>
-                    </div>
-
-                    <div class="ledger-grid">
-                        <div class="ledger-category" data-category="universities">
-                            <h4>Global Universities &amp; Research</h4>
-                            <ul>
-                                &bull; Harvard University Network (Office of President Emeritus, Weatherhead Center)<br>
-                                &bull; Oxford &amp; Cambridge (UK)<br>
-                                &bull; Stanford, MIT, Princeton, Yale, Columbia (MESAAS), Chicago<br>
-                                &bull; Sorbonne University (France)<br>
-                                &bull; Georg-August-Universität Göttingen (Germany)<br>
-                                &bull; University of Alberta &amp; Toronto Metropolitan University<br>
-                                &bull; Hebrew University of Jerusalem (Israel)<br>
-                                &bull; University of Melbourne &amp; Sydney (Australia)<br>
-                                &bull; Charles University &amp; Masaryk University (CZ)
-                            </ul>
-                        </div>
-                        <div class="ledger-category" data-category="museums">
-                            <h4>Museums &amp; Galleries</h4>
-                            <ul>
-                                &bull; Nobel Prize Museum (Sweden)<br>
-                                &bull; Natural History Museum Zurich &amp; Museum of Basel<br>
-                                &bull; National Museum of Denmark &amp; National Museum of Ireland<br>
-                                &bull; National Museum of History of Ukraine &amp; Cotroceni Museum<br>
-                                &bull; TATE London &amp; National Galleries Scotland<br>
-                                &bull; National Gallery of Canada &amp; Burke Museum (Seattle)<br>
-                                &bull; Paper Museum Fabriano (UNESCO)<br>
-                                &bull; Musée des Augustins (France) &amp; Museum Brugge
-                            </ul>
-                        </div>
-                        <div class="ledger-category" data-category="sovereignties">
-                            <h4>Global NGOs &amp; Sovereignties</h4>
-                            <ul>
-                                &bull; UNICEF &amp; Red Cross International<br>
-                                &bull; Svalbard Global Seed Vault (Norway)<br>
-                                &bull; Stockholm Resilience Centre &amp; FEE Copenhagen<br>
-                                &bull; Greenpeace International &amp; Jane Goodall Institute<br>
-                                &bull; Equal Justice Initiative (Bryan Stevenson)<br>
-                                &bull; German National Library &amp; New York Public Library<br>
-                                &bull; Avannaata Government &amp; Greenlandic Red Cross
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Dynamic Text Modal System -->
@@ -1383,7 +1254,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        const interactiveEls = 'a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card, .roster-pill, .modal-close, .gallery-card, .nav-link';
+        const interactiveEls = 'a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card, .roster-pill, .gallery-card, .nav-link';
         
         function bindCursor() {
             document.querySelectorAll(interactiveEls).forEach(item => {
@@ -1400,26 +1271,6 @@
             });
         }
         bindCursor();
-
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const categories = document.querySelectorAll('.ledger-category');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const filter = btn.getAttribute('data-filter');
-
-                categories.forEach(cat => {
-                    if (filter === 'all' || cat.getAttribute('data-category') === filter) {
-                        cat.classList.remove('hidden');
-                    } else {
-                        cat.classList.add('hidden');
-                    }
-                });
-            });
-        });
 
         const modal = document.getElementById('infoModal');
         const modalCode = document.getElementById('modalCode');
@@ -1533,6 +1384,51 @@
         };
 
         const institutionData = {
+            harvard: {
+                code: "DONATED WORD ARCHIVE &bull; WORDS PROJECT",
+                title: "Harvard University Network",
+                body: "Over 100 single-word contributions have been donated across Harvard’s academic spectrum—including students, senior professors, department deans, and the Office of the President Emeritus. Donated terms serve as raw conceptual energy for monumental canvases, including: decency, amalgamation, disruption, xenophilia, cognition, ineptitude, genocide, transnational repression, cafuné, grief, enlightenment, warmth, nowheresville, spice/spices, concerned, satchitananda, together, unsure, hope, serendipity, beauty, rupture, superposition, restoration, serenity, complexity, dilemma, praiseworthiness, love, graft, think, metamorphosis, renovate, better, persisting, purpose, rigamarole, and many more."
+            },
+            oxbridge: {
+                code: "DONATED WORD ARCHIVE &bull; WORDS PROJECT",
+                title: "University of Cambridge & University of Oxford",
+                body: "Bypassing formal academic boundaries, foundational word donations were contributed by leading faculties across both historic institutions. Professor David Lane (University of Cambridge) offered <b>'love'</b> as an indispensable grounding force, while Professor Kate Raworth (University of Oxford, author of Doughnut Economics) contributed <b>'play'</b> as the bedrock for systemic human creativity."
+            },
+            sorbonne: {
+                code: "DONATED WORD ARCHIVE &bull; WORDS PROJECT",
+                title: "IAE Paris-Sorbonne Business School",
+                body: "Reflecting on the initial intrigue generated by the global participatory project, Prof. Florent Noël (Deputy Director of Research at IAE Paris-Sorbonne) captured the essence of intellectual curiosity in his correspondence:<br><br><i>\"In French, 'Bizarre' signifies something strange, intriguing, and thought-provoking. Your request and your project seemed Bizarre to me... I wish you all the best for this project.\"</i><br><br>This candid reflection highlights how unconventional artistic inquiries destabilize traditional organizational patterns to spark unexpected intellectual dialogue."
+            },
+            art4hr: {
+                code: "DONATED WORD ARCHIVE &bull; WORDS PROJECT",
+                title: "Art for Human Rights (Paris)",
+                body: "Donated by Bill Shipsey, Executive Director of Art for Human Rights (Paris):<br><br><b>'RESIST'</b><br><br>A direct invocation calling for active courage and moral engagement against indifference."
+            },
+            svalbard: {
+                code: "DONATED WORD ARCHIVE &bull; WORDS PROJECT",
+                title: "Svalbard Global Seed Vault (Norway)",
+                body: "Carved into the solid rock of Plateau Mountain in Svalbard, Norway, the Seed Vault safeguards over one million crop samples under black-box conditions as a backup for world agriculture. A member of the Seed Vault team contributed the donated word:<br><br><b>'PHOTOSYNTHESIS'</b><br><br>—honoring the fundamental chemical wonder that sustains life on this planet."
+            },
+            goodall: {
+                code: "DONATED WORD ARCHIVE &bull; WORDS PROJECT",
+                title: "The Jane Goodall Institute",
+                body: "Donated directly by Mary Lewis, Vice President & Assistant to Dr. Jane Goodall, DBE (UN Messenger of Peace and Founder of the Jane Goodall Institute & Roots & Shoots):<br><br><b>'HOPE'</b><br><br>Embodying Dr. Goodall's lifelong philosophy that active hope is the essential catalyst for environmental survival and global youth stewardship."
+            },
+            tate: {
+                code: "DONATED WORD ARCHIVE &bull; WORDS PROJECT",
+                title: "TATE Galleries (Dr. Maria Balshaw CBE)",
+                body: "Donated by Dr. Maria Balshaw CBE, Director of the TATE art museums and galleries:<br><br><b>'CONVIVIALITY'</b><br><br><i>\"A state of mind I think builds hope and positivity between friends and strangers alike. Much needed these days.\"</i>"
+            },
+            iaml: {
+                code: "DONATED WORD ARCHIVE &bull; WORDS PROJECT",
+                title: "International Arts + Mind Lab (Johns Hopkins Medicine)",
+                body: "Donated by Susan Magsamen, Founder and Executive Director of the International Arts + Mind Lab (Pediatric Neurosurgery, Johns Hopkins University School of Medicine):<br><br><b>'JOY'</b><br><br>Rooted in neuroaesthetics, celebrating how artistic engagement generates profound neurochemical flourish and human connection."
+            },
+            ludwig: {
+                code: "DONATED WORD ARCHIVE &bull; WORDS PROJECT",
+                title: "Ludwig Museum – Museum of Contemporary Art (Budapest)",
+                body: "Donated by Dr. Julia Fabényi, Director of the Ludwig Museum of Contemporary Art in Budapest, Hungary:<br><br><b>'COMPULSORY' & 'COMPLIANCE'</b><br><br>Reflecting the tension between institutional mandates, societal compliance, and the liberating autonomy of contemporary fine art."
+            },
             unicef: {
                 code: "DONATING ARCHIVE &bull; LIFE OF A BOX",
                 title: "UNICEF",
@@ -1671,7 +1567,7 @@
             grigor: {
                 code: "DONATED WORD ARCHIVE &bull; ROOH-NAWAZ",
                 title: "Dr. Talinn Grigor &bull; Scholar of Architectural History",
-                body: "<b>Donated Term:</b> Jān / Jan (Ջان / جان) — Shared Soul & Affinity<br><br><b>Curatorial Synthesis:</b> An untranslatable linguistic bridge spanning Persian, Armenian, and South Asian heritage. Jān represents the embodied spirit of empathy, affection, and shared cultural memory.<br><br><i>Institutional affiliation (University of California, Davis) referenced strictly for biographical identification purposes.</i>"
+                body: "<b>Donated Term:</b> Jān / Jan (Ջան / جان) — Shared Soul & Affinity<br><br><b>Curatorial Synthesis:</b> An untranslatable linguistic bridge spanning Persian, Armenian, and South Asian heritage. Jān represents the embodied spirit of empathy, affection, and shared cultural memory.<br><br><i>Institutional affiliation (University of California, Davis) referenced strictly for biographical identification purposes.</i>"
             },
             daryaee: {
                 code: "DONATED WORD ARCHIVE &bull; ROOH-NAWAZ",
