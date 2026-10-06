@@ -3,116 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hesham Malik | Planetary Codex &amp; Sovereign Archive</title>
+    <title>Hesham Malik | Sovereign Archive &amp; Planetary Codex</title>
+    <!-- Elite Typography Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --canvas-bg: #030303;
-            --surface-glass: rgba(14, 14, 14, 0.82);
+            --surface-glass: rgba(12, 12, 12, 0.85);
             --surface-solid: #080808;
-            --text-primary: #f2f2f2;
-            --text-secondary: #888888;
+            --text-primary: #f5f5f5;
+            --text-secondary: #999999;
             --accent-gold: #d4af37;
             --accent-gold-glow: rgba(212, 175, 55, 0.12);
-            --border-subtle: rgba(255, 255, 255, 0.06);
-            --border-hover: rgba(212, 175, 55, 0.35);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(212, 175, 55, 0.4);
+            
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, sans-serif;
         }
 
-        .custom-cursor {
-            pointer-events: none;
-            position: fixed;
-            width: 24px;
-            height: 24px;
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s, border-color 0.3s;
-            z-index: 10001;
-            display: none;
-        }
-
-        @media (min-width: 1024px) {
-            .custom-cursor { display: block; }
-            body { cursor: none; }
-            a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card, .roster-pill, .modal-close, .gallery-card { cursor: none; }
-        }
-        
         html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--canvas-bg);
             color: var(--text-primary);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: var(--font-sans);
             margin: 0;
             padding: 0;
             line-height: 1.8;
-            letter-spacing: 0.05em;
-            background-image: radial-gradient(circle at 50% 0%, #0d0c0a 0%, var(--canvas-bg) 75%);
+            letter-spacing: 0.03em;
+            background-image: radial-gradient(circle at 50% 0%, #0d0c0a 0%, var(--canvas-bg) 80%);
             background-attachment: fixed;
             overflow-x: hidden;
         }
 
+        /* Custom Desktop Cursor */
+        .custom-cursor {
+            pointer-events: none;
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.6);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
+            z-index: 10001;
+            display: none;
+        }
+
+        @media (pointer: fine) {
+            .custom-cursor { display: block; }
+            body { cursor: none; }
+            a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card, .roster-pill, .modal-close, .gallery-card, .nav-link { cursor: none; }
+        }
+
+        /* Minimalist Institutional Navigation Bar */
+        nav.nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(3, 3, 3, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 9999;
+        }
+
+        .nav-brand {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover { color: var(--accent-gold); }
+
+        /* Ticker Marquee */
         .word-ticker {
+            margin-top: 70px;
             background: var(--surface-solid);
             border-bottom: 1px solid var(--border-subtle);
-            padding: 12px 0;
+            padding: 10px 0;
             overflow: hidden;
             white-space: nowrap;
-            position: relative;
         }
         .ticker-track {
             display: inline-block;
-            animation: marquee 35s linear infinite;
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
+            animation: marquee 40s linear infinite;
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
             color: var(--accent-gold);
             text-transform: uppercase;
-            opacity: 0.8;
+            opacity: 0.85;
         }
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        header {
-            padding: 140px 20px 80px;
+        /* Hero Landing Header */
+        header.hero {
+            padding: 120px 20px 80px;
             text-align: center;
-            border-bottom: 1px solid var(--border-subtle);
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             position: relative;
         }
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 1px;
-            background: var(--accent-gold);
-            opacity: 0.4;
-        }
 
         h1 {
-            font-size: 3.2rem;
-            font-weight: 200;
-            letter-spacing: 0.25em;
-            margin: 0 0 15px 0;
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin: 0 0 10px 0;
             color: #ffffff;
             text-transform: uppercase;
+            line-height: 1.1;
         }
+
         .subtitle {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--accent-gold);
             text-transform: uppercase;
             letter-spacing: 0.35em;
-            margin-bottom: 0;
+            margin-bottom: 30px;
         }
+
+        .hero-statement {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
         .contact-link {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.8rem;
-            letter-spacing: 0.2em;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
             border-bottom: 1px solid transparent;
             transition: all 0.4s ease;
         }
@@ -122,105 +180,108 @@
         }
 
         main {
-            max-width: 1100px;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 100px 20px;
+            padding: 60px 20px 100px;
         }
-        section {
-            margin-bottom: 140px;
-        }
+
+        section { margin-bottom: 140px; }
+
         h2 {
-            font-size: 0.85rem;
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 300;
             text-transform: uppercase;
-            letter-spacing: 0.35em;
-            color: var(--text-secondary);
+            letter-spacing: 0.25em;
+            color: #ffffff;
             border-bottom: 1px solid var(--border-subtle);
             padding-bottom: 20px;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             text-align: center;
         }
 
+        .section-subhead {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* Four Pillars Layout */
         .pillars-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 30px;
         }
+
         .pillar-card {
             background-color: var(--surface-glass);
             backdrop-filter: blur(16px);
             border: 1px solid var(--border-subtle);
-            padding: 45px 35px;
+            padding: 40px 30px;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
-            user-select: none;
         }
-        .pillar-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
+
         .pillar-card:hover {
             border-color: var(--border-hover);
             transform: translateY(-6px);
             background-color: var(--surface-solid);
             box-shadow: 0 30px 60px var(--accent-gold-glow);
         }
-        .pillar-card:hover::before { opacity: 1; }
+
         .pillar-card h3 {
-            font-size: 1rem;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
             font-weight: 300;
             margin-top: 0;
-            margin-bottom: 20px;
-            letter-spacing: 0.2em;
+            margin-bottom: 15px;
+            letter-spacing: 0.1em;
             color: #ffffff;
             text-transform: uppercase;
         }
+
         .pillar-card p {
             color: var(--text-secondary);
             font-size: 0.85rem;
             margin: 0 0 25px 0;
-            line-height: 1.9;
+            line-height: 1.8;
         }
+
         .click-hint {
             font-size: 0.65rem;
             color: var(--accent-gold);
             letter-spacing: 0.25em;
             text-transform: uppercase;
             display: inline-block;
-            margin-bottom: 15px;
-            opacity: 0.7;
+            margin-bottom: 12px;
+            opacity: 0.75;
             transition: opacity 0.3s ease;
         }
-        .pillar-card:hover .click-hint, .trajectory-card:hover .click-hint, .gallery-card:hover .click-hint { opacity: 1; }
-        
+
         .collaborator-list {
             font-size: 0.7rem;
             color: var(--accent-gold);
             border-top: 1px solid var(--border-subtle);
-            padding-top: 20px;
-            letter-spacing: 0.1em;
+            padding-top: 18px;
+            letter-spacing: 0.08em;
             line-height: 1.7;
-            opacity: 0.85;
         }
 
+        /* Ambient Spatial Sections */
         .ambient-section {
             position: relative;
-            padding: 70px 60px;
+            padding: 70px 50px;
             background-color: var(--surface-solid);
             border: 1px solid var(--border-subtle);
             overflow: hidden;
             transition: border-color 0.4s ease;
         }
-        .ambient-section:hover {
-            border-color: var(--border-hover);
-        }
+
+        .ambient-section:hover { border-color: var(--border-hover); }
 
         .ambient-bg-shadow {
             position: absolute;
@@ -235,6 +296,7 @@
             pointer-events: none;
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
+
         .ambient-section:hover .ambient-bg-shadow {
             opacity: 0.25;
             transform: scale(1.03);
@@ -243,10 +305,10 @@
         .ambient-content {
             position: relative;
             z-index: 2;
-            max-width: 700px;
+            max-width: 750px;
         }
 
-        /* Institutional Spatial Gallery Layout */
+        /* Gallery Grids */
         .spatial-gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -263,7 +325,7 @@
             border: 1px solid var(--border-subtle);
             position: relative;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s ease;
         }
 
         .gallery-card:hover {
@@ -296,7 +358,7 @@
         }
 
         .gallery-caption {
-            padding: 20px;
+            padding: 18px;
             background: var(--surface-solid);
             border-top: 1px solid var(--border-subtle);
         }
@@ -311,15 +373,15 @@
         }
 
         .gallery-title {
-            font-size: 0.8rem;
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
             color: #ffffff;
             font-weight: 300;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
             margin: 0;
-            line-height: 1.4;
         }
 
-        /* Expanded Image Lightbox Viewer */
+        /* Lightbox Viewer */
         .lightbox-overlay {
             position: fixed;
             top: 0;
@@ -327,7 +389,7 @@
             width: 100%;
             height: 100%;
             background: rgba(3, 3, 3, 0.95);
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
             z-index: 10005;
             display: flex;
             align-items: center;
@@ -348,7 +410,6 @@
         .lightbox-image-container {
             max-width: 90vw;
             max-height: 75vh;
-            position: relative;
             border: 1px solid var(--border-hover);
             box-shadow: 0 40px 100px rgba(0,0,0,0.9);
         }
@@ -375,39 +436,44 @@
         }
 
         .lightbox-caption {
-            font-size: 0.9rem;
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
             color: var(--text-primary);
             font-weight: 300;
-            letter-spacing: 0.08em;
             margin: 0;
         }
 
+        /* Trajectory Monograph Cards */
         .trajectory-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
+
         .trajectory-card {
             background-color: var(--surface-glass);
             border: 1px solid var(--border-subtle);
             padding: 35px;
             transition: transform 0.4s ease, border-color 0.4s ease;
-            user-select: none;
         }
+
         .trajectory-card:hover {
             border-color: var(--border-hover);
             transform: translateY(-3px);
             background-color: var(--surface-solid);
         }
+
         .trajectory-card h4 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            letter-spacing: 0.1em;
             color: var(--accent-gold);
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            font-weight: 300;
         }
+
         .trajectory-card p {
             font-size: 0.8rem;
             color: var(--text-secondary);
@@ -415,12 +481,14 @@
             line-height: 1.8;
         }
 
+        /* Roster Pills */
         .roster-pills {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
             margin-top: 25px;
         }
+
         .roster-pill {
             background: var(--surface-glass);
             border: 1px solid var(--border-subtle);
@@ -430,8 +498,8 @@
             letter-spacing: 0.1em;
             border-radius: 2px;
             transition: all 0.3s ease;
-            user-select: none;
         }
+
         .roster-pill:hover {
             border-color: var(--accent-gold);
             color: var(--accent-gold);
@@ -439,13 +507,15 @@
             transform: translateY(-2px);
         }
 
+        /* Provenance Register Boxes */
         .provenance-box {
             background-color: var(--surface-solid);
             border: 1px solid var(--border-subtle);
-            padding: 60px;
+            padding: 50px;
         }
+
         .provenance-header {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--accent-gold);
             letter-spacing: 0.3em;
             text-transform: uppercase;
@@ -453,71 +523,76 @@
             border-bottom: 1px solid var(--border-subtle);
             padding-bottom: 10px;
         }
+
         .provenance-list {
             list-style: none;
             padding: 0;
-            margin: 0 0 40px 0;
+            margin: 0 0 35px 0;
             font-size: 0.82rem;
             color: var(--text-secondary);
             line-height: 2.2;
         }
-        .provenance-list:last-child {
-            margin-bottom: 0;
-        }
+
+        .provenance-list:last-child { margin-bottom: 0; }
         .provenance-list strong { color: var(--text-primary); }
 
         .press-links {
             list-style: none;
             padding: 0;
             margin: 0;
-            font-size: 0.82rem;
-            line-height: 2.2;
+            font-size: 0.85rem;
+            line-height: 2.3;
         }
+
         .press-links a {
             color: var(--text-primary);
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        .press-links a:hover {
-            color: var(--accent-gold);
-        }
 
+        .press-links a:hover { color: var(--accent-gold); }
+
+        /* Bibliography Grid */
         .biblio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
+
         .biblio-card {
             background-color: var(--surface-glass);
             border: 1px solid var(--border-subtle);
             padding: 35px;
-            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: all 0.4s ease;
         }
+
         .biblio-card:hover {
             border-color: var(--border-hover);
             transform: translateY(-4px);
             background-color: var(--surface-solid);
             box-shadow: 0 20px 40px var(--accent-gold-glow);
         }
+
         .biblio-code {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             color: var(--accent-gold);
             letter-spacing: 0.25em;
             text-transform: uppercase;
             margin-bottom: 12px;
         }
+
         .biblio-title {
-            font-size: 0.95rem;
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
             color: #ffffff;
             font-weight: 300;
-            line-height: 1.5;
+            line-height: 1.4;
             margin-bottom: 15px;
-            letter-spacing: 0.05em;
         }
+
         .biblio-meta {
             font-size: 0.75rem;
             color: var(--text-secondary);
@@ -526,11 +601,7 @@
             border-bottom: 1px solid var(--border-subtle);
             padding-bottom: 15px;
         }
-        .biblio-actions {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
+
         .biblio-btn {
             background: transparent;
             border: 1px solid var(--border-subtle);
@@ -542,22 +613,23 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            text-align: center;
         }
+
         .biblio-btn:hover {
             border-color: var(--accent-gold);
             color: var(--accent-gold);
             background: var(--surface-solid);
         }
 
+        /* Modals */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(3, 3, 3, 0.92);
-            backdrop-filter: blur(12px);
+            background: rgba(3, 3, 3, 0.94);
+            backdrop-filter: blur(16px);
             z-index: 10000;
             display: flex;
             align-items: center;
@@ -566,10 +638,12 @@
             pointer-events: none;
             transition: opacity 0.4s ease;
         }
+
         .modal-overlay.active {
             opacity: 1;
             pointer-events: auto;
         }
+
         .modal-box {
             background: var(--surface-solid);
             border: 1px solid var(--border-hover);
@@ -579,8 +653,9 @@
             overflow-y: auto;
             padding: 50px;
             position: relative;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.85);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.9);
         }
+
         .modal-close {
             position: absolute;
             top: 20px;
@@ -591,80 +666,92 @@
             font-size: 1.8rem;
             transition: color 0.3s ease;
             z-index: 10002;
-            line-height: 1;
             padding: 5px;
         }
+
         .modal-close:hover { color: var(--accent-gold); }
+
         .modal-title {
-            font-size: 1.2rem;
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
             color: #ffffff;
             font-weight: 300;
             margin-bottom: 10px;
-            letter-spacing: 0.1em;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
+
         .modal-body {
             font-size: 0.88rem;
             color: var(--text-secondary);
             line-height: 1.9;
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
+        /* Filter Controls */
         .ledger-container {
             background-color: var(--surface-solid);
             border: 1px solid var(--border-subtle);
-            padding: 70px 60px;
+            padding: 60px 50px;
             position: relative;
         }
+
         .ledger-container h3 {
-            font-size: 1rem;
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
             font-weight: 300;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.15em;
             margin-top: 0;
             color: #ffffff;
             text-align: center;
             text-transform: uppercase;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
+
         .filter-controls {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 50px;
+            gap: 12px;
+            margin-bottom: 45px;
             flex-wrap: wrap;
         }
+
         .filter-btn {
             background: var(--surface-glass);
             border: 1px solid var(--border-subtle);
             color: var(--text-secondary);
             padding: 8px 18px;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             transition: all 0.3s ease;
         }
+
         .filter-btn.active, .filter-btn:hover {
             border-color: var(--accent-gold);
             color: var(--accent-gold);
             background: var(--surface-solid);
         }
+
         .ledger-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 40px;
         }
-        .ledger-category { transition: opacity 0.4s ease; }
+
         .ledger-category.hidden { display: none; }
+
         .ledger-category h4 {
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.3em;
             color: var(--accent-gold);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             margin-top: 0;
             border-left: 2px solid var(--accent-gold);
             padding-left: 12px;
         }
+
         .ledger-category ul {
             list-style: none;
             padding: 0;
@@ -697,8 +784,11 @@
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .ledger-container, .ambient-section, .modal-box, .provenance-box { padding: 40px 25px; }
+            nav.nav-bar { padding: 15px 20px; }
+            .nav-links { display: none; }
+            h1 { font-size: 2.6rem; }
+            .hero-statement { font-size: 1.1rem; }
+            .ledger-container, .ambient-section, .modal-box, .provenance-box { padding: 35px 20px; }
             .ambient-bg-shadow { width: 100%; opacity: 0.08; }
             .biblio-grid { grid-template-columns: 1fr; }
             .spatial-gallery-grid { grid-template-columns: 1fr; }
@@ -709,20 +799,39 @@
 
     <div class="custom-cursor" id="cursor"></div>
 
+    <!-- Pinned Global Header -->
+    <nav class="nav-bar">
+        <a href="#" class="nav-brand">Hesham Malik</a>
+        <div class="nav-links">
+            <a href="#pillars" class="nav-link">Four Pillars</a>
+            <a href="#chapters" class="nav-link">Spatial Chapters</a>
+            <a href="#provenance" class="nav-link">Provenance</a>
+            <a href="#bibliography" class="nav-link">Bibliography</a>
+        </div>
+    </nav>
+
+    <!-- Ticker Marquee -->
     <div class="word-ticker">
         <div class="ticker-track">
             &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Sustainability &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Sustainability &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull;
         </div>
     </div>
 
-    <header>
+    <!-- Hero Header -->
+    <header class="hero">
         <h1>Hesham Malik</h1>
         <div class="subtitle">Three Decades of Sovereign Art &bull; Global Institutional Archives &bull; Planetary Initiatives</div>
+        <div class="hero-statement">
+            "Art is not an isolated artifact; it is an active archive of human consciousness, ecological resilience, and ancestral memory."
+        </div>
+        <div>
+            <a href="mailto:contact@heshammalik.org" class="contact-link">contact@heshammalik.org</a>
+        </div>
     </header>
 
     <main>
         <!-- Four Core Pillars Section -->
-        <section>
+        <section id="pillars">
             <h2>The Four Pillars</h2>
             <div class="pillars-grid">
                 
@@ -765,6 +874,9 @@
             </div>
         </section>
 
+        <!-- Spatial Chapters Anchor -->
+        <div id="chapters"></div>
+
         <!-- Spatial Chapter 1: Life of a Box -->
         <section>
             <div class="ambient-section">
@@ -772,7 +884,7 @@
                 
                 <div class="ambient-content">
                     <h2>Spatial Chapter &bull; Life of a Box</h2>
-                    <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">The Beauty of Sustainability &amp; Global Recycling</h3>
+                    <div class="section-subhead">The Beauty of Sustainability &amp; Global Recycling</div>
                     <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
                         Utilizing recycled cardboard boxes sourced from industrial supply chains across Germany, France, England, Norway, and the United States, <i>Life of a Box</i> is a flagship <b>global sustainability initiative</b>. Supported by environmental ministries and analyzed across major European media, it bridges ecological responsibility with monumental contemporary sculpture—proving that everyday discarded material holds profound cultural and aesthetic longevity.
                     </p>
@@ -798,7 +910,6 @@
                     </div>
                 </div>
 
-                <!-- Spatial Chapter 1 Gallery Grid -->
                 <div class="spatial-gallery-grid">
                     <div class="gallery-card" onclick="openImageLightbox('box-spatial-1.jpg', 'MUSEUM INSTALLATION &bull; CZECH REPUBLIC', 'Museum of West Bohemia - Life of a Box exhibition view establishing architectural scale and institutional presence.')">
                         <div class="gallery-image-wrapper">
@@ -832,7 +943,7 @@
                 </div>
             </div>
 
-            <div class="trajectory-grid" style="margin-top: 30px;">
+            <div class="trajectory-grid">
                 <div class="trajectory-card" onclick="openTrajectory('retrospectives')">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>100+ Global Solo Retrospectives</h4>
@@ -857,7 +968,7 @@
                 <div class="ambient-bg-shadow" style="background-image: url('2.JPG');"></div>
                 <div class="ambient-content">
                     <h2>Spatial Chapter &bull; Voices of the Land</h2>
-                    <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">An Ancient Lineage of Living Wisdom</h3>
+                    <div class="section-subhead">An Ancient Lineage of Living Wisdom</div>
                     <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
                         Honoring and preserving an ancient lineage of wisdom by thoughtfully sharing integral fragments of indigenous knowledge, sacred concepts, and oral philosophy with the global community. From Cree concepts of <i>sâkihitowin</i> (love as the bedrock of collective wellness) to Anishinaabemowin expressions of <i>Ankosé</i> ("everything is connected"), the archive documents how living languages embody deep environmental and relational intelligence.
                     </p>
@@ -877,7 +988,6 @@
                     </div>
                 </div>
 
-                <!-- Spatial Chapter 2 Gallery Grid -->
                 <div class="spatial-gallery-grid">
                     <div class="gallery-card" onclick="openImageLightbox('land-spatial-2.jpg', 'MUSEUM EXHIBITION &bull; CZECH REPUBLIC', 'The Museum of the Jindřichův Hradec Region — Painting titled \'Mowicha\' establishing monumental spatial presence.')">
                         <div class="gallery-image-wrapper">
@@ -911,7 +1021,7 @@
                 </div>
             </div>
 
-            <div class="trajectory-grid" style="margin-top: 30px;">
+            <div class="trajectory-grid">
                 <div class="trajectory-card" onclick="openTrajectory('voices_interconnection')">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>I. Relational Epistemology</h4>
@@ -936,7 +1046,7 @@
                 <div class="ambient-bg-shadow" style="background-image: url('10.JPG');"></div>
                 <div class="ambient-content">
                     <h2>Spatial Chapter &bull; روح‌نواز (Rooh-Nawaz)</h2>
-                    <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">Testimonies of Human Resilience</h3>
+                    <div class="section-subhead">Testimonies of Human Resilience</div>
                     <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
                         An artistic exploration of the global Persian diaspora, delving into a diverse array of responses towards challenging life circumstances. Anchored in concepts like <i>bi-gharāri</i> (the active rejection of intellectual stagnation) and <i>Adab</i> (ethical conduct and reverence), Rooh-Nawaz transforms personal memory and exile into monumental visual expressions.
                     </p>
@@ -959,7 +1069,6 @@
                     </div>
                 </div>
 
-                <!-- Spatial Chapter 3 Gallery Grid -->
                 <div class="spatial-gallery-grid">
                     <div class="gallery-card" onclick="openImageLightbox('rooh-spatial-3.jpg', 'PRIVATE EXHIBIT &bull; SPATIAL VIEW', 'Private exhibit — Painting titled \'Rooh\' establishing spatial scale and emotional resonance.')">
                         <div class="gallery-image-wrapper">
@@ -993,7 +1102,7 @@
                 </div>
             </div>
 
-            <div class="trajectory-grid" style="margin-top: 30px;">
+            <div class="trajectory-grid">
                 <div class="trajectory-card" onclick="openTrajectory('rooh_academic')">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>I. Epistemic Unsettledness &amp; Exile</h4>
@@ -1013,10 +1122,9 @@
         </section>
 
         <!-- Institutional Holdings & Provenance Register -->
-        <section>
+        <section id="provenance">
             <h2>Institutional Holdings &amp; Provenance Register</h2>
             <div class="provenance-box">
-                
                 <div class="provenance-header">&bull; National &amp; State Museum Repositories</div>
                 <ul class="provenance-list">
                     <li>&bull; <strong>National Museum of History of Ukraine (Kyiv):</strong> Permanent Sovereign Archive Holdings</li>
@@ -1037,12 +1145,11 @@
                     <li>&bull; <strong>GENIUS Olympiad / SUNY Oswego (USA):</strong> Global Environmental Education Archive</li>
                     <li>&bull; <strong>Jordan Center for Persian Studies (UC Irvine) &amp; Göttingen University (Germany):</strong> Linguistic Archive Analysis</li>
                 </ul>
-
             </div>
         </section>
 
         <!-- Critical Discourse & Institutional Bibliography -->
-        <section>
+        <section id="bibliography">
             <h2>Critical Discourse &amp; Institutional Bibliography</h2>
             <div class="biblio-grid">
                 
@@ -1052,7 +1159,7 @@
                         <div class="biblio-title">The Architecture of Crisis: Mapping Global Energy Through Linguistic Archives</div>
                         <div class="biblio-meta">TMOCI Sovereign Archive &amp; Research Portal &bull; 2026</div>
                     </div>
-                    <div class="biblio-actions">
+                    <div>
                         <a href="https://tmoci.org/archive.html" target="_blank" class="biblio-btn">Explore TMOCI Archive &rarr;</a>
                     </div>
                 </div>
@@ -1063,7 +1170,7 @@
                         <div class="biblio-title">Life of a Box: Official State Museum Exhibition Monograph</div>
                         <div class="biblio-meta">Muzeum Papiernictwa Press &bull; Duszniki-Zdrój, Poland</div>
                     </div>
-                    <div class="biblio-actions">
+                    <div>
                         <a href="https://muzeumpapiernictwa.pl/wp-content/uploads/2025/07/Life-of-a-box_katalog-wystawy_pdf_min.pdf" target="_blank" class="biblio-btn">Download Museum Catalogue (PDF) &rarr;</a>
                     </div>
                 </div>
@@ -1074,7 +1181,7 @@
                         <div class="biblio-title">A Market Externality That Rings Your Bell</div>
                         <div class="biblio-meta">John Elkington &bull; Volans / Substack Analysis</div>
                     </div>
-                    <div class="biblio-actions">
+                    <div>
                         <a href="https://johnelkington.substack.com/p/a-market-externality-that-rings-your" target="_blank" class="biblio-btn">External Monograph &rarr;</a>
                     </div>
                 </div>
@@ -1098,8 +1205,8 @@
         <!-- Words Contributors Provenance -->
         <section>
             <h2>Archive Provenance &bull; Words Contributors</h2>
-            <div class="ledger-container" style="position: relative; overflow: hidden;">
-                <div class="ambient-bg-shadow" style="background-image: url('3.jpg'); width: 30%; background-position: top center;"></div>
+            <div class="ledger-container">
+                <div class="ambient-bg-shadow" style="background-image: url('3.jpg'); width: 30%;"></div>
 
                 <div style="position: relative; z-index: 2;">
                     <h3>Participating Institutional &amp; Cultural DNA</h3>
@@ -1196,19 +1303,19 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        const interactiveEls = 'a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card, .roster-pill, .modal-close, .gallery-card';
+        const interactiveEls = 'a, button, .pillar-card, .trajectory-card, .filter-btn, .biblio-card, .roster-pill, .modal-close, .gallery-card, .nav-link';
         
         function bindCursor() {
             document.querySelectorAll(interactiveEls).forEach(item => {
                 item.addEventListener('mouseenter', () => {
-                    cursor.style.width = '48px';
-                    cursor.style.height = '48px';
+                    cursor.style.width = '42px';
+                    cursor.style.height = '42px';
                     cursor.style.borderColor = 'rgba(212, 175, 55, 0.8)';
                 });
                 item.addEventListener('mouseleave', () => {
-                    cursor.style.width = '24px';
-                    cursor.style.height = '24px';
-                    cursor.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                    cursor.style.width = '20px';
+                    cursor.style.height = '20px';
+                    cursor.style.borderColor = 'rgba(212, 175, 55, 0.6)';
                 });
             });
         }
@@ -1277,7 +1384,7 @@
             },
             rooh: {
                 code: "PILLAR IV &bull; HUMAN RESILIENCE",
-                title: "روح‌نواز (Rooh-Nawaz)",
+                title: "روح‌‌نواز (Rooh-Nawaz)",
                 body: "An extensive visual testimonial honoring the global Persian community. Developed in dialogue with leading scholars from Harvard, Columbia, Yale, Uppsala, and Göttingen, Rooh-Nawaz explores central concepts like 'Adab' (ethical reverence), 'Bi-gharāri' (the refusal to remain spiritually or intellectually stagnant), and 'Zabur-e Haqiqat' (Psalms of Truth), translating displacement and resilience into unified visual monuments."
             }
         };
@@ -1494,7 +1601,7 @@
             tabarraee: {
                 code: "DONATED WORD ARCHIVE &bull; ROOH-NAWAZ",
                 title: "Dr. Babak Tabarraee &bull; Persian Program Coordinator",
-                body: "<b>Donated Phrase:</b> همه‌‌چیز تمام می‌شود / تو تمام نمی‌شوی — Endlessness<br><br><b>Curatorial Synthesis:</b> A double-entendre exploring impermanence and infinity: \"Everything comes to an end; You won't\" / \"Everything will be completed; You won't.\" Reflects the eternal nature of human connection against temporal decay.<br><br><i>Institutional affiliation (University of Texas at Austin) referenced strictly for biographical identification purposes.</i>"
+                body: "<b>Donated Phrase:</b> همه‌‌چیز تمام می‌شود / تو تمام نمی‌‌شوی — Endlessness<br><br><b>Curatorial Synthesis:</b> A double-entendre exploring impermanence and infinity: \"Everything comes to an end; You won't\" / \"Everything will be completed; You won't.\" Reflects the eternal nature of human connection against temporal decay.<br><br><i>Institutional affiliation (University of Texas at Austin) referenced strictly for biographical identification purposes.</i>"
             }
         };
 
@@ -1528,9 +1635,7 @@
             }
         }
 
-        function closeModal() {
-            modal.classList.remove('active');
-        }
+        function closeModal() { modal.classList.remove('active'); }
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
