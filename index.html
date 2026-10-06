@@ -254,6 +254,8 @@
             margin-top: 40px;
             border-top: 1px solid var(--border-subtle);
             padding-top: 30px;
+            position: relative;
+            z-index: 2;
         }
 
         .gallery-card {
@@ -284,7 +286,7 @@
             object-fit: cover;
             opacity: 0.85;
             transition: transform 0.6s ease, opacity 0.6s ease;
-            filter: grayscale(20%);
+            filter: grayscale(15%);
         }
 
         .gallery-card:hover .gallery-image-wrapper img {
@@ -314,6 +316,7 @@
             font-weight: 300;
             letter-spacing: 0.1em;
             margin: 0;
+            line-height: 1.4;
         }
 
         /* Expanded Image Lightbox Viewer */
@@ -765,7 +768,9 @@
         <!-- Spatial Chapter 1: Life of a Box -->
         <section>
             <div class="ambient-section">
-                <div class="ambient-bg-shadow" style="background-image: url('box-spatial-1.jpg');"></div>
+                <!-- Original Shadow Painting Restored Here -->
+                <div class="ambient-bg-shadow" style="background-image: url('4.jpg');"></div>
+                
                 <div class="ambient-content">
                     <h2>Spatial Chapter &bull; Life of a Box</h2>
                     <h3 style="font-size: 1.15rem; font-weight: 300; letter-spacing: 0.25em; color: #ffffff; text-transform: uppercase; margin-bottom: 20px;">The Beauty of Sustainability &amp; Global Recycling</h3>
@@ -794,35 +799,35 @@
                     </div>
                 </div>
 
-                <!-- Spatial Chapter 1 Interactive Lightbox Gallery Grid -->
+                <!-- Spatial Chapter 1 Gallery Grid with Specific Institutional Captions -->
                 <div class="spatial-gallery-grid">
-                    <div class="gallery-card" onclick="openImageLightbox('box-spatial-1.jpg', 'SPATIAL CONTEXT &bull; MUSEUM INSTALLATION', 'Monumental recycled cardboard installation in spatial dialogue with museum visitors.')">
+                    <div class="gallery-card" onclick="openImageLightbox('box-spatial-1.jpg', 'MUSEUM INSTALLATION &bull; CZECH REPUBLIC', 'Museum of West Bohemia - Life of a Box exhibition view establishing architectural scale and institutional presence.')">
                         <div class="gallery-image-wrapper">
-                            <img src="box-spatial-1.jpg" alt="Life of a Box Museum Installation View">
+                            <img src="box-spatial-1.jpg" alt="Museum of West Bohemia Life of a Box Exhibition">
                         </div>
                         <div class="gallery-caption">
-                            <span class="gallery-tag">&bull; Spatial View</span>
-                            <h4 class="gallery-title">Museum Context &amp; Scale</h4>
+                            <span class="gallery-tag">&bull; Museum Installation</span>
+                            <h4 class="gallery-title">Museum of West Bohemia</h4>
                         </div>
                     </div>
 
-                    <div class="gallery-card" onclick="openImageLightbox('box-texture-1.jpg', 'MICRO-MATERIAL TEXTURE &bull; TACTILE DEPTH', 'Macro close-up detailing industrial cardboard fibers, raw pigment layers, and structural impasto.')">
+                    <div class="gallery-card" onclick="openImageLightbox('box-texture-1.jpg', 'MATERIAL ARCHIVE &bull; NEW ZEALAND', 'from out of the blue studio gallery - Ōpunakē, Taranaki, New Zealand — Macro abstract detailing preserved cardboard fiber and gold pigment.')">
                         <div class="gallery-image-wrapper">
-                            <img src="box-texture-1.jpg" alt="Life of a Box Micro-Texture Detail">
+                            <img src="box-texture-1.jpg" alt="from out of the blue studio gallery Texture Detail">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Material Detail</span>
-                            <h4 class="gallery-title">Fiber &amp; Pigment Surface</h4>
+                            <h4 class="gallery-title">from out of the blue studio gallery</h4>
                         </div>
                     </div>
 
-                    <div class="gallery-card" onclick="openImageLightbox('box-archive-1.jpg', 'ARCHIVAL PROVENANCE &bull; GLOBAL DONATION', 'Physical documentation of donated industrial packaging bearing international institutional seals.')">
+                    <div class="gallery-card" onclick="openImageLightbox('box-archive-1.jpg', 'PROVENANCE RECORD &bull; LUXEMBOURG', 'European Schengen Museum - Luxembourg — Photo of a used box and postcard sent in support of the global sustainability archive.')">
                         <div class="gallery-image-wrapper">
-                            <img src="box-archive-1.jpg" alt="Life of a Box Archival Documentation">
+                            <img src="box-archive-1.jpg" alt="European Schengen Museum Archival Record">
                         </div>
                         <div class="gallery-caption">
-                            <span class="gallery-tag">&bull; Archival Record</span>
-                            <h4 class="gallery-title">Institutional Origin</h4>
+                            <span class="gallery-tag">&bull; Sovereign Record</span>
+                            <h4 class="gallery-title">European Schengen Museum</h4>
                         </div>
                     </div>
                 </div>
@@ -870,6 +875,39 @@
                         <span class="roster-pill" onclick="openInstitution('swarthmore')">Swarthmore &amp; National Geographic</span>
                         <span class="roster-pill" onclick="openInstitution('umanitoba_kulch')">University of Manitoba (Prof. Kulchyski)</span>
                         <span class="roster-pill" onclick="openInstitution('asu')">Arizona State University</span>
+                    </div>
+                </div>
+
+                <!-- Spatial Chapter 2 Gallery Grid -->
+                <div class="spatial-gallery-grid">
+                    <div class="gallery-card" onclick="openImageLightbox('land-spatial-2.jpg', 'SPATIAL CONTEXT &bull; INDIGENOUS HERITAGE', 'Large-scale canvas exhibition view incorporating sacred indigenous concepts on museum walls.')">
+                        <div class="gallery-image-wrapper">
+                            <img src="land-spatial-2.jpg" alt="Voices of the Land Exhibition View">
+                        </div>
+                        <div class="gallery-caption">
+                            <span class="gallery-tag">&bull; Museum Installation</span>
+                            <h4 class="gallery-title">Spatial Scale &amp; Lineage</h4>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card" onclick="openImageLightbox('land-texture-2.jpg', 'MATERIAL DETAIL &bull; EARTH PIGMENTS', 'Macro close-up detailing raw natural earth pigments and Anishinaabe symbolic textures.')">
+                        <div class="gallery-image-wrapper">
+                            <img src="land-texture-2.jpg" alt="Voices of the Land Earth Pigment Detail">
+                        </div>
+                        <div class="gallery-caption">
+                            <span class="gallery-tag">&bull; Material Detail</span>
+                            <h4 class="gallery-title">Earth Pigment &amp; Surface</h4>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card" onclick="openImageLightbox('land-archive-2.jpg', 'SCHOLARLY PROVENANCE &bull; RESEARCH ARCHIVE', 'Documenting academic collaborations and donated indigenous concepts with global university partners.')">
+                        <div class="gallery-image-wrapper">
+                            <img src="land-archive-2.jpg" alt="Voices of the Land Research Archive Document">
+                        </div>
+                        <div class="gallery-caption">
+                            <span class="gallery-tag">&bull; Archival Record</span>
+                            <h4 class="gallery-title">Scholarly Provenance</h4>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1394,7 +1432,7 @@
             harouni: {
                 code: "DONATED WORD ARCHIVE &bull; ROOH-NAWAZ",
                 title: "Dr. Houman Harouni &bull; Scholar of Education",
-                body: "<b>Donated Term:</b> Bi-gharāri (بی‌قراری) — Dynamic Longing & Unsettledness<br><br><b>Curatorial Synthesis:</b> A deliberate refusal to remain static in one’s ideas, identities, or certainties. Bi-gharāri captures the tension between searching for peace and accepting that spiritual and intellectual growth requires continuous movement.<br><br><i>Institutional affiliation (Harvard Graduate School of Education) referenced strictly for biographical identification purposes.</i>"
+                body: "<b>Donated Term:</b> Bi-gharāri (بی‌‌قراری) — Dynamic Longing & Unsettledness<br><br><b>Curatorial Synthesis:</b> A deliberate refusal to remain static in one’s ideas, identities, or certainties. Bi-gharāri captures the tension between searching for peace and accepting that spiritual and intellectual growth requires continuous movement.<br><br><i>Institutional affiliation (Harvard Graduate School of Education) referenced strictly for biographical identification purposes.</i>"
             },
             grigor: {
                 code: "DONATED WORD ARCHIVE &bull; ROOH-NAWAZ",
