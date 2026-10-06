@@ -4,10 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hesham Malik | Sovereign Archive &amp; Planetary Codex</title>
-    <!-- Typography -->
+    
+    <!-- Primary Metadata -->
+    <meta name="description" content="Official Sovereign Archive of Hesham Malik. Three decades of monumental fine art, global participatory codices, ecological installations, and academic research.">
+    <meta name="keywords" content="Hesham Malik, Fine Art, Sovereign Archive, Global Project Words, Life of a Box, Voices of the Land, Rooh-Nawaz, Contemporary Art Archive">
+    <meta name="author" content="Hesham Malik">
+    <link rel="canonical" href="https://heshammalik.org/">
+
+    <!-- Open Graph Protocol (Social & Messaging Previews) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Hesham Malik Sovereign Archive">
+    <meta property="og:title" content="Hesham Malik | Sovereign Archive &amp; Planetary Codex">
+    <meta property="og:description" content="Three Decades of Sovereign Art, Global Institutional Archives, and Planetary Initiatives.">
+    <meta property="og:url" content="https://heshammalik.org/">
+    <meta property="og:image" content="https://heshammalik.org/4.jpg">
+    <meta property="og:image:alt" content="Hesham Malik Vernissage Address at Exhibition Opening">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hesham Malik | Sovereign Archive">
+    <meta name="twitter:description" content="Three Decades of Sovereign Art &amp; Global Institutional Archives.">
+    <meta name="twitter:image" content="https://heshammalik.org/4.jpg">
+
+    <!-- Typography Imports -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Structured Data Schema (Search Engines & Knowledge Graphs) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://heshammalik.org/#artist",
+          "name": "Hesham Malik",
+          "jobTitle": "Visual Artist & Cultural Researcher",
+          "url": "https://heshammalik.org",
+          "sameAs": [
+            "https://heshammalik.eu"
+          ],
+          "knowsAbout": [
+            "Abstract Fine Art",
+            "Participatory Art Archives",
+            "Ecological Sustainability Initiatives",
+            "Indigenous Cultural Heritage",
+            "Persian Diaspora Literature"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://heshammalik.org/#website",
+          "url": "https://heshammalik.org",
+          "name": "Hesham Malik Sovereign Archive & Planetary Codex",
+          "description": "Primary digital archive and monographic record documenting three decades of Hesham Malik's global fine art trajectory.",
+          "publisher": {
+            "@id": "https://heshammalik.org/#artist"
+          },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "VisualArtwork",
+          "@id": "https://heshammalik.org/#equanimity",
+          "name": "Equanimity / Gelassenheit",
+          "artist": {
+            "@id": "https://heshammalik.org/#artist"
+          },
+          "artForm": "Painting",
+          "artMedium": "Mixed Media on Canvas",
+          "description": "Masterwork painting created for Global Project Words using the donated word 'Equanimity' from Artas Foundation. Exhibited at Brussels Expo.",
+          "image": "https://heshammalik.org/4.jpg"
+        },
+        {
+          "@type": "VisualArtwork",
+          "@id": "https://heshammalik.org/#lifeofabox",
+          "name": "Life of a Box",
+          "artist": {
+            "@id": "https://heshammalik.org/#artist"
+          },
+          "artForm": "Sculpture / Installation",
+          "artMedium": "Recycled Industrial Cardboard & Gold Pigment",
+          "description": "Flagship global sustainability initiative transforming industrial logistics packaging into monumental fine art, supported by European and global museum networks.",
+          "image": "https://heshammalik.org/10.jpg"
+        }
+      ]
+    }
+    </script>
     
     <style>
         :root {
@@ -32,7 +116,7 @@
             color: var(--text-primary);
             font-family: var(--font-sans);
             margin: 0;
-            padding-top: 65px; /* Offset for fixed nav */
+            padding-top: 65px;
             line-height: 1.8;
             letter-spacing: 0.03em;
             background-image: radial-gradient(circle at 50% 0%, #0d0c0a 0%, var(--canvas-bg) 80%);
@@ -274,11 +358,11 @@
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        /* Dedicated BG Image Binding Per Spatial Chapter */
-        .bg-words { background-image: url('words-spatial-1.jpg'); }
-        .bg-box   { background-image: url('box-spatial-1.jpg'); }
-        .bg-land  { background-image: url('land-spatial-2.jpg'); }
-        .bg-rooh  { background-image: url('rooh-spatial-3.jpg'); }
+        /* Dedicated BG Image Binding Per Spatial Chapter Matching Your GitHub Repo */
+        .bg-words { background-image: url('4.jpg'); }
+        .bg-box   { background-image: url('10.jpg'); }
+        .bg-land  { background-image: url('2.jpg'); }
+        .bg-rooh  { background-image: url('3.jpg'); }
 
         .ambient-section:hover .ambient-bg-shadow {
             opacity: 0.28;
@@ -332,7 +416,7 @@
         .gallery-image-wrapper img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain; /* Preserves uncropped canvas ratios */
+            object-fit: contain;
             opacity: 0.9;
             transition: transform 0.5s ease, opacity 0.5s ease;
         }
@@ -818,9 +902,9 @@
                 </div>
 
                 <div class="spatial-gallery-grid">
-                    <div class="gallery-card" onclick="openImageLightbox('words-spatial-1.jpg', 'EXHIBITION OPENING &bull; SPATIAL CONTEXT', 'The artist speaking at an exhibition opening, establishing spatial scale and public engagement.')">
+                    <div class="gallery-card" onclick="openImageLightbox('4.jpg', 'EXHIBITION OPENING &bull; SPATIAL CONTEXT', 'The artist speaking at an exhibition opening, establishing spatial scale and public engagement.')">
                         <div class="gallery-image-wrapper">
-                            <img src="words-spatial-1.jpg" alt="The artist speaking at exhibition opening">
+                            <img src="4.jpg" alt="The artist speaking at exhibition opening">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Vernissage Address</span>
@@ -828,9 +912,9 @@
                         </div>
                     </div>
 
-                    <div class="gallery-card" onclick="openImageLightbox('words-texture-1.jpg', 'FEATURED MASTERWORK &bull; BRUSSELS EXPO', 'The word \'Equanimity\', Gelassenheit in German, was donated by Artas Foundation, a Swiss Foundation for Art in Regions of Conflict. Featured at the Brussels Expo: Empowering Europe’s Creative Industries.')">
+                    <div class="gallery-card" onclick="openImageLightbox('5.jpg', 'FEATURED MASTERWORK &bull; BRUSSELS EXPO', 'The word \'Equanimity\', Gelassenheit in German, was donated by Artas Foundation, a Swiss Foundation for Art in Regions of Conflict. Featured at the Brussels Expo: Empowering Europe’s Creative Industries.')">
                         <div class="gallery-image-wrapper">
-                            <img src="words-texture-1.jpg" alt="Equanimity Gelassenheit painting at Brussels Expo">
+                            <img src="5.jpg" alt="Equanimity Gelassenheit painting at Brussels Expo">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Featured Masterwork</span>
@@ -838,9 +922,9 @@
                         </div>
                     </div>
 
-                    <div class="gallery-card" onclick="openImageLightbox('words-archive-1.jpg', 'STATE GALLERY EXHIBITION &bull; CZECH REPUBLIC', 'City Gallery of Region Vysoké Mýto - installation view from the exhibition titled \'Reminiscence\'.')">
+                    <div class="gallery-card" onclick="openImageLightbox('6.jpg', 'STATE GALLERY EXHIBITION &bull; CZECH REPUBLIC', 'City Gallery of Region Vysoké Mýto - installation view from the exhibition titled \'Reminiscence\'.')">
                         <div class="gallery-image-wrapper">
-                            <img src="words-archive-1.jpg" alt="City Gallery High Myto Exhibition Reminiscence">
+                            <img src="6.jpg" alt="City Gallery High Myto Exhibition Reminiscence">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Regional Gallery</span>
@@ -903,9 +987,9 @@
                 </div>
 
                 <div class="spatial-gallery-grid">
-                    <div class="gallery-card" onclick="openImageLightbox('box-spatial-1.jpg', 'MUSEUM INSTALLATION &bull; CZECH REPUBLIC', 'Museum of West Bohemia - Life of a Box exhibition view establishing architectural scale and institutional presence.')">
+                    <div class="gallery-card" onclick="openImageLightbox('10.jpg', 'MUSEUM INSTALLATION &bull; CZECH REPUBLIC', 'Museum of West Bohemia - Life of a Box exhibition view establishing architectural scale and institutional presence.')">
                         <div class="gallery-image-wrapper">
-                            <img src="box-spatial-1.jpg" alt="Museum of West Bohemia Life of a Box Exhibition">
+                            <img src="10.jpg" alt="Museum of West Bohemia Life of a Box Exhibition">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Museum Installation</span>
@@ -913,9 +997,9 @@
                         </div>
                     </div>
 
-                    <div class="gallery-card" onclick="openImageLightbox('box-texture-1.jpg', 'MATERIAL ARCHIVE &bull; NEW ZEALAND', 'from out of the blue studio gallery - Ōpunakē, Taranaki, New Zealand — Macro abstract detailing preserved cardboard fiber and gold pigment.')">
+                    <div class="gallery-card" onclick="openImageLightbox('11.jpg', 'MATERIAL ARCHIVE &bull; NEW ZEALAND', 'from out of the blue studio gallery - Ōpunakē, Taranaki, New Zealand — Macro abstract detailing preserved cardboard fiber and gold pigment.')">
                         <div class="gallery-image-wrapper">
-                            <img src="box-texture-1.jpg" alt="from out of the blue studio gallery Texture Detail">
+                            <img src="11.jpg" alt="from out of the blue studio gallery Texture Detail">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Material Detail</span>
@@ -923,9 +1007,9 @@
                         </div>
                     </div>
 
-                    <div class="gallery-card" onclick="openImageLightbox('box-archive-1.jpg', 'PROVENANCE RECORD &bull; LUXEMBOURG', 'European Schengen Museum - Luxembourg — Photo of a used box and postcard sent in support of the global sustainability archive.')">
+                    <div class="gallery-card" onclick="openImageLightbox('12.jpg', 'PROVENANCE RECORD &bull; LUXEMBOURG', 'European Schengen Museum - Luxembourg — Photo of a used box and postcard sent in support of the global sustainability archive.')">
                         <div class="gallery-image-wrapper">
-                            <img src="box-archive-1.jpg" alt="European Schengen Museum Archival Record">
+                            <img src="12.jpg" alt="European Schengen Museum Archival Record">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Sovereign Record</span>
@@ -981,9 +1065,9 @@
                 </div>
 
                 <div class="spatial-gallery-grid">
-                    <div class="gallery-card" onclick="openImageLightbox('land-spatial-2.jpg', 'MUSEUM EXHIBITION &bull; CZECH REPUBLIC', 'The Museum of the Jindřichův Hradec Region — Painting titled \'Mowicha\' establishing monumental spatial presence.')">
+                    <div class="gallery-card" onclick="openImageLightbox('2.jpg', 'MUSEUM EXHIBITION &bull; CZECH REPUBLIC', 'The Museum of the Jindřichův Hradec Region — Painting titled \'Mowicha\' establishing monumental spatial presence.')">
                         <div class="gallery-image-wrapper">
-                            <img src="land-spatial-2.jpg" alt="The Museum of the Jindřichův Hradec Region Mowicha">
+                            <img src="2.jpg" alt="The Museum of the Jindřichův Hradec Region Mowicha">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Museum Installation</span>
@@ -991,9 +1075,9 @@
                         </div>
                     </div>
 
-                    <div class="gallery-card" onclick="openImageLightbox('land-texture-2.jpg', 'MATERIAL ARCHIVE &bull; CZECH REPUBLIC', 'Museum Karlovy Vary — Geometrical design detailing Earth Pigmentation and surface texture.')">
+                    <div class="gallery-card" onclick="openImageLightbox('1.jpg', 'MATERIAL ARCHIVE &bull; CZECH REPUBLIC', 'Museum Karlovy Vary — Geometrical design detailing Earth Pigmentation and surface texture.')">
                         <div class="gallery-image-wrapper">
-                            <img src="land-texture-2.jpg" alt="Museum Karlovy Vary Earth Pigmentation Texture">
+                            <img src="1.jpg" alt="Museum Karlovy Vary Earth Pigmentation Texture">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Material Detail</span>
@@ -1001,9 +1085,9 @@
                         </div>
                     </div>
 
-                    <div class="gallery-card" onclick="openImageLightbox('land-archive-2.jpg', 'STUDIO ARCHIVE &bull; PRODUCTION RECORD', 'Voices of the Land — Studio research archive, material preparation, and ongoing creation.')">
+                    <div class="gallery-card" onclick="openImageLightbox('7.jpg', 'STUDIO ARCHIVE &bull; PRODUCTION RECORD', 'Voices of the Land — Studio research archive, material preparation, and ongoing creation.')">
                         <div class="gallery-image-wrapper">
-                            <img src="land-archive-2.jpg" alt="Voices of the Land Studio Research Archive">
+                            <img src="7.jpg" alt="Voices of the Land Studio Research Archive">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Studio Archive</span>
@@ -1062,9 +1146,9 @@
                 </div>
 
                 <div class="spatial-gallery-grid">
-                    <div class="gallery-card" onclick="openImageLightbox('rooh-spatial-3.jpg', 'PRIVATE EXHIBIT &bull; SPATIAL VIEW', 'Private exhibit — Painting titled \'Rooh\' establishing spatial scale and emotional resonance.')">
+                    <div class="gallery-card" onclick="openImageLightbox('3.jpg', 'PRIVATE EXHIBIT &bull; SPATIAL VIEW', 'Private exhibit — Painting titled \'Rooh\' establishing spatial scale and emotional resonance.')">
                         <div class="gallery-image-wrapper">
-                            <img src="rooh-spatial-3.jpg" alt="Private Exhibit Painting Titled Rooh">
+                            <img src="3.jpg" alt="Private Exhibit Painting Titled Rooh">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Private Exhibit</span>
@@ -1072,9 +1156,9 @@
                         </div>
                     </div>
 
-                    <div class="gallery-card" onclick="openImageLightbox('rooh-texture-3.jpg', 'MUSEUM COLLECTION &bull; CZECH REPUBLIC', 'Museum Kromeriz — Painting titled \'\... you, who are my whole Soul...\' detailing rich surface textures.')">
+                    <div class="gallery-card" onclick="openImageLightbox('8.jpg', 'MUSEUM COLLECTION &bull; CZECH REPUBLIC', 'Museum Kromeriz — Painting titled \'\... you, who are my whole Soul...\' detailing rich surface textures.')">
                         <div class="gallery-image-wrapper">
-                            <img src="rooh-texture-3.jpg" alt="Museum Kromeriz You Who Are My Whole Soul">
+                            <img src="8.jpg" alt="Museum Kromeriz You Who Are My Whole Soul">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Museum Collection</span>
@@ -1082,9 +1166,9 @@
                         </div>
                     </div>
 
-                    <div class="gallery-card" onclick="openImageLightbox('rooh-archive-3.jpg', 'STUDIO ARCHIVE &bull; SCHOLARLY RESEARCH', 'Rooh-Nawaz — Studio research archive, material creation, and documentation.')">
+                    <div class="gallery-card" onclick="openImageLightbox('9.jpg', 'STUDIO ARCHIVE &bull; SCHOLARLY RESEARCH', 'Rooh-Nawaz — Studio research archive, material creation, and documentation.')">
                         <div class="gallery-image-wrapper">
-                            <img src="rooh-archive-3.jpg" alt="Rooh-Nawaz Studio Research Archive">
+                            <img src="9.jpg" alt="Rooh-Nawaz Studio Research Archive">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Studio Archive</span>
