@@ -877,7 +877,87 @@
         <!-- Spatial Chapters Anchor -->
         <div id="chapters"></div>
 
-        <!-- Spatial Chapter 1: Life of a Box -->
+        <!-- Spatial Chapter 1: Words -->
+        <section>
+            <div class="ambient-section">
+                <div class="ambient-bg-shadow" style="background-image: url('3.jpg');"></div>
+                
+                <div class="ambient-content">
+                    <h2>Spatial Chapter &bull; Words</h2>
+                    <div class="section-subhead">A Global Participatory Codex of Human Sentiment</div>
+                    <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.9; margin-bottom: 0;">
+                        Global Project <i>Words</i> gathers thousands of single, spontaneous word contributions from world leaders, Nobel laureates, environmentalists, scientists, and cultural guardians across global networks of governance and heritage. Transformed into monumental abstract canvases, these donated words serve as raw linguistic energy—mapping the ongoing dialogue between contemporary global crisis, human endurance, and material memory.
+                    </p>
+
+                    <div style="margin-top: 30px; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-gold);">
+                        Key Participating Networks &amp; Academic Institutions (Click to Read Scope):
+                    </div>
+                    <div class="roster-pills">
+                        <span class="roster-pill" onclick="openPillar('words')">Harvard University Network</span>
+                        <span class="roster-pill" onclick="openPillar('words')">Oxford &amp; Cambridge</span>
+                        <span class="roster-pill" onclick="openPillar('words')">Sorbonne University</span>
+                        <span class="roster-pill" onclick="openPillar('words')">Nobel Prize Museum</span>
+                        <span class="roster-pill" onclick="openPillar('words')">Svalbard Global Seed Vault</span>
+                        <span class="roster-pill" onclick="openPillar('words')">Jane Goodall Institute</span>
+                        <span class="roster-pill" onclick="openPillar('words')">TATE London</span>
+                        <span class="roster-pill" onclick="openPillar('words')">National Gallery of Canada</span>
+                        <span class="roster-pill" onclick="openPillar('words')">Charles University</span>
+                    </div>
+                </div>
+
+                <div class="spatial-gallery-grid">
+                    <div class="gallery-card" onclick="openImageLightbox('3.jpg', 'GLOBAL ARCHIVE &bull; MONUMENTAL CANVAS', 'Global Project Words canvas view mapping donated linguistic energy into abstract form.')">
+                        <div class="gallery-image-wrapper">
+                            <img src="3.jpg" alt="Global Project Words Monumental Canvas">
+                        </div>
+                        <div class="gallery-caption">
+                            <span class="gallery-tag">&bull; Monumental Canvas</span>
+                            <h4 class="gallery-title">Linguistic Codex</h4>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card" onclick="openImageLightbox('words-texture-1.jpg', 'MATERIAL DETAIL &bull; TEXT ARCHIVE', 'Macro detail of pigment layer, calligraphy, and structural text integration.')">
+                        <div class="gallery-image-wrapper">
+                            <img src="words-texture-1.jpg" alt="Words Material Detail">
+                        </div>
+                        <div class="gallery-caption">
+                            <span class="gallery-tag">&bull; Material Detail</span>
+                            <h4 class="gallery-title">Text Density &amp; Layering</h4>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card" onclick="openImageLightbox('words-archive-1.jpg', 'STUDIO ARCHIVE &bull; DONATION LEDGER', 'Original studio archive logging word contributions from global institutions.')">
+                        <div class="gallery-image-wrapper">
+                            <img src="words-archive-1.jpg" alt="Words Studio Archive Ledger">
+                        </div>
+                        <div class="gallery-caption">
+                            <span class="gallery-tag">&bull; Studio Record</span>
+                            <h4 class="gallery-title">Donation Ledger Archive</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trajectory-grid">
+                <div class="trajectory-card" onclick="openTrajectory('words_codex')">
+                    <span class="click-hint">&bull; Read Monograph</span>
+                    <h4>I. Linguistic DNA &amp; Global Energy</h4>
+                    <p>Extracting singular word donations from diverse cultures to map universal emotional and philosophical responses to modern planetary existence.</p>
+                </div>
+                <div class="trajectory-card" onclick="openTrajectory('words_participatory')">
+                    <span class="click-hint">&bull; Read Monograph</span>
+                    <h4>II. Participatory Architecture</h4>
+                    <p>Bypassing traditional art world gatekeeping by allowing global scholars, leaders, and communities to directly author the conceptual foundation of the canvas.</p>
+                </div>
+                <div class="trajectory-card" onclick="openTrajectory('words_monumental')">
+                    <span class="click-hint">&bull; Read Monograph</span>
+                    <h4>III. Monumental Preservation</h4>
+                    <p>Translating ephemeral text contributions into heavy, multi-layered pigment installations preserved for future cultural and historical archives.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spatial Chapter 2: Life of a Box -->
         <section>
             <div class="ambient-section">
                 <div class="ambient-bg-shadow" style="background-image: url('4.jpg');"></div>
@@ -962,7 +1042,7 @@
             </div>
         </section>
 
-        <!-- Spatial Chapter 2: Voices of the Land -->
+        <!-- Spatial Chapter 3: Voices of the Land -->
         <section>
             <div class="ambient-section">
                 <div class="ambient-bg-shadow" style="background-image: url('2.JPG');"></div>
@@ -1040,7 +1120,7 @@
             </div>
         </section>
 
-        <!-- Spatial Chapter 3: Rooh-Nawaz -->
+        <!-- Spatial Chapter 4: Rooh-Nawaz -->
         <section>
             <div class="ambient-section">
                 <div class="ambient-bg-shadow" style="background-image: url('10.JPG');"></div>
@@ -1390,6 +1470,21 @@
         };
 
         const trajectoryData = {
+            words_codex: {
+                code: "WORDS &bull; CURATORIAL METHODOLOGY I",
+                title: "Linguistic DNA & Global Energy",
+                body: "Extracting singular word donations from diverse cultures to map universal emotional and philosophical responses to modern planetary existence."
+            },
+            words_participatory: {
+                code: "WORDS &bull; CURATORIAL METHODOLOGY II",
+                title: "Participatory Architecture",
+                body: "Bypassing traditional art world gatekeeping by allowing global scholars, leaders, and communities to directly author the conceptual foundation of the canvas."
+            },
+            words_monumental: {
+                code: "WORDS &bull; CURATORIAL METHODOLOGY III",
+                title: "Monumental Preservation",
+                body: "Translating ephemeral text contributions into heavy, multi-layered pigment installations preserved for future cultural and historical archives."
+            },
             retrospectives: {
                 code: "CAREER MONOGRAPH &bull; THREE DECADES",
                 title: "100+ Global Solo Retrospectives",
@@ -1576,7 +1671,7 @@
             grigor: {
                 code: "DONATED WORD ARCHIVE &bull; ROOH-NAWAZ",
                 title: "Dr. Talinn Grigor &bull; Scholar of Architectural History",
-                body: "<b>Donated Term:</b> Jān / Jan (Ջան / جان) — Shared Soul & Affinity<br><br><b>Curatorial Synthesis:</b> An untranslatable linguistic bridge spanning Persian, Armenian, and South Asian heritage. Jān represents the embodied spirit of empathy, affection, and shared cultural memory.<br><br><i>Institutional affiliation (University of California, Davis) referenced strictly for biographical identification purposes.</i>"
+                body: "<b>Donated Term:</b> Jān / Jan (Ջان / جان) — Shared Soul & Affinity<br><br><b>Curatorial Synthesis:</b> An untranslatable linguistic bridge spanning Persian, Armenian, and South Asian heritage. Jān represents the embodied spirit of empathy, affection, and shared cultural memory.<br><br><i>Institutional affiliation (University of California, Davis) referenced strictly for biographical identification purposes.</i>"
             },
             daryaee: {
                 code: "DONATED WORD ARCHIVE &bull; ROOH-NAWAZ",
