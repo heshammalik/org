@@ -32,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 
-    <!-- JSON-LD Structured Data Schema (Search Engines & Knowledge Graphs) -->
+    <!-- JSON-LD Structured Data Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -332,7 +332,7 @@
             line-height: 1.7;
         }
 
-        /* Ambient Spatial Sections & Shadow Paintings Binding */
+        /* Ambient Spatial Sections */
         .ambient-section {
             position: relative;
             padding: 60px 40px;
@@ -358,7 +358,6 @@
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        /* Dedicated Shadow Background Paintings */
         .bg-words { background-image: url('4.jpg'); }
         .bg-box   { background-image: url('10.jpg'); }
         .bg-land  { background-image: url('2.jpg'); }
@@ -375,7 +374,7 @@
             max-width: 750px;
         }
 
-        /* Gallery Grids & Image Un-Cropping Fix */
+        /* Gallery Grids */
         .spatial-gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -685,6 +684,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            cursor: pointer;
         }
 
         .biblio-btn:hover {
@@ -1233,10 +1233,10 @@
                     <div>
                         <div class="biblio-code">INQ-2026-06 &bull; Curatorial Inquiry</div>
                         <div class="biblio-title">The Architecture of Crisis: Mapping Global Energy Through Linguistic Archives</div>
-                        <div class="biblio-meta">TMOCI Sovereign Archive &amp; Research Portal &bull; 2026</div>
+                        <div class="biblio-meta">TMOCI Sovereign Archive &amp; Research Portal &bull; Published June 2026</div>
                     </div>
                     <div>
-                        <a href="https://tmoci.org/archive.html" target="_blank" class="biblio-btn">Explore TMOCI Archive &rarr;</a>
+                        <button class="biblio-btn" onclick="openTrajectory('tmoci_essay')">Read Curatorial Excerpt &rarr;</button>
                     </div>
                 </div>
 
@@ -1361,6 +1361,11 @@
         };
 
         const trajectoryData = {
+            tmoci_essay: {
+                code: "INQ-2026-06 &bull; CURATORIAL DISCOURSE",
+                title: "The Architecture of Crisis: Mapping Global Energy Through Linguistic Archives",
+                body: "<b>Published by the Curatorial Board & Research Collective — June 2026</b><br><br>In an era defined by rapid geopolitical shifts, institutional fragmentation, and digital saturation, how do intellectual architects articulate the underlying frequency of our times? This question sits at the center of Global Project Words, an ongoing data-visualization and neuro-aesthetic initiative that gathers single, spontaneous word contributions from figures across global networks of governance, science, and heritage. Rather than relying on traditional public statements or policy briefs, such archives operate on a premise of radical reduction: capturing the raw, unmediated linguistic reflex of those who navigate institutional power.<br><br>The structural scope of these evolving archives spans an unprecedented ecosystem of authority—capturing contributions from premier research pillars, cultural preservation benchmarks, and international advocacy bodies across North America, Europe, the Arctic, and the Global South. When these disparate fragments, ranging from administrative reflections to deeply philosophical terms, are gathered, they form a collective linguistic portrait of contemporary consciousness. Yet, collecting linguistic data is only the preliminary phase; the critical challenge lies in how such intangible energy signatures are translated into physical space.<br><br>Historically, conceptual practices have grappled with the materialization of language and systemic data. One thinks of On Kawara’s systematic logging of temporal existence, or conceptual frameworks that treated text not merely as a descriptor, but as an unyielding structural anchor. In contemporary spatial practice, this lineage is actively engaged by works such as those by Hesham Malik, whose large-scale abstract canvases transmutate linguistic data into heavy, textured layers of pigment. Rather than relying on commercial spectacle, such practices treat the donated word as a primary energy source—mapping the dialogue between global crisis and material endurance.<br><br>As these conceptual repositories accumulate, they transition from temporary exercises into permanent monuments of our historical moment—reminding us that beneath the machinery of global politics lies the simple, vibrating weight of a single human word."
+            },
             words_codex: {
                 code: "WORDS &bull; CURATORIAL METHODOLOGY I",
                 title: "Linguistic DNA & Global Energy",
