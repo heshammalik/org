@@ -167,7 +167,7 @@
 
         .nav-link:hover { color: var(--accent-gold); }
 
-        /* Full Screen Hero Landing Header with Landing.jpg */
+        /* Full Screen Hero Landing Header aligned to top to preserve facial visibility */
         header.hero {
             position: relative;
             min-height: 100vh;
@@ -178,8 +178,8 @@
             padding: 120px 20px 80px;
             text-align: center;
             box-sizing: border-box;
-            background: linear-gradient(180deg, rgba(3, 3, 3, 0.65) 0%, rgba(3, 3, 3, 0.85) 75%, var(--canvas-bg) 100%), 
-                        url('Landing.jpg') center/cover no-repeat;
+            background: linear-gradient(180deg, rgba(3, 3, 3, 0.45) 0%, rgba(3, 3, 3, 0.85) 75%, var(--canvas-bg) 100%), 
+                        url('Landing.jpg') center top / cover no-repeat;
             background-attachment: fixed;
         }
 
@@ -197,7 +197,7 @@
             color: #ffffff;
             text-transform: uppercase;
             line-height: 1.1;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            text-shadow: 0 10px 30px rgba(0,0,0,0.9);
         }
 
         .subtitle {
