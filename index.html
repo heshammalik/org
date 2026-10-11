@@ -17,15 +17,15 @@
     <meta property="og:title" content="Hesham Malik | Sovereign Archive &amp; Planetary Codex">
     <meta property="og:description" content="Three Decades of Sovereign Art, Global Institutional Archives, and Planetary Initiatives.">
     <meta property="og:url" content="https://heshammalik.org/">
-    <meta property="og:image" content="https://heshammalik.org/4.jpg">
-    <meta property="og:image:alt" content="Hesham Malik Vernissage Address at Exhibition Opening">
+    <meta property="og:image" content="https://heshammalik.org/Landing.jpg">
+    <meta property="og:image:alt" content="Hesham Malik Sovereign Archive Fine Art Landing Banner">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hesham Malik | Sovereign Archive">
     <meta name="twitter:description" content="Three Decades of Sovereign Art &amp; Global Institutional Archives.">
-    <meta name="twitter:image" content="https://heshammalik.org/4.jpg">
+    <meta name="twitter:image" content="https://heshammalik.org/Landing.jpg">
 
     <!-- Typography Imports -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,7 +116,7 @@
             color: var(--text-primary);
             font-family: var(--font-sans);
             margin: 0;
-            padding-top: 65px;
+            padding-top: 0;
             line-height: 1.8;
             letter-spacing: 0.03em;
             background-image: radial-gradient(circle at 50% 0%, #0d0c0a 0%, var(--canvas-bg) 80%);
@@ -135,7 +135,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(3, 3, 3, 0.92);
+            background: rgba(3, 3, 3, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle);
             z-index: 9999;
@@ -167,11 +167,91 @@
 
         .nav-link:hover { color: var(--accent-gold); }
 
+        /* Full Screen Hero Landing Header with Landing.jpg */
+        header.hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 20px 80px;
+            text-align: center;
+            box-sizing: border-box;
+            background: linear-gradient(180deg, rgba(3, 3, 3, 0.65) 0%, rgba(3, 3, 3, 0.85) 75%, var(--canvas-bg) 100%), 
+                        url('Landing.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 4.2rem;
+            font-weight: 300;
+            letter-spacing: 0.22em;
+            margin: 0 0 15px 0;
+            color: #ffffff;
+            text-transform: uppercase;
+            line-height: 1.1;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .subtitle {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.38em;
+            margin-bottom: 35px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.9);
+        }
+
+        .hero-statement {
+            font-family: var(--font-serif);
+            font-size: 1.45rem;
+            font-style: italic;
+            color: #e0e0e0;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 300;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--accent-gold);
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.8;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-indicator:hover { opacity: 1; }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 1rem;
+        }
+
         /* Ticker Marquee */
         .word-ticker {
             background: var(--surface-solid);
+            border-top: 1px solid var(--border-subtle);
             border-bottom: 1px solid var(--border-subtle);
-            padding: 10px 0;
+            padding: 12px 0;
             overflow: hidden;
             white-space: nowrap;
         }
@@ -187,44 +267,6 @@
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
-        }
-
-        /* Hero Landing Header */
-        header.hero {
-            padding: 100px 20px 70px;
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-family: var(--font-serif);
-            font-size: 3.8rem;
-            font-weight: 300;
-            letter-spacing: 0.2em;
-            margin: 0 0 10px 0;
-            color: #ffffff;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
-
-        .subtitle {
-            font-size: 0.72rem;
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            letter-spacing: 0.35em;
-            margin-bottom: 30px;
-        }
-
-        .hero-statement {
-            font-family: var(--font-serif);
-            font-size: 1.35rem;
-            font-style: italic;
-            color: var(--text-secondary);
-            max-width: 750px;
-            margin: 0 auto;
-            line-height: 1.6;
-            font-weight: 300;
         }
 
         .contact-link {
@@ -244,7 +286,7 @@
         main {
             max-width: 1140px;
             margin: 0 auto;
-            padding: 40px 20px 100px;
+            padding: 60px 20px 100px;
         }
 
         section { margin-bottom: 120px; }
@@ -787,6 +829,7 @@
         @media (max-width: 768px) {
             nav.nav-bar { padding: 15px 20px; }
             .nav-links { display: none; }
+            header.hero { background-attachment: scroll; padding: 100px 20px 60px; min-height: 85vh; }
             h1 { font-size: 2.5rem; }
             .hero-statement { font-size: 1.1rem; }
             .ambient-section, .modal-box, .provenance-box { padding: 35px 20px; }
@@ -809,21 +852,24 @@
         </div>
     </nav>
 
+    <!-- Full Screen Hero Header with Landing.jpg Banner -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Hesham Malik</h1>
+            <div class="subtitle">Three Decades of Sovereign Art &bull; Global Institutional Archives &bull; Planetary Initiatives</div>
+            <div class="hero-statement">
+                "Art is not an isolated artifact; it is an active archive of human consciousness, ecological resilience, and ancestral memory."
+            </div>
+        </div>
+        <a href="#ticker" class="scroll-indicator">Explore Archive</a>
+    </header>
+
     <!-- Ticker Marquee -->
-    <div class="word-ticker">
+    <div class="word-ticker" id="ticker">
         <div class="ticker-track">
             &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Sustainability &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull; Wisdom &bull; Cosmos &bull; Resilience &bull; Sustainability &bull; Heritage &bull; Memory &bull; Land &bull; Silence &bull; Infinity &bull; Truth &bull; Resonance &bull; Horizon &bull; Continuity &bull; Sanctuary &bull;
         </div>
     </div>
-
-    <!-- Hero Header -->
-    <header class="hero">
-        <h1>Hesham Malik</h1>
-        <div class="subtitle">Three Decades of Sovereign Art &bull; Global Institutional Archives &bull; Planetary Initiatives</div>
-        <div class="hero-statement">
-            "Art is not an isolated artifact; it is an active archive of human consciousness, ecological resilience, and ancestral memory."
-        </div>
-    </header>
 
     <main>
         <!-- Four Core Pillars Section -->
