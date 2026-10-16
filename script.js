@@ -1,3 +1,4 @@
+// DOM Element References
 const modal = document.getElementById('infoModal');
 const modalCode = document.getElementById('modalCode');
 const modalTitle = document.getElementById('modalTitle');
@@ -8,49 +9,105 @@ const lightboxImg = document.getElementById('lightboxImg');
 const lightboxTag = document.getElementById('lightboxTag');
 const lightboxCaption = document.getElementById('lightboxCaption');
 
+// Scroll Lock Helpers
+function lockBodyScroll() {
+    document.body.style.overflow = 'hidden';
+}
+
+function unlockBodyScroll() {
+    document.body.style.overflow = '';
+}
+
 // Mobile Nav Toggle
 function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
+    const btn = document.querySelector('.mobile-nav-btn');
     if (menu) {
-        menu.classList.toggle('active');
+        const isActive = menu.classList.toggle('active');
+        if (btn) {
+            btn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        }
     }
 }
 
+// Image Lightbox Functions
 function openImageLightbox(src, tag, caption) {
+    if (!imageLightbox || !lightboxImg || !lightboxTag || !lightboxCaption) return;
+    
     lightboxImg.src = src;
     lightboxTag.innerHTML = tag;
     lightboxCaption.innerText = caption;
     imageLightbox.classList.add('active');
+    lockBodyScroll();
 }
 
 function closeImageLightbox() {
+    if (!imageLightbox) return;
     imageLightbox.classList.remove('active');
+    unlockBodyScroll();
 }
 
-imageLightbox.addEventListener('click', (e) => {
-    if (e.target === imageLightbox) closeImageLightbox();
-});
+if (imageLightbox) {
+    imageLightbox.addEventListener('click', (e) => {
+        if (e.target === imageLightbox) closeImageLightbox();
+    });
+}
 
-// Universal Modal Launcher Function
+// Universal Text Modal Functions
 function openModalByKey(key) {
+    if (!modal || !modalCode || !modalTitle || !modalBody) return;
+    
     const data = archiveData[key];
     if (data) {
         modalCode.innerHTML = data.code;
         modalTitle.innerText = data.title;
         modalBody.innerHTML = data.body;
         modal.classList.add('active');
+        lockBodyScroll();
+        
+        // Focus close button for screen readers and keyboard users
+        const closeBtn = modal.querySelector('.modal-close');
+        if (closeBtn) closeBtn.focus();
     }
 }
 
-// Backward compatibility functions
+function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('active');
+    unlockBodyScroll();
+}
+
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+}
+
+// Backward Compatibility Helpers
 function openPillar(key) { openModalByKey(key); }
 function openTrajectory(key) { openModalByKey(key); }
 function openInstitution(key) { openModalByKey(key); }
 
-function closeModal() { modal.classList.remove('active'); }
+// Global Keydown Handler (Escape Key Listener & Accessibility Keyboard Controls)
+document.addEventListener('keydown', (e) => {
+    // Press 'Escape' to close active modals or lightboxes
+    if (e.key === 'Escape') {
+        if (modal && modal.classList.contains('active')) {
+            closeModal();
+        }
+        if (imageLightbox && imageLightbox.classList.contains('active')) {
+            closeImageLightbox();
+        }
+    }
 
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
+    // Allow keyboard Enter / Space keys to trigger interactive elements with role="button"
+    if ((e.key === 'Enter' || e.key === ' ') && document.activeElement) {
+        const target = document.activeElement;
+        if (target.getAttribute('role') === 'button' && target.hasAttribute('onclick')) {
+            e.preventDefault();
+            target.click();
+        }
+    }
 });
 
 // Master Registry for All Dynamic Modals
@@ -155,14 +212,11 @@ const archiveData = {
         title: "University of Cambridge & University of Oxford",
         body: "Bypassing formal academic boundaries, foundational word donations were contributed by leading faculties across both historic institutions. Professor David Lane (University of Cambridge) offered <b>'love'</b> as an indispensable grounding force, while Professor Kate Raworth (University of Oxford, author of Doughnut Economics) contributed <b>'play'</b> as the bedrock for systemic human creativity."
     },
-    
-    // REFACTORED PRESTIGE ENTRY FOR SORBONNE
     sorbonne: {
         code: "DONATED WORD ARCHIVE &bull; WORDS PROJECT",
         title: "Sorbonne University & IAE Paris-Sorbonne Network",
         body: "Contributions from academic leadership at Sorbonne University explore the intersection between organizational inquiry, spatial geometry, and urban proximity. Reflecting on how unconventional artistic methodologies disrupt standard institutional patterns, research leadership at Sorbonne examines the tension between structural order, human proximity, and the unexpected intellectual dialogue generated through global participatory archives."
     },
-
     art4hr: {
         code: "DONATED WORD ARCHIVE &bull; WORDS PROJECT",
         title: "Art for Human Rights (Paris)",
