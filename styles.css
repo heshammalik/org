@@ -382,13 +382,17 @@ h2 {
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* Pushing vertical position to top center so upper figures/faces are fully revealed */
-.gallery-image-wrapper img[src="words-texture-1.jpg"],
-.gallery-image-wrapper img[src="words-archive-1.jpg"],
+/* Pushing vertical position to top center for Voices of the Land & Rooh-Nawaz */
 .gallery-image-wrapper img[src="land-spatial-2.jpg"],
 .gallery-image-wrapper img[src="rooh-texture-3.jpg"],
 .gallery-image-wrapper img[src="rooh-archive-3.jpg"] {
     object-position: top center;
+}
+
+/* Pushing Spatial Chapter • Words 2nd and 3rd photos back UP */
+.gallery-image-wrapper img[src="words-texture-1.jpg"],
+.gallery-image-wrapper img[src="words-archive-1.jpg"] {
+    object-position: center 25%;
 }
 
 .gallery-card:hover .gallery-image-wrapper img,
