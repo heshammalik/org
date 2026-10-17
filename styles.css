@@ -366,7 +366,7 @@ h2 {
 .gallery-image-wrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
     background-color: #050505;
     display: flex;
@@ -382,7 +382,7 @@ h2 {
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* Targeted Vertical Focus Adjustments (Pushing photo frame down to show top faces/figures) */
+/* Pushing vertical position to top center so upper figures/faces are fully revealed */
 .gallery-image-wrapper img[src="words-texture-1.jpg"],
 .gallery-image-wrapper img[src="words-archive-1.jpg"],
 .gallery-image-wrapper img[src="land-spatial-2.jpg"],
