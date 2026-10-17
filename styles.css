@@ -382,6 +382,15 @@ h2 {
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
+/* Targeted Vertical Focus Adjustments (Pushing photo frame down to show top faces/figures) */
+.gallery-image-wrapper img[src="words-texture-1.jpg"],
+.gallery-image-wrapper img[src="words-archive-1.jpg"],
+.gallery-image-wrapper img[src="land-spatial-2.jpg"],
+.gallery-image-wrapper img[src="rooh-texture-3.jpg"],
+.gallery-image-wrapper img[src="rooh-archive-3.jpg"] {
+    object-position: top center;
+}
+
 .gallery-card:hover .gallery-image-wrapper img,
 .gallery-card:focus .gallery-image-wrapper img {
     transform: scale(1.04);
