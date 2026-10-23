@@ -30,6 +30,12 @@ body {
     overflow-x: hidden;
 }
 
+/* Prevent layout shift (CLS) when body scroll is locked */
+body.modal-open {
+    overflow: hidden;
+    padding-right: var(--scrollbar-width, 0);
+}
+
 /* Accessibility Focus States */
 a:focus-visible,
 button:focus-visible,
