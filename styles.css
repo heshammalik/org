@@ -143,7 +143,7 @@ header.hero {
     text-align: center;
     box-sizing: border-box;
     background: linear-gradient(180deg, rgba(3, 3, 3, 0.45) 0%, rgba(3, 3, 3, 0.85) 75%, var(--canvas-bg) 100%), 
-                url('Landing.jpg') center 20% / cover no-repeat;
+                url('Landing.jpg') center 12% / cover no-repeat;
 }
 
 .hero-content {
@@ -170,6 +170,28 @@ h1 {
     letter-spacing: 0.38em;
     margin-bottom: 35px;
     text-shadow: 0 4px 12px rgba(0,0,0,0.9);
+}
+
+/* Museum Minimalist Hero Subtitle Grid */
+.hero-meta-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.38em;
+    margin-bottom: 35px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.9);
+}
+
+.hero-meta-grid .meta-item:not(:last-child):after {
+    content: '|';
+    margin-left: 20px;
+    color: var(--border-subtle);
+    font-weight: 300;
 }
 
 .hero-statement {
