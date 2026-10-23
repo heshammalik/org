@@ -89,6 +89,35 @@ if (modal) {
     });
 }
 
+// Elite Event Delegation (Handling clicks across all cards & buttons cleanly without inline onclicks)
+document.addEventListener('click', (e) => {
+    const target = e.target.closest('[data-action]');
+    if (!target) return;
+
+    const action = target.getAttribute('data-action');
+
+    if (action === 'modal') {
+        const key = target.getAttribute('data-key');
+        if (key) openModalByKey(key);
+    } else if (action === 'lightbox') {
+        const src = target.getAttribute('data-src');
+        const tag = target.getAttribute('data-tag');
+        const caption = target.getAttribute('data-caption');
+        if (src) openImageLightbox(src, tag, caption);
+    } else if (action === 'mobile-toggle') {
+        toggleMobileMenu();
+    } else if (action === 'mobile-close') {
+        const menu = document.getElementById('mobileMenu');
+        if (menu && menu.classList.contains('active')) {
+            toggleMobileMenu();
+        }
+    } else if (action === 'modal-close') {
+        closeModal();
+    } else if (action === 'lightbox-close') {
+        closeImageLightbox();
+    }
+});
+
 // Backward Compatibility Helpers
 function openPillar(key) { openModalByKey(key); }
 function openTrajectory(key) { openModalByKey(key); }
@@ -109,7 +138,7 @@ document.addEventListener('keydown', (e) => {
     // Allow keyboard Enter / Space keys to trigger interactive elements with role="button"
     if ((e.key === 'Enter' || e.key === ' ') && document.activeElement) {
         const target = document.activeElement;
-        if (target.getAttribute('role') === 'button' && target.hasAttribute('onclick')) {
+        if (target.getAttribute('role') === 'button' && target.hasAttribute('data-action')) {
             e.preventDefault();
             target.click();
         }
