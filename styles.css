@@ -143,7 +143,7 @@ header.hero {
     text-align: center;
     box-sizing: border-box;
     background: linear-gradient(180deg, rgba(3, 3, 3, 0.45) 0%, rgba(3, 3, 3, 0.85) 75%, var(--canvas-bg) 100%), 
-                url('Landing.jpg') center top / cover no-repeat;
+                url('Landing.jpg') center 20% / cover no-repeat;
 }
 
 .hero-content {
