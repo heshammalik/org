@@ -9,13 +9,19 @@ const lightboxImg = document.getElementById('lightboxImg');
 const lightboxTag = document.getElementById('lightboxTag');
 const lightboxCaption = document.getElementById('lightboxCaption');
 
-// Scroll Lock Helpers
+// Scroll Lock Helpers with CLS (Cumulative Layout Shift) Prevention
 function lockBodyScroll() {
-    document.body.style.overflow = 'hidden';
+    // Calculate scrollbar width to prevent horizontal layout jump
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollbarWidth > 0) {
+        document.body.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+    }
+    document.body.classList.add('modal-open');
 }
 
 function unlockBodyScroll() {
-    document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
+    document.body.style.removeProperty('--scrollbar-width');
 }
 
 // Mobile Nav Toggle
