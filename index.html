@@ -108,22 +108,26 @@
             <a href="#provenance" class="nav-link">Provenance</a>
             <a href="#bibliography" class="nav-link">Bibliography</a>
         </div>
-        <button type="button" class="mobile-nav-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        <button type="button" class="mobile-nav-btn" data-action="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
     </nav>
 
     <!-- Mobile Navigation Drawer -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#pillars" class="nav-link" onclick="toggleMobileMenu()">Four Pillars</a>
-        <a href="#chapters" class="nav-link" onclick="toggleMobileMenu()">Spatial Chapters</a>
-        <a href="#provenance" class="nav-link" onclick="toggleMobileMenu()">Provenance</a>
-        <a href="#bibliography" class="nav-link" onclick="toggleMobileMenu()">Bibliography</a>
+        <a href="#pillars" class="nav-link" data-action="mobile-close">Four Pillars</a>
+        <a href="#chapters" class="nav-link" data-action="mobile-close">Spatial Chapters</a>
+        <a href="#provenance" class="nav-link" data-action="mobile-close">Provenance</a>
+        <a href="#bibliography" class="nav-link" data-action="mobile-close">Bibliography</a>
     </div>
 
     <!-- Full Screen Hero Header -->
     <header class="hero">
         <div class="hero-content">
             <h1>Hesham Malik</h1>
-            <div class="subtitle">Selected Works &bull; Documentation &amp; Provenance &bull; International Initiatives</div>
+            <div class="hero-meta-grid" aria-label="Monographic subtitle overview">
+                <span class="meta-item">Selected Works</span>
+                <span class="meta-item">Documentation &amp; Provenance</span>
+                <span class="meta-item">International Initiatives</span>
+            </div>
             <p class="hero-statement">
                 "Art is an active register of human experience, environmental shift, and cultural memory."
             </p>
@@ -137,7 +141,7 @@
             <h2>The Four Pillars</h2>
             <div class="pillars-grid">
                 
-                <article class="pillar-card" onclick="openModalByKey('words')" tabindex="0" role="button">
+                <article class="pillar-card" data-action="modal" data-key="words" tabindex="0" role="button">
                     <span class="click-hint">&bull; Explore Works</span>
                     <h3>Words</h3>
                     <p>A global participatory text project capturing human sentiment, linguistic DNA, and philosophical thought across international borders.</p>
@@ -146,7 +150,7 @@
                     </div>
                 </article>
 
-                <article class="pillar-card" onclick="openModalByKey('box')" tabindex="0" role="button">
+                <article class="pillar-card" data-action="modal" data-key="box" tabindex="0" role="button">
                     <span class="click-hint">&bull; Explore Initiative</span>
                     <h3>Life of a Box</h3>
                     <p>A global sustainability initiative transforming discarded industrial logistics into monumental ecological sculptures, bridging recycling with fine art.</p>
@@ -155,7 +159,7 @@
                     </div>
                 </article>
 
-                <article class="pillar-card" onclick="openModalByKey('voices')" tabindex="0" role="button">
+                <article class="pillar-card" data-action="modal" data-key="voices" tabindex="0" role="button">
                     <span class="click-hint">&bull; Explore Lineage</span>
                     <h3>Voices of the Land</h3>
                     <p>Bringing together sacred concepts, oral traditions, and linguistic heritage passed down through generations of indigenous guardians.</p>
@@ -164,7 +168,7 @@
                     </div>
                 </article>
 
-                <article class="pillar-card" onclick="openModalByKey('rooh')" tabindex="0" role="button">
+                <article class="pillar-card" data-action="modal" data-key="rooh" tabindex="0" role="button">
                     <span class="click-hint">&bull; Explore Testimonies</span>
                     <h3>روح‌نواز (Rooh-Nawaz)</h3>
                     <p>Deeply moving testimonies of human resilience in words and images, honoring the global Persian community and collective historical memory.</p>
@@ -192,22 +196,22 @@
                         Key Participating Networks &amp; Academic Institutions (Click to Read Scope):
                     </div>
                     <div class="roster-pills">
-                        <button type="button" class="roster-pill" onclick="openModalByKey('harvard')">Harvard University Network</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('oxbridge')">Oxford &amp; Cambridge</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('sorbonne')">Sorbonne University</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('art4hr')">Art for Human Rights</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('svalbard')">Svalbard Global Seed Vault</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('goodall')">The Jane Goodall Institute</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('tate')">TATE London</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('iaml')">International Arts + Mind Lab</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('ludwig')">Ludwig Museum Budapest</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="harvard">Harvard University Network</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="oxbridge">Oxford &amp; Cambridge</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="sorbonne">Sorbonne University</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="art4hr">Art for Human Rights</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="svalbard">Svalbard Global Seed Vault</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="goodall">The Jane Goodall Institute</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="tate">TATE London</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="iaml">International Arts + Mind Lab</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="ludwig">Ludwig Museum Budapest</button>
                     </div>
                 </div>
 
                 <div class="spatial-gallery-grid">
-                    <article class="gallery-card" onclick="openImageLightbox('words-spatial-1.jpg', 'EXHIBITION OPENING &bull; SPATIAL CONTEXT', 'The artist speaking at an exhibition opening, establishing spatial scale and public engagement.')" tabindex="0" role="button">
+                    <article class="gallery-card" data-action="lightbox" data-src="words-spatial-1.jpg" data-tag="EXHIBITION OPENING &bull; SPATIAL CONTEXT" data-caption="Curatorial address and spatial installation view during the inaugural exhibition vernissage." tabindex="0" role="button">
                         <div class="gallery-image-wrapper">
-                            <img src="words-spatial-1.jpg" alt="The artist speaking at exhibition opening" width="400" height="240" loading="lazy">
+                            <img src="words-spatial-1.jpg" alt="Curatorial address and spatial installation view during the inaugural exhibition vernissage" width="400" height="240" loading="lazy">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Vernissage Address</span>
@@ -215,9 +219,9 @@
                         </div>
                     </article>
 
-                    <article class="gallery-card" onclick="openImageLightbox('words-texture-1.jpg', 'FEATURED MASTERWORK &bull; BRUSSELS EXPO', 'The word \'Equanimity\', Gelassenheit in German, was donated by Artas Foundation, a Swiss Foundation for Art in Regions of Conflict. Featured at the Brussels Expo: Empowering Europe’s Creative Industries.')" tabindex="0" role="button">
+                    <article class="gallery-card" data-action="lightbox" data-src="words-texture-1.jpg" data-tag="FEATURED MASTERWORK &bull; BRUSSELS EXPO" data-caption="Installation view of 'Equanimity' (Gelassenheit) featured at the Brussels Expo pavilion, donated by Artas Foundation." tabindex="0" role="button">
                         <div class="gallery-image-wrapper">
-                            <img src="words-texture-1.jpg" alt="Equanimity Gelassenheit painting at Brussels Expo" width="400" height="240" loading="lazy">
+                            <img src="words-texture-1.jpg" alt="Installation view of Equanimity (Gelassenheit) featured at the Brussels Expo pavilion" width="400" height="240" loading="lazy">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Featured Masterwork</span>
@@ -225,9 +229,9 @@
                         </div>
                     </article>
 
-                    <article class="gallery-card" onclick="openImageLightbox('words-archive-1.jpg', 'STATE GALLERY EXHIBITION &bull; CZECH REPUBLIC', 'City Gallery of Vysoké Mýto - installation view from the exhibition titled \'Reminiscence\'.')" tabindex="0" role="button">
+                    <article class="gallery-card" data-action="lightbox" data-src="words-archive-1.jpg" data-tag="STATE GALLERY EXHIBITION &bull; CZECH REPUBLIC" data-caption="Archival installation view of the monographic exhibition titled 'Reminiscence' at the City Gallery of Vysoké Mýto." tabindex="0" role="button">
                         <div class="gallery-image-wrapper">
-                            <img src="words-archive-1.jpg" alt="City Gallery of Vysoké Mýto Exhibition Reminiscence" width="400" height="240" loading="lazy">
+                            <img src="words-archive-1.jpg" alt="Archival installation view of Reminiscence at the City Gallery of Vysoké Mýto" width="400" height="240" loading="lazy">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Regional Gallery</span>
@@ -238,17 +242,17 @@
             </div>
 
             <div class="trajectory-grid">
-                <article class="trajectory-card" onclick="openModalByKey('words_codex')" tabindex="0" role="button">
+                <article class="trajectory-card" data-action="modal" data-key="words_codex" tabindex="0" role="button">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>I. Linguistic DNA &amp; Global Energy</h4>
                     <p>Extracting singular word donations from diverse cultures to map universal emotional and philosophical responses to modern planetary existence.</p>
                 </article>
-                <article class="trajectory-card" onclick="openModalByKey('words_participatory')" tabindex="0" role="button">
+                <article class="trajectory-card" data-action="modal" data-key="words_participatory" tabindex="0" role="button">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>II. Participatory Architecture</h4>
                     <p>Bypassing traditional art world gatekeeping by allowing global scholars, leaders, and communities to directly author the conceptual foundation of the canvas.</p>
                 </article>
-                <article class="trajectory-card" onclick="openModalByKey('words_monumental')" tabindex="0" role="button">
+                <article class="trajectory-card" data-action="modal" data-key="words_monumental" tabindex="0" role="button">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>III. Monumental Preservation</h4>
                     <p>Translating ephemeral text contributions into heavy, multi-layered pigment installations preserved for future cultural and historical documentation.</p>
@@ -272,27 +276,27 @@
                         Participating Donating Repositories &amp; Institutional Contributors (Click to Read Statement):
                     </div>
                     <div class="roster-pills">
-                        <button type="button" class="roster-pill" onclick="openModalByKey('unicef')">UNICEF</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('gatech')">Georgia Tech</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('redcross')">Czech Red Cross</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('nobel')">Nobel Prize Museum</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('nypld')">New York Public Library</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('denmark')">National Museum of Denmark</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('basel')">Museum of Basel</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('ukraine')">National Museum of History of Ukraine</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('cotroceni')">Cotroceni National Museum</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('toulouse')">des Musées et Monuments Toulouse</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('germanlib')">German National Library</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('amazon')">Amazon UK</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('moa')">Museum of Anthropology (UBC)</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('duszniki')">Museum of Papermaking</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="unicef">UNICEF</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="gatech">Georgia Tech</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="redcross">Czech Red Cross</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="nobel">Nobel Prize Museum</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="nypld">New York Public Library</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="denmark">National Museum of Denmark</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="basel">Museum of Basel</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="ukraine">National Museum of History of Ukraine</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="cotroceni">Cotroceni National Museum</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="toulouse">des Musées et Monuments Toulouse</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="germanlib">German National Library</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="amazon">Amazon UK</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="moa">Museum of Anthropology (UBC)</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="duszniki">Museum of Papermaking</button>
                     </div>
                 </div>
 
                 <div class="spatial-gallery-grid">
-                    <article class="gallery-card" onclick="openImageLightbox('box-spatial-1.jpg', 'MUSEUM INSTALLATION &bull; CZECH REPUBLIC', 'Museum of West Bohemia - Life of a Box exhibition view establishing architectural scale and institutional presence.')" tabindex="0" role="button">
+                    <article class="gallery-card" data-action="lightbox" data-src="box-spatial-1.jpg" data-tag="MUSEUM INSTALLATION &bull; CZECH REPUBLIC" data-caption="Exhibition view from the Museum of West Bohemia documenting architectural scale and institutional provenance." tabindex="0" role="button">
                         <div class="gallery-image-wrapper">
-                            <img src="box-spatial-1.jpg" alt="Museum of West Bohemia Life of a Box Exhibition" width="400" height="240" loading="lazy">
+                            <img src="box-spatial-1.jpg" alt="Exhibition view from the Museum of West Bohemia documenting architectural scale" width="400" height="240" loading="lazy">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Museum Installation</span>
@@ -300,9 +304,9 @@
                         </div>
                     </article>
 
-                    <article class="gallery-card" onclick="openImageLightbox('box-texture-1.jpg', 'MATERIAL ARCHIVE &bull; NEW ZEALAND', 'from out of the blue studio gallery - Ōpunakē, Taranaki, New Zealand — Macro abstract detailing preserved cardboard fiber and gold pigment.')" tabindex="0" role="button">
+                    <article class="gallery-card" data-action="lightbox" data-src="box-texture-1.jpg" data-tag="MATERIAL ARCHIVE &bull; NEW ZEALAND" data-caption="Macro surface detail of preserved cardboard fiber and gold pigment from out of the blue studio gallery in Ōpunakē, New Zealand." tabindex="0" role="button">
                         <div class="gallery-image-wrapper">
-                            <img src="box-texture-1.jpg" alt="from out of the blue studio gallery Texture Detail" width="400" height="240" loading="lazy">
+                            <img src="box-texture-1.jpg" alt="Macro surface detail of preserved cardboard fiber and gold pigment in New Zealand" width="400" height="240" loading="lazy">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Material Detail</span>
@@ -310,9 +314,9 @@
                         </div>
                     </article>
 
-                    <article class="gallery-card" onclick="openImageLightbox('box-archive-1.jpg', 'PROVENANCE RECORD &bull; LUXEMBOURG', 'European Schengen Museum - Luxembourg — Photo of a used box and postcard sent in support of the global sustainability initiative.')" tabindex="0" role="button">
+                    <article class="gallery-card" data-action="lightbox" data-src="box-archive-1.jpg" data-tag="PROVENANCE RECORD &bull; LUXEMBOURG" data-caption="Archival record of a contributed logistics box and supporting postcard housed at the European Schengen Museum." tabindex="0" role="button">
                         <div class="gallery-image-wrapper">
-                            <img src="box-archive-1.jpg" alt="European Schengen Museum Archival Record" width="400" height="240" loading="lazy">
+                            <img src="box-archive-1.jpg" alt="Archival record of contributed logistics packaging at the European Schengen Museum" width="400" height="240" loading="lazy">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Institutional Record</span>
@@ -323,17 +327,17 @@
             </div>
 
             <div class="trajectory-grid">
-                <article class="trajectory-card" onclick="openModalByKey('retrospectives')" tabindex="0" role="button">
+                <article class="trajectory-card" data-action="modal" data-key="retrospectives" tabindex="0" role="button">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>100+ Global Solo Retrospectives</h4>
                     <p>Three decades of documented solo exhibitions across major international capitals—including Toronto, London, Athens, Prague, Brussels, Dubai, Oulu, Goa, and Poland.</p>
                 </article>
-                <article class="trajectory-card" onclick="openModalByKey('collections')" tabindex="0" role="button">
+                <article class="trajectory-card" data-action="modal" data-key="collections" tabindex="0" role="button">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>Institutional &amp; Private Collections</h4>
                     <p>Monumental works held in permanent museum collections, state foundations, and prominent private collections worldwide.</p>
                 </article>
-                <article class="trajectory-card" onclick="openModalByKey('literature')" tabindex="0" role="button">
+                <article class="trajectory-card" data-action="modal" data-key="literature" tabindex="0" role="button">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>3 Decades of Monographic Literature</h4>
                     <p>A comprehensive history of critical essays, exhibition monographs, and scholarly reviews analyzing the evolution of Hesham Malik’s oeuvre.</p>
@@ -356,21 +360,21 @@
                         Institutional Repositories &amp; Indigenous Scholars (Click to Read Donated Statement):
                     </div>
                     <div class="roster-pills">
-                        <button type="button" class="roster-pill" onclick="openModalByKey('ngc')">National Gallery of Canada</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('ualberta')">University of Alberta</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('flinders')">Flinders University</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('umanitoba_deer')">University of Manitoba (Prof. Deer)</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('cherokee')">Cherokee Nation &amp; UVic</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('swarthmore')">Swarthmore &amp; National Geographic</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('umanitoba_kulch')">University of Manitoba (Prof. Kulchyski)</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('asu')">Arizona State University</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="ngc">National Gallery of Canada</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="ualberta">University of Alberta</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="flinders">Flinders University</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="umanitoba_deer">University of Manitoba (Prof. Deer)</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="cherokee">Cherokee Nation &amp; UVic</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="swarthmore">Swarthmore &amp; National Geographic</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="umanitoba_kulch">University of Manitoba (Prof. Kulchyski)</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="asu">Arizona State University</button>
                     </div>
                 </div>
 
                 <div class="spatial-gallery-grid">
-                    <article class="gallery-card" onclick="openImageLightbox('land-spatial-2.jpg', 'MUSEUM EXHIBITION &bull; CZECH REPUBLIC', 'The Museum of the Jindřichův Hradec Region — Painting titled \'Mowicha\' establishing monumental spatial presence.')" tabindex="0" role="button">
+                    <article class="gallery-card" data-action="lightbox" data-src="land-spatial-2.jpg" data-tag="MUSEUM EXHIBITION &bull; CZECH REPUBLIC" data-caption="Exhibition view from the Museum of the Jindřichův Hradec Region featuring the painting titled 'Mowicha'." tabindex="0" role="button">
                         <div class="gallery-image-wrapper">
-                            <img src="land-spatial-2.jpg" alt="The Museum of the Jindřichův Hradec Region Mowicha" width="400" height="240" loading="lazy">
+                            <img src="land-spatial-2.jpg" alt="Museum exhibition view from the Museum of the Jindřichův Hradec Region featuring Mowicha" width="400" height="240" loading="lazy">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Museum Installation</span>
@@ -378,9 +382,9 @@
                         </div>
                     </article>
 
-                    <article class="gallery-card" onclick="openImageLightbox('land-texture-2.jpg', 'MATERIAL ARCHIVE &bull; CZECH REPUBLIC', 'Museum Karlovy Vary — Geometrical design detailing Earth Pigmentation and surface texture.')" tabindex="0" role="button">
+                    <article class="gallery-card" data-action="lightbox" data-src="land-texture-2.jpg" data-tag="MATERIAL ARCHIVE &bull; CZECH REPUBLIC" data-caption="Geometrical surface design detailing natural earth pigmentation at Museum Karlovy Vary." tabindex="0" role="button">
                         <div class="gallery-image-wrapper">
-                            <img src="land-texture-2.jpg" alt="Museum Karlovy Vary Earth Pigmentation Texture" width="400" height="240" loading="lazy">
+                            <img src="land-texture-2.jpg" alt="Geometrical surface design detailing natural earth pigmentation at Museum Karlovy Vary" width="400" height="240" loading="lazy">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Material Detail</span>
@@ -388,9 +392,9 @@
                         </div>
                     </article>
 
-                    <article class="gallery-card" onclick="openImageLightbox('land-archive-2.jpg', 'STUDIO ARCHIVE &bull; PRODUCTION RECORD', 'Voices of the Land — Studio research documentation, material preparation, and ongoing creation.')" tabindex="0" role="button">
+                    <article class="gallery-card" data-action="lightbox" data-src="land-archive-2.jpg" data-tag="STUDIO ARCHIVE &bull; PRODUCTION RECORD" data-caption="Studio research documentation and material preparation for the Voices of the Land series." tabindex="0" role="button">
                         <div class="gallery-image-wrapper">
-                            <img src="land-archive-2.jpg" alt="Voices of the Land Studio Research Archive" width="400" height="240" loading="lazy">
+                            <img src="land-archive-2.jpg" alt="Studio research documentation and material preparation for Voices of the Land" width="400" height="240" loading="lazy">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Studio Documentation</span>
@@ -401,17 +405,17 @@
             </div>
 
             <div class="trajectory-grid">
-                <article class="trajectory-card" onclick="openModalByKey('voices_interconnection')" tabindex="0" role="button">
+                <article class="trajectory-card" data-action="modal" data-key="voices_interconnection" tabindex="0" role="button">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>I. Relational Epistemology</h4>
                     <p>Grounding fine art in indigenous worldviews where all life, territory, and living language are intrinsically linked—exemplified by concepts like <i>Ankosé</i> (everything is connected).</p>
                 </article>
-                <article class="trajectory-card" onclick="openModalByKey('voices_social_capital')" tabindex="0" role="button">
+                <article class="trajectory-card" data-action="modal" data-key="voices_social_capital" tabindex="0" role="button">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>II. Social Capital &amp; Well-being</h4>
                     <p>Documenting sacred expressions of community wellness, relational duty, and mentorship—such as <i>sâkihitowin</i> (love) and <i>Sakorihonnienni</i> (one who teaches)—as foundational social infrastructure.</p>
                 </article>
-                <article class="trajectory-card" onclick="openModalByKey('voices_stewardship')" tabindex="0" role="button">
+                <article class="trajectory-card" data-action="modal" data-key="voices_stewardship" tabindex="0" role="button">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>III. Land Custodianship &amp; Earth Strength</h4>
                     <p>Translating living environmental concepts—including <i>Junggayi</i> (traditional custodian), <i>Ama</i> (water), and <i>Mashkiki</i> (strength of the Earth)—into monumental visual heritage.</p>
@@ -434,24 +438,24 @@
                         Academic Faculties &amp; Scholarly Collaborators (Click to Read Donated Concept):
                     </div>
                     <div class="roster-pills">
-                        <button type="button" class="roster-pill" onclick="openModalByKey('harouni')">Bi-gharāri (بیقراری)</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('kia')">Adab (ادب)</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('babaie')">Oneness (یگانگی)</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('daryaee')">Courage (شجاعت)</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('grigor')">Jān / Jan (جان)</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('berberian')">Peyvand (پیوند)</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('hodgkin')">Verse: Bedil Paradox</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('pazargadi')">Rahi (راهی)</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('kian')">Language as Passage</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('siamdoust')">Sekanjebin (سکنجبین)</button>
-                        <button type="button" class="roster-pill" onclick="openModalByKey('tabarraee')">Endlessness</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="harouni">Bi-gharāri (بیقراری)</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="kia">Adab (ادب)</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="babaie">Oneness (یگانگی)</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="daryaee">Courage (شجاعت)</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="grigor">Jān / Jan (جان)</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="berberian">Peyvand (پیوند)</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="hodgkin">Verse: Bedil Paradox</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="pazargadi">Rahi (راهی)</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="kian">Language as Passage</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="siamdoust">Sekanjebin (سکنجبین)</button>
+                        <button type="button" class="roster-pill" data-action="modal" data-key="tabarraee">Endlessness</button>
                     </div>
                 </div>
 
                 <div class="spatial-gallery-grid">
-                    <article class="gallery-card" onclick="openImageLightbox('rooh-spatial-3.jpg', 'PRIVATE EXHIBIT &bull; SPATIAL VIEW', 'Private exhibit — Painting titled \'Rooh\' establishing spatial scale and emotional resonance.')" tabindex="0" role="button">
+                    <article class="gallery-card" data-action="lightbox" data-src="rooh-spatial-3.jpg" data-tag="PRIVATE EXHIBIT &bull; SPATIAL VIEW" data-caption="Installation view from a private exhibition featuring the painting titled 'Rooh'." tabindex="0" role="button">
                         <div class="gallery-image-wrapper">
-                            <img src="rooh-spatial-3.jpg" alt="Private Exhibit Painting Titled Rooh" width="400" height="240" loading="lazy">
+                            <img src="rooh-spatial-3.jpg" alt="Installation view from a private exhibition featuring the painting titled Rooh" width="400" height="240" loading="lazy">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Private Exhibit</span>
@@ -459,9 +463,9 @@
                         </div>
                     </article>
 
-                    <article class="gallery-card" onclick="openImageLightbox('rooh-texture-3.jpg', 'MUSEUM COLLECTION &bull; CZECH REPUBLIC', 'Museum Kromeriz — Painting titled \'\... you, who are my whole Soul...\' detailing rich surface textures.')" tabindex="0" role="button">
+                    <article class="gallery-card" data-action="lightbox" data-src="rooh-texture-3.jpg" data-tag="MUSEUM COLLECTION &bull; CZECH REPUBLIC" data-caption="Surface texture detail from Museum Kromeriz featuring the painting '...you, who are my whole Soul...'" tabindex="0" role="button">
                         <div class="gallery-image-wrapper">
-                            <img src="rooh-texture-3.jpg" alt="Museum Kromeriz You Who Are My Whole Soul" width="400" height="240" loading="lazy">
+                            <img src="rooh-texture-3.jpg" alt="Surface texture detail from Museum Kromeriz featuring you, who are my whole Soul" width="400" height="240" loading="lazy">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Museum Collection</span>
@@ -469,9 +473,9 @@
                         </div>
                     </article>
 
-                    <article class="gallery-card" onclick="openImageLightbox('rooh-archive-3.jpg', 'STUDIO ARCHIVE &bull; SCHOLARLY RESEARCH', 'Rooh-Nawaz — Studio research documentation, material creation, and record keeping.')" tabindex="0" role="button">
+                    <article class="gallery-card" data-action="lightbox" data-src="rooh-archive-3.jpg" data-tag="STUDIO ARCHIVE &bull; SCHOLARLY RESEARCH" data-caption="Studio research documentation and material creation for the Rooh-Nawaz archive." tabindex="0" role="button">
                         <div class="gallery-image-wrapper">
-                            <img src="rooh-archive-3.jpg" alt="Rooh-Nawaz Studio Research Archive" width="400" height="240" loading="lazy">
+                            <img src="rooh-archive-3.jpg" alt="Studio research documentation and material creation for Rooh-Nawaz" width="400" height="240" loading="lazy">
                         </div>
                         <div class="gallery-caption">
                             <span class="gallery-tag">&bull; Studio Record</span>
@@ -482,17 +486,17 @@
             </div>
 
             <div class="trajectory-grid">
-                <article class="trajectory-card" onclick="openModalByKey('rooh_academic')" tabindex="0" role="button">
+                <article class="trajectory-card" data-action="modal" data-key="rooh_academic" tabindex="0" role="button">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>I. Epistemic Unsettledness &amp; Exile</h4>
                     <p>Examining how concepts of movement and seeking—such as <i>Bi-gharāri</i> and <i>Rahi</i>—reframe displacement into a dynamic state of continuous intellectual and spiritual creation.</p>
                 </article>
-                <article class="trajectory-card" onclick="openModalByKey('rooh_art')" tabindex="0" role="button">
+                <article class="trajectory-card" data-action="modal" data-key="rooh_art" tabindex="0" role="button">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>II. Cultural Convergence &amp; Ethos</h4>
                     <p>Documenting living Persianate virtues like <i>Adab</i> (reverence) and untranslatable expressions of shared spirit like <i>Jān</i> as foundational infrastructure for cross-cultural unity.</p>
                 </article>
-                <article class="trajectory-card" onclick="openModalByKey('rooh_archive')" tabindex="0" role="button">
+                <article class="trajectory-card" data-action="modal" data-key="rooh_archive" tabindex="0" role="button">
                     <span class="click-hint">&bull; Read Monograph</span>
                     <h4>III. Spiritual &amp; Historical Persistence</h4>
                     <p>Translating endurance, historical courage, and non-dualistic oneness into monumental public canvases celebrating the timeless dignity of human resilience.</p>
@@ -539,7 +543,7 @@
                         <div class="biblio-meta">The Museum of Contemporary Inquiry (TMOCI) &bull; Curatorial Research Portal &bull; Published June 2026</div>
                     </div>
                     <div>
-                        <button type="button" class="biblio-btn" onclick="openModalByKey('tmoci_essay')">Read Curatorial Excerpt &rarr;</button>
+                        <button type="button" class="biblio-btn" data-action="modal" data-key="tmoci_essay">Read Curatorial Excerpt &rarr;</button>
                     </div>
                 </article>
 
@@ -585,7 +589,7 @@
     <!-- Dynamic Text Modal System -->
     <div class="modal-overlay" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-box">
-            <button type="button" class="modal-close" onclick="closeModal()" aria-label="Close modal">&times;</button>
+            <button type="button" class="modal-close" data-action="modal-close" aria-label="Close modal">&times;</button>
             <div class="biblio-code" id="modalCode">PILLAR DIRECTIVE</div>
             <h3 class="modal-title" id="modalTitle">Title</h3>
             <div class="modal-body" id="modalBody">Content...</div>
@@ -594,7 +598,7 @@
 
     <!-- Dynamic Image Lightbox Viewer -->
     <div class="lightbox-overlay" id="imageLightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxCaption">
-        <button type="button" class="modal-close" onclick="closeImageLightbox()" aria-label="Close image lightbox">&times;</button>
+        <button type="button" class="modal-close" data-action="lightbox-close" aria-label="Close image lightbox">&times;</button>
         <div class="lightbox-image-container">
             <img id="lightboxImg" src="" alt="Expanded View">
         </div>
